@@ -29,7 +29,7 @@ export function ConsentManager({ site, language = "de", published }: { site: Sit
   const { isolated } = useContext(SiteInteractionContext);
   const tracking = published?.tracking === true && !isolated;
   const scripts = tracking ? published?.scripts : undefined;
-  const [nativeConfig, setNativeConfig] = useState<AnalyticsPublic | null>(null);
+  const [nativeConfig, setNativeConfig] = useState<AnalyticsPublic | null>();
   const [ready, setReady] = useState(false);
   const [choice, setChoice] = useState<Consent | null>(null);
   const [options, setOptions] = useState<OptionalChoice | null>(null);
@@ -43,8 +43,8 @@ export function ConsentManager({ site, language = "de", published }: { site: Sit
     const abort = new AbortController();
     void fetch("/api/analytics/config", { signal: abort.signal, cache: "no-store" })
       .then(response => response.ok ? response.json() : null)
-      .then((config: AnalyticsPublic | null) => { if (config && !abort.signal.aborted) setNativeConfig(config); })
-      .catch(() => {});
+      .then((config: AnalyticsPublic | null) => { if (!abort.signal.aborted) setNativeConfig(config); })
+      .catch(() => { if (!abort.signal.aborted) setNativeConfig(null); });
     return () => abort.abort();
   }, [tracking]);
 
@@ -95,7 +95,8 @@ export function ConsentManager({ site, language = "de", published }: { site: Sit
   const scriptGeneration = scripts?.generation;
   const requireStatisticsChoice = statisticsEnabled && choice?.statisticsGeneration !== statisticsGeneration;
   const requireScriptChoice = Boolean(scripts && choice?.scriptsGeneration !== scriptGeneration);
-  const visible = options !== null || ready && ((!choice && site.consent.enabled) || requireStatisticsChoice || requireScriptChoice);
+  const readyForChoice = ready && (!tracking || nativeConfig !== undefined);
+  const visible = options !== null || readyForChoice && ((!choice && site.consent.enabled) || requireStatisticsChoice || requireScriptChoice);
   const custom = options !== null;
 
   useEffect(() => {
