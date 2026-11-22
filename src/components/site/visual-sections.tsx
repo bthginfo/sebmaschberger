@@ -223,15 +223,15 @@ export function SceneSequence({ items, editable, motion, media, copy }: ItemsPro
 }
 
 const workflowLabels = {
-  de: { steps: "Schritte auswählen", pause: "Pause", play: "Abspielen", reset: "Neu starten", next: "Nächster Schritt", step: "Schritt" },
-  en: { steps: "Choose a step", pause: "Pause", play: "Play", reset: "Restart", next: "Next step", step: "Step" },
+  de: { steps: "Schritte auswählen", pause: "Pause", play: "Abspielen", reset: "Neu starten", next: "Nächster Schritt", compactNext: "Weiter", step: "Schritt" },
+  en: { steps: "Choose a step", pause: "Pause", play: "Play", reset: "Restart", next: "Next step", compactNext: "Next", step: "Step" },
 };
 const workflowStepDuration = 4600;
 
 export function WorkflowDemo({ items, editable, motion, language = "de", media, copy }: ItemsProps & { motion: boolean }) {
   const root = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [paused, setPaused] = useState(true);
   const [visible, setVisible] = useState(false);
   const [allowsMotion, setAllowsMotion] = useState(false);
   const text = workflowLabels[language];
@@ -291,9 +291,11 @@ export function WorkflowDemo({ items, editable, motion, language = "de", media, 
     </div>
     {!editable && items.length > 1 && <div className="ws-workflow-controls">
       <span>{current + 1} / {items.length}</span>
-      {canPlay && <button type="button" onClick={() => setPaused(running)}>{running ? <Pause size={16} /> : <Play size={16} />}{running ? text.pause : text.play}</button>}
-      <button type="button" onClick={() => select((current + 1) % items.length)}><ArrowRight size={16} />{text.next}</button>
-      <button type="button" aria-label={text.reset} onClick={() => setActive(0)}><RotateCcw size={16} /></button>
+      <div className="ws-workflow-actions">
+        {canPlay && <button type="button" onClick={() => setPaused(running)}>{running ? <Pause size={16} /> : <Play size={16} />}{running ? text.pause : text.play}</button>}
+        <button type="button" aria-label={text.next} onClick={() => select((current + 1) % items.length)}><ArrowRight size={16} /><span className="ws-workflow-next-label">{text.next}</span><span className="ws-workflow-next-short">{text.compactNext}</span></button>
+        <button type="button" className="ws-workflow-reset" aria-label={text.reset} onClick={() => select(0)}><RotateCcw size={16} /></button>
+      </div>
     </div>}
   </div>;
 }

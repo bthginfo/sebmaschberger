@@ -114,7 +114,8 @@
     "club-management": "independent opt-in for private club management and member app; email/password invitations, scoped roles, record details, attendance, fixtures, news, club inbox, appearance editor, calendar export and optional coaching assignments",
     "scroll-3d": "explicit default-off section for a continuous scroll-controlled GLB with optional ambient motion, editable chapters, timing and composition, desktop and mobile playback, and an accessible poster fallback",
     "restaurant-menu": "Central ordered categories and items, optional price sizes in EUR, featured and visibility controls, and three configurable page-section layouts.",
-    "reservations": "Table capacity, per-weekday bookable windows and seating duration, closures, pending holds, manual acceptance, decline and cancellation, optional SMTP replies, and three guest widget layouts."
+    "reservations": "Table capacity, per-weekday bookable windows and seating duration, closures, pending holds, manual acceptance, decline and cancellation, optional SMTP replies, and three guest widget layouts.",
+    "consultations": "Availability, one-to-one appointments, confirmations and guest self-service."
   },
   "activation": {
     "core": [
@@ -251,6 +252,12 @@
         "flag": "reservations",
         "guide": "docs/hospitality.md",
         "use": "The brief asks to receive table reservations. Set up and verify actual capacity, windows, closures and the reply workflow before launch."
+      },
+      "consultations": {
+        "policy": "brief",
+        "flag": "consultations",
+        "guide": "docs/recipes/consultations.md",
+        "use": "Enable when the brief asks visitors to book one-to-one appointments from published availability."
       }
     },
     "aesthetics": {

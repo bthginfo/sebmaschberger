@@ -16,7 +16,8 @@
     "Visuelles CMS",
     "Anfragen",
     "Interaktiver Wochenplan",
-    "Shop mit Checkout und Bestellverwaltung"
+    "Zweisprachiger Beispielshop mit Warenkorb und sofortigem Ein- und Ausschalten im CMS",
+    "Hell/Dunkel mit Dunkel als Standard"
   ],
   "contentSources": [
     "https://www.sebmaschberger.com/",
@@ -28,15 +29,15 @@
   "assets": [],
   "openQuestions": [],
   "legalName": "Sebastian Maschberger",
-  "audience": "Männer ab 30 mit Beruf, Familie und Trainingszielen. Online, DE und EN.",
-  "offer": "1:1-Coaching, Krafttraining und alltagstaugliche Ernährungsberatung, kostenloses Kennenlernen.",
-  "style": "Helles, sportliches Editorial mit Manrope, frischem Limettengrün, tiefem Waldschwarz, iOS-artigen Glaselementen und dokumentarischem Studio-Porträt. Auf Mobil folgt das Foto direkt auf die primäre Aktion.",
+  "audience": "Männer ab 30, die mit Beruf und Familie wieder aktiver werden und sich im Alltag fitter fühlen möchten. Einstieg und Wiedereinstieg. Online auf Deutsch und Englisch.",
+  "offer": "Persönliche Begleitung bei Bewegung, Ernährung, Energie und Erholung. Kostenloses Erstgespräch.",
+  "style": "Dunkles Anthrazit, warmes Gold, iOS-inspirierte Glasflächen und ein originales Porträt. Der helle Modus verwendet warme, helle Naturtöne.",
   "siteUrl": "https://sebmaschberger-coaching.vercel.app",
   "voice": "Anbieterperspektive, direkte du-Ansprache im Deutschen, freundlich und konkret.",
   "aesthetic": "liquid-glass",
   "hero": {
-    "heading": "Stark werden. Du bleiben.",
-    "text": "Krafttraining und Ernährungscoaching für Männer ab 30. Mit einem Plan, der in dein Leben passt.",
+    "heading": "Fit für deinen Alltag.",
+    "text": "Ich begleite Männer ab 30 mit Bewegung, Ernährung und Erholung, die in eine Woche mit Job, Familie und vollen Tagen passen.",
     "image": {
       "file": "coaching-hero.webp",
       "alt": "Sebastian Maschberger im Trainingsstudio",
@@ -44,13 +45,13 @@
     }
   },
   "verifiedProof": [
-    "IFBB Elite Pro im Classic Bodybuilding seit 2018",
+    "2018 IFBB Elite Pro im Classic Bodybuilding",
     "2017 bayerischer Meister im Classic Bodybuilding"
   ],
   "colors": {
-    "primary": "#18241f",
-    "accent": "#c9f471",
-    "background": "#f4f6ee"
+    "primary": "#21180e",
+    "accent": "#e9c589",
+    "background": "#121210"
   },
   "profile": "services"
 }

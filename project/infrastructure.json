@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "website": "https://sebmaschberger-coaching.vercel.app",
   "github": {
-    "repository": null,
+    "repository": "bthginfo/sebmaschberger",
     "productionBranch": "main",
-    "status": "repository-creation-denied"
+    "visibility": "public"
   },
   "vercel": {
     "projectId": "prj_VYPw5dYFjhwt18LhpqngvgEcIr0C",

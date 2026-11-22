@@ -3,6 +3,7 @@ import { defaultBlog } from './site-config';
 import { defaultDesign } from './section-library';
 import { applyRouteTemplate, blogFeedType } from './route-templates';
 import { resolveShopPage, shopPublicPages } from './commerce/route-pages';
+import { isCommerceDestination } from './commerce/pages';
 
 export const BLOG_SECTION_TYPES = new Set(['blog-cards', 'blog-editorial', 'blog-list']);
 
@@ -89,7 +90,7 @@ export function blogPostPage(post: BlogPost, content: WebsiteContent, preview = 
 
 export function resolvePage(content: WebsiteContent, slug: string, search = ''): PageContent | undefined {
   const regular = content.pages.find(page => page.slug === slug);
-  if (regular) return hydrateBlogSections(regular, content);
+  if (regular) return content.config.modules?.commerce?.enabled === false && isCommerceDestination(regular) ? undefined : hydrateBlogSections(regular, content);
   const config = content.config.blog ?? defaultBlog;
   if (config.enabled) {
     if (slug === config.slug) return blogIndexPage(content);
@@ -103,7 +104,7 @@ export function resolvePage(content: WebsiteContent, slug: string, search = ''):
 export function publicPages(content: WebsiteContent): PageContent[] {
   const blog = content.config.blog ?? defaultBlog;
   const pages = [
-    ...content.pages,
+    ...content.pages.filter(page => content.config.modules?.commerce?.enabled !== false || !isCommerceDestination(page)),
     ...(blog.enabled ? [blogIndexPage({ ...content, posts: [] }), ...(content.posts ?? []).filter(post => post.status === 'published').map(post => blogPostPage(post, content))] : []),
     ...shopPublicPages(content)
   ];

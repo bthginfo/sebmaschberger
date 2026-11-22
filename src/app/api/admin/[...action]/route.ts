@@ -76,6 +76,21 @@ const route=handler(async(request:Request)=>{
     if(role==='editor')state.revisions=[];
     return json({state});
   }
+  if(action==='commerce-visibility'&&method==='POST'){
+    await rateLimit(ipKey(request,'commerce-visibility'),20,60);
+    const {enabled,revision}=z.object({enabled:z.boolean(),revision:revisionSchema}).strict().parse(await readJson(request,3000));
+    const current=await getState();
+    if(current.revision!==revision)throw new AppError('Der Shopstatus wurde inzwischen geändert. Bitte laden Sie den aktuellen Stand neu.',409);
+    const draft=current.draft.config.modules?.commerce, published=current.published.config.modules?.commerce;
+    if(!draft||!published)throw new AppError('Veröffentlichen Sie zuerst die Shop-Einrichtung.',409);
+    if(draft.enabled===enabled&&published.enabled===enabled)return json({state:current});
+    draft.enabled=enabled;
+    published.enabled=enabled;
+    const label=enabled?'Shop eingeblendet':'Shop ausgeblendet';
+    const state=await saveSnapshots(current.draft,current.published,revision,label);
+    revalidatePublishedSite();
+    return json({state});
+  }
   if(action==='publish'&&method==='POST'){
     const {revision}=z.object({revision:revisionSchema}).parse(await readJson(request));
     const draft=await getState();if(draft.revision!==revision)throw new AppError('Der Entwurf wurde inzwischen geändert. Bitte laden Sie die aktuelle Version neu.',409);

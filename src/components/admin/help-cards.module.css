@@ -1,0 +1,17 @@
+.section { margin:16px 0 28px; }
+.section h2 { margin-bottom:13px; font-size:1.22rem; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,275px),1fr)); gap:13px; }
+.card { min-width:0; display:flex; flex-direction:column; padding:14px; border:1px solid var(--cms-border,#dbe1d9); border-radius:17px; background:var(--cms-panel,#fff); }
+.sketch { position:relative; min-height:105px; display:grid; gap:10px; padding:13px; margin-bottom:11px; color:#354638; background:#edf0e6; border:1px solid #d4ded0; border-radius:12px; overflow:hidden; }
+.sketch>div:first-of-type { display:flex; gap:5px; flex-wrap:wrap; }
+.sketch span { display:flex; align-items:center; gap:3px; padding:5px 7px; font-size:.7rem; white-space:nowrap; color:#354638; background:#fcfdf8; border:1px solid #cbd6c6; border-radius:8px; }
+.sketch span:first-child { color:#253b2d; background:#d2ebd6; }
+.lines { display:grid; gap:4px; }
+.lines i { display:block; width:72%; max-width:175px; height:4px; background:#cbd6c6; border-radius:10px; }
+.lines i:nth-child(2) { width:61%; }.lines i:nth-child(3) { width:49%; }
+.card h3 { font-size:1.05rem; margin:0 0 8px; }
+.card ol { flex:1; margin:0 0 9px; padding-left:21px; font-size:.87rem; line-height:1.6; }
+.card li { padding:3px 0; }
+.links { display:flex; flex-wrap:wrap; gap:7px; }
+.links button { display:flex; align-items:center; gap:5px; min-height:42px; padding:7px 9px; border:1px solid var(--cms-border,#dae1d8); border-radius:9px; background:transparent; color:inherit; font-size:.82rem; font-weight:700; }
+.links button:hover { background:var(--cms-soft,#eef2e9); }

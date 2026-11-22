@@ -45,12 +45,14 @@ export async function updatePushStatus(identity: PushIdentity, input: unknown) {
 const pushCopy: Record<NotificationKind, { de: string; en: string }> = {
   messages: { de: 'Neue Nachricht', en: 'New message' }, schedule: { de: 'Neues im Spiel- oder Trainingsplan', en: 'Schedule update' },
   news: { de: 'Neue Vereinsmeldung', en: 'Club news' }, tactics: { de: 'Taktik aktualisiert', en: 'Tactics update' },
-  inquiries: { de: 'Neue Website-Anfrage', en: 'New website inquiry' }, test: { de: 'Testbenachrichtigung', en: 'Test notification' },
+  inquiries: { de: 'Neue Website-Anfrage', en: 'New website inquiry' },
+  appointments: { de: 'Neues unter Termine', en: 'Appointment update' }, test: { de: 'Testbenachrichtigung', en: 'Test notification' },
 };
 
 function notificationPath(scope: WorkspaceAppScope, kind: NotificationKind) {
+  if (scope === 'cms' && kind === 'appointments') return '/admin/termine';
   if (scope === 'cms') return kind === 'messages' ? '/admin/club?view=messages' : kind === 'inquiries' ? '/admin?view=inquiries' : '/admin';
-  const anchors = { messages: 'messages', schedule: 'calendar', news: 'news', tactics: 'tactics', test: 'settings', inquiries: 'settings' };
+  const anchors = { messages: 'messages', schedule: 'calendar', news: 'news', tactics: 'tactics', test: 'settings', inquiries: 'settings', appointments: 'settings' };
   return '/members#' + anchors[kind];
 }
 

@@ -73,7 +73,7 @@ export function ProjectFinder({ items, editable, language, brand, media, copy }:
           <div className="seb-finder-card-copy">
             {!!item.tags?.length && <div className="seb-finder-tags">{item.tags.map(tag => <span key={tag}>{tag}</span>)}</div>}
             {copy(item, index)}
-            {!editable && <button type="button" className="seb-save" aria-label={`${text.save} · ${item.title}`} aria-pressed={isSaved} onClick={() => toggleSaved(item.id)}>
+            {!editable && <button type="button" className="seb-save" aria-label={`${isSaved ? text.remove : text.save} · ${item.title}`} aria-pressed={isSaved} onClick={() => toggleSaved(item.id)}>
               <Bookmark size={17} aria-hidden="true" fill={isSaved ? "currentColor" : "none"} />{isSaved ? text.remove : text.save}
             </button>}
           </div>

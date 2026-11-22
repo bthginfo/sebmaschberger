@@ -1,8 +1,9 @@
 import { getSession } from '@/lib/auth';
 import { clubSession } from '@/lib/club/auth';
 import { clubFeatures } from '@/lib/club/enabled';
-import { AppError, rateLimit } from '@/lib/db';
+import { AppError, getPublishedConfig, rateLimit } from '@/lib/db';
 import { handler, ipKey, json, readJson, sameOrigin } from '@/lib/http';
+import type { WorkspacePushCategory } from '@/lib/workspace-push/model';
 import { disconnectWorkspacePush } from '@/lib/workspace-push/devices';
 import { pushStatus, testWorkspacePush, updatePushStatus, type PushIdentity } from '@/lib/workspace-push/store';
 
@@ -14,8 +15,14 @@ async function identity(scope: string): Promise<PushIdentity> {
   if (scope === 'cms') {
     const session = await getSession();
     if (!session) throw new AppError('Sign in to the CMS first.', 401);
-    const categories = session.role === 'owner' ? (await clubFeatures()).enabled ? ['messages', 'inquiries'] as const : ['inquiries'] as const : [];
-    return { scope, accountId: session.accountId ?? 'cms-owner', categories: [...categories] };
+    const categories: WorkspacePushCategory[] = [];
+    if (session.role === 'owner') {
+      const [club, config] = await Promise.all([clubFeatures(), getPublishedConfig()]);
+      categories.push('inquiries');
+      if (club.enabled) categories.push('messages');
+      if (config.modules?.consultations?.enabled) categories.push('appointments');
+    }
+    return { scope, accountId: session.accountId ?? 'cms-owner', categories };
   }
   if (scope === 'member') {
     const feature = await clubFeatures();

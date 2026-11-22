@@ -26,6 +26,7 @@ const categories: Record<keyof WorkspacePushPreferences, Copy> = {
   news: ["Vereinsnews", "Club news"],
   tactics: ["Taktiken", "Tactics"],
   inquiries: ["Website-Anfragen", "Website inquiries"],
+  appointments: ["Termine und Umbuchungen", "Appointments and rescheduling"],
 };
 
 function deviceState(): Device {

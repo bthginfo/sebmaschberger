@@ -12,6 +12,7 @@ import {publishedContent} from './content';
 import {cachedSettings} from './settings-cache';
 import { decrypt } from './security';
 import type { EmailTemplates, Inquiry, SmtpSettings } from './types';
+import {commerceEmail, type CommerceMailDetails} from './commerce/email';
 import {withdrawalReceipt} from './commerce/withdrawal';
 
 function blockedAddress(address:string):boolean{
@@ -58,13 +59,20 @@ export async function sendTestMail(to?:string):Promise<void>{
  await setRecord('operation-checkpoints','smtp',{setup:smtpSetupId(smtp),at:new Date().toISOString()});
 }
 
-export async function sendCommerceMail(message:{to:string;brand:string;orderId:string;refunded:boolean;partialRefund?:boolean;refundedCents?:number;lines:string[];total:string;subtotal?:string;tax?:string;shipping?:string;receiptUrl:string}):Promise<void>{
- const {smtp,emailTemplates}=await cachedSettings();if(!smtp.enabled)throw new AppError('Der E-Mail-Versand ist nicht eingerichtet.',503);const [mail,business]=await Promise.all([transport(smtp),getBusinessSettings()]);
- const values={brand:business.design.brandName,orderId:message.orderId,items:message.lines.join('\n'),total:message.total,subtotal:message.subtotal||message.total,tax:message.tax||'Nicht gesondert ausgewiesen',shipping:message.shipping||'0,00 €',refundAmount:((message.refundedCents??0)/100).toLocaleString('de-DE',{style:'currency',currency:'EUR'}),receiptUrl:message.receiptUrl};
- const type=message.partialRefund?'partialRefund':message.refunded?'refund':'order',subjectKey=(type+'Subject') as keyof typeof defaultEmailTemplates,bodyKey=(type+'Body') as keyof typeof defaultEmailTemplates;
- const subject=renderEmailTemplate(business.templates[subjectKey]||emailTemplates?.[subjectKey]||defaultEmailTemplates[subjectKey],values).replace(/[\r\n]+/g,' '),text=renderEmailTemplate(business.templates[bodyKey]||emailTemplates?.[bodyKey]||defaultEmailTemplates[bodyKey],values),logo=logoBytes(business.design);
- const kind=message.partialRefund?'partial-'+(message.refundedCents??0):message.refunded?'refund':'paid';
- await mail.sendMail({from:smtp.from,to:message.to,subject,messageId:'<commerce-'+message.orderId+'-'+kind+'@'+new URL(message.receiptUrl).hostname+'>',text,html:brandedEmail({subject,heading:message.refunded||message.partialRefund?'Deine Rückerstattung':'Danke für deine Bestellung.',body:text,actionLabel:'Bestellung ansehen',actionUrl:message.receiptUrl,design:business.design,logoSrc:logo?'cid:brand-logo':undefined,footer:[business.profile.name,business.profile.address,business.profile.email].filter(Boolean).join('\n')}),attachments:logo?[{filename:'logo.png',content:Buffer.from(logo),contentType:'image/png',cid:'brand-logo'}]:[]});
+export async function sendCommerceMail(message:CommerceMailDetails&{to:string;brand:string;refunded:boolean;partialRefund?:boolean}):Promise<void>{
+ const {smtp,emailTemplates}=await cachedSettings();if(!smtp.enabled)throw new AppError('Der E-Mail-Versand ist nicht eingerichtet.',503);
+ const [mail,business]=await Promise.all([transport(smtp),getBusinessSettings()]);
+ const kind=message.partialRefund?'partialRefund':message.refunded?'refund':'order';
+ const logo=logoBytes(business.design);
+ const formatted=commerceEmail({
+  kind,details:message,design:business.design,templates:business.templates,fallbackTemplates:emailTemplates,
+  logoSrc:logo?'cid:brand-logo':undefined,
+  footer:[business.profile.name,business.profile.address,business.profile.email].filter(Boolean).join('\n'),
+ });
+ const key=message.partialRefund?'partial-'+(message.refundedCents??0):message.refunded?'refund':'paid';
+ try {
+  await mail.sendMail({from:smtp.from,to:message.to,...formatted,messageId:'<commerce-'+message.orderId+'-'+key+'@'+new URL(message.receiptUrl).hostname+'>',attachments:logo?[{filename:'logo.png',content:Buffer.from(logo),contentType:'image/png',cid:'brand-logo'}]:[]});
+ } finally {mail.close();}
 }
 
 export async function sendWithdrawalReceipt(inquiry:Inquiry):Promise<'sent'|'not-configured'>{
@@ -80,7 +88,7 @@ export async function sendWithdrawalReceipt(inquiry:Inquiry):Promise<'sent'|'not
   return 'sent';
 }
 
-export async function sendReservationMail(message: { to: string; subject: string; text: string }) {
+export async function sendReservationMail(message: { to: string; subject: string; text: string; html?: string }) {
   const { smtp } = await cachedSettings();
   if (process.env.SMTP_ENABLED === 'false' || !smtp.enabled) throw new AppError('Der E-Mail-Versand ist nicht eingerichtet.', 503);
   const mail = await transport(smtp);

@@ -5,7 +5,7 @@ import {blogPostItems,hydrateBlogSections,publicPages,resolvePage} from '../src/
 import {createSection} from '../src/lib/section-library';
 import {defaultBlog} from '../src/lib/site-config';
 import type {BlogPost,WebsiteContent} from '../src/lib/types';
-function fixture(){const site=structuredClone(source) as WebsiteContent;site.config.blog={...defaultBlog,enabled:true};const post:BlogPost={id:'published',slug:'beitrag',title:'Nachricht',excerpt:'Testbeschreibung',author:site.config.name,date:'2026-10-20',updatedAt:'2026-10-20T12:00:00Z',status:'published',sections:[{...createSection('richtext'),content:{heading:'Informationen',text:'Text des Beitrags.'}}],seo:{title:'',description:''}};site.posts=[post,{...structuredClone(post),id:'draft',slug:'entwurf',status:'draft'}];return site;}
+function fixture(){const site=structuredClone(source) as WebsiteContent;site.config.blog={...defaultBlog,enabled:true};delete site.config.modules?.commerce;const post:BlogPost={id:'published',slug:'beitrag',title:'Nachricht',excerpt:'Testbeschreibung',author:site.config.name,date:'2026-10-20',updatedAt:'2026-10-20T12:00:00Z',status:'published',sections:[{...createSection('richtext'),content:{heading:'Informationen',text:'Text des Beitrags.'}}],seo:{title:'',description:''}};site.posts=[post,{...structuredClone(post),id:'draft',slug:'entwurf',status:'draft'}];return site;}
 test('drafts are excluded from every public blog route and feed',()=>{
   const site=fixture();assert.equal(resolvePage(site,'blog/entwurf'),undefined);assert.equal(blogPostItems(site).length,1);assert.equal(blogPostItems(site,true).length,2);
   assert.equal(publicPages(site).length,site.pages.length+2);assert.equal(resolvePage(site,'blog/beitrag')?.seo.description,'Testbeschreibung');

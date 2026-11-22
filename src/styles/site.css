@@ -1091,3 +1091,5 @@
 
 /* A single item fills its grid even at tablet breakpoints. */
 :is(.ws-editorial-cards,.ws-team-grid,.ws-steps,.ws-stats,.ws-comparison,.ws-content-columns):has(> [data-item-id]:only-child){grid-template-columns:minmax(0,1fr)}
+
+.ws-contact-alternative { grid-column:1/-1; font-weight:750; }

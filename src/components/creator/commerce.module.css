@@ -31,3 +31,91 @@
 @container (max-width: 640px) {
   .route .catalog, .productDetail .product { grid-template-columns: minmax(0, 1fr); }
 }
+
+:global(.ws-site[data-project]) .store {
+  color-scheme: inherit;
+  background: transparent;
+  width: min(100%, 1310px);
+  padding: clamp(24px, 4.2cqi, 60px) clamp(20px, 4cqi, 53px);
+  margin-inline: auto;
+}
+:global(.ws-site[data-project]) .catalog {
+  gap: clamp(14px, 2.3cqi, 28px);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 278px), 1fr));
+}
+:global(.ws-site[data-project]) .product {
+  overflow: hidden;
+  border: 1px solid var(--seb-line);
+  background: var(--lg-surface);
+  border-radius: 23px;
+  box-shadow: var(--lg-shadow);
+}
+:global(.ws-site[data-project]) .product figure {
+  margin: 0;
+  border-radius: 0;
+  aspect-ratio: 4 / 3;
+}
+:global(.ws-site[data-project]) .product img { transition: transform .48s cubic-bezier(.22,.68,.2,1); }
+@media (hover: hover) { :global(.ws-site[data-project]) .product:hover img { transform: scale(1.035); } }
+:global(.ws-site[data-project]) .product > div { padding: clamp(16px,2cqi,26px); }
+:global(.ws-site[data-project]) .product h3 { font-size: clamp(1.35rem,2.2cqi,1.85rem); margin: 0 0 10px; }
+:global(.ws-site[data-project]) .store button { min-height: 44px; border-radius: 12px; }
+:global(.ws-site[data-project]) .store :is(input,select) {
+  color: var(--seb-text);
+  background: var(--seb-glass);
+  border: 1px solid var(--seb-line);
+  padding-inline: 11px;
+  border-radius: 12px;
+}
+:global(.ws-site[data-project]) .search input { max-width: none; }
+:global(.ws-site[data-project]) .store :is(.notice,.sample) {
+  color: var(--seb-text);
+  border: 1px solid var(--seb-line);
+  background: var(--seb-glass);
+  border-radius: 13px;
+}
+:global(.ws-site[data-project]) .store .sample {
+  width: fit-content;
+  padding: 4px 8px;
+  margin-block: 8px 13px;
+  color: var(--seb-accent-text);
+  font-size: .75rem;
+  font-weight: 750;
+}
+:global(.ws-site[data-project]) .storeLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--seb-accent-text);
+  margin-block: 12px 0;
+  text-underline-offset: .22em;
+}
+:global(.ws-site[data-project]) .cart {
+  border-color: var(--seb-line);
+  margin-top: clamp(24px,5cqi,56px);
+}
+:global(.ws-site[data-project]) .store[data-store-view="cart"] .cart { margin-top: 0; }
+:global(.ws-site[data-project]) .cart :is(li,dl>div:last-child) { border-color: var(--seb-line); }
+:global(.ws-site[data-project]) .actions button+button { color: var(--seb-text); }
+
+:global(html[data-seb-site][data-seb-mode="dark"]) .receiptPage {
+  --ws-accent: #eac18a;
+  --ws-ink: #21170f;
+  color: #f5ebdf;
+  background: radial-gradient(ellipse at 0% 0%,#5d402738,transparent 62%),#171310;
+}
+:global(html[data-seb-site][data-seb-mode="light"]) .receiptPage {
+  --ws-accent: #eac18a;
+  --ws-ink: #21170f;
+  color: #302018;
+  background: #f8f1e9;
+}
+:global(html[data-seb-site]) .receiptPage .receiptContent {
+  padding: clamp(22px,4vw,47px);
+  border: 1px solid color-mix(in srgb,currentColor 19%,transparent);
+  background: color-mix(in srgb,currentColor 4%,transparent);
+  box-shadow: 0 17px 56px #11080026,inset 0 1px 0 #fff1;
+  border-radius: 27px;
+}
+:global(html[data-seb-site]) .receiptPage :is(.downloadLink,.receiptActions button) { border-radius: 12px; }
+:global(.ws-site[data-project]) .actions .storeLink { margin:0; }

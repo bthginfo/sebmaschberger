@@ -143,9 +143,9 @@ export async function getPublicSnapshot(slug?:string):Promise<{content:WebsiteCo
           SELECT 1 FROM jsonb_array_elements(COALESCE(s.published->'posts','[]'::jsonb)) p(value)
           WHERE p.value->>'status'='published' AND $1=(s.published#>>'{config,blog,slug}')||'/'||(p.value->>'slug')
         ) THEN 'blog-post'
-        WHEN $1='shop/suche' THEN 'shop-search'
-        WHEN $1 ~ '^shop/produkt/[^/]+$' THEN 'shop-product'
-        WHEN $1 ~ '^shop/kategorie/[^/]+$' THEN 'shop-category'
+        WHEN $1 IN ('shop/suche','en/shop/search') THEN 'shop-search'
+        WHEN $1 ~ '^(shop/produkt|en/shop/product)/[^/]+$' THEN 'shop-product'
+        WHEN $1 ~ '^(shop/kategorie|en/shop/category)/[^/]+$' THEN 'shop-category'
       END),'{}'::jsonb),
     'posts',CASE WHEN s.published#>>'{config,blog,enabled}'='true' THEN COALESCE((SELECT jsonb_agg((p.value-'sections')||jsonb_build_object('sections',CASE WHEN $1::text=COALESCE(s.published#>>'{config,blog,slug}','blog')||'/'||(p.value->>'slug') THEN COALESCE(p.value->'sections','[]'::jsonb) ELSE '[]'::jsonb END) ORDER BY p.position) FROM jsonb_array_elements(COALESCE(s.published->'posts','[]'::jsonb)) WITH ORDINALITY AS p(value,position) WHERE p.value->>'status'='published'),'[]'::jsonb) ELSE '[]'::jsonb END) AS content,
     COALESCE((SELECT data->>'siteUrl' FROM ws_records WHERE collection='settings' AND id='site'),$2) AS site_url,

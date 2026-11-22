@@ -17,7 +17,7 @@ export const pushSubscriptionInput = z.strictObject({
   keys: z.strictObject({ p256dh: subscriptionKey(65), auth: subscriptionKey(16) }),
   expirationTime: z.number().positive().nullable().optional(),
 });
-const pushPreferences = z.strictObject({ messages: z.boolean(), schedule: z.boolean(), news: z.boolean(), tactics: z.boolean(), inquiries: z.boolean() });
+const pushPreferences = z.strictObject({ messages: z.boolean(), schedule: z.boolean(), news: z.boolean(), tactics: z.boolean(), inquiries: z.boolean(), appointments: z.boolean().default(false) });
 export const pushDeviceInput = z.strictObject({
   subscription: pushSubscriptionInput.optional(),
   preferences: pushPreferences,
@@ -25,5 +25,5 @@ export const pushDeviceInput = z.strictObject({
 });
 
 export function limitPushPreferences(preferences: WorkspacePushPreferences, allowed: readonly WorkspacePushCategory[]): WorkspacePushPreferences {
-  return Object.fromEntries(WORKSPACE_PUSH_CATEGORIES.map(key => [key, allowed.includes(key) && preferences[key]])) as WorkspacePushPreferences;
+  return Object.fromEntries(WORKSPACE_PUSH_CATEGORIES.map(key => [key, allowed.includes(key) && preferences[key] === true])) as WorkspacePushPreferences;
 }

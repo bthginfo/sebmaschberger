@@ -1,0 +1,40 @@
+.booking {
+  --appointment-line: var(--seb-line, #ac89674d);
+  --appointment-surface: var(--seb-glass, var(--ws-palette-surface, #fbf4ea));
+  --appointment-link: var(--seb-accent-text, #714b2d);
+  --appointment-text: var(--ws-palette-text, #2b2118);
+  width: min(100%, 850px);
+  margin: 24px auto;
+  padding: clamp(18px, 4cqi, 36px);
+  color: var(--appointment-text);
+  background: var(--lg-surface, var(--appointment-surface));
+  border: 1px solid var(--appointment-line);
+  border-radius: 24px;
+}
+.heading { display:flex; gap:12px; align-items:start; margin-bottom:17px; }
+.heading svg,.confirmed svg { color: var(--appointment-link); flex:none; }
+.heading h3,.confirmed h4 { margin:0 0 5px; font-size:clamp(1.15rem,2.5cqi,1.55rem); }
+.heading p,.booking p { margin: 7px 0; line-height:1.65; }
+.choices,.actions { display:flex; flex-wrap:wrap; gap:7px; margin-block:10px; }
+.booking button,.actions a { min-height:44px; display:inline-flex; align-items:center; gap:7px; padding:8px 11px; color:inherit; background:transparent; border:1px solid var(--appointment-line); border-radius:11px; transition:background-color .22s,border-color .22s; font-weight:650; font-size:.86rem; }
+.booking button:hover,.actions a:hover { border-color:var(--appointment-link); }
+.booking button:disabled { opacity:.5; cursor:not-allowed; }
+.booking button[aria-pressed="true"] { color:var(--appointment-link); background:color-mix(in srgb,#dfae77 14%,transparent); border-color:var(--appointment-link); }
+.booking .primary { color:#291d13; background:#eac18a; border-color:#edcc98; padding-inline:15px; }
+.booking :focus-visible { outline:2px solid var(--appointment-link); outline-offset:3px; }
+.form { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:17px; align-items:start; }
+.form label { display:grid; gap:7px; font-size:.86rem; font-weight:650; }
+.form input:not([type=checkbox]) { min-width:0; color:inherit; background:var(--appointment-surface); border:1px solid var(--appointment-line); border-radius:12px; padding:11px; min-height:47px; font-size:16px; }
+.form .agreement { grid-column:1/-1; display:flex; align-items:flex-start; gap:9px; line-height:1.55; }
+.form .agreement input { margin-top:4px; accent-color:#cc9b66; }
+.form .primary,.form [role=alert] { justify-self:start; grid-column:1/-1; }
+.honeypot { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
+.confirmed { padding:16px 0; }
+.manage { min-height:100svh; padding:clamp(20px,6vw,72px); display:grid; align-content:start; }
+.manage .booking { padding:clamp(22px,5vw,48px); }
+.manage h1 { font:760 clamp(2.1rem,5vw,3.9rem)/1.06 var(--font-display); margin:10px 0 16px; }
+.manage h2,.manage h3 { margin:16px 0 5px; }
+:global(html[data-seb-mode="light"]) .manage .booking { --appointment-surface:#fffaf2; --appointment-link:#7c4d2b; --appointment-text:#2e1d13; }
+@media(max-width:510px){.form { grid-template-columns:minmax(0,1fr); }}
+
+:global(html[data-seb-mode="dark"]) .manage .booking { --appointment-surface:#262018; --appointment-link:#eac28c; --appointment-text:#f5edde; }

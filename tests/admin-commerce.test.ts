@@ -1,10 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {commerceProductIssues,newCommerceProductSlug,prepareCommercePages,shippingAddressLines} from '../src/components/admin/commerce-admin-model';
-import {commercePageRoutes} from '../src/lib/commerce/pages';
+import {commercePageRoutes,hideInactiveCommerceLinks} from '../src/lib/commerce/pages';
 import type {CommerceProduct,WebsiteContent} from '../src/lib/types';
 import seed from './fixtures/starter-content.json';
 import {createSection} from '../src/lib/section-library';
+import {publicPages,resolvePage} from '../src/lib/blog';
+import projectContent from '../src/data/content.json';
 
 const product=(id:string,slug:string):CommerceProduct=>({id,slug,title:'Becher',description:'',kind:'physical',priceCents:1500,active:false});
 test('adding after a middle deletion keeps an independently saveable product address',()=>{const products=[product('a','produkt-1'),product('b','produkt-2'),product('c','produkt-3')];products.splice(1,1);const added=product('d',newCommerceProductSlug(products));assert.equal(added.slug,'produkt-2');assert.deepEqual(commerceProductIssues([...products,added]),{});});
@@ -17,3 +19,29 @@ test('shop preparation respects occupied and blog slugs and never enables sales'
 test('repeating shop preparation is idempotent and ignores hidden cart sections',()=>{const content=fixture(),hidden=createSection('creator-shop');hidden.content.caption='cart';hidden.visible=false;content.pages.push({...content.pages[0],id:'hidden-cart',slug:'warenkorb',sections:[hidden]});assert.equal(commercePageRoutes(content).cart,undefined);const prepared=prepareCommercePages(content);assert.equal(commercePageRoutes(prepared).cart?.href,'/warenkorb-2');assert.equal(prepareCommercePages(prepared),prepared);});
 
 test('a KMU shop can prepare its own pages without opting into the Creator identity',()=>{const content=fixture();delete content.config.modules!.creator;content.config.modules!.commerce={enabled:false,currency:'EUR',shippingCents:0,products:[]};const before=structuredClone(content.config.theme),result=prepareCommercePages(content);assert.equal(result.config.modules?.creator,undefined);assert.deepEqual(result.config.theme,before);assert.equal(result.config.modules?.commerce?.enabled,false);assert(commercePageRoutes(result).catalog);assert(commercePageRoutes(result).cart);});
+
+test('pausing the bilingual shop hides both storefronts and carts without discarding CMS content', () => {
+  const content = structuredClone(projectContent) as WebsiteContent;
+  const shop = content.config.modules!.commerce!;
+  shop.enabled = false;
+  const paused = structuredClone(shop);
+  const routes = content.pages.filter(page => page.translationKey === 'shop' || page.translationKey === 'cart');
+  assert.equal(routes.length, 4);
+  const hidden = hideInactiveCommerceLinks(content.config, content.pages);
+  const links = [
+    ...hidden.navigation, ...hidden.locales!.en!.navigation,
+    ...hidden.footer!.columns.flatMap(column => column.links),
+    ...hidden.locales!.en!.footer!.columns.flatMap(column => column.links),
+  ];
+  for (const page of routes) {
+    assert.equal(resolvePage(content, page.slug), undefined);
+    assert(!publicPages(content).some(entry => entry.slug === page.slug));
+    assert(!links.some(link => link.href === '/' + page.slug));
+  }
+  assert(links.some(link => link.href === '/kontakt'));
+  assert(links.some(link => link.href === '/en/contact'));
+  assert.deepEqual(shop, paused);
+  shop.enabled = true;
+  assert.equal(hideInactiveCommerceLinks(content.config, content.pages), content.config);
+  for (const page of routes) assert.equal(resolvePage(content, page.slug)?.id, page.id);
+});

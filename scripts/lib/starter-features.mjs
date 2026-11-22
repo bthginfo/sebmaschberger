@@ -7,6 +7,7 @@ export const scaffoldFeatureModules = Object.freeze({
   'scroll-3d': 'scroll3d',
   'restaurant-menu': 'restaurantMenu',
   reservations: 'reservations',
+  consultations: 'consultations',
 });
 
 export function parseFeatures(value) {

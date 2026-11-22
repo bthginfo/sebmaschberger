@@ -4,5 +4,6 @@ export function normalizeSlug(value:string):string{
 
 export function isReservedPageSlug(slug: string): boolean {
   return /^(?:admin|api|_next|demo|checkout|members|workspace-branding)(?:\/|$)/.test(slug)
+    || /^(?:termin\/verwalten|en\/appointment\/manage)(?:\/|$)/.test(slug)
     || /^coach\/(?:access|edit|view)(?:\/|$)/.test(slug);
 }

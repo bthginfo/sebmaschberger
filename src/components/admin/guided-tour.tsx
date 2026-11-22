@@ -23,7 +23,7 @@ type TourStep = {
 type Rect = { left: number; top: number; width: number; height: number };
 type Viewport = { width: number; height: number };
 
-export const guidedTourStorageKey = "ws-admin-guided-tour-v2";
+export const guidedTourStorageKey = "ws-admin-guided-tour-v3";
 export function browserTourComplete() { try { return window.localStorage.getItem(guidedTourStorageKey) === "complete"; } catch { return false; } }
 export function markBrowserTourComplete() { try { window.localStorage.setItem(guidedTourStorageKey, "complete"); } catch { /* The tour remains closed for this visit when storage is unavailable. */ } }
 
@@ -103,9 +103,15 @@ const tourSteps: TourStep[] = [
     selectors: ['.cms-sidebar [data-admin-view="coach"]'],
   },
   {
+    view: "appointments", area: "Termine", title: "Zeitfenster freigeben.",
+    text: "Wählen Sie Datum, Uhrzeit und Dauer. Im selben Bereich sehen Sie Buchungen, Umbuchungen und Absagen.",
+    hint: "Mit eingerichtetem E-Mail-Versand erhalten beide Seiten eine Bestätigung. Gästen steht ein persönlicher Terminlink zur Verfügung.",
+    selectors: [".cms-appointments"],
+  },
+  {
     view: "commerce", area: "Shop", title: "Produkte und Bestellungen verwalten.",
     text: "Im Shop finden Sie die Produktdaten und eingegangenen Bestellungen für Ihren Zugang.",
-    hint: "Öffnen Sie einen Eintrag, um seine Details zu prüfen.",
+    hint: "Unter Einrichtung finden Sie den Zahlungsstatus und die Vorschau für den Bestellablauf.",
     selectors: [".cms-commerce-tabs", ".cms-commerce .cms-page-heading", ".cms-commerce"],
   },
   {
