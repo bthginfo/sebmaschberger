@@ -9,7 +9,7 @@ import {createSection,sectionLibrary} from '../src/lib/section-library';
 import {SECTION_TYPES,type WebsiteContent} from '../src/lib/types';
 import {sectionCapabilities} from '../src/components/admin/section-capabilities';
 import {motionStoryModelUrl,motionStoryObject,motionStoryPoster,motionStoryScenes,motionStoryStudioModel,motionStoryStudioPoster,motionStoryVideoUrl} from '../src/lib/motion-story';
-import {languageSwitchSlugs,languageUrls,publishedPagePath,websiteHomeSlug} from '../src/lib/site-languages';
+import {hasBilingualHomepage,languageSwitchSlugs,languageUrls,publishedPagePath,websiteHomeSlug} from '../src/lib/site-languages';
 import {projectPublicSiteConfig} from '../src/lib/public-projection';
 
 test('all imported pages satisfy the schema and publication checks',()=>{
@@ -106,6 +106,7 @@ test('Motion-Story rejects external, traversing and non-video sources without ch
 });
 test('initial local pictures, PDF links and internal page links have real targets',()=>{
   const site=content as WebsiteContent;const slugs=new Set(site.pages.map(page=>'/'+page.slug));
+  if(hasBilingualHomepage(site.pages)) slugs.add(publishedPagePath('',true));
   const inspect=(value:unknown)=>{
     if(Array.isArray(value))return value.forEach(inspect);
     if(value&&typeof value==='object')for(const [key,entry] of Object.entries(value)){

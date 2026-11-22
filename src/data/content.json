@@ -966,7 +966,7 @@
             "primaryLabel": "Trainingswoche zusammenstellen",
             "primaryHref": "/wochenplan",
             "secondaryLabel": "Coaching-Referenzen ansehen",
-            "secondaryHref": "/#vorher-nachher"
+            "secondaryHref": "/de#vorher-nachher"
           },
           "design": {
             "theme": "light",
