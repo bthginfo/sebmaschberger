@@ -15,16 +15,20 @@ export function ColorModeSwitch({ language }: { language: SiteLanguage }) {
   const isLight = mode === "light";
 
   useEffect(() => {
-    const initialMode = document.documentElement.dataset.sebMode === "light" ? "light" : "dark";
-    setMode(initialMode);
-    showColorMode(initialMode);
-    const sync = (event: StorageEvent) => {
-      if (event.key !== colorModeStorageKey && event.key !== null) return;
-      const next = event.newValue === "light" ? "light" : "dark";
+    const sync = (event?: StorageEvent) => {
+      if (event && event.key !== colorModeStorageKey && event.key !== null) return;
+      let next: SiteColorMode;
+      try {
+        next = window.localStorage.getItem(colorModeStorageKey) === "light" ? "light" : "dark";
+      } catch {
+        next = document.documentElement.dataset.sebMode === "light" ? "light" : "dark";
+      }
       setMode(next);
       showColorMode(next);
     };
+
     window.addEventListener("storage", sync);
+    sync();
     return () => window.removeEventListener("storage", sync);
   }, []);
 
