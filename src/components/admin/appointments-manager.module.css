@@ -4,6 +4,8 @@
 .title h2 { margin:0; font-size:1.24rem; }
 .form { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); align-items:end; gap:9px; margin-bottom:18px; }
 .form button { grid-column:1/-1; justify-self:start; }
+.sample { grid-column:1/-1; display:flex; align-items:center; gap:8px; min-height:44px; font-size:.86rem; }
+.sample input { width:17px; height:17px; flex:none; }
 .list { margin:12px 0 0; list-style:none; padding:0; display:grid; gap:8px; }
 .list li { display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; justify-content:space-between; border:1px solid var(--cms-border,#dae0d7); border-radius:11px; padding:11px; }
 .list li>div { min-width:0; overflow-wrap:anywhere; }

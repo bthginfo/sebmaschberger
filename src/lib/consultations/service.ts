@@ -21,7 +21,10 @@ export async function bookingEnabled() {
   return (await getPublishedConfig()).modules?.consultations?.enabled === true;
 }
 export async function availability() {
-  return await bookingEnabled() ? futureSlots(await read()).slice(0,180) : [];
+  if(!await bookingEnabled())return [];
+  const store=await read(),now=Date.now();
+  const hasBookableSchedule=store.slots.some(slot=>!slot.sample&&Date.parse(slot.start)>now);
+  return futureSlots(store,now).filter(slot=>!hasBookableSchedule||!slot.sample).slice(0,180);
 }
 export async function adminAppointments() {
   const store=await read();
@@ -36,11 +39,11 @@ export async function addAppointmentSlot(input:z.infer<typeof slotInput>) {
   const now=Date.now();
   const matches=resolveWallTime(input.time,appointmentZone);
   if(matches.length!==1||Date.parse(matches[0].instant)<=now)throw new AppError('Wählen Sie eine eindeutige Uhrzeit in der Zukunft.');
-  const slot={id:randomUUID(),start:matches[0].instant,minutes:input.minutes};
+  const slot:AppointmentSlot={id:randomUUID(),start:matches[0].instant,minutes:input.minutes,...(input.sample?{sample:true}:{})};
   await update(store=>{
     const upcoming=store.slots.filter(entry=>Date.parse(entry.start)>now);
     if(upcoming.length>=180)throw new AppError('Es können bis zu 180 kommende Termine freigegeben werden.',409);
-    if(upcoming.some(entry=>overlaps(entry,slot)))throw new AppError('Dieses Zeitfenster überschneidet sich mit einem anderen Termin.',409);
+    if(upcoming.some(entry=>Boolean(entry.sample)===Boolean(slot.sample)&&overlaps(entry,slot)))throw new AppError('Dieses Zeitfenster überschneidet sich mit einem anderen Termin.',409);
     return {...store,slots:[...upcoming,slot]};
   });
 }
@@ -56,7 +59,12 @@ export async function seeAppointment(bookingId:string) {
 function selectSlot(store:AppointmentStore,slotId:string) {
   const slot=futureSlots(store).find(entry=>entry.id===slotId);
   if(!slot)throw new AppError('Dieses Zeitfenster ist nicht mehr frei.',409);
+  if(slot.sample)throw new AppError('Dieses Beispielzeitfenster dient zur Vorschau.',409);
   return slot;
+}
+
+function rescheduleOptions(store:AppointmentStore) {
+  return futureSlots(store).filter(slot=>!slot.sample).slice(0,180);
 }
 
 async function notify(item:Appointment,secret:string,kind:'booked'|'changed'|'cancelled',settings:SiteSettings) {
@@ -127,7 +135,7 @@ export async function manageAppointment(input:z.infer<typeof manageBooking>) {
   const visible=(item:Appointment,options:AppointmentSlot[])=>({name:item.name,slot:item.slot,status:item.status,
     canChange:item.status==='confirmed'&&Date.parse(item.slot.start)>Date.now(),version:item.version,options});
   const enabled=await bookingEnabled();
-  if(input.action==='read')return visible(initial,enabled?futureSlots(current).slice(0,180):[]);
+  if(input.action==='read')return visible(initial,enabled?rescheduleOptions(current):[]);
   if(input.action==='cancel'&&initial.status==='cancelled')return visible(initial,[]);
   if(input.action==='change'&&!enabled)throw new AppError('Die Umbuchung ist momentan geschlossen.',409);
   const settings=await getSettings();
@@ -142,5 +150,5 @@ export async function manageAppointment(input:z.infer<typeof manageBooking>) {
   });
   const item=updated.bookings.find(entry=>entry.id===bookingId)!;
   await notify(item,secret,input.action==='cancel'?'cancelled':'changed',settings);
-  return visible(item,enabled?futureSlots(updated).slice(0,180):[]);
+  return visible(item,enabled?rescheduleOptions(updated):[]);
 }

@@ -4,6 +4,7 @@ export const appointmentZone = 'Europe/Berlin';
 export const slotInput = z.object({
   time:z.string().regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/u),
   minutes:z.number().int().min(15).max(90).multipleOf(5),
+  sample:z.boolean().optional(),
 }).strict();
 
 export const newBooking = z.object({
@@ -22,7 +23,7 @@ export const manageBooking = z.discriminatedUnion('action',[
   z.object({action:z.literal('change'),key,version:z.number().int().positive(),slotId:z.uuid()}).strict(),
 ]);
 
-export type AppointmentSlot = { id:string; start:string; minutes:number };
+export type AppointmentSlot = { id:string; start:string; minutes:number; sample?:boolean };
 export type AppointmentDelivery = 'pending'|'sent'|'unconfigured'|'failed';
 export type Appointment = {
   id:string; slot:AppointmentSlot; name:string; email:string; language:'de'|'en'; createdAt:string;

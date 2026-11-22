@@ -52,7 +52,11 @@ export function AppointmentBooking({language}:{language:SiteLanguage}) {
   const [slots,setSlots]=useState<AppointmentSlot[]>([]);
   const [loading,setLoading]=useState(true),[selected,setSelected]=useState(''),[busy,setBusy]=useState(false);
   const [error,setError]=useState(''),[unavailable,setUnavailable]=useState(false),[result,setResult]=useState<Confirmation>();
+  const [preview,setPreview]=useState<AppointmentSlot>();
   const [reload,setReload]=useState(0);
+  const selectedSlot=slots.find(slot=>slot.id===selected);
+  const sample=selectedSlot?.sample===true;
+  const previewOnly=slots.some(slot=>slot.sample);
   useEffect(()=>{
     const controller=new AbortController();
     setLoading(true);setUnavailable(false);
@@ -64,7 +68,8 @@ export function AppointmentBooking({language}:{language:SiteLanguage}) {
   },[reload]);
   async function book(event:FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if(busy||!selected)return;
+    if(busy||!selectedSlot)return;
+    if(selectedSlot.sample){setPreview(selectedSlot);return;}
     const form=new FormData(event.currentTarget);
     setBusy(true);setError('');
     try{
@@ -82,16 +87,27 @@ export function AppointmentBooking({language}:{language:SiteLanguage}) {
       <p>{result.delivery==='sent'?t('Ich habe dir eine Bestätigung per E-Mail geschickt.','I’ve sent you a confirmation email.'):
         t('Speichere deinen Terminlink. Darüber kannst du umbuchen oder absagen.','Save your appointment link to reschedule or cancel.')}</p>
       <div className={styles.actions}><a href={result.link}>{t('Termin verwalten','Manage appointment')}</a><a href={ics(result.slot)} download="termin.ics">{t('Zum Kalender hinzufügen','Add to calendar')}</a></div>
+    </div>:preview?<div role="status" className={styles.confirmed}>
+      <CheckCircle2 size={25} aria-hidden="true"/><h4>{t('So sieht deine Bestätigung aus.','Here’s what your confirmation looks like.')}</h4>
+      <p>{appointmentText(preview,language)} · {preview.minutes} min</p>
+      <p>{t('Das war die Vorschau für dein kostenloses Erstgespräch.','That was a preview of your free intro call.')}</p>
+      <button type="button" onClick={()=>{setPreview(undefined);setSelected('');}}>{t('Weitere Beispieltermine','See other sample times')}</button>
     </div>:loading?<p role="status">{t('Ich lade die freien Termine …','Loading available times…')}</p>:
       unavailable?<button type="button" onClick={()=>setReload(reload+1)}>{t('Termine erneut laden','Load available times again')}</button>:
       slots.length?<>
+        {previewOnly&&<div className={styles.sample}>
+          <strong>{t('Beispieltermine','Sample times')}</strong>
+          <p>{t('Wähle eine Uhrzeit, um die Buchung als Vorschau durchzuspielen.','Choose a time to try the booking preview.')}</p>
+        </div>}
         <TimeChoices slots={slots} selected={selected} language={language} onSelect={setSelected}/>
-        {selected&&<form className={styles.form} onSubmit={book}>
-          <label>{t('Dein Name','Your name')}<input name="name" autoComplete="name" required minLength={2} maxLength={120}/></label>
-          <label>{t('Deine E-Mail','Your email')}<input name="email" autoComplete="email" type="email" required maxLength={250}/></label>
-          <label className={styles.honeypot} aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off"/></label>
-          <label className={styles.agreement}><input type="checkbox" name="consent" required/><span>{t('Ich habe die Datenschutzhinweise gelesen.','I’ve read the privacy notice.')} <a href={english?'/en/privacy':'/datenschutz'} target="_blank" rel="noreferrer">{t('Datenschutz','Privacy')}</a></span></label>
-          <button type="submit" className={styles.primary} disabled={busy}>{busy?t('Termin wird gebucht …','Booking…'):t('Kostenlos buchen','Book a free call')}<ArrowRight size={17} aria-hidden="true"/></button>
+        {selectedSlot&&<form key={sample?'sample':'booking'} className={styles.form} onSubmit={book}>
+          <label>{t('Dein Name','Your name')}<input name="name" autoComplete={sample?'off':'name'} defaultValue={sample?t('Alex Muster','Alex Sample'):undefined} readOnly={sample} required minLength={2} maxLength={120}/></label>
+          <label>{t('Deine E-Mail','Your email')}<input name="email" autoComplete={sample?'off':'email'} defaultValue={sample?'alex@example.com':undefined} readOnly={sample} type="email" required maxLength={250}/></label>
+          {!sample&&<>
+            <label className={styles.honeypot} aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off"/></label>
+            <label className={styles.agreement}><input type="checkbox" name="consent" required/><span>{t('Ich habe die Datenschutzhinweise gelesen.','I’ve read the privacy notice.')} <a href={english?'/en/privacy':'/datenschutz'} target="_blank" rel="noreferrer">{t('Datenschutz','Privacy')}</a></span></label>
+          </>}
+          <button type="submit" className={styles.primary} disabled={busy}>{sample?t('Bestätigung ansehen','Preview confirmation'):busy?t('Termin wird gebucht …','Booking…'):t('Kostenlos buchen','Book a free call')}<ArrowRight size={17} aria-hidden="true"/></button>
           {error&&<div role="alert">{error} <button type="button" onClick={()=>{setSelected('');setError('');setReload(reload+1);}}>{t('Freie Termine prüfen','Check available times')}</button></div>}
         </form>}
       </>:<p>{t('Gerade sind keine Termine freigegeben. Schreib mir gern über das Kontaktformular.','There are no times available right now. Feel free to use the contact form.')}</p>}

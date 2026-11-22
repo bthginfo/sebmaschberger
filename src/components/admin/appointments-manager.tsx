@@ -29,7 +29,7 @@ export function AppointmentsManager() {
   async function add(event:FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const fields=new FormData(event.currentTarget);
-    await update({action:'add',slot:{time:String(fields.get('time')),minutes:Number(fields.get('minutes'))}});
+    await update({action:'add',slot:{time:String(fields.get('time')),minutes:Number(fields.get('minutes')),sample:fields.has('sample')}});
   }
   const unread=data?.bookings.filter(item=>item.unread).length??0;
   const taken=new Set(data?.bookings.filter(item=>item.status==='confirmed').map(item=>item.slot.id));
@@ -47,11 +47,12 @@ export function AppointmentsManager() {
         <form className={styles.form} onSubmit={add}>
           <Field label={t('Datum und Uhrzeit in Berlin','Date and time in Berlin')}><Input type="datetime-local" name="time" required/></Field>
           <Field label={t('Dauer in Minuten','Duration in minutes')}><Input type="number" name="minutes" min={15} max={90} step={5} defaultValue={20} required/></Field>
+          <label className={styles.sample}><input type="checkbox" name="sample"/>{t('Als Beispieltermin für die Vorschau anlegen','Add as a sample time for the preview')}</label>
           <Button type="submit" variant="primary" busy={busy} disabled={busy||!data}><Plus size={16} aria-hidden="true"/>{t('Zeitfenster freigeben','Open time slot')}</Button>
         </form>
         {data&&!data.slots.length&&<p>{t('Aktuell sind keine Zeitfenster eingetragen.','There are no time slots yet.')}</p>}
         <ul className={styles.list}>{data?.slots.map(slot=><li key={slot.id}>
-          <div><strong>{appointmentText(slot,language)}</strong><p>{slot.minutes} min · {taken.has(slot.id)?t('Gebucht','Booked'):t('Frei','Available')}</p></div>
+          <div><strong>{appointmentText(slot,language)}</strong><p>{slot.minutes} min · {slot.sample?t('Beispieltermin','Sample time'):taken.has(slot.id)?t('Gebucht','Booked'):t('Frei','Available')}</p></div>
           {!taken.has(slot.id)&&<Button disabled={busy} onClick={()=>void update({action:'remove',id:slot.id})}><Trash2 size={15} aria-hidden="true"/>{t('Entfernen','Remove')}</Button>}
         </li>)}</ul>
       </section>

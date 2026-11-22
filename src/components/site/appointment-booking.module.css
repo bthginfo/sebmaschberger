@@ -15,6 +15,9 @@
 .heading svg,.confirmed svg { color: var(--appointment-link); flex:none; }
 .heading h3,.confirmed h4 { margin:0 0 5px; font-size:clamp(1.15rem,2.5cqi,1.55rem); }
 .heading p,.booking p { margin: 7px 0; line-height:1.65; }
+.sample { margin-bottom:16px; padding:12px 15px; border:1px solid var(--appointment-line); border-radius:12px; background:color-mix(in srgb,var(--appointment-link) 9%,transparent); }
+.sample strong { color:var(--appointment-link); font-size:.88rem; }
+.sample p { margin:4px 0 0; font-size:.87rem; }
 .choices,.actions { display:flex; flex-wrap:wrap; gap:7px; margin-block:10px; }
 .booking button,.actions a { min-height:44px; display:inline-flex; align-items:center; gap:7px; padding:8px 11px; color:inherit; background:transparent; border:1px solid var(--appointment-line); border-radius:11px; transition:background-color .22s,border-color .22s; font-weight:650; font-size:.86rem; }
 .booking button:hover,.actions a:hover { border-color:var(--appointment-link); }
