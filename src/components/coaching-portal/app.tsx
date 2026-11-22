@@ -1,14 +1,14 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { Activity as Pulse, ArrowRight, CalendarDays, CircleHelp, ClipboardList, Home, Layers, LogOut, MessageCircle, Moon, Smartphone, Sun, Users } from 'lucide-react';
+import { Activity as Pulse, ArrowRight, CalendarDays, CircleHelp, ClipboardList, Ellipsis, Home, Layers, LogOut, MessageCircle, Moon, Smartphone, Sun, Users } from 'lucide-react';
 import type { Activity, ActorView, Language, PortalSnapshot } from '@/lib/coaching-portal/model';
 import { ClientPlan } from './client-plan';
 import { CoachWorkspace } from './coach';
 import { Chat } from './chat';
 import { Progress } from './devices';
 import { PortalHelp, PortalTour } from './help';
-import { Button, Field, Input, Status, errorText, request, translator } from './ui';
+import { Button, Field, Input, Modal, Status, errorText, request, translator } from './ui';
 import styles from './portal.module.css';
 
 const clientTabs=[
@@ -56,10 +56,11 @@ function Login({language,configured}:{language:Language;configured:boolean}) {
 export function PortalApp({ actor, configured }: { actor: ActorView | null; configured: boolean }) {
   const [language,setLanguage]=useState<Language>(actor?.language??'de'),[light,setLight]=useState(false);
   const [tab,setTab]=useState(actor?.role==='client'?'today':'people'),[selection,setSelection]=useState('');
-  const [snapshot,setSnapshot]=useState<PortalSnapshot|null>(null),[issue,setIssue]=useState(''),[tour,setTour]=useState(false);
+  const [snapshot,setSnapshot]=useState<PortalSnapshot|null>(null),[issue,setIssue]=useState(''),[tour,setTour]=useState(false),[more,setMore]=useState(false);
   const t=translator(language);
   const role=actor?.role, staff=Boolean(role&&role!=='client');
   const tabs=staff?coachTabs.filter(item=>item[0]!=='devices'||role==='owner'):clientTabs;
+  const dockTabs=tabs.slice(0,staff?4:5),moreTabs=tabs.slice(dockTabs.length);
   useEffect(()=>{
     const value=localStorage.getItem('seb-portal-language');
     if(value==='de'||value==='en')setLanguage(value);
@@ -85,7 +86,9 @@ export function PortalApp({ actor, configured }: { actor: ActorView | null; conf
   function addLog(value:Activity){
     setSnapshot(current=>current?.client?{...current,client:{...current.client,logs:[value,...current.client.logs.filter(item=>item.id!==value.id)]}}:current);
   }
-  const openTabs=<>{tabs.map(([id,de,en,Icon])=><button key={id} type="button" aria-current={tab===id?'page':undefined} onClick={()=>navigate(id)}><Icon size={18} aria-hidden="true"/>{t(de,en)}</button>)}</>;
+  function tabButtons(entries: readonly (typeof tabs)[number][]) {
+    return entries.map(([id,de,en,Icon])=><button key={id} type="button" aria-current={tab===id?'page':undefined} onClick={()=>{setMore(false);navigate(id);}}><Icon size={18} aria-hidden="true"/>{t(de,en)}</button>);
+  }
   const current=snapshot?.client;
   return <div className={styles.root} lang={language} data-mode={light?'light':'dark'}>
     <header className={styles.header}><div className={styles.headerInner}>
@@ -100,7 +103,7 @@ export function PortalApp({ actor, configured }: { actor: ActorView | null; conf
     </div></header>
     {!actor?<Login language={language} configured={configured}/>:<>
       <div className={styles.workspace}>
-        <aside className={styles.sidebar}><nav aria-label={t('Coaching-Bereiche','Coaching sections')}>{openTabs}</nav></aside>
+        <aside className={styles.sidebar}><nav aria-label={t('Coaching-Bereiche','Coaching sections')}>{tabButtons(tabs)}</nav></aside>
         <main className={styles.main}>
           {issue&&<Status bad text={issue}/>}
           {!configured&&<Status bad text={t('Das Portal wartet auf seine Datenbankverbindung.','The portal is waiting for its database connection.')}/>}
@@ -114,7 +117,11 @@ export function PortalApp({ actor, configured }: { actor: ActorView | null; conf
           </>}
         </main>
       </div>
-      <nav className={styles.mobileNav} aria-label={t('Coaching-Bereiche','Coaching sections')}>{openTabs}</nav>
+      <nav className={styles.mobileNav} aria-label={t('Coaching-Bereiche','Coaching sections')}>
+        {tabButtons(dockTabs)}
+        {staff?<button type="button" aria-haspopup="dialog" aria-expanded={more} aria-current={moreTabs.some(item=>item[0]===tab)?'page':undefined} onClick={()=>setMore(true)}><Ellipsis size={18} aria-hidden="true"/>{t('Mehr','More')}</button>:tabButtons(moreTabs)}
+      </nav>
+      {more&&<Modal title={t('Weitere Bereiche','More sections')} close={()=>setMore(false)}><div className={styles.moreNav}>{tabButtons(moreTabs)}</div></Modal>}
       {snapshot&&<PortalTour actor={actor} language={language} force={tour} close={()=>setTour(false)}/>}
     </>}
   </div>;

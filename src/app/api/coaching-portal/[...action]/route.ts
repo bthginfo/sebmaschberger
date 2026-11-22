@@ -116,7 +116,7 @@ export function POST(request: Request, ctx: Context) {
       const value = z.object({ consent: z.literal(true), rows: z.array(metrics).min(1).max(100) }).strict().parse(body);
       await addMetrics(person.id, 'apple', value.rows);
     } else if (action === 'apple-delete') {
-      const person = await ownTrackerAccount(actor);
+      const person = await ownTrackerAccount(actor, { allowPaused: true });
       await clearMetrics(person.id, 'apple');
     } else if (action === 'sharing') {
       await setHealthSharing(actor, z.object({ sharing: z.boolean() }).strict().parse(body).sharing);

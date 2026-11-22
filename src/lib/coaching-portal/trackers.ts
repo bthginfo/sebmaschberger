@@ -108,8 +108,9 @@ export async function completeDevice(actor: ActorView, provider: Provider, state
   try {
     const tokens = await obtain(provider, setup, { grant_type: 'authorization_code', code, redirect_uri: pending!.redirect,
       ...(provider === 'google' ? { code_verifier: pending!.verifier } : {}) });
-    await save<Connection>(connectionBucket, connectionId(user.id, provider), {
-      user: user.id, provider, encrypted: encrypt(JSON.stringify(tokens)), lastSync: null, lease: '', until: 0, identity: randomUUID()
+    await change<Connection | null>(connectionBucket, connectionId(user.id, provider), null, current => {
+      if (current && current.until > Date.now()) throw new AppError('Die Synchronisierung läuft bereits.', 409);
+      return { user: user.id, provider, encrypted: encrypt(JSON.stringify(tokens)), lastSync: null, lease: '', until: 0, identity: randomUUID() };
     });
   } finally { await remove('device-oauth', key); }
 }
@@ -231,12 +232,16 @@ export async function syncConnection(user: string, provider: Provider, days = 14
   }
 }
 export async function disconnect(actor: ActorView, provider: Provider, erase: boolean) {
-  const person = await ownTrackerAccount(actor);
-  await remove(connectionBucket, connectionId(person.id, provider));
+  const person = await ownTrackerAccount(actor, { allowPaused: true });
+  await change<Connection | null>(connectionBucket, connectionId(person.id, provider), null, current => {
+    if (current && current.until > Date.now()) throw new AppError('Die Synchronisierung läuft noch. Versuche es gleich erneut.', 409);
+    return null;
+  });
   if (erase) await clearMetrics(person.id, provider);
 }
 export async function dailyDeviceSync() {
-  const candidates = (await list<Connection>(connectionBucket, 1000))
+  const candidates = (await list<Connection | null>(connectionBucket, 1000))
+    .filter((item): item is Connection => item !== null)
     .filter(item => !item.lastSync || Date.now() - Date.parse(item.lastSync) > 20 * 3600_000)
     .sort((a, b) => (a.lastSync ?? '').localeCompare(b.lastSync ?? ''));
   let count = 0;

@@ -64,17 +64,16 @@ export function Progress({client,language,reload,staff=false}:{client:ClientView
   const current=client.program.published?.plan.features.tracking;
   const days=extractTop(client.metrics), maxSteps=Math.max(1,client.program.profile.steps??0,...days.map(day=>day.steps??0));
   useEffect(()=>{
-    if(!staff&&current)void request<{enabled:boolean;lastSync:string|null}>('apple-bridge').then(setBridge).catch(()=>{});
+    if(!staff)void request<{enabled:boolean;lastSync:string|null}>('apple-bridge').then(setBridge).catch(()=>{});
     if(!staff){const device=new URLSearchParams(window.location.search).get('device');if(device==='error')setError('Die Gerätefreigabe konnte nicht abgeschlossen werden.');else if(device)setDone('Gerät verbunden. Du kannst jetzt synchronisieren.');}
   },[staff,current]);
   async function run(label:string,operation:()=>Promise<void>){
     if(busy)return;setBusy(label);setError('');setDone('');
     try{await operation();}catch(reason){setError(errorText(reason));}finally{setBusy('');}
   }
-  if(!current&&!staff)return <Section title={t('Fortschritt','Progress')}><Empty title={t('Dieser Bereich wird vom Team freigegeben','Your team enables this space')}/></Section>;
   return <div className={styles.stack}>
     <header className={styles.pageHead}><div><h1>{t('Fortschritt','Progress')}</h1><p>{t('Dein Training und die Werte, die du hier erfassen möchtest.','Your training and the measurements you choose to record here.')}</p></div>
-      {!staff&&<Button quiet onClick={()=>setModal('manual')}><ActivityIcon size={16}/>{t('Wert eintragen','Record a value')}</Button>}</header>
+      {!staff&&current&&<Button quiet onClick={()=>setModal('manual')}><ActivityIcon size={16}/>{t('Wert eintragen','Record a value')}</Button>}</header>
     {error&&<Status bad text={error}/>} {done&&<Status text={done}/>}
     <div className={styles.statGrid}>
       <div className={styles.stat}><Dumbbell size={16}/><b>{client.logs.filter(log=>log.kind==='workout'&&log.done).length}</b><span>{t('Trainings erfasst','Workouts logged')}</span></div>
@@ -98,14 +97,15 @@ export function Progress({client,language,reload,staff=false}:{client:ClientView
     </Section>
     {!staff&&<Section title={t('Tracker und Apple Watch','Trackers and Apple Watch')}>
       <div className={styles.stack}>
-        <Switch label={t('Fortschrittswerte mit meinem Betreuungsteam teilen','Share progress measurements with my coaching team')} checked={client.sharing} change={sharing=>void run('sharing',async()=>{await request('sharing',{sharing});await reload();})}/>
-        <label className={styles.switch}><span>{t('Ich möchte die ausgewählten Gerätewerte in meinem Coaching-Portal speichern.','I want to store the selected device measurements in my coaching portal.')}</span><input type="checkbox" checked={consent} onChange={event=>setConsent(event.target.checked)} style={{opacity:1}}/></label>
+        {!current&&<p className={styles.copy}>{t('Die Geräteerfassung ist pausiert. Du kannst deine Freigaben und bisherigen Werte hier verwalten.','Device tracking is paused. You can manage your sharing and previous measurements here.')}</p>}
+        {(current||client.sharing)&&<Switch label={t('Fortschrittswerte mit meinem Betreuungsteam teilen','Share progress measurements with my coaching team')} checked={client.sharing} change={sharing=>void run('sharing',async()=>{await request('sharing',{sharing});await reload();})}/>}
+        {current&&<label className={styles.switch}><span>{t('Ich möchte die ausgewählten Gerätewerte in meinem Coaching-Portal speichern.','I want to store the selected device measurements in my coaching portal.')}</span><input type="checkbox" checked={consent} onChange={event=>setConsent(event.target.checked)} style={{opacity:1}}/></label>}
         <div className={styles.subcard+' '+styles.stack}>
           <h3><Apple size={17}/> Apple Watch / Apple Health</h3>
           <p className={styles.copy}>{t('Wähle einen Export aus der Health-App oder richte Health Auto Export auf deinem iPhone ein.','Choose an export from the Health app or set up Health Auto Export on your iPhone.')}</p>
-          <div className={styles.actions}><Button quiet disabled={!consent} onClick={()=>{setPreview([]);setModal('apple');}}><Download size={16}/>{t('Health-Export importieren','Import Health export')}</Button>
+          <div className={styles.actions}>{current&&<><Button quiet disabled={!consent} onClick={()=>{setPreview([]);setModal('apple');}}><Download size={16}/>{t('Health-Export importieren','Import Health export')}</Button>
           <Button quiet loading={busy==='bridge'} disabled={!consent} onClick={()=>void run('bridge',async()=>{setNewToken(await request('apple-bridge',{consent:true}));setBridge(await request('apple-bridge'));})}>
-            <Link2 size={16}/>{bridge?.enabled?t('Sync-Schlüssel erneuern','Renew sync key'):t('Automatischen Export einrichten','Set up automatic export')}</Button>
+            <Link2 size={16}/>{bridge?.enabled?t('Sync-Schlüssel erneuern','Renew sync key'):t('Automatischen Export einrichten','Set up automatic export')}</Button></>}
           {bridge?.enabled&&<Button quiet onClick={()=>void run('revoke',async()=>{await request('apple-revoke',{});setNewToken(null);setBridge(null);})}>{t('Automatischen Export trennen','Disconnect automatic export')}</Button>}</div>
           {bridge?.lastSync&&<small className={styles.copy}>{t('Letzter Import','Last import')} · {bridge.lastSync.slice(0,10)}</small>}
           {newToken&&<div className={styles.form}><p>{t('Füge in Health Auto Export eine REST-Automation mit täglichen Schritt- und Schlafwerten hinzu. Verwende JSON und trage diese URL und den Header ein.','In Health Auto Export add a REST automation with daily steps and sleep, choose JSON, and enter this URL and header.')}</p>
@@ -116,18 +116,21 @@ export function Progress({client,language,reload,staff=false}:{client:ClientView
             if(window.confirm(t('Alle importierten Apple-Health-Werte löschen?','Delete imported Apple Health data?'))){await request('apple-delete',{});await reload();}
           })}>{t('Apple-Health-Werte löschen','Delete Apple Health values')}</Button>}
         </div>
-        {client.devices.map(device=><div className={styles.subcard+' '+styles.stack} key={device.provider}>
+        {client.devices.filter(device=>current||device.connected||client.metrics.some(row=>row.source===device.provider)).map(device=><div className={styles.subcard+' '+styles.stack} key={device.provider}>
           <header className={styles.panelHeading}><h3>{deviceNames[device.provider]}</h3><span className={styles.badge}>{device.connected?t('Verbunden','Connected'):device.available?t('Verfügbar','Available'):t('Einrichtung offen','Setup pending')}</span></header>
           {device.lastSync&&<small className={styles.copy}>{t('Letzter Abgleich','Last sync')} · {device.lastSync.slice(0,10)}</small>}
           <div className={styles.actions}>{device.connected?<>
-            <Button primary loading={busy===device.provider} onClick={()=>void run(device.provider,async()=>{
+            {current&&<Button primary loading={busy===device.provider} onClick={()=>void run(device.provider,async()=>{
               const status=await request<{count:number}>('device-sync',{provider:device.provider});
               await reload();setDone(status.count+' '+t('Tage synchronisiert','days synced'));
-            })}><RefreshCw size={16}/>{t('Jetzt synchronisieren','Sync now')}</Button>
+            })}><RefreshCw size={16}/>{t('Jetzt synchronisieren','Sync now')}</Button>}
             <Button quiet onClick={()=>{setErase(true);setDeleteProvider(device.provider);}}>{t('Trennen','Disconnect')}</Button>
-          </>:<Button quiet disabled={!device.available||!consent} loading={busy===device.provider} onClick={()=>void run(device.provider,async()=>{
+          </>:<>{current&&<Button quiet disabled={!device.available||!consent} loading={busy===device.provider} onClick={()=>void run(device.provider,async()=>{
             const {url}=await request<{url:string}>('device-start',{provider:device.provider,consent:true});window.location.assign(url);
-          })}><Link2 size={16}/>{t('Verbinden','Connect')}</Button>}</div>
+          })}><Link2 size={16}/>{t('Verbinden','Connect')}</Button>}
+          {client.metrics.some(row=>row.source===device.provider)&&<Button quiet onClick={()=>void run('delete-device',async()=>{
+            if(window.confirm(t('Importierte Tageswerte dieses Geräts löschen?','Delete this device’s imported measurements?'))){await request('device-disconnect',{provider:device.provider,erase:true});await reload();}
+          })}>{t('Importierte Tageswerte löschen','Delete imported daily measurements')}</Button>}</>}</div>
         </div>)}
         <details className={styles.editorItem}><summary>{t('Garmin, Polar, WHOOP und andere Uhren','Garmin, Polar, WHOOP and other watches')}</summary>
           <p>{t('Wenn dein Anbieter Schritte oder Schlaf mit Apple Health synchronisiert, kannst du diese über den Health-Export übernehmen. Android-Geräte mit Google-Health-Synchronisierung verbindest du über Google Health. Direkte Herstelleranbindungen haben eigene Freigaben.','If your device sends steps or sleep to Apple Health, use the Health export. Android devices that sync to Google Health can use that connection. Vendors have separate direct API approvals.')}</p>

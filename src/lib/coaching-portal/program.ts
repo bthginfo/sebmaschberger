@@ -71,16 +71,16 @@ export async function portalSnapshot(actor: ActorView, requested: string | null)
     getProgram(person.id), list<Activity>(activityBucket(person.id), 700), healthSharing(person.id),
     list<ChatMessage>(chatBucket(person.id), 180), isClient ? [] : list<Audit>(auditBucket(person.id), 60),
   ]);
-  const metrics = isClient || sharing ? await list<MetricRow>(metricBucket(person.id), 700) : [];
   const showChat = Boolean(program.published?.plan.features.chat);
   const showTracking = Boolean(program.published?.plan.features.tracking);
+  const metrics = isClient || (sharing && showTracking) ? await list<MetricRow>(metricBucket(person.id), 700) : [];
   const { deviceStatus } = await import('./trackers');
   return { actor, directory: customers, coaches, library, client: {
     person: isClient ? { ...publicPerson(person), coaches: [] } : publicPerson(person),
     program: isClient ? publishedView(program) : program, logs, metrics,
     messages: isClient && !showChat ? [] : messages.reverse().map(message =>
       isClient ? { ...message, sender: undefined } : message),
-    devices: isClient && showTracking ? await deviceStatus(person.id) : [],
+    devices: isClient ? await deviceStatus(person.id) : [],
     sharing, audit: auditRecords
   } };
 }
@@ -146,13 +146,13 @@ export async function healthSharing(id: string) {
   return (await read<{ sharing: boolean }>(privateSettings, id))?.sharing ?? false;
 }
 export async function setHealthSharing(actor: ActorView, sharing: boolean) {
-  const person = await ownTrackerAccount(actor);
+  const person = await ownTrackerAccount(actor, { allowPaused: !sharing });
   await save(privateSettings, person.id, { sharing });
 }
-export async function ownTrackerAccount(actor: ActorView) {
+export async function ownTrackerAccount(actor: ActorView, { allowPaused = false } = {}) {
   if (actor.role !== 'client') throw new AppError('Geräte lassen sich im Kundenkonto verbinden.', 403);
   const person = await clientRequired(actor, actor.id);
-  if (!(await getProgram(person.id)).published?.plan.features.tracking) throw new AppError('Fortschrittsdaten wurden für dieses Profil noch nicht freigegeben.', 409);
+  if (!allowPaused && !(await getProgram(person.id)).published?.plan.features.tracking) throw new AppError('Fortschrittsdaten wurden für dieses Profil noch nicht freigegeben.', 409);
   return person;
 }
 export async function addMetrics(id: string, source: HealthSource, values: Metrics[]) {
