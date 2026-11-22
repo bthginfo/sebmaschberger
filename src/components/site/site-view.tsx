@@ -16,7 +16,7 @@ import type {VariantSiteProps} from "./variants/types";
 import { useGalleryLightbox } from './gallery-lightbox';
 
 import { useContext, useEffect, useRef, useState, type ComponentType, type CSSProperties, type ReactNode } from "react";
-import { ArrowDown, ArrowDownToLine, ArrowLeft, ArrowRight, ArrowUp, ArrowUpRight, BriefcaseBusiness, Dumbbell, Droplets, ShoppingBag, Building2, CalendarDays, Check, ChevronDown, Clock3, FileText, HeartHandshake, House, Info, Mail, MapPin, Menu, Minus, Phone, Plus, ShieldCheck, UsersRound, X } from "lucide-react";
+import { ArrowDown, ArrowDownToLine, ArrowLeft, ArrowRight, ArrowUp, ArrowUpRight, BriefcaseBusiness, Droplets, ShoppingBag, Building2, CalendarDays, Check, ChevronDown, Clock3, FileText, HeartHandshake, House, Info, Mail, MapPin, Menu, Minus, Phone, Plus, ShieldCheck, UsersRound, X } from "lucide-react";
 import type { ContentItem, ImageValue, MediaAsset, PageContent, Section, SectionContent, SiteConfig, SiteLanguage } from "@/lib/types";
 import { NewsletterSignup } from "./newsletter-signup";
 import { NewsletterShowcase } from "./newsletter-showcase";
@@ -44,6 +44,7 @@ import { clubTimelineItems, type PublicClubMatch } from "@/lib/club/fixtures";
 import { ProjectIndex, ProjectStage, SceneSequence, ScrollStory, WorkflowDemo } from "./visual-sections";
 import { projectBrand } from "@/lib/project-brand";
 import { ProjectFinder } from "./project-finder";
+import { CoachingComparison } from "./coaching-comparison";
 const AssistantShowcase=dynamic(()=>import("@/components/assistant/assistant-showcase").then(module=>module.AssistantShowcase));
 const LiquidGlassLayer = dynamic(() => import("./liquid-glass").then(module => module.LiquidGlassLayer));
 const MotionStory = dynamic(() => import("./motion-story").then(module => module.MotionStory));
@@ -186,7 +187,9 @@ function SiteHeader({ site, editable, currentSlug, language, languageLinks }: { 
     return () => { window.removeEventListener("keydown", handleKey); window.removeEventListener("pointerdown", outside); };
   }, [open]);
   return <header {...smartHeader} className="ws-header">
-    <div className="ws-header-inner"><ContentLink href={language === "en" ? "/en" : "/"} editable={editable} className="ws-brand"><span className="seb-mark" aria-hidden="true">{projectBrand === "coaching" ? <Dumbbell size={21} /> : <Droplets size={20} />}</span><span className="seb-brand-copy"><span className="ws-brand-name">{site.name}</span><span className="ws-brand-subline">{site.tagline}</span></span></ContentLink>
+    <div className="ws-header-inner"><ContentLink href={language === "en" ? "/en" : "/"} editable={editable} className="ws-brand"><span className={projectBrand === "coaching" ? "seb-mark seb-original-mark" : "seb-mark"} aria-hidden="true">
+        {projectBrand === "coaching" ? <img src="/media/project/sebastian-logo.svg" alt="" width={56} height={23} /> : <Droplets size={20} />}
+      </span><span className="seb-brand-copy"><span className="ws-brand-name">{site.name}</span><span className="ws-brand-subline">{site.tagline}</span></span></ContentLink>
       <nav className="ws-desktop-nav" aria-label={language === "en" ? "Main navigation" : "Hauptnavigation"}>{site.navigation.filter((item) => item !== contact).map((item) => <ContentLink key={item.href} href={item.href} editable={editable} className={currentSlug && item.href === `/${currentSlug}` ? "is-current" : ""}>{item.label}</ContentLink>)}</nav>
       <div className="ws-header-actions">{languageLinks}{site.modules?.commerce?.enabled && <ContentLink href={language === "en" ? "/en/cart" : "/warenkorb"} editable={editable} className="seb-cart-link" label={language === "en" ? "Cart" : "Warenkorb"}><ShoppingBag size={18} aria-hidden="true" /></ContentLink>}{contact && <ContentLink href={contact.href} editable={editable} className="ws-header-contact">{contact.label}<ArrowUpRight size={18} /></ContentLink>}
         <button ref={toggleRef} className="ws-menu-toggle" type="button" aria-label={language === "en" ? open ? "Close menu" : "Open menu" : open ? "Menü schließen" : "Menü öffnen"} aria-expanded={open} aria-controls="ws-mobile-menu" onClick={() => setOpen(!open)}>{open ? <X size={25} /> : <Menu size={25} />}</button></div>
@@ -201,7 +204,7 @@ function SiteHeader({ site, editable, currentSlug, language, languageLinks }: { 
 function SiteFooter({ site, editable, language }: { site: SiteConfig; editable?: boolean; language: SiteLanguage }) {
   const footer = footerConfig(site);
   return <footer className="ws-footer">
-    {(footer.brandText || footer.ctaLabel) && <div className="ws-footer-top">{footer.brandText && <ContentLink href="/" editable={editable} className="ws-footer-brand">{footer.brandText}</ContentLink>}{footer.ctaLabel && <ContentLink href={footer.ctaHref} editable={editable} className="ws-footer-contact-link">{footer.ctaLabel}<ArrowUpRight size={32} /></ContentLink>}</div>}
+    {(footer.brandText || footer.ctaLabel) && <div className="ws-footer-top">{footer.brandText && <ContentLink href="/" editable={editable} className="ws-footer-brand">{projectBrand === "coaching" && <span className="seb-footer-mark"><img src="/media/project/sebastian-logo.svg" alt="" width={80} height={32} loading="lazy" /></span>}{footer.brandText}</ContentLink>}{footer.ctaLabel && <ContentLink href={footer.ctaHref} editable={editable} className="ws-footer-contact-link">{footer.ctaLabel}<ArrowUpRight size={32} /></ContentLink>}</div>}
     <div className="ws-footer-grid" style={{ "--footer-area-count": 1 + Number(footer.showAddress) + Number(footer.showContact || footer.showHours) + Number(footer.columns.length > 0) } as CSSProperties}><div className="ws-footer-intro"><p>{site.footerText}</p><p className="ws-footer-legal-name">{site.legalName}</p></div>
       {footer.showAddress && <div>{footer.addressHeading && <h2>{footer.addressHeading}</h2>}<address>{site.address}<br />{site.postalCode} {site.city}</address></div>}
       {(footer.showContact || footer.showHours) && <div>{footer.contactHeading && <h2>{footer.contactHeading}</h2>}{footer.showContact && <><ContentLink href={`tel:${site.phone.replace(/[^+\d]/g, "")}`} editable={editable}>{site.phone}</ContentLink><ContentLink href={`mailto:${site.email}`} editable={editable}>{site.email}</ContentLink></>}{footer.showHours && site.openingHours.map((entry) => <p className="ws-footer-hours" key={entry.day}><span>{entry.day}</span><span>{entry.hours}</span></p>)}</div>}
@@ -412,6 +415,17 @@ export function SectionRenderer({ section, site, language = "de", editable = fal
       {c.primaryLabel && c.primaryHref && <ContentLink href={c.primaryHref} editField="primaryHref" editable={editable} className="ws-announcement-link">{c.primaryLabel}<ArrowUpRight size={17} /></ContentLink>}
     </div>; break;
     case "notice": body = <aside className="ws-notice"><Info size={27} /><div>{heading("ws-notice-heading")}{text("text", "p", "ws-notice-text")}{actions()}</div></aside>; break;
+    case "coaching-comparison": body = <>
+      {intro("seb-comparison-intro")}
+      <CoachingComparison items={items} editable={editable} language={language}
+        renderImage={(item, index, panel) => (
+          <EditableImage image={item[panel]} editable={editable} className="seb-comparison-image"
+            onChange={value => updateItem(index, panel, value)}
+            editLabel={language === "en" ? (panel === "image" ? "Edit before photo" : "Edit after photo") : (panel === "image" ? "Vorher-Bild bearbeiten" : "Nachher-Bild bearbeiten")} />
+        )}
+        renderCopy={(item, index) => <>{itemText(item, index, "title", "h3")}{itemText(item, index, "text")}</>} />
+      {actions("ws-section-bottom-actions")}
+    </>; break;
     case "comparison": body = <>{intro()}<div className="ws-comparison">{items.map((item, index) => <article key={item.id} data-item-id={item.id}>{itemText(item, index, "title", "h3")}{itemText(item, index, "meta", "p", "ws-comparison-meta")}{itemText(item, index, "text")}{details(item, index)}{item.href && <ContentLink href={item.href} editField="href" editItemId={item.id} editable={editable} className="ws-button ws-button-outline">{item.label || "Mehr erfahren"}<ArrowUpRight size={17} /></ContentLink>}</article>)}</div></>; break;
     case "columns": body = <>{intro()}<div className="ws-content-columns">{items.map((item, index) => <article key={item.id} data-item-id={item.id}>{item.image && itemImage(item, index)}{itemText(item, index, "title", "h3")}{itemText(item, index, "text")}{details(item, index)}{item.href && <ContentLink href={item.href} editField="href" editItemId={item.id} editable={editable} className="ws-inline-link">{item.label || "Mehr erfahren"}<ArrowUpRight size={16} /></ContentLink>}</article>)}</div></>; break;
     case "opening-hours": body = <div className="ws-hours-layout"><div>{heading()}{text("text", "p", "ws-section-text")}{actions()}</div><div className="ws-hours-table">{items.length ? items.map((item, index) => <div key={item.id} data-item-id={item.id}>{itemText(item, index, "title", "h3")}{itemText(item, index, "text")}</div>) : site.openingHours.map((entry) => <div key={entry.day}><h3>{entry.day}</h3><p>{entry.hours}</p></div>)}</div></div>; break;

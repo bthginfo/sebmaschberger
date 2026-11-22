@@ -97,6 +97,12 @@ export function publishIssueMessages(content: WebsiteContent): AdminMessage[] {
       if (!clubFeed && section.content.items?.some(item => !item.title.trim())) {
         issues.push({ message: '„{page}“, Abschnitt „{section}“: Ein Eintrag hat noch keine Überschrift.', values });
       }
+      if (section.type === 'coaching-comparison') {
+        const pairs = section.content.items ?? [];
+        if (!pairs.length || pairs.some(item => !item.image?.src || !item.image.alt.trim() || !item.poster?.src || !item.poster.alt.trim())) {
+          issues.push({ message: '„{page}“, Abschnitt „{section}“: Jeder Vergleich braucht ein Vorher- und ein Nachher-Bild mit Alternativtext.', values });
+        }
+      }
       if (section.type === 'quote' && !section.content.quote?.trim()) {
         issues.push({ message: '„{page}“, Abschnitt „{section}“: Bitte tragen Sie das Zitat ein oder blenden Sie den Abschnitt aus.', values });
       }

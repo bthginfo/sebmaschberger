@@ -35,6 +35,7 @@ export const sectionLibrary: {type:SectionType;name:string;description:string;ca
   {type:'workflow-demo',name:'Animierter Ablauf',description:'Einen Prozess Schritt für Schritt zeigen. Besucher können pausieren, weiterschalten und direkt zu einem Schritt springen.',category:'Service',icon:'Route'},
   {type:'project-stage',name:'Projektgalerie',description:'Arbeiten, Angebote oder Themen mit großem Motiv, Beschreibung und Links durchblättern.',category:'Bilder',icon:'Layers'},
   {type:'project-finder',name:'Interaktiver Finder',description:'Vorschläge nach zwei Schlagwörtern filtern und im Browser merken.',category:'Service',icon:'SlidersHorizontal'},
+  {type:'coaching-comparison',name:'Vorher-Nachher-Vergleich',description:'Echte Bildpaare nebeneinander zeigen und zwischen Referenzen wechseln.',category:'Bilder',icon:'Columns2'},
   {type:'affiliate-links',name:'Partner & Affiliate-Links',description:'Empfehlungen mit eigener Kennzeichnung für Werbung und Affiliate-Links.',category:'Inhalte',icon:'Handshake'},
   {type:'project-index',name:'Filterbare Projektübersicht',description:'Ein Projekt groß vorstellen und weitere Arbeiten nach Kategorien filtern.',category:'Bilder',icon:'LayoutGrid'},
   {type:'editorial-index',name:'Themenverzeichnis',description:'Angebote und Themen als redaktionelle Liste mit Beschreibungen, kleinen Bildern und Links.',category:'Inhalte',icon:'ListChecks'},
@@ -115,6 +116,7 @@ const defaults:Partial<Record<SectionType,()=>SectionContent>>={
   'scroll-story':()=>createStarterVisualContent('scroll-story'),
   'scene-sequence':()=>createStarterVisualContent('scene-sequence'),
   'project-finder':()=>({heading:'Finde einen passenden Vorschlag.',items:[]}),
+  'coaching-comparison':()=>({heading:'Vorher und nachher',items:[]}),
   'affiliate-links':()=>({heading:'Empfehlungen und Partner',items:[]}),
   'workflow-demo':()=>createStarterVisualContent('workflow-demo'),
   'project-stage':()=>createStarterVisualContent('project-stage'),
@@ -194,6 +196,7 @@ export function createSection(type:SectionType):Section {
   const content:SectionContent = defaults[base]?.() ?? {heading:type.startsWith('blog-')?'Wissen und Einblicke.':definition.name,text:'',items:[]};
   if (visual && content.items) content.items = content.items.map(item => ({ ...item, id: crypto.randomUUID() }));
   const design:SectionDesign = {...defaultDesign};
+  if (type === 'coaching-comparison') Object.assign(design, {theme:'dark',spacing:'compact',animation:'reveal'});
   if (type === 'motion-story') Object.assign(design, {spacing:'compact',motionTrigger:'loop',motionEffect:'studio'});
   if (type === 'scroll-3d') Object.assign(design, {spacing:'compact',width:'full',theme:'dark',animation:'none'});
   if (base === 'cta') design.theme = 'accent';

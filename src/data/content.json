@@ -324,8 +324,8 @@
             },
             "primaryLabel": "Erstgespräch anfragen",
             "primaryHref": "/kontakt",
-            "secondaryLabel": "Coaching entdecken",
-            "secondaryHref": "/coaching"
+            "secondaryLabel": "Vorher und nachher ansehen",
+            "secondaryHref": "#vorher-nachher"
           },
           "design": {
             "theme": "light",
@@ -456,6 +456,112 @@
             "columns": 4,
             "animation": "reveal",
             "align": "left"
+          }
+        },
+        {
+          "id": "vorher-nachher",
+          "type": "coaching-comparison",
+          "visible": true,
+          "name": "Vorher und nachher",
+          "content": {
+            "heading": "Vorher und nachher",
+            "text": "Vier Bildpaare aus meinem Coaching. Wähle eine Referenz, um die beiden Aufnahmen nebeneinander zu sehen.",
+            "items": [
+              {
+                "id": "coaching-reference-1",
+                "title": "Vergleich 1",
+                "text": "",
+                "image": {
+                  "src": "/media/project/coaching-references/coaching-1-before.webp",
+                  "alt": "Vorher-Aufnahme eines Coaching-Teilnehmers in der Frontalansicht",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                },
+                "poster": {
+                  "src": "/media/project/coaching-references/coaching-1-after.webp",
+                  "alt": "Nachher-Aufnahme desselben Coaching-Teilnehmers in der Frontalansicht",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                }
+              },
+              {
+                "id": "coaching-reference-2",
+                "title": "Vergleich 2",
+                "text": "",
+                "image": {
+                  "src": "/media/project/coaching-references/coaching-2-before.webp",
+                  "alt": "Vorher-Aufnahme eines Coaching-Teilnehmers in der Frontalansicht",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                },
+                "poster": {
+                  "src": "/media/project/coaching-references/coaching-2-after.webp",
+                  "alt": "Nachher-Aufnahme desselben Coaching-Teilnehmers in der Frontalansicht",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                }
+              },
+              {
+                "id": "coaching-reference-3",
+                "title": "Vergleich 3",
+                "text": "",
+                "image": {
+                  "src": "/media/project/coaching-references/coaching-3-before.webp",
+                  "alt": "Vorher-Aufnahme eines Coaching-Teilnehmers in der Frontalansicht",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                },
+                "poster": {
+                  "src": "/media/project/coaching-references/coaching-3-after.webp",
+                  "alt": "Nachher-Aufnahme desselben Coaching-Teilnehmers in der Frontalansicht",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                }
+              },
+              {
+                "id": "coaching-reference-4",
+                "title": "Vergleich 4",
+                "text": "",
+                "image": {
+                  "src": "/media/project/coaching-references/coaching-4-before.webp",
+                  "alt": "Vorher-Aufnahme eines Coaching-Teilnehmers in der Frontalansicht",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                },
+                "poster": {
+                  "src": "/media/project/coaching-references/coaching-4-after.webp",
+                  "alt": "Nachher-Aufnahme desselben Coaching-Teilnehmers in der Frontalansicht",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                }
+              }
+            ],
+            "primaryLabel": "Erstgespräch anfragen",
+            "primaryHref": "/kontakt"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "radius": 28,
+            "border": 0,
+            "fontScale": 1,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 2,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#f9f6eb",
+            "accentColor": "#e2b773"
           }
         },
         {
@@ -725,7 +831,7 @@
       "seo": {
         "title": "1:1 Online-Coaching | Sebastian Maschberger",
         "description": "Persönliches Coaching für Männer ab 30. Sebastian Maschberger begleitet dich bei Krafttraining, Ernährung und Erholung mit einem Plan für deinen Alltag.",
-        "image": "/media/project/training.webp"
+        "image": "/media/project/studio-portrait.webp"
       },
       "sections": [
         {
@@ -738,9 +844,11 @@
             "text": "Dein Plan verbindet Krafttraining, Ernährung und Erholung. In den Check-ins schauen wir, wie er sich im Alltag bewährt und was wir anpassen können.",
             "subheading": "1:1 ONLINE",
             "image": {
-              "src": "/media/project/training.webp",
-              "alt": "Sebastian bei einer einbeinigen Kraftübung",
-              "position": "50% 50%"
+              "src": "/media/project/studio-portrait.webp",
+              "alt": "Sebastian Maschberger steht im Trainingsstudio in einem blauen T-Shirt",
+              "position": "50% 0%",
+              "width": 1100,
+              "height": 1000
             },
             "primaryLabel": "Erstgespräch anfragen",
             "primaryHref": "/kontakt",
@@ -856,7 +964,9 @@
             "heading": "So kann eine Woche aussehen",
             "text": "Du hast dienstags und samstags je ein Trainingsfenster? Dann planen wir zwei Einheiten mit wiederkehrenden Übungen. Donnerstag kann als Ausweichtermin dienen. In den ersten Wochen schauen wir gemeinsam, wie du die Übungen und die Belastung verträgst.",
             "primaryLabel": "Trainingswoche zusammenstellen",
-            "primaryHref": "/wochenplan"
+            "primaryHref": "/wochenplan",
+            "secondaryLabel": "Coaching-Referenzen ansehen",
+            "secondaryHref": "/#vorher-nachher"
           },
           "design": {
             "theme": "light",
@@ -2833,8 +2943,8 @@
             },
             "primaryLabel": "Request an intro call",
             "primaryHref": "/en/contact",
-            "secondaryLabel": "Explore coaching",
-            "secondaryHref": "/en/coaching"
+            "secondaryLabel": "See before and after",
+            "secondaryHref": "#vorher-nachher"
           },
           "design": {
             "theme": "light",
@@ -2965,6 +3075,112 @@
             "columns": 4,
             "animation": "reveal",
             "align": "left"
+          }
+        },
+        {
+          "id": "vorher-nachher",
+          "type": "coaching-comparison",
+          "visible": true,
+          "name": "Before and after",
+          "content": {
+            "heading": "Before and after",
+            "text": "Four photo pairs from my coaching. Choose a comparison to see both photos side by side.",
+            "items": [
+              {
+                "id": "coaching-reference-1",
+                "title": "Comparison 1",
+                "text": "",
+                "image": {
+                  "src": "/media/project/coaching-references/coaching-1-before.webp",
+                  "alt": "Front view of a coaching participant before",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                },
+                "poster": {
+                  "src": "/media/project/coaching-references/coaching-1-after.webp",
+                  "alt": "Front view of the same coaching participant after",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                }
+              },
+              {
+                "id": "coaching-reference-2",
+                "title": "Comparison 2",
+                "text": "",
+                "image": {
+                  "src": "/media/project/coaching-references/coaching-2-before.webp",
+                  "alt": "Front view of a coaching participant before",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                },
+                "poster": {
+                  "src": "/media/project/coaching-references/coaching-2-after.webp",
+                  "alt": "Front view of the same coaching participant after",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                }
+              },
+              {
+                "id": "coaching-reference-3",
+                "title": "Comparison 3",
+                "text": "",
+                "image": {
+                  "src": "/media/project/coaching-references/coaching-3-before.webp",
+                  "alt": "Front view of a coaching participant before",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                },
+                "poster": {
+                  "src": "/media/project/coaching-references/coaching-3-after.webp",
+                  "alt": "Front view of the same coaching participant after",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                }
+              },
+              {
+                "id": "coaching-reference-4",
+                "title": "Comparison 4",
+                "text": "",
+                "image": {
+                  "src": "/media/project/coaching-references/coaching-4-before.webp",
+                  "alt": "Front view of a coaching participant before",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                },
+                "poster": {
+                  "src": "/media/project/coaching-references/coaching-4-after.webp",
+                  "alt": "Front view of the same coaching participant after",
+                  "position": "50% 50%",
+                  "width": 540,
+                  "height": 1080
+                }
+              }
+            ],
+            "primaryLabel": "Request an intro call",
+            "primaryHref": "/en/contact"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "radius": 28,
+            "border": 0,
+            "fontScale": 1,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 2,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#f9f6eb",
+            "accentColor": "#e2b773"
           }
         },
         {
@@ -3234,7 +3450,7 @@
       "seo": {
         "title": "1:1 online coaching | Sebastian Maschberger",
         "description": "One-to-one coaching for men over 30. Sebastian Maschberger helps you plan strength training, nutrition and recovery around everyday life.",
-        "image": "/media/project/training.webp"
+        "image": "/media/project/studio-portrait.webp"
       },
       "sections": [
         {
@@ -3247,9 +3463,11 @@
             "text": "Your plan brings together strength training, nutrition and recovery. At check-ins we see how it fits into your life and what we can adjust.",
             "subheading": "1:1 ONLINE",
             "image": {
-              "src": "/media/project/training.webp",
-              "alt": "Sebastian performing a single-leg strength exercise",
-              "position": "50% 50%"
+              "src": "/media/project/studio-portrait.webp",
+              "alt": "Sebastian Maschberger stands in the gym wearing a blue T-shirt",
+              "position": "50% 0%",
+              "width": 1100,
+              "height": 1000
             },
             "primaryLabel": "Request an intro call",
             "primaryHref": "/en/contact",
@@ -3365,7 +3583,9 @@
             "heading": "What a week can look like",
             "text": "Have a training slot on Tuesday and Saturday? We can plan two sessions with recurring exercises and keep Thursday as a backup. In the first weeks we review how the movements and workload feel.",
             "primaryLabel": "Build my training week",
-            "primaryHref": "/en/weekly-plan"
+            "primaryHref": "/en/weekly-plan",
+            "secondaryLabel": "See the coaching comparisons",
+            "secondaryHref": "/en#vorher-nachher"
           },
           "design": {
             "theme": "light",

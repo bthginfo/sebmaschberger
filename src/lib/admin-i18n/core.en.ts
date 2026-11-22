@@ -1,4 +1,9 @@
 export const adminCoreEnglish: Readonly<Record<string, string>> = {
+  "Vorher-Nachher-Vergleich": "Before-and-after comparison",
+  "Echte Bildpaare nebeneinander zeigen und zwischen Referenzen wechseln.": "Show real photo pairs side by side and switch between comparisons.",
+  "Vorher-Bild": "Before photo",
+  "Nachher-Bild": "After photo",
+  "„{page}“, Abschnitt „{section}“: Jeder Vergleich braucht ein Vorher- und ein Nachher-Bild mit Alternativtext.": "“{page}”, section “{section}”: Each comparison needs a before photo and an after photo with alt text.",
   "Look & räumliche Tiefe": "Look & depth",
   "Visueller Stil": "Visual style",
   "Liquid Glass ergänzt Panorama. Inhalte und Profil bleiben erhalten; Speichern und Veröffentlichen geben den Entwurf frei.": "Liquid Glass adds to Panorama. Content and profile are kept; save and publish to release your draft.",

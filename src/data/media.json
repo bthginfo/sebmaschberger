@@ -106,5 +106,113 @@
     "position": "50% 50%",
     "width": 820,
     "height": 548
+  },
+  {
+    "id": "coaching-1-before",
+    "url": "/media/project/coaching-references/coaching-1-before.webp",
+    "name": "Coaching · 1 · Vorher",
+    "alt": "Vorher-Aufnahme eines Coaching-Teilnehmers in der Frontalansicht",
+    "type": "image/webp",
+    "size": 70136,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 50%",
+    "width": 540,
+    "height": 1080
+  },
+  {
+    "id": "coaching-1-after",
+    "url": "/media/project/coaching-references/coaching-1-after.webp",
+    "name": "Coaching · 1 · Nachher",
+    "alt": "Nachher-Aufnahme desselben Coaching-Teilnehmers in der Frontalansicht",
+    "type": "image/webp",
+    "size": 97450,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 50%",
+    "width": 540,
+    "height": 1080
+  },
+  {
+    "id": "coaching-2-before",
+    "url": "/media/project/coaching-references/coaching-2-before.webp",
+    "name": "Coaching · 2 · Vorher",
+    "alt": "Vorher-Aufnahme eines Coaching-Teilnehmers in der Frontalansicht",
+    "type": "image/webp",
+    "size": 43338,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 50%",
+    "width": 540,
+    "height": 1080
+  },
+  {
+    "id": "coaching-2-after",
+    "url": "/media/project/coaching-references/coaching-2-after.webp",
+    "name": "Coaching · 2 · Nachher",
+    "alt": "Nachher-Aufnahme desselben Coaching-Teilnehmers in der Frontalansicht",
+    "type": "image/webp",
+    "size": 63770,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 50%",
+    "width": 540,
+    "height": 1080
+  },
+  {
+    "id": "coaching-3-before",
+    "url": "/media/project/coaching-references/coaching-3-before.webp",
+    "name": "Coaching · 3 · Vorher",
+    "alt": "Vorher-Aufnahme eines Coaching-Teilnehmers in der Frontalansicht",
+    "type": "image/webp",
+    "size": 22540,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 50%",
+    "width": 540,
+    "height": 1080
+  },
+  {
+    "id": "coaching-3-after",
+    "url": "/media/project/coaching-references/coaching-3-after.webp",
+    "name": "Coaching · 3 · Nachher",
+    "alt": "Nachher-Aufnahme desselben Coaching-Teilnehmers in der Frontalansicht",
+    "type": "image/webp",
+    "size": 68166,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 50%",
+    "width": 540,
+    "height": 1080
+  },
+  {
+    "id": "coaching-4-before",
+    "url": "/media/project/coaching-references/coaching-4-before.webp",
+    "name": "Coaching · 4 · Vorher",
+    "alt": "Vorher-Aufnahme eines Coaching-Teilnehmers in der Frontalansicht",
+    "type": "image/webp",
+    "size": 65458,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 50%",
+    "width": 540,
+    "height": 1080
+  },
+  {
+    "id": "coaching-4-after",
+    "url": "/media/project/coaching-references/coaching-4-after.webp",
+    "name": "Coaching · 4 · Nachher",
+    "alt": "Nachher-Aufnahme desselben Coaching-Teilnehmers in der Frontalansicht",
+    "type": "image/webp",
+    "size": 96678,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 50%",
+    "width": 540,
+    "height": 1080
+  },
+  {
+    "id": "studio-portrait",
+    "url": "/media/project/studio-portrait.webp",
+    "name": "Sebastian Maschberger im Trainingsstudio",
+    "alt": "Sebastian Maschberger steht im Trainingsstudio in einem blauen T-Shirt",
+    "type": "image/webp",
+    "size": 61192,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 0%",
+    "width": 1100,
+    "height": 1000
   }
 ]

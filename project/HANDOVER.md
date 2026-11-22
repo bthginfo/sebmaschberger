@@ -24,3 +24,5 @@ Die Datenbank dieser Vorschau ist eine SQLite-Datei im privaten Blob-Store diese
 - Bayerischer Wettkampf 2017. [DBFV Ergebnisliste](https://dbfv.de/wp-content/uploads/Ergebnisliste_BM2017.pdf)
 - Porträts und Training. [Instagram](https://www.instagram.com/sebastian_maschberger/) · [Auftaktfoto](https://www.instagram.com/p/Df7C7BrAgMT/) · [Trainingsfoto](https://www.instagram.com/p/DejPtbEgoEe/)
 - Themen Energie und Fokus, veröffentlichte Kontakt-E-Mail und das Porträt aus den Vorschaumetadaten. [Flamingo-Stand](https://flamingo-renderer.vercel.app/sebastian-maschberger) · [Kontaktseite](https://flamingo-renderer.vercel.app/sebastian-maschberger/kontakt)
+- Originales SM-Logo und Studioaufnahme. [Flamingo-Vorschau](https://flamingo-renderer.vercel.app/sebastian-maschberger) · [Studiofoto](https://cdn.prod.website-files.com/67b377d0529a72a36ceb21d1/68f1335d2f13dfc5f6526898_F3E8ABBA-9902-4348-954B-060F3730DCCE.jpeg)
+- Vier Vorher-Nachher-Paare aus Sebastians veröffentlichten Coaching-Referenzen. Die Bildhälften wurden für die Gegenüberstellung getrennt. [Referenzen](https://www.sebmaschberger.com/home-en)

@@ -234,3 +234,84 @@
   .ws-site[data-project="scents"] .ws-section-showcase-hero [data-layout="panorama"] .ws-showcase-copy { width: 100%; }
   .ws-site[data-project="scents"] .ws-section-showcase-hero [data-layout="panorama"] .ws-showcase-title { font-size: clamp(2.8rem, 12.7cqi, 4.55rem); }
 }
+
+.seb-original-mark {
+  width: 70px;
+  background: #1b2a22;
+  box-shadow: inset 0 1px #fff2, 0 5px 10px #1c2a2025;
+}
+.seb-original-mark img { display: block; width: 56px; height: auto; }
+.ws-site[data-project="coaching"] .ws-footer-brand { display: inline-flex; align-items: center; gap: 16px; }
+.seb-footer-mark { display: grid; place-items: center; width: 104px; height: 63px; flex: none; background: #1b2a22; border-radius: 16px; }
+.seb-footer-mark img { display: block; }
+
+.seb-comparison-intro { margin-bottom: clamp(20px, 3.5cqi, 42px); }
+.seb-comparison {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(185px, 225px);
+  gap: clamp(16px, 2.8cqi, 38px);
+  align-items: start;
+  max-width: 1040px;
+  margin-inline: auto;
+}
+.seb-comparison-case { min-width: 0; }
+.seb-comparison-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(5px, 1.25cqi, 16px);
+  padding: clamp(6px, 1.1cqi, 14px);
+  border: 1px solid #ffffff26;
+  border-radius: var(--section-radius);
+  background: var(--cms-card-background, #ffffff09);
+  box-shadow: 0 18px 44px #10171042, inset 0 1px #fff1;
+  animation: seb-comparison-enter .28s cubic-bezier(.21,.78,.26,.98) both;
+}
+@keyframes seb-comparison-enter {
+  from { opacity: .55; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.seb-comparison-frame { position: relative; overflow: hidden; border-radius: max(9px, calc(var(--section-radius) - 9px)); background: #111b15; }
+.seb-comparison-frame .seb-comparison-image { height: clamp(240px, 40cqi, 510px); margin: 0; }
+.seb-comparison-frame .seb-comparison-image img { display: block; object-fit: contain; width: 100%; height: 100%; }
+.seb-comparison-phase {
+  position: absolute; z-index: 1; inset: 12px auto auto 12px;
+  padding: 6px 11px; font-weight: 800; font-size: .82rem;
+  background: #111b15e8; color: #fff; border: 1px solid #fff5; border-radius: 30px; backdrop-filter: blur(12px);
+}
+.seb-comparison-frame[data-panel="poster"] .seb-comparison-phase { background: var(--section-accent, #e9bf7d); border-color: transparent; color: #1b241c; }
+.seb-comparison-copy { margin: 12px 2px 0; }
+.seb-comparison-copy h3 { font: 750 1.05rem/1.3 var(--font-body); }
+.seb-comparison-copy p { font-size: .95rem; margin-top: 5px; }
+.seb-comparison-choices { display: grid; gap: 8px; }
+.seb-comparison-choices button {
+  display: flex; gap: 11px; align-items: center; min-height: 56px;
+  padding: 7px; color: inherit; text-align: left; font-size: .85rem; font-weight: 750;
+  border: 1px solid #ffffff30; border-radius: 13px; background: #ffffff09;
+}
+.seb-comparison-choices button[aria-pressed="true"] {
+  border-color: var(--section-accent, #e9bf7d);
+  background: color-mix(in srgb, var(--section-accent, #e9bf7d) 15%, transparent);
+}
+.seb-comparison-choices button:hover { background: #ffffff20; }
+.seb-comparison-thumb { flex: none; display: flex; width: 54px; border-radius: 7px; overflow: hidden; background: #142019; }
+.seb-comparison-thumb img { display: block; margin: 0; width: 27px; height: 40px; object-fit: cover; object-position: center 40%; }
+.ws-site[data-project] .ws-section-coaching-comparison .ws-button-primary { color: var(--ws-ink) !important; }
+.ws-site-editable .seb-comparison-pair { animation: none; }
+@container (max-width: 760px) {
+  .seb-comparison { grid-template-columns: minmax(0, 1fr); }
+  .seb-comparison-choices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@container (max-width: 560px) {
+  .ws-site[data-project="coaching"] .seb-original-mark { width: 51px; height: 37px; }
+  .seb-original-mark img { width: 42px; }
+  .seb-footer-mark { width: 75px; height: 45px; }
+  .seb-footer-mark img { width: 61px; }
+  .seb-comparison-frame .seb-comparison-image { height: clamp(178px, 68cqi, 312px); }
+  .seb-comparison-phase { inset: 7px auto auto 7px; padding: 4px 7px; font-size: .72rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .seb-comparison-pair { animation: none !important; }
+}
+@container (max-width: 560px) {
+  .ws-site[data-project="coaching"] .ws-footer-brand { font-size: clamp(1.35rem, 7.5cqi, 2rem); gap: 10px; }
+}

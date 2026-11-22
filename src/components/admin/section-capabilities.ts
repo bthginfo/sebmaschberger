@@ -17,7 +17,7 @@ export function sectionBaseType(type: SectionType): SectionType { return aliases
 export function sectionCapabilities(type: SectionType) {
   const base = sectionBaseType(type); const feed = ["blog-cards", "blog-editorial", "blog-list"].includes(type);
   const creatorEditorial = type === "creator-media-kit" || type === "creator-shop";
-  const visualItems = ["scroll-story", "scene-sequence", "workflow-demo", "project-stage", "project-index", "project-finder", "editorial-index"].includes(type);
+  const visualItems = ["scroll-story", "scene-sequence", "workflow-demo", "project-stage", "project-index", "project-finder", "coaching-comparison", "editorial-index"].includes(type);
   return {
     base, feed,
     restaurantMenu: type === 'restaurant-menu',
