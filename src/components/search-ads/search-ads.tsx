@@ -147,7 +147,9 @@ export function SearchAds(){
       </div>}
       {tab==='launch'&&launch&&<div className={styles.grid}>
         <div className={styles.stack}><Section title="Kampagnen-Einstellungen"><div className={styles.form}>
-          {(['name','locations','language','objective','bid'] as const).map((key,i)=><Field key={key} label={['Kampagnenname','Standort','Sprache','Ziel','Gebotsstrategie'][i]}><Input value={draft[key]} onChange={event=>setDraft({...draft,[key]:event.target.value})}/></Field>)}
+          {(['name','locations','language'] as const).map((key,i)=><Field key={key} label={['Kampagnenname','Standort','Sprache'][i]}><Input value={draft[key]} onChange={event=>setDraft({...draft,[key]:event.target.value})}/></Field>)}
+          <Field label="Ziel"><textarea rows={2} maxLength={250} value={draft.objective} onChange={event=>setDraft({...draft,objective:event.target.value})}/></Field>
+          <Field label="Gebotsstrategie"><textarea rows={4} maxLength={250} value={draft.bid} onChange={event=>setDraft({...draft,bid:event.target.value})}/></Field>
           <Field label="Tagesbudget in Euro"><Input min={0} step=".01" type="number" value={draft.dailyBudget} onChange={event=>setDraft({...draft,dailyBudget:Number(event.target.value)})}/></Field>
         </div></Section>
         <Section title="Startauswahl" action={<span className={styles.badge}>{launchCount} Keywords</span>}>

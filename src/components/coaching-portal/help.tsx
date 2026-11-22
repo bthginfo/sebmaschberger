@@ -30,9 +30,9 @@ function topics(language:Language,staff:boolean,owner:boolean):Topic[] {
     ...(owner?[
       {title:t('Betreuer zuweisen','Assign coaches'),icon:Users,flow:[t('Team','Team'),t('Betreuer','Coach'),t('Kunden zuweisen','Assign clients')],body:t('Betreuer haben eigene Zugänge. Öffne das Kundenprofil, um mehrere Betreuer zuzuweisen oder den Zugang zu pausieren. Änderungen an Freigaben siehst du im Aktivitätsverlauf.','Coaches have individual accounts. Open the client profile to assign multiple coaches or pause access. Review changes in the activity history.'),tab:'people'},
       {title:t('So verbinden Kunden ihre Uhr','How clients connect a watch'),icon:Link2,flow:[t('Plan freigeben','Publish plan'),t('Kunde wählt Gerät','Client chooses device')],
-        body:t('Prüfe im Planeditor „Fortschritt & Geräte“ und gib den Plan frei. Bei neuen Plänen ist der Schalter bereits an.','Check Progress & devices in the plan editor and publish the plan. The switch is on for new plans.'),tab:'devices',steps:[
-          {label:t('Apple Watch · Der Kunde importiert','Apple Watch · The client imports'),text:t('Der Kunde exportiert seine Daten aus Health auf dem iPhone und lädt die Datei unter „Fortschritt“ ins Portal. Optional kann er Schritte und Schlaf mit Health Auto Export automatisch übertragen.','The client exports their data from Health on iPhone and imports the file under Progress. Health Auto Export can optionally send steps and sleep automatically.')},
-          {label:t('Fitbit, Pixel Watch, Oura und Withings · Du richtest ein','Fitbit, Pixel Watch, Oura and Withings · You set it up'),text:t('Richte den Anbieter einmal unter „Geräte“ ein. Der Kunde klickt danach auf „Verbinden“, meldet sich beim Anbieter an und gibt seine Werte frei.','Set up the provider once under Devices. The client then clicks Connect, signs in to the provider and allows access.')},
+        body:t('Gib den Kundenplan frei. „Fortschritt & Geräte“ ist bei neuen Plänen bereits an.','Publish the client plan. Progress & devices is on for new plans.'),tab:'devices',steps:[
+          {label:t('Apple Watch · Der Kunde importiert','Apple Watch · The client imports'),text:t('Der Kunde exportiert auf dem iPhone seine Apple-Health-Daten und importiert die Datei im Portal unter „Fortschritt“.','The client exports their Apple Health data on iPhone and imports it under Progress in the portal.')},
+          {label:t('Fitbit, Pixel Watch, Oura und Withings · Du richtest ein','Fitbit, Pixel Watch, Oura and Withings · You set it up'),text:t('Richte den Anbieter einmal unter „Geräte“ ein. Der Kunde wählt „Verbinden“ und erlaubt dem Portal den Zugriff auf seine Werte.','Set up the provider once under Devices. The client selects Connect and grants the portal access to their data.')},
         ]},
       {title:t('Google Ads übernehmen','Prepare Google Ads'),icon:Search,flow:[t('Kampagne','Campaign'),t('Freigeben','Approve'),t('Kopieren','Copy')],body:t('Prüfe Keywords und Anzeigen pro Anzeigengruppe. Kopiere einzelne Textfelder oder lade die CSV-Dateien für Google Ads Editor herunter.','Review keywords and ads by ad group. Copy individual fields or download the CSV files for Google Ads Editor.'),tab:'ads'},
     ]:[]),
@@ -62,14 +62,14 @@ export function PortalTour({actor,language,force,close}: {actor:ActorView;langua
   if(!show)return null;
   const rows=topics(language,actor.role!=='client',actor.role==='owner'), row=rows[index];
   function end(){localStorage.setItem(key,'done');setShow(false);close();}
-  return <Modal title={t('Einführung ins Coaching-Portal','Coaching portal introduction')} close={end}>
-    <div className={styles.stack}><small className={styles.label}>{index+1} / {rows.length}</small>
+  return <Modal className={styles.tourModal} title={t('Einführung ins Coaching-Portal','Coaching portal introduction')} close={end}>
+    <div key={index} className={styles.stack+' '+styles.tourContent}><small className={styles.label}>{index+1} / {rows.length}</small>
       <div className={styles.guide}><row.icon size={23}/><div className={styles.pills}>{row.flow.map(label=><span key={label} className={styles.badge}>{label}</span>)}</div></div>
       <h3>{row.title}</h3><p className={styles.copy}>{row.body}</p>
       {row.steps&&<HelpSteps steps={row.steps}/>}
-      <div className={styles.actionsRight}><Button quiet onClick={end}>{t('Später','Later')}</Button>
-        {index>0&&<Button quiet onClick={()=>setIndex(index-1)}>{t('Zurück','Back')}</Button>}
-        <Button primary onClick={()=>index+1===rows.length?end():setIndex(index+1)}>{index+1===rows.length?t('Fertig','Done'):t('Weiter','Next')}<ArrowRight size={17}/></Button></div>
     </div>
+    <div className={styles.actionsRight+' '+styles.tourFooter}><Button quiet onClick={end}>{t('Später','Later')}</Button>
+      {index>0&&<Button quiet onClick={()=>setIndex(index-1)}>{t('Zurück','Back')}</Button>}
+      <Button primary onClick={()=>index+1===rows.length?end():setIndex(index+1)}>{index+1===rows.length?t('Fertig','Done'):t('Weiter','Next')}<ArrowRight size={17}/></Button></div>
   </Modal>;
 }

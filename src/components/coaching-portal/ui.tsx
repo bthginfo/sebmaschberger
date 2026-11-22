@@ -43,10 +43,10 @@ export function Section({ title, children, action }: { title: string; children: 
 export function Empty({ title, text, action }: { title: string; text?: string; action?: ReactNode }) {
   return <div className={styles.empty}><strong>{title}</strong>{text && <p>{text}</p>}{action}</div>;
 }
-export function Modal({ title, close, children }: { title: string; close: () => void; children: ReactNode }) {
+export function Modal({ title, close, children, className = '' }: { title: string; close: () => void; children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => { const node = ref.current; node?.showModal(); return () => node?.close(); }, []);
-  return <dialog ref={ref} className={styles.modal} aria-label={title} onCancel={close}>
+  return <dialog ref={ref} className={styles.modal + ' ' + className} aria-label={title} onCancel={close}>
     <header className={styles.panelHeading}><h2>{title}</h2><Button quiet aria-label="Schließen / Close" onClick={close}><X size={19}/></Button></header>
     {children}
   </dialog>;

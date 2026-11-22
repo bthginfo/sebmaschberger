@@ -77,6 +77,11 @@
 .modal { background:var(--surface); color:var(--ink); border:1px solid var(--line); border-radius:25px; padding:clamp(17px,4vw,31px); width:min(calc(100% - 24px),600px); max-height:89svh; overflow:auto; }
 .modal::backdrop { background:#120d0ac9; backdrop-filter:blur(7px); }
 .modal > .panelHeading { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px; align-items:center; }
+.tourModal[open] { display:flex; flex-direction:column; gap:14px; }
+.tourModal > .panelHeading { flex:none; margin-bottom:0; }
+.tourContent { min-height:0; overflow:auto; scrollbar-width:thin; padding-inline-end:4px; }
+.tourFooter { flex:none; border-top:1px solid var(--line); padding-top:12px; }
+.tourFooter .button { padding-inline:clamp(8px,3vw,13px); }
 .helpSteps { display:grid; gap:8px; margin:0; padding:0; list-style:none; }
 .helpSteps li { border:1px solid var(--line); background:var(--field); border-radius:12px; padding:10px 12px; }
 .helpSteps li p { margin-top:2px; }
