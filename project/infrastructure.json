@@ -10,8 +10,9 @@
     "projectId": "prj_VYPw5dYFjhwt18LhpqngvgEcIr0C",
     "projectName": "sebmaschberger-coaching",
     "teamId": "team_VKBirSmFsmvJQkigngksd8aN",
-    "source": "direct-deployment",
-    "region": "fra1"
+    "source": "github",
+    "region": "fra1",
+    "nodeVersion": "24.x"
   },
   "neon": {
     "projectId": null,
@@ -34,6 +35,7 @@
   },
   "review": {
     "indexing": false,
-    "checkout": false
+    "checkout": false,
+    "sampleStorefront": true
   }
 }
