@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Activity as ActivityIcon, Apple, Copy, Download, Dumbbell, Footprints, Link2, Moon, RefreshCw, Scale } from 'lucide-react';
+import { Activity as ActivityIcon, Apple, ArrowUpRight, Copy, Download, Dumbbell, Footprints, Link2, Moon, RefreshCw, Scale } from 'lucide-react';
 import { readAppleHealth } from '@/lib/coaching-portal/apple';
 import { today } from '@/lib/coaching-portal/model';
 import type { ClientView, Language, Metrics, Provider } from '@/lib/coaching-portal/model';
@@ -9,11 +9,22 @@ import { Button, Empty, Field, Input, Modal, Section, Status, Switch, copyText, 
 import styles from './portal.module.css';
 
 export const deviceNames = { google:'Google Health · Fitbit / Pixel Watch', oura:'Oura Ring', withings:'Withings' } satisfies Record<Provider,string>;
+const providerLinks = {
+  google:'https://developers.google.com/health/setup',
+  oura:'https://developer.ouraring.com/',
+  withings:'https://developer.withings.com/developer-guide/v3/integration-guide/public-health-data-api/public-health-data-api-overview/',
+} satisfies Record<Provider,string>;
+const appleSources = [
+  { label:'Garmin Connect', url:'https://support.garmin.com/da-DK/?faq=lK5FPB9iPF5PXFkIpFlFPA&searchType=noProduct' },
+  { label:'Polar Flow', url:'https://support.polar.com/en/support/connecting_polar_flow_with_apple_health?category=settings' },
+  { label:'WHOOP', url:'https://support.whoop.com/s/article/Apple-Health-Integration?language=en_US' },
+];
 type Config={provider:Provider;available:boolean;clientId:string;callback:string};
 export function DeviceConfig({language}:{language:Language}) {
   const t=translator(language);
   const [data,setData]=useState<Config[]>([]),[issue,setIssue]=useState(''),[done,setDone]=useState('');
   const [busy,setBusy]=useState<Provider|'load'|''>('load');
+  const [selected,setSelected]=useState<Provider>('google');
   const [changes,setChanges]=useState<Partial<Record<Provider,{id:string;secret:string}>>>({});
   async function reload() {
     const items=await request<Config[]>('device-config');
@@ -26,24 +37,65 @@ export function DeviceConfig({language}:{language:Language}) {
       await request('device-config',{provider,...value});
       await reload();
       setChanges(current=>({...current,[provider]:undefined}));
-      setDone(t('Schnittstelle gespeichert','Connection settings saved'));
+      setDone(t('Zugang gespeichert. Teste die Verbindung mit einem Kundenkonto.','Credentials saved. Test the connection with a client account.'));
     }catch(error){setIssue(errorText(error));}finally{setBusy('');}
   }
+  async function readGoogleCredentials(file:File,callback:string) {
+    setIssue('');setDone('');
+    try {
+      if(file.size>64_000)throw Error();
+      const values=JSON.parse(await file.text())?.web;
+      if(typeof values?.client_id!=='string'||typeof values.client_secret!=='string')throw Error();
+      setChanges(current=>({...current,google:{id:values.client_id,secret:values.client_secret}}));
+      setDone(Array.isArray(values.redirect_uris)&&values.redirect_uris.includes(callback)
+        ?t('App-ID und Schlüssel übernommen. Speichere jetzt den Zugang.','App ID and secret imported. Save the credentials to continue.')
+        :t('App-ID und Schlüssel übernommen. Ergänze die angezeigte Rücksprungadresse in Google Cloud.','App ID and secret imported. Add the redirect URL shown here in Google Cloud.'));
+    }catch{setIssue(t('Wähle die OAuth-JSON-Datei eines Google-Webanwendungsclients.','Choose the OAuth JSON file for a Google web application client.'));}
+  }
+  const row=data.find(item=>item.provider===selected);
+  const value=changes[selected]??{id:row?.clientId??'',secret:''};
+  const setupGuide={
+    google:t('Aktiviere die Google Health API und lege einen OAuth-Client vom Typ Webanwendung an. Wähle Leserechte für Aktivität und Schlaf. Google kann für den Kundenzugang eine Prüfung verlangen.','Enable the Google Health API and create a web application OAuth client. Select read access to activity and sleep. Google may require verification for client access.'),
+    oura:t('Lege im Oura Developer Portal eine Anwendung an. Der Datenzugriff für Oura Ring Gen3 und neuer setzt beim Kunden eine aktive Oura-Mitgliedschaft voraus.','Create an application in the Oura Developer Portal. Customers with an Oura Ring Gen3 or newer need an active Oura membership for data access.'),
+    withings:t('Wähle im Withings Partner Hub die Public API und lege eine Anwendung für Aktivitäts- und Schlafdaten an.','Open the Public API in the Withings Partner Hub and create an application for activity and sleep data.'),
+  };
   return <div className={styles.stack}>
+    <Section title={t('Direkt mit Apple Health starten','Get started with Apple Health')}>
+      <div className={styles.stack}>
+        <p>{t('Veröffentliche den Kundenplan mit „Fortschritt & Geräte“. Der Kunde importiert seine Datei aus Apple Health selbst. Das geht auch bei Garmin, Polar oder WHOOP, wenn deren Daten in Health sichtbar sind.','Publish the client plan with Progress & devices enabled. The client imports their own file from Apple Health. This also works for Garmin, Polar or WHOOP data already visible in Health.')}</p>
+      </div>
+    </Section>
     {issue&&<Status bad text={issue}/>} {done&&<Status text={done}/>}
-    {data.map(row=>{
-      const value=changes[row.provider]??{id:row.clientId,secret:''};
-      return <Section title={deviceNames[row.provider]} key={row.provider}
-        action={<span className={styles.badge}>{row.available?t('Eingerichtet','Configured'):t('Einrichtung offen','Setup pending')}</span>}>
-        <form className={styles.form} onSubmit={event=>{event.preventDefault();void save(row.provider,value);}}>
-          <Field label="Callback URL"><Input value={row.callback} readOnly/></Field>
-          <Button quiet onClick={()=>void copyText(row.callback).then(()=>setDone(t('Adresse kopiert','URL copied'))).catch(error=>setIssue(errorText(error)))}><Copy size={15}/>{t('Adresse kopieren','Copy URL')}</Button>
-          <div className={styles.fields}><Field label="Client ID"><Input required value={value.id} onChange={event=>setChanges({...changes,[row.provider]:{...value,id:event.target.value}})}/></Field>
-          <Field label="Client Secret"><Input type="password" autoComplete="new-password" value={value.secret} onChange={event=>setChanges({...changes,[row.provider]:{...value,secret:event.target.value}})} placeholder={row.available?t('Bei Änderung eingeben','Enter to change'):t('Schlüssel eingeben','Enter secret')}/></Field></div>
-          <Button primary type="submit" loading={busy===row.provider}>{t('Schnittstelle speichern','Save connection settings')}</Button>
-        </form>
-      </Section>;
-    })}
+    {data.length>0&&<Section title={t('Anbieter einmal einrichten','Set up a provider once')}>
+      <div className={styles.stack}>
+        <p className={styles.copy}>{t('Wähle einen Anbieter, den deine Kunden nutzen. Sobald der Zugang gespeichert ist, verbinden sie ihr Konto selbst.','Choose a provider your clients use. After you save the credentials, clients connect their own accounts.')}</p>
+        <div className={styles.pills}>{data.map(item=><Button key={item.provider} quiet={selected!==item.provider} primary={selected===item.provider}
+          aria-pressed={selected===item.provider} onClick={()=>{setSelected(item.provider);setIssue('');setDone('');}}>{deviceNames[item.provider]}</Button>)}</div>
+        {row&&<form className={styles.form} onSubmit={event=>{event.preventDefault();void save(row.provider,value);}}>
+          <span className={styles.badge}>{row.available?t('Zugang gespeichert','Credentials saved'):t('Einrichtung offen','Setup pending')}</span>
+          <div className={styles.subcard+' '+styles.stack}>
+            <h3>{t('1. App beim Anbieter anlegen','1. Create an app with the provider')}</h3><p className={styles.copy}>{setupGuide[row.provider]}</p>
+            <div className={styles.actions}><a className={styles.button+' '+styles.quiet} href={providerLinks[row.provider]} target="_blank" rel="noreferrer">{t('Anbieter öffnen','Open provider')}<ArrowUpRight size={15}/></a></div>
+          </div>
+          <div className={styles.subcard+' '+styles.stack}>
+            <h3>{t('2. Rücksprungadresse hinterlegen','2. Add the redirect URL')}</h3>
+            <p className={styles.copy}>{t('Füge diese Adresse beim Anbieter unter „Redirect URI“ oder „Callback URL“ ein.','Paste this URL into the provider’s Redirect URI or Callback URL field.')}</p>
+            <Field label={t('Rücksprungadresse','Redirect URL')}><Input value={row.callback} readOnly/></Field>
+            <div className={styles.actions}><Button quiet onClick={()=>void copyText(row.callback).then(()=>setDone(t('Adresse kopiert','URL copied'))).catch(error=>setIssue(errorText(error)))}><Copy size={15}/>{t('Adresse kopieren','Copy URL')}</Button></div>
+          </div>
+          <div className={styles.subcard+' '+styles.stack}>
+            <h3>{t('3. Zugang hier speichern','3. Save credentials here')}</h3>
+            {row.provider==='google'&&<details className={styles.editorItem}><summary>{t('Google-JSON importieren','Import Google JSON')}</summary>
+              <p className={styles.copy}>{t('Die Datei aus Google Cloud füllt die beiden Felder aus.','The file from Google Cloud fills both fields.')}</p>
+              <Field label={t('OAuth-Datei aus Google Cloud','Google Cloud OAuth file')}><Input type="file" accept=".json,application/json" onChange={event=>{const file=event.target.files?.[0];if(file)void readGoogleCredentials(file,row.callback);}}/></Field>
+            </details>}
+            <div className={styles.fields}><Field label={t('App-ID (Client ID)','App ID (Client ID)')}><Input required value={value.id} onChange={event=>setChanges({...changes,[row.provider]:{...value,id:event.target.value}})}/></Field>
+            <Field label={t('App-Schlüssel (Client Secret)','App secret (Client Secret)')}><Input type="password" autoComplete="new-password" value={value.secret} required={!row.available} onChange={event=>setChanges({...changes,[row.provider]:{...value,secret:event.target.value}})} placeholder={row.available?t('Bei Änderung eingeben','Enter to change'):t('Schlüssel eingeben','Enter secret')}/></Field></div>
+            <div className={styles.actions}><Button primary type="submit" loading={busy===row.provider}>{t('Zugang speichern','Save credentials')}</Button></div>
+          </div>
+        </form>}
+      </div>
+    </Section>}
     {busy==='load'&&<p role="status">{t('Lade Schnittstellen …','Loading integrations…')}</p>}
   </div>;
 }
@@ -97,6 +149,7 @@ export function Progress({client,language,reload,staff=false}:{client:ClientView
     </Section>
     {!staff&&<Section title={t('Tracker und Apple Watch','Trackers and Apple Watch')}>
       <div className={styles.stack}>
+        {current&&<p className={styles.copy}>{t('Wähle deine Uhr und bestätige zuerst, dass du Werte im Portal speichern möchtest. Für Apple Watch kannst du direkt eine Datei importieren. Bei anderen Geräten führt dich „Verbinden“ zum Anbieter.','Choose your watch and confirm that you want to store measurements in the portal. For Apple Watch, you can import a file directly. For other devices, Connect takes you to the provider.')}</p>}
         {!current&&<p className={styles.copy}>{t('Die Geräteerfassung ist pausiert. Du kannst deine Freigaben und bisherigen Werte hier verwalten.','Device tracking is paused. You can manage your sharing and previous measurements here.')}</p>}
         {(current||client.sharing)&&<Switch label={t('Fortschrittswerte mit meinem Betreuungsteam teilen','Share progress measurements with my coaching team')} checked={client.sharing} change={sharing=>void run('sharing',async()=>{await request('sharing',{sharing});await reload();})}/>}
         {current&&<label className={styles.switch}><span>{t('Ich möchte die ausgewählten Gerätewerte in meinem Coaching-Portal speichern.','I want to store the selected device measurements in my coaching portal.')}</span><input type="checkbox" checked={consent} onChange={event=>setConsent(event.target.checked)} style={{opacity:1}}/></label>}
@@ -133,7 +186,8 @@ export function Progress({client,language,reload,staff=false}:{client:ClientView
           })}>{t('Importierte Tageswerte löschen','Delete imported daily measurements')}</Button>}</>}</div>
         </div>)}
         <details className={styles.editorItem}><summary>{t('Garmin, Polar, WHOOP und andere Uhren','Garmin, Polar, WHOOP and other watches')}</summary>
-          <p>{t('Wenn dein Anbieter Schritte oder Schlaf mit Apple Health synchronisiert, kannst du diese über den Health-Export übernehmen. Android-Geräte mit Google-Health-Synchronisierung verbindest du über Google Health. Direkte Herstelleranbindungen haben eigene Freigaben.','If your device sends steps or sleep to Apple Health, use the Health export. Android devices that sync to Google Health can use that connection. Vendors have separate direct API approvals.')}</p>
+          <p>{t('Erlaube deiner Uhren-App, Werte in Apple Health zu schreiben. Sobald sie dort sichtbar sind, kannst du sie mit dem Health-Export übernehmen. Android-Geräte, deren Daten in Google Health erscheinen, kannst du über Google Health verbinden.','Allow your watch app to write data to Apple Health. Once the data appears there, import it using the Health export. Android devices that share data with Google Health can use that connection.')}</p>
+          <div className={styles.actions}>{appleSources.map(source=><a key={source.label} className={styles.button+' '+styles.quiet} href={source.url} target="_blank" rel="noreferrer">{source.label}<ArrowUpRight size={14}/></a>)}</div>
         </details>
         <a className={styles.button+' '+styles.quiet} href="/api/coaching-portal/export"><Download size={16}/>{t('Meine Coaching-Daten exportieren','Export my coaching data')}</a>
       </div>
@@ -153,6 +207,7 @@ export function Progress({client,language,reload,staff=false}:{client:ClientView
     </Modal>}
     {modal==='apple'&&<Modal title={t('Apple-Health-Export','Apple Health export')} close={()=>setModal(null)}>
       <div className={styles.stack}><p>{t('Öffne auf dem iPhone Health, dein Profil und „Alle Gesundheitsdaten exportieren“. Wähle die ZIP- oder XML-Datei. Das Portal extrahiert auf deinem Gerät die letzten 90 Tage mit Schritten, Schlaf, Workouts und Gewicht.','In iPhone Health, open your profile and Export All Health Data. Select the ZIP or XML file. Your device extracts up to 90 days of steps, sleep, workouts and weight.')}</p>
+        <a href="https://support.apple.com/guide/iphone/share-your-health-data-iph5ede58c3d/ios" target="_blank" rel="noreferrer">{t('Apple-Anleitung zum Export','Apple’s export instructions')}</a>
         <Field label={t('Exportdatei','Export file')}><Input type="file" accept=".zip,.xml" onChange={event=>{
           const file=event.target.files?.[0];if(file)void run('read',async()=>{setPreview(await readAppleHealth(file));});
         }}/></Field>

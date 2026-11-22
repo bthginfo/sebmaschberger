@@ -76,6 +76,10 @@
 .empty p { margin:4px 0 7px; }
 .modal { background:var(--surface); color:var(--ink); border:1px solid var(--line); border-radius:25px; padding:clamp(17px,4vw,31px); width:min(calc(100% - 24px),600px); max-height:89svh; overflow:auto; }
 .modal::backdrop { background:#120d0ac9; backdrop-filter:blur(7px); }
+.modal > .panelHeading { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px; align-items:center; }
+.helpSteps { display:grid; gap:8px; margin:0; padding:0; list-style:none; }
+.helpSteps li { border:1px solid var(--line); background:var(--field); border-radius:12px; padding:10px 12px; }
+.helpSteps li p { margin-top:2px; }
 .switch { display:flex; gap:9px; align-items:center; justify-content:space-between; min-height:46px; position:relative; padding:6px 2px; border-bottom:1px solid var(--line); }
 .switch input { position:absolute; right:0; width:37px; height:24px; opacity:0; margin:0; cursor:pointer; }
 .switch i { width:39px; height:24px; background:var(--surface-raised); border:1px solid var(--line); border-radius:20px; pointer-events:none; flex:none; }

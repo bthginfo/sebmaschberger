@@ -1,5 +1,6 @@
-import { campaignSchema } from './model';
-import type { Campaign, CampaignGroup } from './model';
+import { additionalKeywords } from './keywords';
+import { campaignSchema, launchPlan } from './model';
+import type { Campaign, CampaignGroup, CampaignRecord } from './model';
 const origin = 'https://sebmaschberger-coaching.vercel.app';
 const shared = ['Kostenloses Erstgespräch','Sebastian Maschberger','Dein persönlicher 1:1-Plan','Training für deinen Alltag','Ein Plan, der zu dir passt','Online und persönlich'];
 function group(id:string,name:string,intent:string,route:string,path1:string,path2:string,terms:string,headlines:string[],descriptions:string[]):CampaignGroup {
@@ -33,17 +34,19 @@ group('personal-training','06 | Personal Training online','Anfragen mit konkrete
 ['Personal Training online','Dein Trainer für Kraft','Online Personal Trainer','Individueller Trainingsplan','Training zuhause oder Studio','Feedback zu deinem Training','Dein Trainer im Alltag','Übungen passend für dich','Persönliche Betreuung'],
 ['Mein Online-Coaching hilft dir beim Krafttraining zuhause oder im Studio. Mit Feedback.','Wir sprechen über deine Ziele, dein Training und deine Zeit. Buche ein Erstgespräch.','Ich erstelle deinen Trainingsplan und begleite dich bei der Umsetzung deiner Woche.','Du willst eine feste Ansprechperson fürs Training? Lass uns kostenlos kennenlernen.'])
 ];
+const previousStart = '25 € pro Tag als editierbarer Vorschlag. Zuerst die Gruppen mit der stärksten Buchungsabsicht beobachten. Kampagne in Google Ads pausiert importieren.';
+const start = '10 € pro Tag zum Start. Die Startauswahl enthält zuerst Online Fitness-Coaching und Personal Training online mit je acht genau passenden Keywords. Lade Keywords und Anzeigen der Startauswahl als CSV. Importiere sie pausiert und aktiviere sie nach deiner Prüfung.';
 const draft: Campaign = {
-  name:'Sebastian | Suche DE | Erstgespräch',locations:'Deutschland · Präsenz in Zielregion',language:'Deutsch',dailyBudget:25,
+  name:'Sebastian | Suche DE | Erstgespräch',locations:'Deutschland · Präsenz in Zielregion',language:'Deutsch',dailyBudget:10,
   objective:'Qualifizierte Anfrage für das kostenlose Erstgespräch',
   bid:'Suchnetzwerk · Start mit Klicks maximieren. Auf Conversions umstellen, wenn qualifizierte Anfragen zuverlässig erfasst werden.',
   setup:[
     'Suchnetzwerk für Deutschland. Deutsch. Suchnetzwerk-Partner zum Start separat prüfen. Anzeigen und Budget vor der Veröffentlichung bestätigen.',
-    '25 € pro Tag als editierbarer Vorschlag. Zuerst die Gruppen mit der stärksten Buchungsabsicht beobachten. Kampagne in Google Ads pausiert importieren.',
+    start,
     'Ein kostenloses Erstgespräch ist der CTA. Primäres Ziel ist eine erfolgreich übermittelte Kontaktanfrage. Echte Buchungen getrennt messen. Beispieltermine zählen als Vorschau.',
     'Conversion erst nach erfolgreicher serverseitiger Übermittlung erfassen. Google-Tag oder GA4 sowie Einwilligung prüfen. In Google Ads die primäre Aktion und Doppelzählungen kontrollieren.',
     'Zielseiten öffnen und die Anzeige auf einem Smartphone gegenlesen. Standort, Tagesbudget und Sprache vor dem Start in Google Ads überprüfen.',
-    'Nach dem Start Suchanfragen und Qualität der Gespräche prüfen. Negative Keywords ergänzen und pro Gruppe bewerten, welche konkreten Anfragen zustande kommen.'
+    'Nach dem Start tatsächliche Suchanfragen, Ausgaben und gebuchte Gespräche prüfen. Ergänze Ausschlüsse bei Streuverlust. Erweitere die Auswahl mit passenden Keywords aus den übrigen Gruppen, sobald die Anfragequalität passt. Im Keyword-Planer lassen sich Suchvolumen und Gebote für Deutschland abschätzen.'
   ].join('\n\n'),
   groups,
   negative:'jobs|stellenangebot|ausbildung|studium|lizenzerwerb|gehalt|praktikum|vollzeit stelle|fitness influencer jobs|vorlage pdf|pdf download|trainingsplan gratis|kostenlose trainings app|kostenloser trainingsplan download|fitness studio in meiner nähe|gym mitgliedschaft|geräte kaufen|hanteln kaufen|gebraucht kaufen|supplemente bestellen|proteinpulver kaufen|anabolika|steroide kaufen|wettkampf vorbereiten|bodybuilding wettkampf|trainerschein|rehabilitation|physiotherapie praxis|kalorienrechner|gratis abnehm app'.split('|').map(term=>({term,match:'Phrase'})),
@@ -57,4 +60,35 @@ const draft: Campaign = {
   callouts:['Persönliche Rückmeldung','Training ab 30','Online auf Deutsch','Für zuhause und Studio','Flexible Ernährung','Kostenloser Einstieg']
 };
 
-export function seedCampaign() { return campaignSchema.parse(structuredClone(draft)); }
+function additionalFor(id: string): CampaignGroup['keywords'] {
+  const terms = additionalKeywords[id as keyof typeof additionalKeywords];
+  return terms ? terms.trim().split('\n').map((term,index)=>({term,match:index<35?'Exact':'Phrase'})) : [];
+}
+export function seedCampaign() {
+  return campaignSchema.parse({ ...draft, launch:launchPlan(draft), groups:draft.groups.map(group=>({
+    ...group, keywords:[...group.keywords,...additionalFor(group.id)]
+  })) });
+}
+
+export function updateEarlierDraft(record: CampaignRecord): CampaignRecord {
+  const {campaign} = record;
+  if (campaign.launch) return record;
+  const key = (term:string)=>term.trim().toLowerCase().replace(/\s+/gu,' ');
+  const used = new Set(campaign.groups.flatMap(group=>group.keywords.map(keyword=>key(keyword.term))));
+  const expanded = campaign.groups.map(group=>{
+    const original = groups.find(row=>row.id===group.id)?.keywords;
+    if (!original || original.length !== group.keywords.length || original.some((entry,index)=>
+      entry.term!==group.keywords[index].term || entry.match!==group.keywords[index].match)) return group;
+    const additions = additionalFor(group.id).filter(entry=>{
+      const name=key(entry.term);
+      if (used.has(name)) return false;
+      used.add(name);
+      return true;
+    });
+    return {...group,keywords:[...group.keywords,...additions]};
+  });
+  return { revision:record.revision+1, status:'draft', approvedAt:null, campaign:{
+    ...campaign, groups:expanded, launch:launchPlan(campaign), dailyBudget:draft.dailyBudget,
+    setup:campaign.setup.replace(previousStart,start)
+  } };
+}

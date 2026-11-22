@@ -6,13 +6,18 @@ import type { ActorView, Language } from '@/lib/coaching-portal/model';
 import { Button, Modal, Panel, translator } from './ui';
 import styles from './portal.module.css';
 
-type Topic={title:string; icon:typeof Users; flow:string[]; body:string; tab:string};
+type HelpStep={label:string; text:string};
+type Topic={title:string; icon:typeof Users; flow:string[]; body:string; tab:string; steps?:HelpStep[]};
 function topics(language:Language,staff:boolean,owner:boolean):Topic[] {
   const t=translator(language);
   if(!staff)return [
     {title:t('Dein erster Tag','Your first day'),icon:CalendarDays,flow:[t('Heute','Today'),t('Einheit öffnen','Open session'),t('Speichern','Save')],body:t('Öffne deine geplante Einheit. Erledigte Sätze und Aufgaben kannst du direkt markieren.','Open your scheduled session. Check off completed sets and activities as you go.'),tab:'today'},
     {title:t('Rezepte und Kalender','Recipes and calendar'),icon:Utensils,flow:[t('Woche wählen','Choose week'),t('Rezept','Recipe'),t('Einkaufsliste','Shopping list')],body:t('Im Plan passen sich die Mengen an die gewünschte Portionszahl an. Termine kannst du als Kalenderdatei herunterladen.','In your plan, recipe quantities adjust to your servings. Download appointments as calendar files.'),tab:'plan'},
-    {title:t('Geräte und Freigabe','Devices and sharing'),icon:Link2,flow:[t('Fortschritt','Progress'),t('Gerät wählen','Choose device'),t('Freigabe','Sharing')],body:t('Wähle Google Health, Oura oder Withings oder importiere Apple Health. Du steuerst, welche Werte dein Betreuungsteam sehen darf.','Connect Google Health, Oura or Withings, or import Apple Health. You decide whether the team can see your measurements.'),tab:'progress'},
+    {title:t('Verbinde deine Uhr','Connect your watch'),icon:Link2,flow:[t('Fortschritt','Progress'),t('Gerät wählen','Choose your device')],
+      body:t('Öffne im Portal „Fortschritt“. Dort kannst du Werte übernehmen und entscheiden, ob dein Coaching-Team sie sehen darf.','Open Progress in the portal to import data and decide if your coaching team can see it.'),tab:'progress',steps:[
+        {label:'Apple Watch',text:t('Öffne Health auf dem iPhone, tippe auf dein Profil und exportiere deine Gesundheitsdaten. Wähle die Datei im Portal unter „Health-Export importieren“.','On iPhone, open Health, tap your profile and export your health data. Select the file under Import Health export in the portal.')},
+        {label:t('Fitbit, Pixel Watch, Oura und Withings','Fitbit, Pixel Watch, Oura and Withings'),text:t('Klicke bei deinem Gerät auf „Verbinden“. Melde dich beim Anbieter an und bestätige die Datenfreigabe. Danach kommst du zurück ins Portal.','Select Connect next to your device. Sign in to the provider and confirm sharing. You will return to the portal.')},
+      ]},
     {title:t('Kontakt zum Team','Contact the team'),icon:Headphones,flow:[t('Chat','Chat'),t('Schreiben','Write'),t('Senden','Send')],body:t('Du erreichst Sebastian und dein Betreuungsteam im privaten Chat.','Reach Sebastian and your coaching team in the private chat.'),tab:'chat'},
   ];
   return [
@@ -24,10 +29,17 @@ function topics(language:Language,staff:boolean,owner:boolean):Topic[] {
     {title:t('Persönlich im Chat betreuen','Coach in chat'),icon:Headphones,flow:[t('Kunde','Client'),t('Nachricht','Message'),t('Team-Absender','Team sender')],body:t('Öffne den Kundenchat und antworte mit Text oder Anhang. Kunden sehen Sebastian Coaching. Die interne Ansicht zeigt den Namen des Absenders.','Open a client chat and reply with a message or attachment. Clients see Sebastian Coaching. The team view shows its author.'),tab:'chat'},
     ...(owner?[
       {title:t('Betreuer zuweisen','Assign coaches'),icon:Users,flow:[t('Team','Team'),t('Betreuer','Coach'),t('Kunden zuweisen','Assign clients')],body:t('Betreuer haben eigene Zugänge. Öffne das Kundenprofil, um mehrere Betreuer zuzuweisen oder den Zugang zu pausieren. Änderungen an Freigaben siehst du im Aktivitätsverlauf.','Coaches have individual accounts. Open the client profile to assign multiple coaches or pause access. Review changes in the activity history.'),tab:'people'},
-      {title:t('Apple Watch und Fitness-Tracker','Apple Watch and fitness trackers'),icon:Link2,flow:[t('Geräte','Devices'),t('Callback kopieren','Copy callback'),t('Speichern','Save')],body:t('Hinterlege App-Zugangsdaten für Google Health, Oura oder Withings. Kunden geben ihre Werte beim Anbieter frei. Für Apple Watch gibt es Health-Dateiimport und optionalen REST-Sync über Health Auto Export.','Enter app credentials for Google Health, Oura or Withings. Clients authorize their data at the provider. Apple Watch supports Health file import and optional REST sync via Health Auto Export.'),tab:'devices'},
+      {title:t('So verbinden Kunden ihre Uhr','How clients connect a watch'),icon:Link2,flow:[t('Plan freigeben','Publish plan'),t('Kunde wählt Gerät','Client chooses device')],
+        body:t('Prüfe im Planeditor „Fortschritt & Geräte“ und gib den Plan frei. Bei neuen Plänen ist der Schalter bereits an.','Check Progress & devices in the plan editor and publish the plan. The switch is on for new plans.'),tab:'devices',steps:[
+          {label:t('Apple Watch · Der Kunde importiert','Apple Watch · The client imports'),text:t('Der Kunde exportiert seine Daten aus Health auf dem iPhone und lädt die Datei unter „Fortschritt“ ins Portal. Optional kann er Schritte und Schlaf mit Health Auto Export automatisch übertragen.','The client exports their data from Health on iPhone and imports the file under Progress. Health Auto Export can optionally send steps and sleep automatically.')},
+          {label:t('Fitbit, Pixel Watch, Oura und Withings · Du richtest ein','Fitbit, Pixel Watch, Oura and Withings · You set it up'),text:t('Richte den Anbieter einmal unter „Geräte“ ein. Der Kunde klickt danach auf „Verbinden“, meldet sich beim Anbieter an und gibt seine Werte frei.','Set up the provider once under Devices. The client then clicks Connect, signs in to the provider and allows access.')},
+        ]},
       {title:t('Google Ads übernehmen','Prepare Google Ads'),icon:Search,flow:[t('Kampagne','Campaign'),t('Freigeben','Approve'),t('Kopieren','Copy')],body:t('Prüfe Keywords und Anzeigen pro Anzeigengruppe. Kopiere einzelne Textfelder oder lade die CSV-Dateien für Google Ads Editor herunter.','Review keywords and ads by ad group. Copy individual fields or download the CSV files for Google Ads Editor.'),tab:'ads'},
     ]:[]),
   ];
+}
+function HelpSteps({steps}:{steps:HelpStep[]}) {
+  return <ul className={styles.helpSteps}>{steps.map(step=><li key={step.label}><strong>{step.label}</strong><p className={styles.copy}>{step.text}</p></li>)}</ul>;
 }
 export function PortalHelp({ actor,language,open }: {actor:ActorView;language:Language;open:(tab:string)=>void}) {
   const t=translator(language), rows=topics(language,actor.role!=='client',actor.role==='owner');
@@ -35,6 +47,7 @@ export function PortalHelp({ actor,language,open }: {actor:ActorView;language:La
     <div className={styles.grid}>{rows.map(row=><Panel key={row.title}><div className={styles.stack}>
       <div className={styles.guide}><row.icon size={21}/><div className={styles.pills}>{row.flow.map(step=><span className={styles.badge} key={step}>{step}</span>)}</div></div>
       <h2>{row.title}</h2><p className={styles.copy}>{row.body}</p>
+      {row.steps&&<HelpSteps steps={row.steps}/>}
       <Button quiet onClick={()=>open(row.tab)}>{t('Bereich öffnen','Open section')}<ArrowRight size={16}/></Button>
     </div></Panel>)}</div></>;
 }
@@ -53,6 +66,7 @@ export function PortalTour({actor,language,force,close}: {actor:ActorView;langua
     <div className={styles.stack}><small className={styles.label}>{index+1} / {rows.length}</small>
       <div className={styles.guide}><row.icon size={23}/><div className={styles.pills}>{row.flow.map(label=><span key={label} className={styles.badge}>{label}</span>)}</div></div>
       <h3>{row.title}</h3><p className={styles.copy}>{row.body}</p>
+      {row.steps&&<HelpSteps steps={row.steps}/>}
       <div className={styles.actionsRight}><Button quiet onClick={end}>{t('Später','Later')}</Button>
         {index>0&&<Button quiet onClick={()=>setIndex(index-1)}>{t('Zurück','Back')}</Button>}
         <Button primary onClick={()=>index+1===rows.length?end():setIndex(index+1)}>{index+1===rows.length?t('Fertig','Done'):t('Weiter','Next')}<ArrowRight size={17}/></Button></div>

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { ArrowDownToLine, Check, Clipboard, Copy, ExternalLink, ListFilter, Plus, Search, Target } from 'lucide-react';
 import type { Campaign, CampaignGroup, CampaignRecord } from '@/lib/search-ads/model';
-import { adsRows, campaignSchema, csv, keywordList, keywordRows } from '@/lib/search-ads/model';
+import { adsRows, campaignSchema, csv, keywordList, keywordRows, launchPlan, launchSubset } from '@/lib/search-ads/model';
 import { Button, Field, Input, Modal, Panel, Section, Status, copyText } from '@/components/coaching-portal/ui';
 import styles from '@/components/coaching-portal/portal.module.css';
 import ads from './search-ads.module.css';
@@ -48,6 +48,9 @@ export function SearchAds(){
   },[]);
   const group=draft?.groups.find(value=>value.id===groupId);
   const count=draft?.groups.reduce((sum,g)=>sum+g.keywords.length,0)??0;
+  const exact=group?.keywords.filter(keyword=>keyword.match==='Exact').length??0;
+  const launch=draft?launchPlan(draft):null;
+  const launchCount=draft&&launch?draft.groups.reduce((sum,entry)=>sum+(launch.groupIds.includes(entry.id)?Math.min(entry.keywords.length,launch.limit):0),0):0;
   const dirty=Boolean(saved&&draft&&JSON.stringify(saved.campaign)!==JSON.stringify(draft));
   function updateGroup(input:Partial<CampaignGroup>){
     if(!draft||!group)return;
@@ -69,10 +72,12 @@ export function SearchAds(){
       setSaved(value);setDraft(value.campaign);setApproval(false);report(approve?'Kampagne im CMS freigegeben':'Entwurf gespeichert');
     }catch(error){report(error instanceof Error?error.message:'Die Kampagne konnte nicht gespeichert werden.',true);}finally{setBusy(false);}
   }
-  function exportFile(type:'keywords'|'ads') {
+  function exportFile(type:'keywords'|'ads',selection=false) {
     const result=campaignSchema.safeParse(draft);
     if(!result.success){report(result.error.issues[0].message,true);return;}
-    download(type==='keywords'?'sebastian-keywords.csv':'sebastian-suchanzeigen.csv',csv(type==='keywords'?keywordRows(result.data):adsRows(result.data)));
+    const campaign=selection?launchSubset(result.data):result.data;
+    const name='sebastian-'+(selection?'start-':'')+(type==='keywords'?'keywords.csv':'suchanzeigen.csv');
+    download(name,csv(type==='keywords'?keywordRows(campaign):adsRows(campaign)));
     report('CSV-Datei heruntergeladen');
   }
   return <div className={styles.root} data-mode="dark">
@@ -85,7 +90,7 @@ export function SearchAds(){
       <p>{draft?.name??'Kampagnenentwurf laden …'}</p></div>{draft&&<div className={styles.actions}>
         <span className={styles.badge}>{saved?.status==='approved'&&!dirty?'Freigegeben':'Entwurf'}</span>
         <Button onClick={()=>void persist(false)} loading={busy} disabled={!dirty}>Entwurf speichern</Button>
-        <Button primary onClick={()=>setApproval(true)} disabled={busy}><Check size={17}/> Zur Freigabe</Button>
+        <Button primary onClick={()=>setApproval(true)} disabled={busy||(!dirty&&saved?.status==='approved')}><Check size={17}/> Zur Freigabe</Button>
       </div>}</header>
       {feedback.length>0&&<Status text={(feedback[0]??'')} bad={feedback[1]}/>}
       {draft&&<><div className={styles.statGrid}>
@@ -100,6 +105,7 @@ export function SearchAds(){
         {tab==='keywords'?<Section title={group.name} action={<Button quiet onClick={()=>void copy(keywordList(group.keywords),'Keywords')}><Copy size={16}/> Kopieren</Button>}>
           <div className={styles.form}>
             <p className={styles.copy}>{group.intent}</p>
+            <div className={styles.pills}><span className={styles.badge}>{exact} genau passend</span><span className={styles.badge}>{group.keywords.length-exact} passende Wortgruppe</span></div>
             <Field label="Ein Keyword pro Zeile"><textarea className={ads.keywords} value={planText[group.id]??keywordList(group.keywords)} onChange={event=>{
               const raw=event.target.value;setPlanText({...planText,[group.id]:raw});updateGroup({keywords:parseKeywords(raw)});
             }}/></Field>
@@ -139,18 +145,33 @@ export function SearchAds(){
           </Section>
         </div>
       </div>}
-      {tab==='launch'&&<div className={styles.grid}>
-        <Section title="Kampagnen-Einstellungen"><div className={styles.form}>
+      {tab==='launch'&&launch&&<div className={styles.grid}>
+        <div className={styles.stack}><Section title="Kampagnen-Einstellungen"><div className={styles.form}>
           {(['name','locations','language','objective','bid'] as const).map((key,i)=><Field key={key} label={['Kampagnenname','Standort','Sprache','Ziel','Gebotsstrategie'][i]}><Input value={draft[key]} onChange={event=>setDraft({...draft,[key]:event.target.value})}/></Field>)}
-          <Field label="Vorgeschlagenes Tagesbudget in Euro"><Input min={0} step=".01" type="number" value={draft.dailyBudget} onChange={event=>setDraft({...draft,dailyBudget:Number(event.target.value)})}/></Field>
+          <Field label="Tagesbudget in Euro"><Input min={0} step=".01" type="number" value={draft.dailyBudget} onChange={event=>setDraft({...draft,dailyBudget:Number(event.target.value)})}/></Field>
         </div></Section>
+        <Section title="Startauswahl" action={<span className={styles.badge}>{launchCount} Keywords</span>}>
+          <div className={styles.form}>
+            <p className={styles.copy}>Der Export übernimmt die obersten Keywords jeder ausgewählten Gruppe. Verschiebe Suchbegriffe in der Keyword-Liste, um ihre Reihenfolge zu ändern.</p>
+            <div className={styles.pills}>{draft.groups.map(entry=>{
+              const selected=launch.groupIds.includes(entry.id);
+              return <Button key={entry.id} quiet={!selected} primary={selected} aria-pressed={selected}
+                disabled={selected&&launch.groupIds.length===1} onClick={()=>setDraft({...draft,launch:{...launch,groupIds:selected?launch.groupIds.filter(id=>id!==entry.id):[...launch.groupIds,entry.id]}})}>{entry.name}</Button>;
+            })}</div>
+            <Field label="Keywords pro ausgewählter Gruppe"><Input type="number" min={1} max={150} value={launch.limit} onChange={event=>setDraft({...draft,launch:{...launch,limit:Math.max(1,Math.min(150,Number(event.target.value)))}})}/></Field>
+            <div className={styles.actions}>
+              <Button quiet onClick={()=>exportFile('keywords',true)}><ArrowDownToLine size={16}/> Start-Keywords als CSV</Button>
+              <Button quiet onClick={()=>exportFile('ads',true)}><ArrowDownToLine size={16}/> Start-Anzeigen als CSV</Button>
+            </div>
+          </div>
+        </Section></div>
         <Section title="Check vor dem Launch" action={<Button quiet onClick={()=>void copy(draft.setup,'Startcheck')}><Clipboard size={16}/> Kopieren</Button>}>
           <Field label="Messung, Budget und Start"><textarea className={ads.checklist} value={draft.setup} onChange={event=>setDraft({...draft,setup:event.target.value})}/></Field>
           <div className={styles.actions}><Button quiet onClick={()=>exportFile('keywords')}><ArrowDownToLine size={16}/> Keyword-CSV</Button><Button quiet onClick={()=>exportFile('ads')}><ArrowDownToLine size={16}/> Anzeigen-CSV</Button></div>
         </Section>
       </div>}
       {approval&&<Modal title="Kampagnenentwurf freigeben" close={()=>setApproval(false)}>
-        <div className={styles.stack}><h3>{draft.name}</h3><p>{count} Keywords · {draft.groups.length} Gruppen · vorgeschlagenes Tagesbudget {draft.dailyBudget.toLocaleString('de-DE')} €.</p>
+        <div className={styles.stack}><h3>{draft.name}</h3><p>{count} Keywords · {draft.groups.length} Gruppen · {draft.dailyBudget.toLocaleString('de-DE')} € pro Tag.</p>
           <p className={styles.copy}>Die Freigabe dokumentiert den geprüften Stand im CMS. Die Kampagne wird in Google Ads separat eingerichtet und gestartet.</p>
           {feedback.length>0&&feedback[1]&&<Status text={(feedback[0]??'')} bad/>}
           <Button primary loading={busy} onClick={()=>void persist(true)}><Check size={17}/> Im CMS freigeben</Button>
