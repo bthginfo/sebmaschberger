@@ -23,4 +23,4 @@ Die Datenbank dieser Vorschau ist eine SQLite-Datei im privaten Blob-Store diese
 - Früheres Projekt und historische Wettbewerbsstationen. [Train Like a Pro](https://trainlikeapro.coach/) · [Archiv](https://maschberger.jimdoweb.com/)
 - Bayerischer Wettkampf 2017. [DBFV Ergebnisliste](https://dbfv.de/wp-content/uploads/Ergebnisliste_BM2017.pdf)
 - Porträts und Training. [Instagram](https://www.instagram.com/sebastian_maschberger/) · [Auftaktfoto](https://www.instagram.com/p/Df7C7BrAgMT/) · [Trainingsfoto](https://www.instagram.com/p/DejPtbEgoEe/)
-
+- Themen Energie und Fokus, veröffentlichte Kontakt-E-Mail und das Porträt aus den Vorschaumetadaten. [Flamingo-Stand](https://flamingo-renderer.vercel.app/sebastian-maschberger) · [Kontaktseite](https://flamingo-renderer.vercel.app/sebastian-maschberger/kontakt)

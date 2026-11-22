@@ -82,5 +82,29 @@
     "position": "50% 50%",
     "width": 1000,
     "height": 610
+  },
+  {
+    "id": "flamingo-portrait",
+    "url": "/media/project/flamingo-portrait.webp",
+    "name": "Sebastian Maschberger · Porträt",
+    "alt": "Sebastian Maschberger sitzt im weißen Hemd auf einer Treppe im Grünen",
+    "type": "image/webp",
+    "size": 124430,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 0%",
+    "width": 1000,
+    "height": 1120
+  },
+  {
+    "id": "rhythm",
+    "url": "/media/project/rhythm.webp",
+    "name": "Krafttraining im Studio · redaktionelles Motiv",
+    "alt": "Ein Sportler bereitet sich im Studio auf eine Kraftübung vor",
+    "type": "image/webp",
+    "size": 39078,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 50%",
+    "width": 820,
+    "height": 548
   }
 ]

@@ -417,6 +417,19 @@
                 "label": "Ernährung ansehen"
               },
               {
+                "id": "energy-focus",
+                "title": "Energie & Fokus",
+                "text": "Wir schauen, wie Training, Essen und Erholung in deine Woche passen, auch wenn der Kalender voll ist.",
+                "image": {
+                  "src": "/media/project/rhythm.webp",
+                  "alt": "Ein Sportler bereitet sich im Studio auf eine Kraftübung vor",
+                  "position": "50% 50%"
+                },
+                "meta": "ENERGIE & FOKUS",
+                "href": "/coaching#energie-erholung",
+                "label": "Energie im Alltag"
+              },
+              {
                 "id": "plan",
                 "title": "Eine Woche, die passt",
                 "text": "Finde einen Einstieg, der selbst in einer vollen Woche Platz hat.",
@@ -440,7 +453,7 @@
             "spacing": "normal",
             "width": "wide",
             "imageSide": "right",
-            "columns": 3,
+            "columns": 4,
             "animation": "reveal",
             "align": "left"
           }
@@ -454,9 +467,11 @@
             "heading": "Servus, ich bin Sebastian.",
             "text": "Bodybuilding hat mir beigebracht, wie viel Struktur verändern kann. Heute helfe ich Männern, Kraft und Ernährung so zu organisieren, dass Beruf, Freunde und Familie Platz behalten.",
             "image": {
-              "src": "/media/project/sebastian.webp",
-              "alt": "Sebastian sitzt lächelnd neben einer Hantelbank",
-              "position": "50% 0%"
+              "src": "/media/project/flamingo-portrait.webp",
+              "alt": "Sebastian Maschberger sitzt im weißen Hemd auf einer Treppe im Grünen",
+              "position": "50% 0%",
+              "width": 1000,
+              "height": 1120
             },
             "primaryLabel": "Meine Geschichte",
             "primaryHref": "/ueber-sebastian"
@@ -707,7 +722,7 @@
       "translationKey": "coaching",
       "seo": {
         "title": "1:1 Online-Coaching | Sebastian Maschberger",
-        "description": "Persönliche Trainingsplanung, flexible Ernährungsberatung und regelmäßiges Feedback für Männer ab 30.",
+        "description": "Persönliche Trainingsplanung, Ernährung ohne Dogmen und Unterstützung bei Energie und Erholung im Alltag. Online-Coaching für Männer ab 30.",
         "image": "/media/project/training.webp"
       },
       "sections": [
@@ -853,6 +868,47 @@
             "columns": 3,
             "animation": "reveal",
             "align": "left"
+          }
+        },
+        {
+          "id": "energie-erholung",
+          "name": "Training, Energie und Erholung im Alltag",
+          "type": "richtext",
+          "visible": true,
+          "content": {
+            "heading": "Training, Energie und Erholung im Alltag",
+            "text": "Wenn Arbeit und Training gleichzeitig viel fordern, schauen wir zuerst auf deine Woche. Wann kannst du trainieren, wann kommt das Essen zu kurz und wann hast du Zeit zur Erholung?",
+            "items": [
+              {
+                "id": "rhythm",
+                "title": "Belastung an die Woche anpassen",
+                "text": "Für einen langen Arbeitstag planen wir eine kürzere Einheit oder einen Ausweichtermin. Deine wichtigsten Übungen behalten ihren Platz."
+              },
+              {
+                "id": "recovery",
+                "title": "Essen und Erholung mitplanen",
+                "text": "Wir schauen, welche Mahlzeit dich im Alltag trägt und wann du abends zur Ruhe kommst. Beim nächsten Check-in besprechen wir, was sich tatsächlich umsetzen ließ."
+              },
+              {
+                "id": "medical",
+                "title": "Fragen zu Hormonen und Blutwerten",
+                "text": "Wenn du Ergebnisse aus einem Bluttest besprechen möchtest oder Beschwerden hast, ist deine Arztpraxis die richtige Anlaufstelle. Im Coaching arbeiten wir an deinen Routinen für Training, Ernährung und Erholung."
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
           }
         },
         {
@@ -1123,7 +1179,7 @@
       "seo": {
         "title": "Über Sebastian | Sebastian Maschberger",
         "description": "Sebastian Maschberger ist IFBB Elite Pro im Classic Bodybuilding und begleitet Männer online in Training und Ernährung.",
-        "image": "/media/project/sebastian.webp"
+        "image": "/media/project/flamingo-portrait.webp"
       },
       "sections": [
         {
@@ -1136,9 +1192,11 @@
             "text": "Mit 13 habe ich Kraftsport entdeckt. Aus dem Sport wurde Wettkampf, aus der Erfahrung meine Arbeit als Coach.",
             "subheading": "SEBASTIAN MASCHBERGER",
             "image": {
-              "src": "/media/project/sebastian.webp",
-              "alt": "Sebastian sitzt lächelnd neben einer Hantelbank",
-              "position": "50% 0%"
+              "src": "/media/project/flamingo-portrait.webp",
+              "alt": "Sebastian Maschberger sitzt im weißen Hemd auf einer Treppe im Grünen",
+              "position": "50% 0%",
+              "width": 1000,
+              "height": 1120
             },
             "secondaryLabel": "Instagram",
             "secondaryHref": "https://www.instagram.com/sebastian_maschberger/"
@@ -2272,7 +2330,9 @@
               "position": "50% 0%"
             },
             "primaryLabel": "Zur Anfrage",
-            "primaryHref": "#anfrage"
+            "primaryHref": "#anfrage",
+            "secondaryLabel": "Direkt per E-Mail schreiben",
+            "secondaryHref": "mailto:maschberger.sebastian93@gmail.com"
           },
           "design": {
             "theme": "light",
@@ -2864,6 +2924,19 @@
                 "label": "Explore nutrition"
               },
               {
+                "id": "energy-focus",
+                "title": "Energy & focus",
+                "text": "We look at how training, meals and recovery fit into your week, even when your calendar is full.",
+                "image": {
+                  "src": "/media/project/rhythm.webp",
+                  "alt": "An athlete prepares for a strength exercise at the gym",
+                  "position": "50% 50%"
+                },
+                "meta": "ENERGY & FOCUS",
+                "href": "/en/coaching#energie-erholung",
+                "label": "Energy in everyday life"
+              },
+              {
                 "id": "plan",
                 "title": "Build a week that fits",
                 "text": "Find a starting point that fits even a busy week.",
@@ -2887,7 +2960,7 @@
             "spacing": "normal",
             "width": "wide",
             "imageSide": "right",
-            "columns": 3,
+            "columns": 4,
             "animation": "reveal",
             "align": "left"
           }
@@ -2901,9 +2974,11 @@
             "heading": "Hey, I’m Sebastian.",
             "text": "Bodybuilding taught me how much good structure can change. Today I help men organise their training and nutrition while leaving room for work, friends and family.",
             "image": {
-              "src": "/media/project/sebastian.webp",
-              "alt": "Sebastian smiles beside a gym bench",
-              "position": "50% 0%"
+              "src": "/media/project/flamingo-portrait.webp",
+              "alt": "Sebastian Maschberger sits on an outdoor staircase in a white shirt surrounded by greenery",
+              "position": "50% 0%",
+              "width": 1000,
+              "height": 1120
             },
             "primaryLabel": "My story",
             "primaryHref": "/en/about"
@@ -3154,7 +3229,7 @@
       "translationKey": "coaching",
       "seo": {
         "title": "1:1 online coaching | Sebastian Maschberger",
-        "description": "Personal training plans, flexible nutrition coaching and regular feedback for men over 30.",
+        "description": "Personal training plans, flexible nutrition and support with everyday energy and recovery. Online coaching for men over 30.",
         "image": "/media/project/training.webp"
       },
       "sections": [
@@ -3300,6 +3375,47 @@
             "columns": 3,
             "animation": "reveal",
             "align": "left"
+          }
+        },
+        {
+          "id": "energie-erholung",
+          "name": "Training, energy and recovery in everyday life",
+          "type": "richtext",
+          "visible": true,
+          "content": {
+            "heading": "Training, energy and recovery in everyday life",
+            "text": "When work and training both demand a lot, we start with your week. When can you train, which meal is hardest to fit in, and when do you get time to recover?",
+            "items": [
+              {
+                "id": "rhythm",
+                "title": "Match the workload to your week",
+                "text": "On a long workday, we plan a shorter session or a backup slot. The exercises that matter most still have a place."
+              },
+              {
+                "id": "recovery",
+                "title": "Make room for meals and recovery",
+                "text": "We look at which meal sustains you during the day and when you can unwind in the evening. At the next check-in, we talk about what you were able to put into practice."
+              },
+              {
+                "id": "medical",
+                "title": "Questions about hormones and blood tests",
+                "text": "If you want to discuss blood test results or you have symptoms, talk to your doctor. In coaching, we work on your training, nutrition and recovery routines."
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
           }
         },
         {
@@ -3570,7 +3686,7 @@
       "seo": {
         "title": "About Sebastian | Sebastian Maschberger",
         "description": "Sebastian Maschberger is an IFBB Elite Pro in Classic Bodybuilding and coaches men online in training and nutrition.",
-        "image": "/media/project/sebastian.webp"
+        "image": "/media/project/flamingo-portrait.webp"
       },
       "sections": [
         {
@@ -3583,9 +3699,11 @@
             "text": "I found strength training at 13. Training became competition, and the experience became my work as a coach.",
             "subheading": "SEBASTIAN MASCHBERGER",
             "image": {
-              "src": "/media/project/sebastian.webp",
-              "alt": "Sebastian smiles beside a gym bench",
-              "position": "50% 0%"
+              "src": "/media/project/flamingo-portrait.webp",
+              "alt": "Sebastian Maschberger sits on an outdoor staircase in a white shirt surrounded by greenery",
+              "position": "50% 0%",
+              "width": 1000,
+              "height": 1120
             },
             "secondaryLabel": "Instagram",
             "secondaryHref": "https://www.instagram.com/sebastian_maschberger/"
@@ -4719,7 +4837,9 @@
               "position": "50% 0%"
             },
             "primaryLabel": "Go to enquiry",
-            "primaryHref": "#anfrage"
+            "primaryHref": "#anfrage",
+            "secondaryLabel": "Email me directly",
+            "secondaryHref": "mailto:maschberger.sebastian93@gmail.com"
           },
           "design": {
             "theme": "light",
