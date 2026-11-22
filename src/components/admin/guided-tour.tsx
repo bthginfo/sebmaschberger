@@ -23,7 +23,7 @@ type TourStep = {
 type Rect = { left: number; top: number; width: number; height: number };
 type Viewport = { width: number; height: number };
 
-export const guidedTourStorageKey = "ws-admin-guided-tour-v3";
+export const guidedTourStorageKey = "ws-admin-guided-tour-v4";
 export function browserTourComplete() { try { return window.localStorage.getItem(guidedTourStorageKey) === "complete"; } catch { return false; } }
 export function markBrowserTourComplete() { try { window.localStorage.setItem(guidedTourStorageKey, "complete"); } catch { /* The tour remains closed for this visit when storage is unavailable. */ } }
 
@@ -107,6 +107,18 @@ const tourSteps: TourStep[] = [
     text: "Wählen Sie Datum, Uhrzeit und Dauer. Im selben Bereich sehen Sie Buchungen, Umbuchungen und Absagen.",
     hint: "Mit eingerichtetem E-Mail-Versand erhalten beide Seiten eine Bestätigung. Gästen steht ein persönlicher Terminlink zur Verfügung.",
     selectors: [".cms-appointments"],
+  },
+  {
+    view: "client-portal", navigation: true, area: "Coaching-Kunden", title: "Kunden begleiten und Pläne freigeben.",
+    text: "Im Kundenbereich erstellen Sie Einladungen, planen Training und Mahlzeiten und prüfen die Kundenansicht vor der Freigabe.",
+    hint: "Der Rundgang im Coaching-Bereich zeigt auch die Teamzuordnung, den Chat und die Geräteschnittstellen.",
+    selectors: ['.cms-sidebar [data-admin-view="client-portal"]'],
+  },
+  {
+    view: "google-ads", navigation: true, area: "Google Ads", title: "Eine Suchkampagne vorbereiten.",
+    text: "Öffnen Sie den Kampagnenentwurf, um Keywords und Anzeigentexte zu prüfen, anzupassen und zu kopieren.",
+    hint: "Die Freigabe speichert den geprüften Entwurf im CMS. In Google Ads richten Sie die Kampagne separat ein.",
+    selectors: ['.cms-sidebar [data-admin-view="google-ads"]'],
   },
   {
     view: "commerce", area: "Shop", title: "Produkte und Bestellungen verwalten.",

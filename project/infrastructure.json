@@ -37,5 +37,14 @@
     "indexing": false,
     "checkout": false,
     "sampleStorefront": true
+  },
+  "portalDatabase": {
+    "driver": "postgres",
+    "provider": "neon",
+    "region": "fra1",
+    "plan": "free_v3",
+    "resourceId": "store_0q4Gr47xtRxvYcDc",
+    "environment": "production",
+    "prefix": "PORTAL"
   }
 }

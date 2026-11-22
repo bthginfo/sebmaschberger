@@ -1,0 +1,12 @@
+.page { max-width:1420px; padding:clamp(15px,4vw,54px); margin:auto; }
+.editor { display:grid; grid-template-columns:minmax(205px,.65fr) minmax(0,1.8fr); gap:16px; align-items:start; }
+.groupList { display:grid; gap:8px; margin-top:15px; }
+.groupList button[aria-pressed=true] { border-color:var(--accent); }
+.keywords { min-height:430px!important; font-family:ui-monospace,monospace!important; }
+.checklist { min-height:467px!important; }
+.line { display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:8px; align-items:end; }
+.line>span { margin-bottom:9px; }
+.adPreview { background:var(--surface-raised); border:1px solid var(--line); border-radius:17px; padding:16px; overflow-wrap:anywhere; }
+.adPreview small,.adPreview p { color:var(--muted); }
+.adPreview h3 { color:var(--accent); margin:5px 0; }
+@media(max-width:820px) { .editor { grid-template-columns:minmax(0,1fr); } .groupList { grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); } }

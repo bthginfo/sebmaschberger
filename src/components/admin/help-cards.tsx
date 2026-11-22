@@ -1,6 +1,6 @@
 "use client";
 
-import {ArrowUpRight,CalendarDays,Check,FileText,Mail,PanelsTopLeft,ShoppingBag} from 'lucide-react';
+import {ArrowUpRight,CalendarDays,Check,FileText,Mail,PanelsTopLeft,Search,ShoppingBag,Users} from 'lucide-react';
 import {useAdminLanguage} from './admin-language';
 import type {AdminView} from './admin-app';
 import styles from './help-cards.module.css';
@@ -26,6 +26,14 @@ export function HelpCards({commerce,appointments,onNavigate,onEmail}:Props) {
       steps:[t('Setze Datum, Uhrzeit und Dauer eines freien Zeitfensters.','Choose the date, time and duration of an available slot.'),
         t('Buchungen, Umbuchungen und Absagen erscheinen unter Termine.','Bookings, rescheduling and cancellations appear in Appointments.'),
         t('Aktiviere Termin-Push in den App-Einstellungen. Mit SMTP erhalten du und dein Gast zusätzlich eine Mail mit dem passenden Link.','Enable appointment push alerts in App Settings. With SMTP you and your guest also get an email with the relevant link.')],sketch:['10:30','11:20',t('Gebucht','Booked')]}]:[]),
+    {id:'client-portal',icon:Users,title:t('Coaching-Kunden und Geräte','Coaching clients and devices'),
+      steps:[t('Lege persönliche Zugänge an und weise Kunden dem Betreuungsteam zu.','Create individual accounts and assign clients to coaches.'),
+        t('Baue Trainings- und Essenspläne im Wocheneditor und prüfe die Kundenvorschau.','Build training and meal plans in the weekly editor and review the client preview.'),
+        t('Unter Hilfe findest du Beispiele zu Terminen, Chat, Check-ins und Sportuhren.','Find examples for appointments, chat, check-ins and wearables under Help.')],sketch:[t('Kunde','Client'),t('Wochenplan','Weekly plan'),t('Freigeben','Publish')]},
+    {id:'google-ads',icon:Search,title:t('Google Ads vorbereiten','Prepare Google Ads'),
+      steps:[t('Prüfe die Keywords und Anzeigentexte für jede Anzeigengruppe.','Review keywords and ad copy for each ad group.'),
+        t('Kopiere die Texte oder exportiere die CSV-Dateien für Google Ads Editor.','Copy the text or export CSV files for Google Ads Editor.'),
+        t('Prüfe Budget und Conversion-Messung in der Checkliste.','Review budget and conversion tracking in the checklist.')],sketch:[t('Keywords','Keywords'),t('Anzeige','Ad'),t('CSV','CSV')]},
     {id:'inquiries' as const,icon:Mail,title:t('Postfach und Benachrichtigungen','Inbox and notifications'),
       steps:[t('Öffne neue Nachrichten unter Anfragen.','Open new messages in your inbox.'),
         t('Lege den Bearbeitungsstatus fest und speichere eine Notiz.','Set the inquiry status and save a note.'),
