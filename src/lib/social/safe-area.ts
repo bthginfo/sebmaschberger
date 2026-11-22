@@ -1,0 +1,2 @@
+/** Conservative design guide, not a guarantee for each app's dynamic controls. */
+export function socialSafeArea(format:{width:number;height:number}){const vertical=format.height/format.width>1.6;const left=vertical?Math.round(format.width*.085):60,right=vertical?Math.round(format.width*.17):60,top=vertical?Math.round(format.height*.10):60,bottom=vertical?Math.round(format.height*.20):60;return{x:left,y:top,width:format.width-left-right,height:format.height-top-bottom,vertical};}

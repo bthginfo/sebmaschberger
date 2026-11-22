@@ -1,0 +1,58 @@
+{
+  "heading": "DEIN CONTENT.\nMEHR MÖGLICHKEITEN.",
+  "text": "Zeig deine Inhalte. Mach den nächsten Schritt direkt auf deiner Website möglich.",
+  "subheading": "DEIN NAME.",
+  "secondaryLabel": "creator.beispiel",
+  "primaryLabel": "So einen Weg besprechen",
+  "primaryHref": "/kontakt",
+  "caption": "Interaktives Beispiel. Es werden keine Daten gesendet und keine Käufe ausgelöst.",
+  "items": [
+    {
+      "id": "journey-community", "title": "Community", "meta": "DEIN NÄCHSTER LIVE-ABEND.",
+      "text": "Wir bauen dir eine Website mit Live-Terminen, Anmeldung und Erinnerungen. Du pflegst alles selbst im CMS.",
+      "label": "Platz vormerken", "href": "/kontakt", "icon": "UsersRound", "tags": ["journey", "event", "default"],
+      "details": [
+        "sourceType|Live & Video", "sourceTitle|Heute im Stream. Morgen zusammen.",
+        "siteMeta|Live & Community", "siteText|Ein Termin, alle Infos und ein direkter Weg zur Anmeldung.",
+        "outcomeLabel|Anmeldung", "outcomeTitle|Der Kontakt bleibt bei dir.",
+        "outcomeText|Die Angaben für deinen Live-Abend kommen an einem Ort zusammen.",
+        "field1Label|Dein Termin", "field1Value|Community-Abend", "field2Label|Kontakt", "field2Value|Name und E-Mail",
+        "complete|Demo-Anmeldung gezeigt", "inquiryMessage|Ich möchte Live-Termine und Anmeldungen auf meiner eigenen Creator-Website ermöglichen. Meine Idee dazu:"
+      ]
+    },
+    {
+      "id": "journey-drop", "title": "Eigener Drop", "meta": "DEIN DROP.\nDEIN SHOP.",
+      "text": "Wir bauen einen Shop für Merch und digitale Produkte – mit Varianten, Warenkorb und den vereinbarten Zahlungsarten. Deine Produkte verwaltest du im CMS.",
+      "label": "Drop ansehen", "href": "/kontakt", "icon": "Store", "tags": ["journey", "shop"],
+      "details": [
+        "sourceType|Dein neuer Drop", "sourceTitle|Ein Produkt. Deine Geschichte.",
+        "siteMeta|Eigene Produkte", "siteText|Dein Merch und deine digitalen Extras. Direkt bei dir statt zwischen anderen Links.",
+        "outcomeLabel|Eigener Shop", "outcomeTitle|Ein klarer Weg zu deinem Produkt.",
+        "outcomeText|Produkt, Variante und nächster Schritt bleiben in deinem eigenen Shop.",
+        "field1Label|Produkt", "field1Value|Dein eigener Drop", "field2Label|Variante", "field2Value|Größe oder digitales Extra",
+        "complete|Demo-Warenkorb gezeigt", "inquiryMessage|Ich möchte eigene Produkte oder digitale Downloads auf meiner Creator-Website anbieten. Meine Idee dazu:"
+      ]
+    },
+    {
+      "id": "journey-collaboration", "title": "Kooperationen", "meta": "GUTE ARBEIT.\nKLARE ANFRAGEN.",
+      "text": "Wir bauen dein Media-Kit und ein Anfrageformular, das Leistungen, Budget und Zeitraum abfragt. So wird aus einem losen „Hey“ ein brauchbares Briefing.",
+      "label": "Zusammenarbeit anfragen", "href": "/kontakt", "icon": "BriefcaseBusiness", "tags": ["journey", "kit"],
+      "details": [
+        "sourceType|Deine Arbeit", "sourceTitle|Zeig, was dich ausmacht.",
+        "siteMeta|Portfolio & Media-Kit", "siteText|Deine Arbeit, deine Leistungen und ein guter Einstieg in die Zusammenarbeit.",
+        "outcomeLabel|Projektanfrage", "outcomeTitle|Gleich wissen, worum es geht.",
+        "outcomeText|Eine Anfrage mit den Infos, die du für eine passende Antwort brauchst.",
+        "field1Label|Projekt", "field1Value|Videokooperation", "field2Label|Rahmen", "field2Value|Zeitraum und Budget",
+        "complete|Demo-Anfrage gezeigt", "inquiryMessage|Ich möchte ein Media-Kit und strukturierte Kooperationsanfragen auf meiner Creator-Website ermöglichen. Meine Idee dazu:"
+      ]
+    },
+    {
+      "id": "journey-ui", "title": "Bedienung des Content-Wegs", "text": "Beschriftungen der lokalen Demonstration.", "tags": ["ui"],
+      "details": [
+        "choose|Was soll aus deinem Content werden?", "source|Dein Content", "website|Deine Website", "outcome|Nächster Schritt",
+        "example|Fiktives Beispiel", "idle|Ein Klick führt weiter.", "running|Beispiel läuft", "again|Nochmal ansehen",
+        "demoState|Nur als Beispiel vorbereitet", "build|Das bauen wir für dich.", "inquirySubject|Meine Creator-Website"
+      ]
+    }
+  ]
+}

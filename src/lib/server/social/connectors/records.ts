@@ -1,0 +1,15 @@
+import type {ConnectorProvider,ConnectorTarget,ConnectorAccountView} from '../../../social/connectors/model';
+import type {ProviderSession,ProviderState} from './provider-contract';
+export type ConnectorKind='apps'|'accounts'|'flows'|'jobs';
+export type ConnectorActor={id:string;sessionId:string};
+export type ConnectorReceipt={key:string;hash:string};
+export type AccessLease={token:string;accountId:string;publicationId:string;until:string};
+export type ConnectorAppRecord={platform:ConnectorProvider;revision:number;clientId:string;secretCiphertext:string;organizationsEnabled:boolean;instagramLoginMode?:'unified'|'instagram';configurationId?:string;updatedAt:string;receipts:ConnectorReceipt[];leases:AccessLease[]};
+export type ConnectorAccountRecord={view:ConnectorAccountView;target:ConnectorTarget;appRevision:number;sessionCiphertext:string;receipts:ConnectorReceipt[];refreshLease:{token:string;until:string}|null;sendLease:AccessLease|null};
+export type ConnectorFlowRecord={id:string;platform:ConnectorProvider;brandKey:string;actor:ConnectorActor;appRevision:number;stateHash:string;cookieHash:string;privateCiphertext:string;status:'pending'|'exchanging'|'ready'|'connected'|'failed';message:string;createdAt:string;expiresAt:string;selectedAccountId:string|null;receipts:ConnectorReceipt[]};
+export type ConnectorFlowPrivate={verifier:string;choices?:{choiceId:string;target:ConnectorTarget;session:ProviderSession}[]};
+export type ConnectorJobRecord={id:string;publicationId:string;generation:number;stateCiphertext:string;updatedAt:string};
+export type ConnectorRecordMap={apps:ConnectorAppRecord;accounts:ConnectorAccountRecord;flows:ConnectorFlowRecord;jobs:ConnectorJobRecord};
+export type ConnectorRepository={get:<K extends ConnectorKind>(kind:K,id:string)=>Promise<ConnectorRecordMap[K]|null>;list:<K extends ConnectorKind>(kind:K)=>Promise<ConnectorRecordMap[K][]>;mutate:<K extends ConnectorKind>(kind:K,id:string,update:(previous:ConnectorRecordMap[K]|null)=>ConnectorRecordMap[K])=>Promise<ConnectorRecordMap[K]>};
+export type ConnectorCipher={seal:(kind:string,id:string,value:unknown)=>string;open:<T>(kind:string,id:string,ciphertext:string)=>T};
+export type PrivateProviderState={state:ProviderState};

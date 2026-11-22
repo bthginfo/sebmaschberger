@@ -1,0 +1,113 @@
+"use client";
+
+import { useAdminLanguage } from "./admin-language";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { createSection } from "@/lib/section-library";
+import type { ContentItem, PageContent, Section, SectionType } from "@/lib/types";
+import { ArrowDown, ArrowUp, Button, Copy, IconButton, Modal, Plus, Settings2, Trash2, clone, newId } from "./admin-ui";
+import { IconPicker } from "./icon-picker";
+import { CanvasLinkDialog } from "./link-picker";
+import { SectionLibraryDialog } from "./section-library-dialog";
+import { sectionCapabilities } from "./section-capabilities";
+
+export interface CanvasEditorToolsProps {
+  page: PageContent;
+  onChange: (page: PageContent) => void;
+  selectedSectionId?: string;
+  onSectionSelect?: (id: string) => void;
+  onItemSelect?: (sectionId: string, itemId: string) => void;
+  /** Generated post headings can be selected and followed by a block, but never reordered or removed. */
+  lockedSectionIds?: string[];
+  children: ReactNode;
+}
+type ItemTarget = { sectionId: string; itemId: string };
+type LinkTarget = { sectionId: string; field: "primaryHref" | "secondaryHref" } | (ItemTarget & { field: "href" });
+type Coordinates = { section?: { top: number; right: number }; item?: { top: number; right: number } };
+const feeds = new Set(["blog-cards", "blog-editorial", "blog-list"]);
+const heroTypes = new Set(["hero", "editorial-hero", "cinematic-hero", "noir-hero", "navy-hero"]);
+
+export function focusSectionText(root: ParentNode | null, sectionId: string, itemId?: string) {
+  const selector = `[data-section-id="${CSS.escape(sectionId)}"]${itemId ? ` [data-item-id="${CSS.escape(itemId)}"]` : ""}`;
+  const focus = () => {
+    const text = root?.querySelector(selector)?.querySelector<HTMLElement>("[contenteditable=true]");
+    text?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+    text?.focus({ preventScroll: true });
+  };
+  const first = root?.querySelector(selector);
+  if (itemId && first instanceof HTMLButtonElement) {
+    first.click();
+    requestAnimationFrame(focus);
+  } else {
+    focus();
+  }
+}
+
+function scrollFrame(element: HTMLElement) { let parent = element.parentElement; while (parent && parent !== document.body) { const overflow = getComputedStyle(parent).overflowY; if (/(auto|scroll)/.test(overflow)) return parent; parent = parent.parentElement; } return null; }
+
+export function CanvasEditorTools({ page, onChange, selectedSectionId, onSectionSelect, onItemSelect, lockedSectionIds = [], children }: CanvasEditorToolsProps) {
+  const { t: adminText } = useAdminLanguage();
+  const [link, setLink] = useState<LinkTarget | null>(null);
+  const linkedSection = page.sections.find(section => section.id === link?.sectionId);
+  const linkedItem = link?.field === "href" ? linkedSection?.content.items?.find(item => item.id === link.itemId) : undefined;
+  const root = useRef<HTMLDivElement>(null); const sectionBar = useRef<HTMLDivElement>(null); const itemBar = useRef<HTMLDivElement>(null); const hoveredItemElement = useRef<HTMLElement | null>(null); const [hoverSection, setHoverSection] = useState<string | null>(null); const [activeItem, setActiveItem] = useState<ItemTarget | null>(null); const [positions, setPositions] = useState<Coordinates>({}); const [insert, setInsert] = useState<{ sectionId: string; side: "before" | "after" } | null>(null); const [remove, setRemove] = useState<{ sectionId: string; itemId?: string } | null>(null); const [icon, setIcon] = useState<ItemTarget | null>(null); const [announcement, setAnnouncement] = useState("");
+  const activeId = hoverSection || selectedSectionId; const activeSection = page.sections.find(section => section.id === activeId); const activeIndex = page.sections.findIndex(section => section.id === activeId); const locked = Boolean(activeId && lockedSectionIds.includes(activeId)); const itemSection = page.sections.find(section => section.id === activeItem?.sectionId); const itemIndex = itemSection?.content.items?.findIndex(item => item.id === activeItem?.itemId) ?? -1; const item = itemSection?.content.items?.[itemIndex]; const iconSection = page.sections.find(section => section.id === icon?.sectionId); const iconItem = iconSection?.content.items?.find(item => item.id === icon?.itemId);
+  const measure = useCallback(() => {
+    const container = root.current; if (!container) return; const base = container.getBoundingClientRect(); const scale=base.width / (container.offsetWidth || base.width) || 1; const frame = scrollFrame(container); const viewport = frame?.getBoundingClientRect(); const topVisible = (viewport ? Math.max(0, viewport.top - base.top) : Math.max(0, -base.top)) / scale; const bottomVisible = (viewport ? viewport.bottom - base.top : window.innerHeight - base.top) / scale;
+    const locate = (selector: string, bar: HTMLElement | null, offset: number, preferred?: HTMLElement | null) => { const target = preferred && container.contains(preferred) && preferred.matches(selector) ? preferred : container.querySelector<HTMLElement>(selector); if (!target) return undefined; const rect = target.getBoundingClientRect(); if (rect.bottom < (viewport?.top || 0) || rect.top > (viewport?.bottom || window.innerHeight)) return undefined; const height = bar ? bar.getBoundingClientRect().height / scale : 40; const top = Math.min(Math.max((rect.top - base.top) / scale + offset, topVisible + 9 / scale), (rect.bottom - base.top) / scale - height - 7, bottomVisible - height - 8); const right = Math.max(8, Math.min(container.offsetWidth - 100, (base.right - rect.right) / scale + 9)); return { top: Math.round(Math.max(0, top)), right: Math.round(right) }; };
+    const section = activeId ? locate(`[data-section-id="${CSS.escape(activeId)}"]`, sectionBar.current, 10) : undefined;
+    let entry = activeItem && item && !feeds.has(itemSection?.type || "") && !heroTypes.has(itemSection?.type || "") ? locate(`[data-section-id="${CSS.escape(activeItem.sectionId)}"] [data-item-id="${CSS.escape(activeItem.itemId)}"]`, itemBar.current, 9, hoveredItemElement.current) : undefined;
+    if (section && entry && Math.abs(section.top - entry.top) < 43) entry = { ...entry, top: entry.top + ((sectionBar.current?.getBoundingClientRect().height || 40) / scale) + 7 };
+    const next = { section, item: entry }; setPositions(previous => JSON.stringify(previous) === JSON.stringify(next) ? previous : next);
+  }, [activeId, activeItem, item, itemSection?.type, activeSection]);
+  useEffect(() => { const container = root.current; if (!container) return; let frame = 0; const schedule = () => { if (frame) return; frame = requestAnimationFrame(() => { frame = 0; measure(); }); }; const observer = new ResizeObserver(schedule); observer.observe(container); const mutation = new MutationObserver(schedule); mutation.observe(container, { childList: true, subtree: true, characterData: true }); window.addEventListener("resize", schedule); window.addEventListener("scroll", schedule, true); container.addEventListener("load", schedule, true); schedule(); return () => { observer.disconnect(); mutation.disconnect(); window.removeEventListener("resize", schedule); window.removeEventListener("scroll", schedule, true); container.removeEventListener("load", schedule, true); if (frame) cancelAnimationFrame(frame); }; }, [measure, page]);
+  function select(sectionId: string, itemId?: string) { setHoverSection(sectionId); onSectionSelect?.(sectionId); if (itemId) { if (hoveredItemElement.current?.dataset.itemId !== itemId) hoveredItemElement.current = null; const target = { sectionId, itemId }; setActiveItem(target); onItemSelect?.(sectionId, itemId); } }
+  function announce(text: string) { setAnnouncement(text); }
+  function changeSection(next: Section) { onChange({ ...page, sections: page.sections.map(section => section.id === next.id ? next : section) }); }
+  function reveal(sectionId: string, itemId?: string) { requestAnimationFrame(() => { const selector = `[data-section-id="${CSS.escape(sectionId)}"]${itemId ? ` [data-item-id="${CSS.escape(itemId)}"]` : ""}`; const first = root.current?.querySelector<HTMLElement>(selector); if (itemId && first instanceof HTMLButtonElement) first.click(); requestAnimationFrame(() => { const matches = Array.from(root.current?.querySelectorAll<HTMLElement>(selector) || []); const element = matches.find(node => !(node instanceof HTMLButtonElement) && node.offsetWidth > 0) || matches[0]; if (itemId && element) hoveredItemElement.current = element; element?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest", inline: "nearest" }); }); }); }
+  function moveSection(direction: number) { if (!activeSection || locked) return; const sections = [...page.sections]; const next = activeIndex + direction; if (next < 0 || next >= sections.length || lockedSectionIds.includes(sections[next].id)) return; [sections[activeIndex], sections[next]] = [sections[next], sections[activeIndex]]; onChange({ ...page, sections }); select(activeSection.id); reveal(activeSection.id); announce("Abschnitt verschoben."); }
+  function duplicateSection() { if (!activeSection || locked) return; const copy = clone(activeSection); copy.id = newId(); delete copy.anchor; copy.name += " · Kopie"; copy.content.items = copy.content.items?.map(item => ({ ...item, id: newId() })); const sections = [...page.sections]; sections.splice(activeIndex + 1, 0, copy); onChange({ ...page, sections }); select(copy.id); reveal(copy.id); announce("Abschnitt dupliziert."); }
+  function insertSection(type: SectionType) { if (!insert) return; const section = createSection(type); const index = page.sections.findIndex(value => value.id === insert.sectionId); const sections = [...page.sections]; sections.splice(Math.max(0, index + (insert.side === "after" ? 1 : 0)), 0, section); onChange({ ...page, sections }); select(section.id); setInsert(null); reveal(section.id); announce("Abschnitt hinzugefügt. Bearbeiten Sie die Inhalte direkt auf der Seite."); }
+  function addItem(section: Section, afterId?: string) { if (heroTypes.has(section.type) || feeds.has(section.type)) return; const entries = [...(section.content.items || [])]; if (entries.length >= 150) return; const index = afterId ? entries.findIndex(item => item.id === afterId) : entries.length - 1; const newItem: ContentItem = { id: newId(), title: "", text: "", icon: "ArrowUpRight" }; entries.splice(index + 1, 0, newItem); changeSection({ ...section, content: { ...section.content, items: entries } }); select(section.id, newItem.id); requestAnimationFrame(() => requestAnimationFrame(() => focusSectionText(root.current, section.id, newItem.id))); announce("Eintrag hinzugefügt. Klicken Sie auf die leeren Textfelder, um ihn zu bearbeiten."); }
+  function moveItem(direction: number) { if (!itemSection || !item || itemIndex < 0 || heroTypes.has(itemSection.type)) return; const entries = [...(itemSection.content.items || [])]; const next = itemIndex + direction; if (next < 0 || next >= entries.length) return; [entries[itemIndex], entries[next]] = [entries[next], entries[itemIndex]]; changeSection({ ...itemSection, content: { ...itemSection.content, items: entries } }); select(itemSection.id, item.id); reveal(itemSection.id, item.id); announce("Eintrag verschoben."); }
+  function duplicateItem() { if (!itemSection || !item || heroTypes.has(itemSection.type)) return; const copy = { ...clone(item), id: newId() }; const entries = [...(itemSection.content.items || [])]; entries.splice(itemIndex + 1, 0, copy); changeSection({ ...itemSection, content: { ...itemSection.content, items: entries } }); select(itemSection.id, copy.id); reveal(itemSection.id, copy.id); announce("Eintrag dupliziert."); }
+  function confirmRemove() { if (!remove) return; const section = page.sections.find(value => value.id === remove.sectionId); if (!section || lockedSectionIds.includes(section.id)) { setRemove(null); return; } if (remove.itemId) { changeSection({ ...section, content: { ...section.content, items: section.content.items?.filter(item => item.id !== remove.itemId) } }); setActiveItem(null); announce("Eintrag entfernt. Die Änderung lässt sich rückgängig machen."); } else { const index = page.sections.findIndex(value => value.id === section.id); const sections = page.sections.filter(value => value.id !== section.id); onChange({ ...page, sections }); setHoverSection(sections[Math.max(0, index - 1)]?.id || null); onSectionSelect?.(sections[Math.max(0, index - 1)]?.id || ""); setActiveItem(null); announce("Abschnitt entfernt. Die Änderung lässt sich rückgängig machen."); } setRemove(null); }
+  function track(target: EventTarget | null) { if (!(target instanceof Element) || target.closest("[data-canvas-tools]")) return; const section = target.closest<HTMLElement>("[data-section-id]"); if (!section) return; const sectionId = section.dataset.sectionId; if (!sectionId) return; setHoverSection(sectionId); const entry = target.closest<HTMLElement>("[data-item-id]"); if (entry?.dataset.itemId && !feeds.has(page.sections.find(value => value.id === sectionId)?.type || "")) { hoveredItemElement.current = entry; setActiveItem({ sectionId, itemId: entry.dataset.itemId }); } else { hoveredItemElement.current = null; setActiveItem(null); } }
+  return <div ref={root} className="cms-canvas-editor" onPointerOver={event => track(event.target)} onFocusCapture={event => track(event.target)} onPointerLeave={() => setHoverSection(null)} onClickCapture={event => {
+    const element = event.target as Element;
+    const button = element.closest<HTMLElement>("[data-canvas-link]");
+    if (button) {
+      const sectionId = button.closest<HTMLElement>("[data-section-id]")?.dataset.sectionId;
+      const field = button.dataset.canvasLink;
+      const itemId = button.dataset.canvasLinkItem || button.closest<HTMLElement>("[data-item-id]")?.dataset.itemId;
+      if (!sectionId || lockedSectionIds.includes(sectionId) || !page.sections.some(section => section.id === sectionId)) return;
+      if (field === "href" && itemId) setLink({ sectionId, itemId, field });
+      else if (field === "primaryHref" || field === "secondaryHref") setLink({ sectionId, field });
+      else return;
+      event.preventDefault(); event.stopPropagation(); select(sectionId, itemId); return;
+    }
+    const target = element.closest<HTMLElement>("[data-icon-item-id][data-icon-section-id]");
+    if (!target || target.closest("[data-canvas-tools]")) return;
+    const sectionId = target.dataset.iconSectionId; const itemId = target.dataset.iconItemId;
+    if (!sectionId || !itemId || lockedSectionIds.includes(sectionId)) return;
+    event.preventDefault(); event.stopPropagation(); select(sectionId, itemId); setIcon({ sectionId, itemId });
+  }}>
+    {children}
+    {link && linkedSection && (link.field !== "href" || linkedItem) && <CanvasLinkDialog
+      value={link.field === "href" ? linkedItem?.href : linkedSection.content[link.field]}
+      onClose={() => setLink(null)}
+      onSelect={value => {
+        const content = link.field === "href"
+          ? { ...linkedSection.content, items: linkedSection.content.items?.map(item => item.id === link.itemId ? { ...item, href: value } : item) }
+          : { ...linkedSection.content, [link.field]: value };
+        changeSection({ ...linkedSection, content }); setLink(null); announce("Linkziel geändert.");
+      }} />}
+    <div className="cms-canvas-overlay" data-canvas-tools>
+      {activeSection && positions.section && <div ref={sectionBar} className="cms-canvas-section-toolbar" role="toolbar" aria-label={adminText("Abschnitt {p1} bearbeiten", { p1: String(activeSection.name) })} style={{ top: positions.section.top, right: positions.section.right }} onClick={event => event.stopPropagation()}><span className="cms-canvas-section-label">{activeSection.name}</span>{locked ? <><button type="button" className="cms-canvas-text-button" onClick={() => onSectionSelect?.(activeSection.id)}><Settings2 size={15} />{adminText("Angaben")}</button><button type="button" className="cms-canvas-text-button" onClick={() => setInsert({ sectionId: activeSection.id, side: "after" })}><Plus size={15} />{adminText("Inhalt danach")}</button></> : <><button type="button" className="cms-canvas-text-button" onClick={() => setInsert({ sectionId: activeSection.id, side: "before" })} title={adminText("Abschnitt davor hinzufügen")}><Plus size={14} />{adminText("Davor")}</button><button type="button" className="cms-canvas-text-button" onClick={() => setInsert({ sectionId: activeSection.id, side: "after" })} title={adminText("Abschnitt danach hinzufügen")}><Plus size={14} />{adminText("Danach")}</button><i /><IconButton label={adminText("Abschnitt nach oben verschieben")} disabled={activeIndex <= 0 || lockedSectionIds.includes(page.sections[activeIndex - 1]?.id)} onClick={() => moveSection(-1)}><ArrowUp size={16} /></IconButton><IconButton label={adminText("Abschnitt nach unten verschieben")} disabled={activeIndex === page.sections.length - 1 || lockedSectionIds.includes(page.sections[activeIndex + 1]?.id)} onClick={() => moveSection(1)}><ArrowDown size={16} /></IconButton><IconButton label={adminText("Abschnitt duplizieren")} onClick={duplicateSection}><Copy size={16} /></IconButton><IconButton label={adminText("Abschnitt entfernen")} onClick={() => setRemove({ sectionId: activeSection.id })}><Trash2 size={16} /></IconButton>{!feeds.has(activeSection.type) && !heroTypes.has(activeSection.type) && sectionCapabilities(activeSection.type).items && <><i /><button type="button" className="cms-canvas-text-button" onClick={() => addItem(activeSection)}><Plus size={14} />{adminText("Eintrag")}</button></>}</>}</div>}
+      {item && itemSection && !heroTypes.has(itemSection.type) && !feeds.has(itemSection.type) && positions.item && <div ref={itemBar} className="cms-canvas-item-toolbar" role="toolbar" aria-label={adminText("Eintrag {p1} bearbeiten", { p1: String(item.title || "ohne Titel") })} style={{ top: positions.item.top, right: positions.item.right }} onClick={event => event.stopPropagation()}><button type="button" className="cms-canvas-text-button" onClick={() => addItem(itemSection, item.id)} title={adminText("Eintrag dahinter hinzufügen")}><Plus size={14} />{adminText("Eintrag")}</button><i /><IconButton label={adminText("Eintrag nach vorn verschieben")} disabled={itemIndex <= 0} onClick={() => moveItem(-1)}><ArrowUp size={14} /></IconButton><IconButton label={adminText("Eintrag nach hinten verschieben")} disabled={itemIndex >= (itemSection.content.items?.length || 0) - 1} onClick={() => moveItem(1)}><ArrowDown size={14} /></IconButton><IconButton label={adminText("Eintrag duplizieren")} onClick={duplicateItem}><Copy size={14} /></IconButton><IconButton label={adminText("Eintrag entfernen")} onClick={() => setRemove({ sectionId: itemSection.id, itemId: item.id })}><Trash2 size={14} /></IconButton></div>}
+    </div>
+    <span className="cms-canvas-announcement" role="status" aria-live="polite">{announcement}</span>
+    {insert && <SectionLibraryDialog title={insert.side === "before" ? adminText("Abschnitt davor hinzufügen") : adminText("Abschnitt danach hinzufügen")} onSelect={insertSection} onClose={() => setInsert(null)} />}
+    {remove && <Modal title={remove.itemId ? adminText("Eintrag entfernen?") : adminText("Abschnitt entfernen?")} onClose={() => setRemove(null)} footer={<><Button onClick={() => setRemove(null)}>{adminText("Behalten")}</Button><Button variant="danger" onClick={confirmRemove}>{adminText("Entfernen")}</Button></>}><p>{remove.itemId ? adminText("Dieser Eintrag wird aus dem Abschnitt entfernt.") : adminText("Dieser Abschnitt wird aus der Seite entfernt.")} {adminText("Bis zum Veröffentlichen bleibt die öffentliche Website unverändert. Die Änderung können Sie über „Rückgängig“ zurücknehmen.")}</p></Modal>}
+    {icon && iconItem && iconSection && <IconPicker value={iconItem.icon} onClose={() => setIcon(null)} onSelect={name => { changeSection({ ...iconSection, content: { ...iconSection.content, items: iconSection.content.items?.map(item => item.id === icon.itemId ? { ...item, icon: name || "none" } : item) } }); announce("Symbol geändert."); }} />}
+  </div>;
+}

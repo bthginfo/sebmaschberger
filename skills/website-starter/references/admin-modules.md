@@ -1,0 +1,21 @@
+# Gleiche Bedienung für bestehende und neue Websites
+
+Die Website bleibt pro Projekt eigenständig. Wo derselbe CMS-Baustein oder dasselbe Modul aktiv ist, verwende dieselben Begriffe, Reihenfolgen, Tastaturaktionen, Speicherzustände und Qualitätskriterien. Farbrollen dürfen zum Admin-Design passen. Kopiere die generische Funktion, keine Kundendaten, Zugangsdaten, Kanäle, Termine oder Markenprofile.
+
+| Bedarf | Baustein und Freigabe | Durchgängige Abnahme |
+| --- | --- | --- |
+| Seiten, Bilder, Karten, FAQ, Suche, SEO, Entwürfe | Visueller CMS-Kern, Abschnittsbibliothek, Mediathek, Startcheck | In der Vorschau wählen, Eintrag ergänzen und sortieren, Undo, Linkziel und Alt-Text prüfen, speichern, neu laden und den Live-Stand separat prüfen. |
+| Inhalte finden und Verwaltung einrichten | Bereichssuche, gruppierte Einstellungen, Rollen, getrennte Website-/Admin-Sprachen | Nach tatsächlichen Aufgaben suchen; nur für die Rolle erlaubte Ergebnisse. Mobil bedienbar, keine Änderungen beim bloßen Suchen. |
+| Beiträge, Serien und kurze Reels gestalten | Social Studio optional und standardmäßig aus; `docs/social-studio.md` im Template | Motiv aus Vorlage oder leerem Format; Medien suchen und im Layout ersetzen; Formatkopie mit unverändertem Original; Text, Ränder, Varianten, Speichern, PNG und Video im Zielbrowser prüfen. |
+| Posts terminieren | Optionaler Post-Planer mit Social Studio; `docs/social-publishing.md` im Template | Datei oder gespeichertes Design, Kalender und Zeitzone, stabile Vorschau, Termin, Kanal und separater Freigabestatus. Anbieter erst im passenden Projekt verbinden und testen. |
+| Newsletter und Blog | Getrennte optionale Funktionen | Blog: Entwurf, geplante Inhalte sofern unterstützt, Vorschau und veröffentlichte Liste prüfen. Newsletter: Anmeldung, Double Opt-in, Testversand, Abmeldung und Queue. |
+| Speisen, Getränke und Tischreservierungen | Zwei unabhängige Module. Einrichtung und Abnahme in [Gastronomie](hospitality.md) | Eine Kartenänderung in mehreren Layouts prüfen. Für Reservierungen Kapazität, Buchungsfenster, Schließtage, konkurrierende Anfragen, Zusage, Storno und die Zustellung in der Gastsprache abnehmen. |
+| Anfragen, Freigaben und Vorlagen | Anfragen im Kern. Projektfreigaben, PDF-/E-Mail-Vorlagen und SMTP nach Bedarf | Anfrage finden und Status ändern; Angebot bzw. Terminvorschlag als Vorschau; Entscheidung in getrenntem Browser; Testzustellung separat. |
+| Shop, Bestellungen und Dokumente | Checkout und Kundendokumente bei beauftragtem Shop; eigenes Händlerkonto | Testkauf, Bestellstatus, Beleg, Rückerstattung und Widerrufsablauf testen. Standalone-Buchhaltung bleibt ein separates Vorhaben. |
+| Statistik, App, KI und Agenten | Eigene Statistik mit Einwilligung; App im Kern, Push je Gerät; KI und externe Agenten getrennt zuschaltbar | Zeitraum, Datenlücken und Zustimmung prüfen. KI-Ausgabe als prüfbaren Entwurf zeigen. Keine Anbieter oder Konten ohne Auftrag verbinden. |
+| Vereine und Coaches | Vereinsverwaltung und Coach Studio unabhängig und optional | Mitgliedsrollen und geschützte Daten; Termin und Teilnahme; beim Coaching Phasen, Darstellung und gezielte Freigabe prüfen. |
+| Portfolio, Podcast, Buchung und andere Spezialabläufe | Module aus dem Manifest übernehmen; Rezepte bewusst umsetzen | Funktionsumfang, Zuständigkeit und Erfolg im richtigen System nachweisen. Einen Workflow erst als fertig katalogisieren, wenn er ausführbar und getestet ist. |
+
+Vor der Portierung prüfen, welche Varianten und Module das Zielprojekt tatsächlich nutzt. Bekannte Varianten am Testentwurf auf Desktop und Smartphone durchspielen. Datenmodell und Anbieterbindungen getrennt erhalten. Bestehende private oder geplante Inhalte weder überschreiben noch veröffentlichen. Nutze bei mehreren Zielprojekten eine feste Vergleichsmatrix: Funktion, Einstieg, Berechtigung, Entwurfszustand, Erfolg, Fehler, Tastatur, Smartphone.
+
+Social Studio soll sich an der Klarheit guter Designwerkzeuge messen: Inhalt direkt ändern, Auswahl behalten, Aktionen rückgängig machen, Medien schnell finden, Varianten aus einem Original anlegen und das fertige Format vor dem Export prüfen. Bestehende Projektdateien und Exporttreue schützen. Template-Suche, Export, Video, Automatik und Anbietereinsatz jeweils konkret belegen; keinen pauschalen Funktionsgleichstand mit Canva behaupten.

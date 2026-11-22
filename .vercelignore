@@ -1,0 +1,13 @@
+.git
+.data
+.checks
+.impeccable
+.env*
+!.env.example
+node_modules
+tests
+docs
+skills
+project
+profiles/*
+!profiles/creator-*.json

@@ -1,0 +1,9 @@
+import type {ContentItem,CreatorPlatform} from '../types';
+import {isolatedImage,isolatedMediaUrl} from '../isolated-media';
+export function socialExampleItem(item:ContentItem):ContentItem{return{...item,placeholder:true,image:isolatedImage(item.image),poster:isolatedImage(item.poster),mediaUrl:isolatedMediaUrl(item.mediaUrl,'video')??isolatedMediaUrl(item.mediaUrl,'audio'),href:item.href?.startsWith('/')&&!item.href.startsWith('//')&&!item.href.includes('\\')||item.href?.startsWith('#')?item.href:undefined};}
+export interface SocialSourceResult {platform:CreatorPlatform;mode:'mock'|'official';status:'ready'|'unconfigured'|'error';items:ContentItem[];message?:string;updatedAt?:string}
+export interface SocialSource {platform:CreatorPlatform;load:()=>Promise<SocialSourceResult>}
+/** Public examples are self-hosted and never make an external request. */
+export function mockSocialSource(platform:CreatorPlatform,items:ContentItem[]):SocialSource{return{platform,load:async()=>({platform,mode:'mock',status:'ready',items:items.filter(i=>i.platform===platform).map(socialExampleItem)})};}
+/** Merchant-owned official adapters are registered on the server only after provider setup. No simulated connected state. */
+export function officialSocialSource(platform:CreatorPlatform,adapter?:()=>Promise<ContentItem[]>):SocialSource{return{platform,load:async()=>{if(!adapter)return{platform,mode:'official',status:'unconfigured',items:[],message:'Diese Plattform wurde noch nicht mit einem eigenen offiziellen Zugang eingerichtet.'};try{return{platform,mode:'official',status:'ready',items:await adapter(),updatedAt:new Date().toISOString()};}catch{return{platform,mode:'official',status:'error',items:[],message:'Die Plattform ist gerade nicht erreichbar. Zuletzt veröffentlichte Inhalte bleiben erhalten.'};}}};}

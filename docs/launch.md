@@ -1,0 +1,22 @@
+# Vor dem öffentlichen Start
+
+- Tatsächliches Briefing umgesetzt; alle gewünschten Seiten und Funktionen funktionieren. Musterstudio, Musterstadt, SVG-Platzhalter, Beispielnummern und `.invalid`-Adressen entfernt.
+- Anbieterangaben und Datenschutz für den konkreten Betrieb und die verwendeten Dienste ergänzt und geprüft. Die mitgelieferten Rechtstextseiten sind ausdrücklich Platzhalter.
+- Für kommerzielle Projekte einen dafür vorgesehenen Hosting-Tarif bestätigen. Vercel Hobby ist für persönliche, nicht kommerzielle Nutzung vorgesehen. [Vercel-Tarife](https://vercel.com/docs/plans/hobby)
+- Der freizugebende Commit liegt im eigenen privaten GitHub-Repository. Das zugehörige Vercel-Projekt ist mit diesem Repository verbunden. Produktionsbranch, Build-Verzeichnis und Git-Vorschau sind geprüft.
+- Eigenes Vercel-Projekt, eigenes Neon-Projekt mit bestätigtem Free-Tarif und eigener Datenbank, eigener Blob-Store und unabhängige Schlüssel eingerichtet. Zuordnung ohne Geheimnisse in `project/infrastructure.json` dokumentiert; keine gemeinsame Kundendatenbank und kein geteilter Blob-Store. Preview von Produktionsdaten getrennt halten und keine Kundendatenbanken für Tests verwenden.
+- Erstzugang eingerichtet; Passwortwechsel, Abmeldung, abgelaufene Sitzung, nicht angemeldeter API-Zugriff und unzulässige Schreibherkunft geprüft.
+- Entwurf öffentlich unsichtbar, Veröffentlichung sichtbar, Konflikte nachvollziehbar und Wiederherstellung als Entwurf möglich. Medien und Kontaktformular mit Testdaten geprüft.
+- Tatsächlicher Mailversand bei Bedarf geprüft; ohne SMTP bleiben Nachrichten im Postfach. Speicherfrist bewusst gewählt. Geschützten Cleanup-Cron eingerichtet.
+- Canonical, Metadaten, Vorschau-Bilder, Sitemap und strukturierte Daten an finaler Domain prüfen. `NEXT_PUBLIC_DESIGN_REVIEW=false` setzen und neu bauen; danach Indexierbarkeit kontrollieren.
+- [Redaktion, SEO und KI-Suchen](../skills/website-starter/references/search-and-copy.md) abnehmen: eigenständige Texte in der Stimme des Anbieters, korrekte Weiterleitungen, erreichbare interne Links und wichtige Inhalte als HTML. Felddaten zur Leistung von Browsermessungen unterscheiden.
+- Desktop, Smartphone, Tastatur, Fokus, Überschriften, Kontraste, Bildtexte und reduzierte Bewegung prüfen. Externe Medien vor Zustimmung dürfen keine Drittanbieter laden.
+- Den [Designstandard](../skills/website-starter/references/design-and-content.md) auf die sichtbare Startseite, eine repräsentative Unterseite und die wichtigste Aktion anwenden. Schrift und Bilder auf kleinen Displays und bei langsamem Laden prüfen. Startansicht, erster Beleg und mobile Ansicht mit den Projektinhalten kontrollieren.
+- `npm run typecheck`, `npm test`, `npm run build` bestanden. CMS-Veröffentlichungsablauf und neue Integrationen zusätzlich funktional geprüft.
+- Im CMS unter **Übersicht → Startcheck** die veröffentlichte Fassung prüfen. `npm run preflight` prüft die Startdatei und Umgebung. `npm run preflight -- --published` liest den gespeicherten veröffentlichten Stand. Der gezielte Remote-Abruf braucht `WS_USE_REMOTE_DATABASE=1` und die Zugangsdaten der dafür vorgesehenen Instanz.
+- Bei Shop-Projekten einen vollständigen Kauf im eigenen Stripe-Testkonto einschließlich Webhook, Beleg, E-Mail, Rückerstattung und gegebenenfalls Download prüfen. Im veröffentlichten Kundenprojekt den eigenen Live-Schlüssel und die zugehörige Webhook-Konfiguration verwenden.
+- Bei Online-Verträgen mit Verbrauchern die Widerrufsfunktion im Shop freigeben und einen Testwiderruf inklusive E-Mail mit Inhalt und Zeitstempel abschließen. Ein Download wird bei bestätigter Zahlung bereitgestellt. Ob ein Widerrufsrecht vorzeitig erlischt, erfordert einen eigenen Zustimmungs- und Bestätigungsablauf für das konkrete Projekt. [§ 356a BGB](https://www.gesetze-im-internet.de/bgb/__356a.html) · [§ 356 BGB](https://www.gesetze-im-internet.de/bgb/__356.html)
+- Für echten Social-Versand das vorgesehene Konto verbinden und den Versand im Test durchgängig beobachten. TikTok schließt die Veröffentlichung in der App ab. Laufend synchronisierte öffentliche Feeds separat beauftragen.
+- Keine `.env.local`, `.data`, `.vercel`, privaten Dokumente oder Zugangsdaten im Commit. Inhalts-/Medienexport und Wiederherstellungsweg dokumentiert.
+
+Ein erfolgreicher lokaler Test belegt keine Verbindung zum produktiven Mailanbieter, Neon oder Blob. Diese Verbindungen nach Einrichtung getrennt prüfen und offene Punkte im Übergabebericht benennen.

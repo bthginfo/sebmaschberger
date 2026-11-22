@@ -1,0 +1,50 @@
+.section { margin-top: 20px; }
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 195px), 1fr));
+  gap: 10px;
+  margin: 13px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #dce5e0;
+  border-radius: 11px;
+  background: #fbfdfa;
+}
+.identity { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.identity > div { min-width: 0; overflow-wrap: anywhere; }
+.identity h4 { margin: 0; color: #17293d; font-size: 13px; font-weight: 760; }
+.identity p { margin: 3px 0 4px; color: #526273; font-size: 12px; line-height: 1.35; }
+.preview {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 58px;
+  height: 58px;
+  overflow: hidden;
+  border: 1px solid #dce5e0;
+  border-radius: 12px;
+  background: #eef4ed;
+  color: #2b5846;
+}
+.preview img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.state { color: #315b49; font-size: 11px; font-weight: 720; }
+.actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+.actions > button { min-height: 39px; white-space: normal; }
+.actions > button > svg { flex: none; }
+.message, .retry { color: #2d614b; font-size: 12px; }
+.item .message { margin: 0; }
+.message[data-error], .retry { color: #8b3740; }
+.retry { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.retry p { margin: 0; }
+@media (max-width: 630px) {
+  .item { padding: 11px; }
+  .actions > button { min-height: 42px; }
+}

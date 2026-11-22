@@ -1,0 +1,11 @@
+import {revalidatePath} from 'next/cache';
+import {requireAdmin} from '@/lib/auth';
+import {AppError,rateLimit} from '@/lib/db';
+import {handler,ipKey,json,readJson,sameOrigin} from '@/lib/http';
+import {analyticsFiltersSchema,defaultAnalyticsFilters} from '@/lib/analytics/model';
+import {analytics} from '@/lib/server/analytics/store';
+import {newsletter} from '@/lib/server/newsletter/store';
+import {AnalyticsError} from '@/lib/server/analytics/service';
+export const runtime='nodejs';export const dynamic='force-dynamic';
+const route=handler(async(request:Request)=>{if(request.method!=='GET')sameOrigin(request);await requireAdmin();await rateLimit(ipKey(request,'statistics-admin'),90,60);try{if(request.method==='GET'){const params=new URL(request.url).searchParams;if(params.get('view')==='live')return json(await analytics.live());const filters={...defaultAnalyticsFilters(),...Object.fromEntries(params)};filters.compare=params.get('compare')!=='false';const period=analyticsFiltersSchema.parse(filters);const [settings,report,mail]=await Promise.all([analytics.admin(),analytics.report(period),newsletter.stats(period.from,period.to)]);return json({ok:true,settings,report,newsletter:mail});}const body=await readJson(request,8000);if(request.method==='DELETE'){const data=body as {baseRevision?:number;confirm?:string};if(data.confirm!=='Statistik löschen'||!Number.isInteger(data.baseRevision))throw new AppError('Bitte das Löschen der Statistik ausdrücklich bestätigen.');const settings=await analytics.clear(data.baseRevision!);revalidatePath('/datenschutz');return json({ok:true,settings});}const settings=await analytics.configure(body);revalidatePath('/datenschutz');return json({ok:true,settings});}catch(e){if(e instanceof AnalyticsError)throw new AppError(e.message,e.status);throw e;}});
+export{route as GET,route as POST,route as DELETE};

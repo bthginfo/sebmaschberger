@@ -1,0 +1,24 @@
+{
+  "id": "portfolio",
+  "title": "Portfolio",
+  "heroHeading": "Arbeiten mit einer\neigenen Handschrift.",
+  "blog": false,
+  "navigation": [
+    {
+      "label": "Leistungen",
+      "href": "/leistungen"
+    },
+    {
+      "label": "Über uns",
+      "href": "/ueber-uns"
+    },
+    {
+      "label": "Projekte",
+      "href": "/projekte"
+    },
+    {
+      "label": "Kontakt",
+      "href": "/kontakt"
+    }
+  ]
+}

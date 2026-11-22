@@ -1,0 +1,50 @@
+import {z} from 'zod';
+import {connectorPostOptionsSchema,type ConnectorTarget} from '../connectors/model';
+
+export const INSTAGRAM_API_VERSION='v26.0';
+export const PLATFORM_IDS=['instagram','tiktok','youtube','linkedin','facebook','pinterest','threads','bluesky'] as const;
+export const publicationPlatformSchema=z.enum(PLATFORM_IDS);
+export type PublicationPlatform=typeof PLATFORM_IDS[number];
+export type PublicationDelivery='manual'|'automatic'|'handoff';
+type DeliveryTarget={platform?:PublicationPlatform;delivery?:PublicationDelivery;connectionMode?:'native'};
+/** Missing fields describe saved pre-channel Instagram attempts, never new UI defaults. */
+export const effectivePlatform=(value:DeliveryTarget):PublicationPlatform=>value.platform??'instagram';
+export const effectiveDelivery=(value:DeliveryTarget):PublicationDelivery=>value.delivery??'automatic';
+export const isAutomaticInstagram=(value:DeliveryTarget)=>effectivePlatform(value)==='instagram'&&effectiveDelivery(value)==='automatic'&&value.connectionMode!=='native';
+export const PUBLICATION_STATUSES=['draft','prepared','manual_planned','manual_completed','scheduling','scheduled','processing','needs_review','awaiting_platform','published','failed','cancelled'] as const;
+export const PUBLICATION_PHASES=['idle','create','poll','publish','review','done'] as const;
+const iso=z.iso.datetime({offset:true});
+const hash=z.string().regex(/^[a-f0-9]{64}$/);
+export const timeZoneSchema=z.string().min(1).max(100).refine(value=>{try{new Intl.DateTimeFormat('en',{timeZone:value});return true;}catch{return false;}},'Bitte eine gültige Zeitzone wählen.');
+export const studioPublicationSourceSchema=z.object({origin:z.literal('studio').optional(),projectId:z.string().min(1).max(96),projectRevision:z.number().int().nonnegative(),title:z.string().min(1).max(140),brandKey:z.string().min(1).max(80),brandLabel:z.string().min(1).max(100),formatId:z.string().min(1).max(40),kind:z.enum(['post','reel']),slides:z.number().int().min(1).max(30),snapshotHash:hash}).strict();
+export const uploadedPublicationSourceSchema=z.object({origin:z.literal('upload'),uploadId:z.uuid(),filename:z.string().min(1).max(160).refine(value=>!/[\u0000-\u001f\u007f/\\]/.test(value),'Bitte einen gültigen Dateinamen verwenden.'),title:z.string().min(1).max(140),brandKey:z.string().min(1).max(80),brandLabel:z.string().min(1).max(100),formatId:z.literal('upload'),kind:z.enum(['post','reel']),slides:z.literal(1),snapshotHash:hash}).strict();
+export const referencePublicationSourceSchema=z.object({origin:z.literal('reference'),formatId:z.literal('reference'),title:z.string().trim().min(1).max(140),brandKey:z.string().min(1).max(80),brandLabel:z.string().min(1).max(100),kind:z.enum(['note','post','reel']),slides:z.literal(1),url:z.string().min(1).max(2048).nullable(),snapshotHash:hash}).strict().refine(source=>source.kind==='note'?source.url===null:source.url!==null,{message:'Eine Notiz braucht keine Datei; für ein Medienoriginal bitte eine HTTPS-Adresse angeben.',path:['url']});
+export const publicationSourceSchema=z.union([studioPublicationSourceSchema,uploadedPublicationSourceSchema,referencePublicationSourceSchema]);
+export const publicationDraftSchema=z.object({id:z.uuid(),source:publicationSourceSchema,kind:z.enum(['text','image','reel']),carousel:z.literal(true).optional(),carouselAltTexts:z.array(z.string().max(1000)).max(20).optional(),slideIndex:z.number().int().min(0).max(29),caption:z.string().max(2200),altText:z.string().max(1000),accountId:z.uuid().nullable(),scheduledAt:iso.nullable(),timeZone:timeZoneSchema,platform:publicationPlatformSchema.optional(),delivery:z.enum(['manual','automatic','handoff']).optional(),connectionMode:z.literal('native').optional(),providerOptions:connectorPostOptionsSchema.optional(),targetLabel:z.string().trim().max(100).optional()}).strict();
+export const publishingMediaSchema=z.object({id:z.uuid(),sha256:hash,sourceHash:hash,kind:z.enum(['image','reel']),slideIndex:z.number().int().min(0).max(29),mimeType:z.enum(['image/jpeg','video/mp4']),width:z.number().int().positive().max(4096),height:z.number().int().positive().max(4096),bytes:z.number().int().positive().max(4*1024*1024),durationMs:z.number().int().positive().max(90000).optional(),createdAt:iso}).strict();
+export const publicationRecordSchema=publicationDraftSchema.extend({revision:z.number().int().positive(),status:z.enum(PUBLICATION_STATUSES),generation:z.number().int().positive(),media:publishingMediaSchema.nullable(),mediaItems:z.array(publishingMediaSchema).max(20).optional(),approval:z.object({by:z.string().min(1).max(100),at:iso,contentHash:hash,mediaHash:hash,connectionGeneration:z.number().int().positive()}).strict().nullable(),process:z.object({phase:z.enum(PUBLICATION_PHASES),containerId:z.string().max(512).nullable(),containerCreatedAt:iso.nullable(),polls:z.number().int().nonnegative(),publishStartedAt:iso.nullable(),mediaId:z.string().max(512).nullable(),confirmedAt:iso.nullable(),lastError:z.string().max(500).nullable()}).strict(),nextActionAt:iso.nullable(),lease:z.object({token:z.uuid(),until:iso}).strict().nullable(),manualCompletion:z.object({by:z.string().min(1).max(100),at:iso}).strict().nullable().optional(),createdAt:iso,updatedAt:iso}).strict();
+export type PublicationSource=z.infer<typeof publicationSourceSchema>;
+export type StudioPublicationSource=z.infer<typeof studioPublicationSourceSchema>;
+export type UploadedPublicationSource=z.infer<typeof uploadedPublicationSourceSchema>;
+export type ReferencePublicationSource=z.infer<typeof referencePublicationSourceSchema>;
+export function isUploadedSource(source:PublicationSource):source is UploadedPublicationSource{return source.origin==='upload';}
+export function isReferenceSource(source:PublicationSource):source is ReferencePublicationSource{return source.origin==='reference';}
+export type PublicationDraft=z.infer<typeof publicationDraftSchema>;
+export type PublishingMedia=z.infer<typeof publishingMediaSchema>;
+export type PublicationRecord=z.infer<typeof publicationRecordSchema>;
+export type PublicationStatus=PublicationRecord['status'];
+export type PublicationPhase=PublicationRecord['process']['phase'];
+export type ConnectionView={id:string;revision:number;brandKey:string;label:string;accountId:string;username:string;status:'unconfigured'|'configured'|'connected'|'expired'|'disconnected';scopes:string[];expiresAt:string|null;generation:number;checkedAt:string|null;lastError:string|null;platform?:PublicationPlatform;connectionMode?:'native';renewable?:boolean;nonExpiring?:boolean;targetKind?:ConnectorTarget['kind']};
+export type PlannerReadiness={enabled:boolean;queue:boolean;media:boolean;publicOrigin:boolean;credentials?:boolean;messages:string[]};
+export type PlannerWorkspace={entries:PublicationRecord[];connections:ConnectionView[];sources:StudioPublicationSource[];readiness:PlannerReadiness};
+export const plannerSaveSchema=z.object({idempotencyKey:z.uuid(),baseRevision:z.number().int().nonnegative(),draft:publicationDraftSchema}).strict();
+export const plannerActionSchema=z.object({idempotencyKey:z.uuid(),baseRevision:z.number().int().positive(),id:z.uuid()}).strict();
+export const plannerCopySchema=plannerActionSchema.extend({newId:z.uuid(),platform:publicationPlatformSchema.optional(),targetLabel:z.string().trim().max(100).optional()});
+export const plannerUploadSchema=z.object({idempotencyKey:z.uuid(),baseRevision:z.number().int().nonnegative(),id:z.uuid(),brandKey:z.string().min(1).max(80),title:z.string().trim().min(1).max(140)}).strict();
+export type PlannerUpload=z.infer<typeof plannerUploadSchema>;
+export const connectionSaveSchema=z.object({idempotencyKey:z.uuid(),baseRevision:z.number().int().nonnegative(),id:z.uuid(),brandKey:z.string().min(1).max(80),label:z.string().trim().min(1).max(100),accountId:z.string().regex(/^\d{5,40}$/),accessToken:z.string().min(20).max(3000),expiresAt:iso,permissionsConfirmed:z.literal(true)}).strict();
+export const connectionActionSchema=z.object({idempotencyKey:z.uuid(),baseRevision:z.number().int().positive(),id:z.uuid()}).strict();
+export const PUBLICATION_LABELS:Record<PublicationStatus,string>={draft:'Entwurf',prepared:'Medien geprüft',manual_planned:'Manuell geplant',manual_completed:'Manuell erledigt',scheduling:'Warteschlange ausstehend',scheduled:'Geplant',processing:'Wird verarbeitet',needs_review:'Prüfung nötig',awaiting_platform:'In TikTok freigeben',published:'Veröffentlicht',failed:'Fehlgeschlagen',cancelled:'Abgebrochen'};
+export const MAX_PUBLISHING_MEDIA_BYTES=4*1024*1024;
+export const QUEUE_HORIZON_SECONDS=6*24*60*60;
+export const QUEUE_RETENTION_SECONDS=7*24*60*60;

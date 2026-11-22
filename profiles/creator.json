@@ -1,0 +1,25 @@
+{
+  "id": "creator",
+  "title": "Creator",
+  "creator": true,
+  "heroHeading": "Dein eigener Auftritt.",
+  "blog": false,
+  "navigation": [
+    {
+      "label": "Start",
+      "href": "/"
+    },
+    {
+      "label": "Inhalte",
+      "href": "/#inhalte"
+    },
+    {
+      "label": "Media Kit",
+      "href": "/media-kit"
+    },
+    {
+      "label": "Kontakt",
+      "href": "/kontakt"
+    }
+  ]
+}

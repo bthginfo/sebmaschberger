@@ -1,0 +1,16 @@
+node_modules/
+.next/
+.vercel/
+.env*
+!.env.example
+.data/
+.checks/
+*.tsbuildinfo
+test-results/
+playwright-report/
+coverage/
+*.log
+.DS_Store
+
+# Private design work and local review reports
+.impeccable/

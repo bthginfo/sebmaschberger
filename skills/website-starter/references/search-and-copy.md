@@ -1,0 +1,29 @@
+# Texte, SEO und Auffindbarkeit in KI-Suchen
+
+Bei jeder neuen Website und bei inhaltlichen oder strukturellen Änderungen anwenden. Vor dem Texten Angebot, Zielgruppen, Zielregion, passende Anrede, überprüfbare Belege und Hauptaktion aus Briefing und echten Quellen festhalten. Pro wichtiger URL eine Leserfrage, einen eigenständigen Beitrag und den nächsten Schritt bestimmen. Seiten nur für tatsächlich unterschiedliche Absichten oder Angebote anlegen.
+
+## Redaktion
+
+- Öffentliche Inhalte aus Sicht des Anbieters schreiben. „Wir“ für ein Team, „ich“ für eine Einzelperson, wenn das zur Marke passt; sachliche Produktdaten und Rechtsangaben bleiben sachlich. Anrede und Ton pro Sprache konsistent halten.
+- Schon in der Überschrift und den ersten Absätzen zeigen, was der Anbieter tut, für wen und was konkret passiert. Details aus echter Arbeit verwenden: Material, Liefergebiet, Voraussetzungen, Ablauf, Preisrahmen, Beispiele oder Grenzen, soweit belegt. Antworten auf tatsächliche Fragen schreiben. Ein Absatz, der bei beliebigen Wettbewerbern stehen könnte, braucht konkreteren Inhalt.
+- Regie, Layoutnotizen und Bedienanweisungen gehören ins interne Briefing. In einer 3D-Produktstory erklären Texte Material, Funktion oder Nutzen aus Sicht der Marke. Benenne eine Bedienhilfe separat und nur, wenn sie für die Nutzung nötig ist. Das gilt ebenso für Metadaten, Alt-Texte und CTA-Beschriftungen.
+- Sätze wie „Maßgeschneiderte Lösungen“, „Wir setzen neue Maßstäbe“ oder „Entdecke eine Welt voller …“ durch überprüfbare Aussagen ersetzen. Keine Füllabsätze, Wortketten für Keywords oder erfundenen Bewertungen, Siegel, Kennzahlen und Verfügbarkeiten. Fehlende Fakten separat im Entwurf festhalten und vor Freigabe klären oder die Behauptung streichen.
+- Eine passende Aktion je Seitenabschnitt: „Menü ansehen“, „Trainingszeiten prüfen“, „Termin anfragen“. Aussagekräftige Linktexte. Redaktionsprüfung durch Vorlesen und in der Mobilvorschau, einschließlich Umbruch, Screenreader-Text, Formulare, Leerezustände und sprachspezifischer Metadaten.
+
+Beispiel: Aus „Jetzt öffnet sich das Sideboard und gibt den Blick auf die Einlegeböden frei“ wird „Unsere Einlegeböden lassen sich in drei Höhen einsetzen. So finden auch hohe Vasen Platz“ – sofern das Modell diese drei Positionen tatsächlich hat.
+
+## Technische und inhaltliche SEO
+
+- Pro indexierbarer URL: eigene sprechende Adresse, präziser Seitentitel, eigene hilfreiche Meta-Beschreibung, aussagekräftige Hauptüberschrift und sinnvoll gegliederte Zwischenüberschriften. Relevante Begriffe natürlich verwenden. Wichtige Produkt- und Leistungsinformationen als serverseitig ausgelieferten HTML-Text bereitstellen, auch ohne Canvas, Motion oder Drittanbieter.
+- Interne Links mit echten Zielen, HTTP-Status, absolute Canonical-URL auf der endgültigen HTTPS-Domain, XML-Sitemap nur mit indexierbaren kanonischen URLs, Robots-Regeln und alle Weiterleitungen prüfen. Bei Relaunch wichtige alte URLs inventarisieren und passend weiterleiten. Für echte Sprachpaare gegenseitige hreflang-Verweise und je Sprache einen eigenen Canonical prüfen.
+- Vorschau und private Inhalte geschützt halten. Preview, Duplikate und bewusst nicht indexierte Seiten getrennt vom Live-Index behandeln. Prüfe die veröffentlichte Fassung samt HTTP-Headern; robots.txt ersetzt keinen Zugriffsschutz.
+- Open Graph und Social Cards auf der endgültigen Domain mit passendem, abrufbarem Bild prüfen. Aussagekräftige Alt-Texte für informative Bilder, leere Alt-Texte für Dekoration. Responsive Bilder, feste Medienabmessungen und sinnvolle Ladeprioritäten. Bei animierten Seiten Text und Hauptaktion früh verfügbar halten und die mobile Leistung messen.
+- JSON-LD für den passenden sichtbaren Inhalt einsetzen, etwa Organization, zutreffender LocalBusiness-Typ, Person, Article, Product oder BreadcrumbList. Name, Autor, Kontakt, Preis, Verfügbarkeit und Bewertungen nur verwenden, wenn sie sichtbar, aktuell und belegt sind. Bei lokaler Suche Angaben und Öffnungszeiten auch mit dem autorisierten Unternehmensprofil abgleichen. Rich Results nur dort erwarten, wo die Suchmaschine den Typ tatsächlich unterstützt.
+
+## KI-Suchen und Abnahme
+
+- Relevante Fakten eindeutig in sichtbarer Sprache nennen: Wer bietet was an, wo, unter welchen Bedingungen? Details, eigene Beispiele, Belege und Autoren oder Stand nur dort ergänzen, wo sie Lesern helfen. Keine versteckten Texte, künstlichen Erwähnungen oder generischen Serien von Ortsseiten.
+- Für Google KI-Suchergebnisse gelten die normalen Suchgrundlagen; es gibt kein besonderes KI-Schema und `llms.txt` ist kein Google-Rankinghebel. Bestehende Markdown-Zusammenfassungen optional als zusätzliche lesbare Quelle pflegen. Für gewünschte Auffindbarkeit in ChatGPT Search die Erreichbarkeit für OAI-SearchBot prüfen. Die Entscheidung über Trainings-Crawler ist getrennt; bestehende Betreiberregeln respektieren.
+- Vor Launch echte Live-URLs prüfen: Status, HTML, Canonical, noindex, Sitemap, interne Links, JSON-LD, Social-Bild, mobile Bedienung und Geschwindigkeit. Als Leistungsziele gelten LCP ≤ 2,5 s, INP ≤ 200 ms und CLS ≤ 0,1 bei der 75. Perzentile der Felddaten. Labormessung und echte Felddaten getrennt berichten. Nach Launch mit berechtigtem Zugang Search Console und URL-Prüfung nutzen. Keine Platzierung, Indexierung oder KI-Nennung versprechen.
+
+Quellen: [Google SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide), [Google-Leitfaden für generative Suche](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide), [Core Web Vitals](https://developers.google.com/search/docs/appearance/core-web-vitals), [strukturierte Daten](https://developers.google.com/search/docs/appearance/structured-data/sd-policies), [OpenAI-Crawler](https://developers.openai.com/api/docs/bots).

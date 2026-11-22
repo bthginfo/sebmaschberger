@@ -1,0 +1,961 @@
+{
+  "version": 1,
+  "config": {
+    "name": "Musterstudio",
+    "legalName": "Musterstudio · Platzhalter",
+    "tagline": "Ihr Angebot. Ihre Handschrift.",
+    "phone": "+49 000 000000",
+    "email": "hallo@example.invalid",
+    "fax": "",
+    "address": "Musterstraße 1",
+    "city": "Musterstadt",
+    "postalCode": "00000",
+    "navigation": [
+      {
+        "label": "Leistungen",
+        "href": "/leistungen"
+      },
+      {
+        "label": "Über uns",
+        "href": "/ueber-uns"
+      },
+      {
+        "label": "Projekte",
+        "href": "/projekte"
+      },
+      {
+        "label": "Kontakt",
+        "href": "/kontakt"
+      }
+    ],
+    "footerText": "Neutrale Website-Vorlage. Alle Anbieterangaben vor dem Start ersetzen.",
+    "openingHours": [
+      {
+        "day": "Termine",
+        "hours": "Nach Vereinbarung"
+      }
+    ],
+    "theme": {
+      "primary": "#142b27",
+      "accent": "#d6f07d",
+      "background": "#f6f4ed",
+      "radius": 8,
+      "font": "manrope"
+    },
+    "designVariant": 1,
+    "consent": {
+      "enabled": true,
+      "title": "Ihre Cookie-Einstellungen",
+      "text": "Sie entscheiden, ob externe Medien und optionale Statistikdienste geladen werden dürfen."
+    },
+    "analytics": {
+      "googleId": "",
+      "matomoUrl": "",
+      "matomoSiteId": ""
+    },
+    "blog": {
+      "enabled": false,
+      "title": "Wissen und Einblicke.",
+      "description": "Beiträge Ihres Unternehmens.",
+      "slug": "blog",
+      "layout": "cards",
+      "showInNavigation": false,
+      "navLabel": "Wissen"
+    },
+    "footer": {
+      "brandText": "Musterstudio",
+      "ctaLabel": "Kontakt aufnehmen",
+      "ctaHref": "/kontakt",
+      "addressHeading": "Besuchen Sie uns",
+      "contactHeading": "Wir sind erreichbar",
+      "navigationHeading": "Entdecken",
+      "copyright": "© {year} {name}",
+      "showAddress": true,
+      "showContact": true,
+      "showHours": true,
+      "showCookieSettings": true,
+      "showBackToTop": true,
+      "columns": [
+        {
+          "id": "website",
+          "title": "Entdecken",
+          "links": [
+            {
+              "label": "Leistungen",
+              "href": "/leistungen"
+            },
+            {
+              "label": "Über uns",
+              "href": "/ueber-uns"
+            },
+            {
+              "label": "Projekte",
+              "href": "/projekte"
+            },
+            {
+              "label": "Kontakt",
+              "href": "/kontakt"
+            }
+          ]
+        }
+      ],
+      "legalLinks": [
+        {
+          "label": "Impressum",
+          "href": "/impressum"
+        },
+        {
+          "label": "Datenschutz",
+          "href": "/datenschutz"
+        }
+      ]
+    }
+  },
+  "pages": [
+    {
+      "id": "home",
+      "slug": "",
+      "title": "Startseite",
+      "locale": "de-DE",
+      "seo": {
+        "title": "Startseite | Musterstudio",
+        "description": "Platzhalter für das Angebot, die Zielgruppe und den Standort Ihres Unternehmens.",
+        "image": "/media/placeholder-landscape.svg"
+      },
+      "sections": [
+        {
+          "id": "home-hero",
+          "type": "hero",
+          "name": "Raum für\nIhr Unternehmen.",
+          "visible": true,
+          "content": {
+            "heading": "Raum für\nIhr Unternehmen.",
+            "text": "Dieser Starter zeigt den Aufbau einer individuellen Website. Texte, Bilder und Gestaltung werden für Ihr Projekt neu entwickelt.",
+            "subheading": "Musterstudio · Website-Vorlage",
+            "image": {
+              "src": "/media/placeholder-landscape.svg",
+              "alt": "Gestalteter Bildplatzhalter; durch ein eigenes Motiv ersetzen",
+              "position": "50% 50%"
+            },
+            "primaryLabel": "Leistungen entdecken",
+            "primaryHref": "/leistungen",
+            "secondaryLabel": "Kontakt aufnehmen",
+            "secondaryHref": "/kontakt"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "home-statement",
+          "type": "statement",
+          "name": "Ein klarer Auftritt.\nEine eigene Handschrift.",
+          "visible": true,
+          "content": {
+            "heading": "Ein klarer Auftritt.\nEine eigene Handschrift.",
+            "text": "Ersetzen Sie diesen Text durch eine belegbare Aussage über Ihren Betrieb. Die Oberfläche zeigt bewusst neutrale Platzhalter und keine erfundenen Kundenreferenzen."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "home-services",
+          "type": "services",
+          "name": "Was Sie anbieten.",
+          "visible": true,
+          "content": {
+            "heading": "Was Sie anbieten.",
+            "text": "Drei beispielhafte Leistungsbereiche. Namen, Reihenfolge und Umfang ändern Sie später im CMS.",
+            "items": [
+              {
+                "id": "service-1",
+                "title": "Leistung eins",
+                "text": "Beschreiben Sie hier das konkrete Angebot und für wen es gedacht ist.",
+                "href": "/leistungen",
+                "label": "Mehr erfahren",
+                "icon": "Compass"
+              },
+              {
+                "id": "service-2",
+                "title": "Leistung zwei",
+                "text": "Erklären Sie den Nutzen mit nachvollziehbaren Informationen aus Ihrem Betrieb.",
+                "href": "/leistungen",
+                "label": "Mehr erfahren",
+                "icon": "Layers"
+              },
+              {
+                "id": "service-3",
+                "title": "Leistung drei",
+                "text": "Nennen Sie den nächsten sinnvollen Schritt für Interessierte.",
+                "href": "/kontakt",
+                "label": "Kontakt aufnehmen",
+                "icon": "MessagesSquare"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "home-about",
+          "type": "split",
+          "name": "Die Menschen\nhinter dem Angebot.",
+          "visible": true,
+          "content": {
+            "heading": "Die Menschen\nhinter dem Angebot.",
+            "text": "Hier entsteht Ihre Geschichte: Was Sie tun, was Ihre Arbeitsweise ausmacht und warum Menschen mit Ihnen arbeiten. Verwenden Sie eigene Inhalte und freigegebene Bilder.",
+            "image": {
+              "src": "/media/placeholder-landscape.svg",
+              "alt": "Gestalteter Bildplatzhalter; durch ein eigenes Motiv ersetzen",
+              "position": "50% 50%"
+            },
+            "primaryLabel": "Über uns",
+            "primaryHref": "/ueber-uns"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "home-steps",
+          "type": "steps",
+          "name": "So beginnt die Zusammenarbeit.",
+          "visible": true,
+          "content": {
+            "heading": "So beginnt die Zusammenarbeit.",
+            "text": "Ein verständlicher Ablauf hilft Besucherinnen und Besuchern bei der Orientierung.",
+            "items": [
+              {
+                "id": "step-1",
+                "title": "Kennenlernen",
+                "text": "Wir klären gemeinsam, worum es geht und welches Ergebnis Sie suchen."
+              },
+              {
+                "id": "step-2",
+                "title": "Vorgehen abstimmen",
+                "text": "Hier stehen später der tatsächliche Ablauf und die vereinbarten Leistungen."
+              },
+              {
+                "id": "step-3",
+                "title": "Gemeinsam umsetzen",
+                "text": "Beschreiben Sie die Zusammenarbeit mit klaren Zuständigkeiten und nächsten Schritten."
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "home-faq",
+          "type": "faq",
+          "name": "Noch eine Frage?",
+          "visible": true,
+          "content": {
+            "heading": "Noch eine Frage?",
+            "text": "",
+            "items": [
+              {
+                "id": "faq-1",
+                "title": "Wie nehmen Interessierte Kontakt auf?",
+                "text": "Das Kontaktformular speichert Nachrichten im geschützten Anfragepostfach. E-Mail-Benachrichtigungen lassen sich zusätzlich einrichten."
+              },
+              {
+                "id": "faq-2",
+                "title": "Wer kann Inhalte aktualisieren?",
+                "text": "Berechtigte Personen können Texte, Bilder, Abschnitte und Seiten selbst im CMS bearbeiten und gezielt veröffentlichen."
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "home-cta",
+          "type": "cta",
+          "name": "Lassen Sie uns sprechen.",
+          "visible": true,
+          "content": {
+            "heading": "Lassen Sie uns sprechen.",
+            "text": "Ersetzen Sie die Beispieldaten vor dem Start durch Ihre tatsächlichen Kontaktmöglichkeiten.",
+            "primaryLabel": "Kontakt aufnehmen",
+            "primaryHref": "/kontakt"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "leistungen",
+      "slug": "leistungen",
+      "title": "Leistungen",
+      "locale": "de-DE",
+      "seo": {
+        "title": "Leistungen | Musterstudio",
+        "description": "Die Angebote Ihres Unternehmens im Überblick.",
+        "image": "/media/placeholder-landscape.svg"
+      },
+      "sections": [
+        {
+          "id": "services-hero",
+          "type": "hero",
+          "name": "Leistungen, die\nzu Ihrem Vorhaben passen.",
+          "visible": true,
+          "content": {
+            "heading": "Leistungen, die\nzu Ihrem Vorhaben passen.",
+            "text": "Hier erklären Sie Ihr Angebot mit konkreten, überprüfbaren Aussagen.",
+            "image": {
+              "src": "/media/placeholder-landscape.svg",
+              "alt": "Gestalteter Bildplatzhalter; durch ein eigenes Motiv ersetzen",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "services-cards",
+          "type": "cards",
+          "name": "Unsere Angebote.",
+          "visible": true,
+          "content": {
+            "heading": "Unsere Angebote.",
+            "text": "Platzhalter für drei tatsächliche Leistungen.",
+            "items": [
+              {
+                "id": "service-1",
+                "title": "Leistung eins",
+                "text": "Beschreiben Sie hier das konkrete Angebot und für wen es gedacht ist.",
+                "href": "/leistungen",
+                "label": "Mehr erfahren",
+                "icon": "Compass"
+              },
+              {
+                "id": "service-2",
+                "title": "Leistung zwei",
+                "text": "Erklären Sie den Nutzen mit nachvollziehbaren Informationen aus Ihrem Betrieb.",
+                "href": "/leistungen",
+                "label": "Mehr erfahren",
+                "icon": "Layers"
+              },
+              {
+                "id": "service-3",
+                "title": "Leistung drei",
+                "text": "Nennen Sie den nächsten sinnvollen Schritt für Interessierte.",
+                "href": "/kontakt",
+                "label": "Kontakt aufnehmen",
+                "icon": "MessagesSquare"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "services-cta",
+          "type": "cta",
+          "name": "Was haben Sie vor?",
+          "visible": true,
+          "content": {
+            "heading": "Was haben Sie vor?",
+            "text": "",
+            "primaryLabel": "Vorhaben besprechen",
+            "primaryHref": "/kontakt"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ueber-uns",
+      "slug": "ueber-uns",
+      "title": "Über uns",
+      "locale": "de-DE",
+      "seo": {
+        "title": "Über uns | Musterstudio",
+        "description": "Menschen, Haltung und Arbeitsweise Ihres Unternehmens.",
+        "image": "/media/placeholder-landscape.svg"
+      },
+      "sections": [
+        {
+          "id": "about-hero",
+          "type": "hero",
+          "name": "Ein eigener Blick.\nEin gemeinsames Ziel.",
+          "visible": true,
+          "content": {
+            "heading": "Ein eigener Blick.\nEin gemeinsames Ziel.",
+            "text": "Dieser Bereich erzählt später von Ihrem Unternehmen.",
+            "image": {
+              "src": "/media/placeholder-landscape.svg",
+              "alt": "Gestalteter Bildplatzhalter; durch ein eigenes Motiv ersetzen",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "about-story",
+          "type": "split",
+          "name": "Ihre Geschichte.",
+          "visible": true,
+          "content": {
+            "heading": "Ihre Geschichte.",
+            "text": "Ergänzen Sie hier die tatsächliche Geschichte Ihres Betriebs, Ihre Werte und Ihre Arbeitsweise. Verwenden Sie belegbare Angaben.",
+            "image": {
+              "src": "/media/placeholder-landscape.svg",
+              "alt": "Gestalteter Bildplatzhalter; durch ein eigenes Motiv ersetzen",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "about-team",
+          "type": "team",
+          "name": "Ihre Ansprechpersonen.",
+          "visible": true,
+          "content": {
+            "heading": "Ihre Ansprechpersonen.",
+            "text": "",
+            "items": [
+              {
+                "id": "team-1",
+                "title": "Ihre Ansprechperson",
+                "text": "Hier stellen Sie einen echten Menschen und seine Aufgabe vor.",
+                "image": {
+                  "src": "/media/placeholder-portrait.svg",
+                  "alt": "Abstrakter Porträtplatzhalter; durch ein freigegebenes Foto ersetzen",
+                  "position": "50% 50%"
+                },
+                "meta": "Rolle im Unternehmen",
+                "email": "hallo@example.invalid",
+                "href": "/team",
+                "label": "Kontakt"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "team",
+      "slug": "team",
+      "title": "Team",
+      "locale": "de-DE",
+      "seo": {
+        "title": "Team | Musterstudio",
+        "description": "Die richtigen Ansprechpersonen für Ihr Anliegen.",
+        "image": "/media/placeholder-landscape.svg"
+      },
+      "sections": [
+        {
+          "id": "team-hero",
+          "type": "hero",
+          "name": "Persönlich für\nSie erreichbar.",
+          "visible": true,
+          "content": {
+            "heading": "Persönlich für\nSie erreichbar.",
+            "text": "Hier stellen Sie Ihr tatsächliches Team vor.",
+            "image": {
+              "src": "/media/placeholder-portrait.svg",
+              "alt": "Abstrakter Porträtplatzhalter; durch ein freigegebenes Foto ersetzen",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "team-list",
+          "type": "team",
+          "name": "Lernen wir uns kennen.",
+          "visible": true,
+          "content": {
+            "heading": "Lernen wir uns kennen.",
+            "text": "",
+            "items": [
+              {
+                "id": "team-1",
+                "title": "Ihre Ansprechperson",
+                "text": "Hier stellen Sie einen echten Menschen und seine Aufgabe vor.",
+                "image": {
+                  "src": "/media/placeholder-portrait.svg",
+                  "alt": "Abstrakter Porträtplatzhalter; durch ein freigegebenes Foto ersetzen",
+                  "position": "50% 50%"
+                },
+                "meta": "Rolle im Unternehmen",
+                "email": "hallo@example.invalid",
+                "href": "/team",
+                "label": "Kontakt"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "projekte",
+      "slug": "projekte",
+      "title": "Projekte",
+      "locale": "de-DE",
+      "seo": {
+        "title": "Projekte | Musterstudio",
+        "description": "Platz für freigegebene Arbeiten und Referenzen.",
+        "image": "/media/placeholder-landscape.svg"
+      },
+      "sections": [
+        {
+          "id": "projects-hero",
+          "type": "hero",
+          "name": "Arbeiten, die\nfür sich sprechen.",
+          "visible": true,
+          "content": {
+            "heading": "Arbeiten, die\nfür sich sprechen.",
+            "text": "Diese Platzhalter werden durch freigegebene Projekte mit echten Informationen ersetzt.",
+            "image": {
+              "src": "/media/placeholder-landscape.svg",
+              "alt": "Gestalteter Bildplatzhalter; durch ein eigenes Motiv ersetzen",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "projects-gallery",
+          "type": "gallery",
+          "name": "Ihre Arbeiten im Detail.",
+          "visible": true,
+          "content": {
+            "heading": "Ihre Arbeiten im Detail.",
+            "text": "Die Motive sind neutrale Vorlagenbilder und zeigen keine Kundenprojekte.",
+            "images": [
+              {
+                "src": "/media/placeholder-landscape.svg",
+                "alt": "Gestalteter Bildplatzhalter; durch ein eigenes Motiv ersetzen",
+                "position": "50% 50%"
+              },
+              {
+                "src": "/media/placeholder-detail.svg",
+                "alt": "Gestalteter Bildplatzhalter; durch ein eigenes Motiv ersetzen",
+                "position": "50% 50%"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ablauf",
+      "slug": "ablauf",
+      "title": "Ablauf",
+      "locale": "de-DE",
+      "seo": {
+        "title": "Ablauf | Musterstudio",
+        "description": "So läuft eine Zusammenarbeit ab.",
+        "image": "/media/placeholder-landscape.svg"
+      },
+      "sections": [
+        {
+          "id": "process-hero",
+          "type": "hero",
+          "name": "Vom ersten Gespräch\nzum gemeinsamen Ergebnis.",
+          "visible": true,
+          "content": {
+            "heading": "Vom ersten Gespräch\nzum gemeinsamen Ergebnis.",
+            "text": "Beschreiben Sie einen realistischen Ablauf für Ihr Angebot.",
+            "image": {
+              "src": "/media/placeholder-landscape.svg",
+              "alt": "Gestalteter Bildplatzhalter; durch ein eigenes Motiv ersetzen",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "process-steps",
+          "type": "steps",
+          "name": "Schritt für Schritt.",
+          "visible": true,
+          "content": {
+            "heading": "Schritt für Schritt.",
+            "text": "",
+            "items": [
+              {
+                "id": "step-1",
+                "title": "Kennenlernen",
+                "text": "Wir klären gemeinsam, worum es geht und welches Ergebnis Sie suchen."
+              },
+              {
+                "id": "step-2",
+                "title": "Vorgehen abstimmen",
+                "text": "Hier stehen später der tatsächliche Ablauf und die vereinbarten Leistungen."
+              },
+              {
+                "id": "step-3",
+                "title": "Gemeinsam umsetzen",
+                "text": "Beschreiben Sie die Zusammenarbeit mit klaren Zuständigkeiten und nächsten Schritten."
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kontakt",
+      "slug": "kontakt",
+      "title": "Kontakt",
+      "locale": "de-DE",
+      "seo": {
+        "title": "Kontakt | Musterstudio",
+        "description": "Kontaktmöglichkeiten und Anfrageformular.",
+        "image": "/media/placeholder-landscape.svg"
+      },
+      "sections": [
+        {
+          "id": "contact-hero",
+          "type": "hero",
+          "name": "Erzählen Sie uns\nvon Ihrem Vorhaben.",
+          "visible": true,
+          "content": {
+            "heading": "Erzählen Sie uns\nvon Ihrem Vorhaben.",
+            "text": "Die folgenden Angaben sind Platzhalter und müssen vor dem Start ersetzt werden.",
+            "image": {
+              "src": "/media/placeholder-landscape.svg",
+              "alt": "Gestalteter Bildplatzhalter; durch ein eigenes Motiv ersetzen",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "contact-form",
+          "type": "contact",
+          "name": "Kontakt aufnehmen.",
+          "visible": true,
+          "content": {
+            "heading": "Kontakt aufnehmen.",
+            "text": "Ihre Nachricht wird im geschützten Anfragepostfach gespeichert. Der E-Mail-Versand ist erst nach einer bewussten Einrichtung aktiv."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "impressum",
+      "slug": "impressum",
+      "title": "Impressum",
+      "locale": "de-DE",
+      "seo": {
+        "title": "Impressum | Musterstudio",
+        "description": "Platzhalter für die tatsächlichen Anbieterangaben.",
+        "image": "/media/placeholder-landscape.svg"
+      },
+      "sections": [
+        {
+          "id": "legal-imprint",
+          "type": "richtext",
+          "name": "Impressum · Platzhalter",
+          "visible": true,
+          "content": {
+            "heading": "Impressum · Platzhalter",
+            "text": "DIESE SEITE IST NICHT VERÖFFENTLICHUNGSFERTIG.\n\nErsetzen Sie diesen Platzhalter durch die vollständigen, zutreffenden Anbieterangaben des neuen Unternehmens. Der Starter übernimmt keine Angaben aus einem Kundenprojekt.\n\nErgänzen Sie je nach tatsächlichem Anbieter die erforderlichen Kontakt-, Vertretungs-, Register- und weiteren Angaben. Prüfen Sie die Angaben vor dem öffentlichen Start."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "datenschutz",
+      "slug": "datenschutz",
+      "title": "Datenschutz",
+      "locale": "de-DE",
+      "seo": {
+        "title": "Datenschutz | Musterstudio",
+        "description": "Platzhalter für die konkrete Datenschutzerklärung.",
+        "image": "/media/placeholder-landscape.svg"
+      },
+      "sections": [
+        {
+          "id": "legal-privacy",
+          "type": "richtext",
+          "name": "Datenschutz · Platzhalter",
+          "visible": true,
+          "content": {
+            "heading": "Datenschutz · Platzhalter",
+            "text": "DIESE SEITE IST NICHT VERÖFFENTLICHUNGSFERTIG.\n\nErstellen Sie eine Datenschutzerklärung für die tatsächlich genutzten Dienste, Verantwortlichen, Kontaktformulare, Speicherfristen und Einwilligungen dieses Projekts.\n\nExterne Karten, Videos und Statistikdienste sind nur passend zur konkreten Einrichtung zu beschreiben. Dieser Platzhalter ist keine geprüfte Datenschutzerklärung."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "posts": []
+}

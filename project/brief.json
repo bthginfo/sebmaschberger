@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "projectName": "Sebastian Maschberger",
+  "pages": [
+    "Start",
+    "Coaching",
+    "Ernährung",
+    "Über Sebastian",
+    "Journal",
+    "Wochenplan",
+    "Shop",
+    "Erstgespräch"
+  ],
+  "functions": [
+    "DE/EN",
+    "Visuelles CMS",
+    "Anfragen",
+    "Interaktiver Wochenplan",
+    "Shop mit Checkout und Bestellverwaltung"
+  ],
+  "contentSources": [
+    "https://www.sebmaschberger.com/",
+    "https://trainlikeapro.coach/",
+    "https://maschberger.jimdoweb.com/",
+    "https://www.instagram.com/p/Df7C7BrAgMT/"
+  ],
+  "assets": [],
+  "openQuestions": [],
+  "legalName": "Sebastian Maschberger",
+  "audience": "Männer ab 30 mit Beruf, Familie und Trainingszielen. Online, DE und EN.",
+  "offer": "1:1-Coaching, Krafttraining und alltagstaugliche Ernährungsberatung, kostenloses Kennenlernen.",
+  "style": "Helles, sportliches Editorial mit Manrope, frischem Limettengrün, tiefem Waldschwarz, iOS-artigen Glaselementen und dokumentarischem Studio-Porträt. Auf Mobil folgt das Foto direkt auf die primäre Aktion.",
+  "siteUrl": "https://sebmaschberger-coaching.vercel.app",
+  "voice": "Anbieterperspektive, direkte du-Ansprache im Deutschen, freundlich und konkret.",
+  "aesthetic": "liquid-glass",
+  "hero": {
+    "heading": "Stark werden. Du bleiben.",
+    "text": "Krafttraining und Ernährungscoaching für Männer ab 30. Mit einem Plan, der in dein Leben passt.",
+    "image": {
+      "file": "coaching-hero.webp",
+      "alt": "Sebastian Maschberger im Trainingsstudio",
+      "position": "50% 50%"
+    }
+  },
+  "verifiedProof": [
+    "IFBB Elite Pro im Classic Bodybuilding seit 2018",
+    "2017 bayerischer Meister im Classic Bodybuilding"
+  ],
+  "colors": {
+    "primary": "#18241f",
+    "accent": "#c9f471",
+    "background": "#f4f6ee"
+  },
+  "profile": "services"
+}

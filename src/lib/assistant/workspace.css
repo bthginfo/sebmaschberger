@@ -1,0 +1,96 @@
+.assistant-mode-switch {
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+  border-bottom: 1px solid color-mix(in srgb, var(--as-ink) 14%, transparent);
+}
+.assistant-mode-switch button {
+  flex: 1;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--as-ink);
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+.assistant-mode-switch button[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--as-ink) 8%, var(--as-paper));
+  font-weight: 650;
+}
+.workspace-assistant {
+  display: grid;
+  gap: 14px;
+  color: var(--as-ink);
+  font-size: .875rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.workspace-assistant :where(p,h3,dl,dd,ul) { margin: 0; }
+.workspace-assistant h3 { font-size: 1rem; line-height: 1.35; font-weight: 650; }
+.workspace-assistant :where(.wa-intro,.wa-mode,.wa-record-title span,.wa-source-content > p,.wa-action-list p) { color: var(--as-muted); }
+.workspace-assistant :where(.wa-suggestions,.wa-review-actions,.wa-form-actions) { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
+.workspace-assistant .wa-form-actions { justify-content: space-between; }
+.workspace-assistant .wa-mode { flex: 1 1 185px; font-size: .78rem; }
+.workspace-assistant .wa-button {
+  min-height: 44px;
+  width: auto;
+  padding: 8px 12px;
+  border: 1px solid color-mix(in srgb, var(--as-ink) 21%, var(--as-paper));
+  border-radius: 8px;
+  background: var(--as-paper);
+  color: var(--as-ink);
+  font: inherit;
+  cursor: pointer;
+}
+.workspace-assistant .wa-button:hover { background: color-mix(in srgb, var(--as-ink) 6%, var(--as-paper)); }
+.workspace-assistant .wa-button:disabled { opacity: .6; cursor: wait; }
+.workspace-assistant .wa-primary, .workspace-assistant .wa-primary:hover {
+  background: var(--as-ink);
+  border-color: var(--as-ink);
+  color: var(--as-paper);
+}
+.workspace-assistant :where(form,.wa-field,.wa-record-inputs,.wa-output,.wa-review,.wa-source-content) { display: grid; gap: 9px; min-width: 0; }
+.workspace-assistant .wa-field { gap: 4px; }
+.workspace-assistant .wa-field > span { font-weight: 650; }
+.workspace-assistant :where(input,textarea,select) {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 9px 10px;
+  border: 1px solid color-mix(in srgb, var(--as-ink) 25%, var(--as-paper));
+  border-radius: 8px;
+  background: var(--as-paper);
+  color: var(--as-ink);
+  font: inherit;
+}
+.workspace-assistant textarea { resize: vertical; }
+.workspace-assistant :focus-visible, .assistant-mode-switch button:focus-visible { outline: 2px solid var(--as-ink); outline-offset: 2px; }
+.workspace-assistant :where(.wa-disclosure,.wa-source) { border-top: 1px solid color-mix(in srgb, var(--as-ink) 14%, transparent); }
+.workspace-assistant summary { cursor: pointer; padding: 10px 0; font-weight: 600; min-height: 40px; }
+.workspace-assistant .wa-review {
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--as-accent) 52%, var(--as-ink));
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--as-accent) 9%, var(--as-paper));
+}
+.workspace-assistant .wa-fields { display: grid; grid-template-columns: minmax(90px, .7fr) minmax(0, 1.3fr); gap: 4px 9px; font-size: .81rem; }
+.workspace-assistant .wa-fields dt { color: var(--as-muted); }
+.workspace-assistant :where(.wa-fields dd,.wa-answer,.wa-turn p) { white-space: pre-wrap; }
+.workspace-assistant .wa-record { display: grid; gap: 8px; border-bottom: 1px solid color-mix(in srgb, var(--as-ink) 12%, transparent); padding: 9px 0; }
+.workspace-assistant .wa-record-title { display: flex; justify-content: space-between; align-items: start; gap: 10px; }
+.workspace-assistant .wa-record-title span { font-size: .78rem; }
+.workspace-assistant .wa-record > .wa-button { justify-self: start; }
+.workspace-assistant .wa-review-error:empty, .workspace-assistant .wa-feedback:empty, .workspace-assistant .wa-output:empty, .workspace-assistant .wa-review-slot:empty { display: none; }
+.workspace-assistant .wa-error { color: #8a2e22; padding: 10px; background: #fff0ec; border-radius: 8px; }
+.workspace-assistant .wa-success { color: #224c37; }
+.workspace-assistant .wa-link { color: var(--as-ink); text-decoration: underline; text-underline-offset: 3px; align-self: start; }
+.workspace-assistant .wa-turn, .workspace-assistant .wa-action-list li { padding: 7px 0; }
+.workspace-assistant .wa-action-list { padding-inline-start: 19px; }
+@media (max-width: 540px) {
+  .workspace-assistant :where(input,textarea,select) { font-size: 16px; }
+  .workspace-assistant .wa-review-actions { justify-content: flex-end; }
+  .workspace-assistant .wa-fields { grid-template-columns: minmax(80px, .75fr) minmax(0, 1.25fr); }
+}

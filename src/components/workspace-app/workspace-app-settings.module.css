@@ -1,0 +1,98 @@
+.settings {
+  --app-ink: var(--club-ink, var(--ink, #17293d));
+  --app-muted: var(--club-muted, var(--muted, #526475));
+  --app-card: var(--club-card, var(--paper, #fff));
+  --app-line: var(--club-rule, var(--line, #dce4e2));
+  --app-tint: var(--club-accent-muted, #e6efe5);
+  --app-accent: var(--club-accent, #daf27f);
+  --app-focus: var(--club-link, #245d55);
+  --app-feature: var(--club-feature, #172e45);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  gap: 15px;
+  align-items: start;
+  min-width: 0;
+  color: var(--app-ink);
+}
+.settings :where(h2, p) { margin: 0; }
+.settings :where(h2) { font-size: 1.15rem; line-height: 1.18; letter-spacing: -.022em; font-weight: 760; }
+.settings button { font: inherit; }
+.settings :is(button, label):focus-visible, .category:has(input:focus-visible) { outline: 2px solid var(--app-focus); outline-offset: 3px; }
+.installCard, .panel, .helpCard { min-width: 0; border-radius: 15px; padding: clamp(15px, 2.3vw, 24px); }
+.installCard {
+  display: flex; align-items: flex-start; gap: 13px; overflow: hidden;
+  background: radial-gradient(ellipse at 91% -14%, color-mix(in srgb, var(--app-accent) 22%, transparent), transparent 66%), var(--app-feature);
+  color: #fff;
+}
+.installIcon, .panelIcon {
+  display: grid; place-items: center; flex: none; width: 42px; height: 42px; border-radius: 11px;
+  background: var(--app-tint); color: var(--app-focus);
+}
+.installIcon { width: 48px; height: 48px; border-radius: 13px; background: var(--app-accent); color: var(--app-ink); }
+.installContent { display: grid; min-width: 0; gap: 9px; }
+.installContent > p { color: #f0f5f5; font-size: .85rem; line-height: 1.48; overflow-wrap: anywhere; }
+.installContent .installHint {
+  display: flex; align-items: flex-start; gap: 6px; margin-top: 1px; padding: 8px 9px; border: 1px solid #ffffff37;
+  border-radius: 9px; background: #101d2c35; color: #fff; font-size: .77rem;
+}
+.installHint svg { flex: none; margin-top: 2px; }
+.installContent button:focus-visible { outline-color: var(--app-accent); }
+.installButton, .secondary, .primary, .installed {
+  display: inline-flex; justify-content: center; align-items: center; gap: 7px; width: fit-content; min-height: 41px; padding: 6px 10px;
+  border: 1px solid var(--app-line); border-radius: 8px; background: var(--app-card); color: var(--app-ink);
+  font-size: .8rem !important; font-weight: 740 !important; line-height: 1.18; cursor: pointer;
+}
+.installButton:hover:not(:disabled), .secondary:hover:not(:disabled) { background: var(--app-tint); }
+.primary { border-color: var(--app-feature); background: var(--app-feature); color: #fff; }
+.primary:hover:not(:disabled) { background: color-mix(in srgb, var(--app-feature) 87%, #fff); }
+.installButton:disabled, .secondary:disabled, .primary:disabled { opacity: .56; cursor: default; }
+.installed { min-height: 28px; padding: 3px 7px; border-color: #ffffff4e; background: #ffffff13; color: #fff; cursor: default; }
+.installed svg { color: var(--app-accent); }
+.panel, .helpCard { border: 1px solid var(--app-line); background: var(--app-card); }
+.panelHeader { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.panelHeader > div { flex: 1; min-width: 0; }
+.panelHeader p, .helpCard p { margin-top: 3px; color: var(--app-muted); font-size: .81rem; }
+.status {
+  flex: none; margin-left: auto; padding: 4px 8px; border: 1px solid var(--app-line); border-radius: 7px;
+  color: var(--app-muted); font-size: .73rem; font-weight: 750;
+}
+.status[data-enabled] { border-color: transparent; background: var(--app-tint); color: var(--app-focus); }
+.info, .feedback, .emptyState { margin-top: 13px !important; color: var(--app-muted); font-size: .83rem; line-height: 1.46; }
+.info { display: flex; align-items: flex-start; gap: 7px; }
+.emptyState { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.feedback { padding: 8px 9px; border-radius: 8px; background: var(--app-tint); color: var(--app-focus); }
+.feedback[data-error] { background: #fcf0ef; color: #7d3434; }
+.categories { margin: 13px 0 0; padding: 0; border: 0; }
+.category {
+  position: relative; display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 45px;
+  padding: 4px 1px; border-top: 1px solid var(--app-line); font-size: .86rem; font-weight: 690; cursor: pointer;
+}
+.category input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.category i {
+  position: relative; flex: none; width: 36px; height: 20px; border: 1px solid #b8c9bf; border-radius: 14px;
+  background: #dce6e0; transition: background 140ms ease;
+}
+.category i::after { position: absolute; inset: 2px auto auto 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; content: ""; transition: translate 140ms ease; }
+.category input:checked + i { border-color: var(--app-focus); background: var(--app-focus); }
+.category input:checked + i::after { translate: 16px 0; }
+.category:has(input:disabled) { opacity: .66; cursor: default; }
+.pushActions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 11px; }
+.helpCard { display: flex; grid-column: 1 / -1; align-items: center; gap: 11px; }
+.helpCard > div { flex: 1; min-width: 0; }
+.helpCard button { flex: none; }
+.spinner { flex: none; margin-top: 2px; animation: spin 850ms linear infinite; }
+@keyframes spin { to { rotate: 1turn; } }
+
+@media (max-width: 740px) {
+  .settings { grid-template-columns: minmax(0, 1fr); gap: 11px; }
+}
+@media (max-width: 380px) {
+  .installIcon { width: 39px; height: 39px; border-radius: 10px; }
+  .helpCard { flex-wrap: wrap; }
+  .helpCard > div { flex-basis: calc(100% - 54px); }
+  .helpCard > button { margin-left: 53px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .category i, .category i::after { transition: none; }
+  .spinner { animation: none; }
+}

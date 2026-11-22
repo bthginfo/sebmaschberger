@@ -1,0 +1,389 @@
+{
+  "version": 1,
+  "config": {
+    "name": "Creator-Beispiel",
+    "legalName": "Fiktives Beispiel",
+    "tagline": "Fiktiver Creator ? eigene Inhalte",
+    "phone": "",
+    "email": "demo@example.invalid",
+    "fax": "",
+    "address": "",
+    "city": "",
+    "postalCode": "",
+    "navigation": [
+      {
+        "label": "Start",
+        "href": "/demo/creator"
+      },
+      {
+        "label": "Inhalte",
+        "href": "/demo/creator/videos"
+      },
+      {
+        "label": "Demo-CMS",
+        "href": "/demo/creator/cms"
+      }
+    ],
+    "footerText": "Neutrale Website-Vorlage. Alle Anbieterangaben vor dem Start ersetzen.",
+    "openingHours": [
+      {
+        "day": "Termine",
+        "hours": "Nach Vereinbarung"
+      }
+    ],
+    "theme": {
+      "primary": "#142b27",
+      "accent": "#d6f07d",
+      "background": "#f6f4ed",
+      "radius": 8,
+      "font": "manrope"
+    },
+    "designVariant": 1,
+    "consent": {
+      "enabled": true,
+      "title": "Ihre Cookie-Einstellungen",
+      "text": "Sie entscheiden, ob externe Medien und optionale Statistikdienste geladen werden dürfen."
+    },
+    "analytics": {
+      "googleId": "",
+      "matomoUrl": "",
+      "matomoSiteId": ""
+    },
+    "blog": {
+      "enabled": false,
+      "title": "Wissen und Einblicke.",
+      "description": "Beiträge Ihres Unternehmens.",
+      "slug": "blog",
+      "layout": "cards",
+      "showInNavigation": false,
+      "navLabel": "Wissen"
+    },
+    "footer": {
+      "brandText": "Musterstudio",
+      "ctaLabel": "Kontakt aufnehmen",
+      "ctaHref": "/kontakt",
+      "addressHeading": "Besuchen Sie uns",
+      "contactHeading": "Wir sind erreichbar",
+      "navigationHeading": "Entdecken",
+      "copyright": "© {year} {name}",
+      "showAddress": true,
+      "showContact": true,
+      "showHours": true,
+      "showCookieSettings": true,
+      "showBackToTop": true,
+      "columns": [
+        {
+          "id": "website",
+          "title": "Entdecken",
+          "links": [
+            {
+              "label": "Leistungen",
+              "href": "/leistungen"
+            },
+            {
+              "label": "Über uns",
+              "href": "/ueber-uns"
+            },
+            {
+              "label": "Projekte",
+              "href": "/projekte"
+            },
+            {
+              "label": "Kontakt",
+              "href": "/kontakt"
+            }
+          ]
+        }
+      ],
+      "legalLinks": [
+        {
+          "label": "Impressum",
+          "href": "/impressum"
+        },
+        {
+          "label": "Datenschutz",
+          "href": "/datenschutz"
+        }
+      ]
+    },
+    "modules": {
+      "creator": {
+        "enabled": true,
+        "surface": "profile",
+        "demoBasePath": "/demo/creator"
+      },
+      "commerce": {
+        "enabled": false,
+        "currency": "EUR",
+        "shippingCents": 0,
+        "products": []
+      }
+    }
+  },
+  "pages": [
+    {
+      "id": "home",
+      "slug": "",
+      "title": "Fiktives Creator-Beispiel",
+      "locale": "de",
+      "seo": {
+        "title": "Fiktives Creator-Beispiel",
+        "description": "Lokale Demo ohne externe Konten.",
+        "noindex": true
+      },
+      "sections": [
+        {
+          "id": "demo-hero",
+          "type": "creator-hero",
+          "name": "Fiktiver Auftakt",
+          "visible": true,
+          "content": {
+            "heading": "Dein eigener Platz.",
+            "text": "Dieses Creator-Beispiel ist fiktiv und verwendet eigene lokale Platzhalter.",
+            "image": {
+              "src": "/media/placeholder-landscape.svg",
+              "alt": "Lokaler Bildplatzhalter",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left",
+            "creatorHero": "gaming"
+          }
+        },
+        {
+          "id": "demo-social",
+          "type": "creator-social",
+          "name": "Plattformbeispiele",
+          "visible": true,
+          "content": {
+            "heading": "Inhalte zum Ausprobieren.",
+            "text": "Alle Plattformdarstellungen sind lokale Platzhalter.",
+            "items": [
+              {
+                "id": "instagram",
+                "title": "Instagram ? Platzhalter",
+                "text": "Fiktives Beispiel mit eigenem Motiv.",
+                "platform": "instagram",
+                "placeholder": true,
+                "format": "photo",
+                "image": {
+                  "src": "/media/placeholder-landscape.svg",
+                  "alt": "Fiktives Plattformbeispiel",
+                  "position": "50% 50%"
+                }
+              },
+              {
+                "id": "tiktok",
+                "title": "Tiktok ? Platzhalter",
+                "text": "Fiktives Beispiel mit eigenem Motiv.",
+                "platform": "tiktok",
+                "placeholder": true,
+                "format": "photo",
+                "image": {
+                  "src": "/media/placeholder-landscape.svg",
+                  "alt": "Fiktives Plattformbeispiel",
+                  "position": "50% 50%"
+                }
+              },
+              {
+                "id": "youtube",
+                "title": "Youtube ? Platzhalter",
+                "text": "Fiktives Beispiel mit eigenem Motiv.",
+                "platform": "youtube",
+                "placeholder": true,
+                "format": "photo",
+                "image": {
+                  "src": "/media/placeholder-landscape.svg",
+                  "alt": "Fiktives Plattformbeispiel",
+                  "position": "50% 50%"
+                }
+              },
+              {
+                "id": "twitch",
+                "title": "Twitch ? Platzhalter",
+                "text": "Fiktives Beispiel mit eigenem Motiv.",
+                "platform": "twitch",
+                "placeholder": true,
+                "format": "photo",
+                "image": {
+                  "src": "/media/placeholder-landscape.svg",
+                  "alt": "Fiktives Plattformbeispiel",
+                  "position": "50% 50%"
+                }
+              },
+              {
+                "id": "spotify",
+                "title": "Spotify ? Platzhalter",
+                "text": "Fiktives Beispiel mit eigenem Motiv.",
+                "platform": "spotify",
+                "placeholder": true,
+                "format": "photo",
+                "image": {
+                  "src": "/media/placeholder-landscape.svg",
+                  "alt": "Fiktives Plattformbeispiel",
+                  "position": "50% 50%"
+                }
+              },
+              {
+                "id": "discord",
+                "title": "Discord ? Platzhalter",
+                "text": "Fiktives Beispiel mit eigenem Motiv.",
+                "platform": "discord",
+                "placeholder": true,
+                "format": "photo",
+                "image": {
+                  "src": "/media/placeholder-landscape.svg",
+                  "alt": "Fiktives Plattformbeispiel",
+                  "position": "50% 50%"
+                }
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left",
+            "creatorHero": "gaming"
+          }
+        }
+      ]
+    },
+    {
+      "id": "videos",
+      "slug": "videos",
+      "title": "Beispielinhalte",
+      "locale": "de",
+      "seo": {
+        "title": "Beispielinhalte",
+        "description": "Lokale Platzhalter.",
+        "noindex": true
+      },
+      "sections": [
+        {
+          "id": "demo-videos",
+          "type": "creator-social",
+          "name": "Plattformbeispiele",
+          "visible": true,
+          "content": {
+            "heading": "Inhalte zum Ausprobieren.",
+            "text": "Alle Plattformdarstellungen sind lokale Platzhalter.",
+            "items": [
+              {
+                "id": "instagram",
+                "title": "Instagram ? Platzhalter",
+                "text": "Fiktives Beispiel mit eigenem Motiv.",
+                "platform": "instagram",
+                "placeholder": true,
+                "format": "photo",
+                "image": {
+                  "src": "/media/placeholder-landscape.svg",
+                  "alt": "Fiktives Plattformbeispiel",
+                  "position": "50% 50%"
+                }
+              },
+              {
+                "id": "tiktok",
+                "title": "Tiktok ? Platzhalter",
+                "text": "Fiktives Beispiel mit eigenem Motiv.",
+                "platform": "tiktok",
+                "placeholder": true,
+                "format": "photo",
+                "image": {
+                  "src": "/media/placeholder-landscape.svg",
+                  "alt": "Fiktives Plattformbeispiel",
+                  "position": "50% 50%"
+                }
+              },
+              {
+                "id": "youtube",
+                "title": "Youtube ? Platzhalter",
+                "text": "Fiktives Beispiel mit eigenem Motiv.",
+                "platform": "youtube",
+                "placeholder": true,
+                "format": "photo",
+                "image": {
+                  "src": "/media/placeholder-landscape.svg",
+                  "alt": "Fiktives Plattformbeispiel",
+                  "position": "50% 50%"
+                }
+              },
+              {
+                "id": "twitch",
+                "title": "Twitch ? Platzhalter",
+                "text": "Fiktives Beispiel mit eigenem Motiv.",
+                "platform": "twitch",
+                "placeholder": true,
+                "format": "photo",
+                "image": {
+                  "src": "/media/placeholder-landscape.svg",
+                  "alt": "Fiktives Plattformbeispiel",
+                  "position": "50% 50%"
+                }
+              },
+              {
+                "id": "spotify",
+                "title": "Spotify ? Platzhalter",
+                "text": "Fiktives Beispiel mit eigenem Motiv.",
+                "platform": "spotify",
+                "placeholder": true,
+                "format": "photo",
+                "image": {
+                  "src": "/media/placeholder-landscape.svg",
+                  "alt": "Fiktives Plattformbeispiel",
+                  "position": "50% 50%"
+                }
+              },
+              {
+                "id": "discord",
+                "title": "Discord ? Platzhalter",
+                "text": "Fiktives Beispiel mit eigenem Motiv.",
+                "platform": "discord",
+                "placeholder": true,
+                "format": "photo",
+                "image": {
+                  "src": "/media/placeholder-landscape.svg",
+                  "alt": "Fiktives Plattformbeispiel",
+                  "position": "50% 50%"
+                }
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "display",
+            "fontScale": 1,
+            "radius": 8,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left",
+            "creatorHero": "gaming"
+          }
+        }
+      ]
+    }
+  ],
+  "posts": []
+}

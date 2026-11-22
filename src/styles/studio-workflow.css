@@ -1,0 +1,20 @@
+.studio-workflow { display:grid; gap:10px; margin-block:12px; min-width:0; }
+.studio-workflow > label { display:grid; gap:5px; font-size:12px; font-weight:600; }
+.studio-workflow :is(input,select) { width:100%; min-width:0; color:inherit; background:var(--social-panel,#fff); font:inherit; }
+.studio-workflow input[type=search] { border:1px solid var(--social-line,#c8d1cc); padding:9px; border-radius:5px; }
+.studio-workflow-controls { display:flex; gap:5px; flex-wrap:wrap; align-items:center; }
+.studio-workflow-controls button, .studio-format-copy {
+ min-height:34px; padding:5px 8px; border:1px solid var(--social-line,#c8d1cc); border-radius:5px;
+ color:inherit; background:transparent; font:inherit; font-size:12px; cursor:pointer;
+}
+.studio-workflow-controls button[aria-pressed=true] { color:#173326; background:#e4efe6; border-color:#517961; }
+.studio-workflow-controls button:disabled,.studio-format-copy:disabled { opacity:.5; cursor:default; }
+.studio-workflow-controls button:focus-visible,.studio-format-copy:focus-visible { outline:2px solid #416f53; outline-offset:2px; }
+.studio-workflow-mode { border-inline-start:3px solid #537b63; margin:0; padding:4px 8px; font-size:12px; line-height:1.45; }
+.studio-format-copy { display:inline-flex; align-items:center; gap:4px; white-space:nowrap; }
+.studio-format-option { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:11px; font-size:14px; }
+.studio-format-option span { opacity:.75; font-size:12px; text-align:end; }
+@media(max-width:760px),(pointer:coarse) {
+ .studio-workflow-controls button, .studio-format-copy { min-height:44px; }
+ .studio-workflow input[type=search] { font-size:16px; }
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "website": "https://sebmaschberger-coaching.vercel.app",
+  "github": {
+    "repository": null,
+    "productionBranch": "main",
+    "status": "repository-creation-denied"
+  },
+  "vercel": {
+    "projectId": "prj_VYPw5dYFjhwt18LhpqngvgEcIr0C",
+    "projectName": "sebmaschberger-coaching",
+    "teamId": "team_VKBirSmFsmvJQkigngksd8aN",
+    "source": "direct-deployment",
+    "region": "fra1"
+  },
+  "neon": {
+    "projectId": null,
+    "databaseName": null,
+    "requiredPlan": "free",
+    "verifiedPlan": null,
+    "productionBranchId": null,
+    "previewBranchId": null,
+    "status": "provisioning-unavailable-in-connection"
+  },
+  "blob": {
+    "storeId": "store_0eMGk8is6BXQngJV",
+    "access": "private",
+    "region": "fra1"
+  },
+  "database": {
+    "driver": "sqlite",
+    "path": "workspace/site.sqlite",
+    "storeId": "store_0eMGk8is6BXQngJV"
+  },
+  "review": {
+    "indexing": false,
+    "checkout": false
+  }
+}

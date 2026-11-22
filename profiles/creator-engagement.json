@@ -1,0 +1,26 @@
+{
+  "heading": "Dein Ort für mehr Engagement.",
+  "subheading": "Dein Moment. Deine Community.",
+  "text": "Deine Inhalte. Deine Community. Ein eigener Ort, an dem beides zusammenkommt.",
+  "primaryLabel": "Kontakt aufnehmen",
+  "primaryHref": "/kontakt",
+  "caption": "Fiktives Creator-Beispiel",
+  "images": [
+    {
+      "src": "/placeholders/engagement-desktop.webp",
+      "srcSet": "/placeholders/engagement-desktop-1024.webp 1024w, /placeholders/engagement-desktop.webp 1672w",
+      "width": 1672,
+      "height": 941,
+      "alt": "Generierte Beispielszene: Person vor einem Laptop mit einer Creator-Website",
+      "position": "50% 50%"
+    },
+    {
+      "src": "/placeholders/engagement-mobile.webp",
+      "srcSet": "/placeholders/engagement-mobile-640.webp 640w, /placeholders/engagement-mobile.webp 941w",
+      "width": 941,
+      "height": 1672,
+      "alt": "Generierte Beispielszene: Person hält ein iPhone mit einer Creator-Website",
+      "position": "50% 50%"
+    }
+  ]
+}

@@ -1,0 +1,272 @@
+{
+  "id": "website-starter",
+  "version": "1.37.1",
+  "repository": "https://github.com/bthginfo/website-starter",
+  "stack": "nextjs-react-typescript",
+  "runtime": "node-24",
+  "infrastructure": {
+    "isolation": "per-website",
+    "githubRepository": "dedicated-private",
+    "vercelProject": "dedicated",
+    "neonProject": "dedicated",
+    "neonPlan": "free",
+    "blobStore": "dedicated",
+    "reuseOtherWebsitesResources": false,
+    "allowPaidNeonFallback": false,
+    "preferredRegion": "fra1"
+  },
+  "defaultProfile": "services",
+  "profiles": [
+    "services",
+    "portfolio",
+    "consulting",
+    "editorial",
+    "creator"
+  ],
+  "implemented": [
+    "visual-cms",
+    "repeatable-section-editor",
+    "draft-internal-link-updates",
+    "admin-settings-search",
+    "editorial-and-search-launch-standard",
+    "search-metadata-hints",
+    "bilingual-cms",
+    "bilingual-website",
+    "coach-studio",
+    "section-library",
+    "profile-starting-layouts",
+    "visual-section-library",
+    "scroll-scenes-and-workflow-demo",
+    "media",
+    "draft-publish",
+    "revisions",
+    "blog",
+    "blog-and-shop-page-layouts",
+    "announcements",
+    "motion-story",
+    "scroll-3d",
+    "commerce",
+    "consumer-withdrawal",
+    "published-content-launch-check",
+    "inquiries",
+    "smtp",
+    "consent",
+    "seo",
+    "design-review",
+    "social-studio",
+    "social-format-variants-and-media-replacement",
+    "security-center",
+    "ai-assistant",
+    "social-publishing",
+    "document-studio",
+    "mcp-agent-access",
+    "native-analytics",
+    "newsletter",
+    "controlled-starter-upgrades",
+    "operations-check",
+    "team-accounts",
+    "encrypted-recovery",
+    "analytics-outcomes",
+    "project-proposals",
+    "creator-media-kit",
+    "club-management",
+    "workspace-apps",
+    "workspace-push",
+    "workspace-brand-icons",
+    "localized-consent-scripts",
+    "restaurant-menu",
+    "reservations",
+    "liquid-glass-aesthetic"
+  ],
+  "recipes": [
+    "podcast",
+    "reviews",
+    "print-studio",
+    "booking",
+    "portal-crm",
+    "commerce",
+    "multilingual"
+  ],
+  "source": {
+    "cmsRepository": "bthginfo/Hagn-und-Partner",
+    "cmsCommit": "d18f8c929ab8983675068bc09b5451d6b6f76c5a",
+    "related": [
+      "Amelie-Lider",
+      "Schubert-Websites"
+    ],
+    "kantiq": "reviewed generic Canvas social-editor code adapted to React; no customer content, branding, credentials or infrastructure copied"
+  },
+  "optionalModules": {
+    "coach-studio": "explicit opt-in for every profile; private bilingual rugby playbook, editable fullscreen pitch, phase animation, PDF and offline interactive HTML export, expiring view or collaborator links, and reviewed coaching proposals with a separately configured AI provider",
+    "creator": "explicit creator profile; defaults off for other profiles",
+    "commerce": "server-authoritative Stripe Checkout; separate merchant configuration and sandbox validation required; grouped products and services, explicit inclusive VAT rules, country delivery zones, immutable numbered paid-invoice snapshots and private PDF originals, separated Stripe test/live modes and a two-step consumer withdrawal form with durable receipt",
+    "social-sources": "local mock sources and official adapter contract; no account configured",
+    "social-studio": "independent opt-in for every profile; private design collection, post/carousel/reel creation, format copies, media search and in-place media replacement, private MP4/WebM layers, local rendering and lazy exports",
+    "security-center": "owner-only dashboard, lockfile advisory checks, weekly GitHub dependency workflow and protected CMS responses",
+    "ai-assistant": "explicit independent opt-in; selected text editing, reviewed pages from available sections, native factual CMS guidance, social drafts and ideas; own server-only OpenAI or Anthropic configuration for generation, separate labeled public simulations and editable generic assistant-showcase section",
+    "social-publishing": "explicit default-off Post-Planner requiring Social-Studio; eight manual channels and native connectors including Meta Unified Login for new Instagram apps and preserved legacy Instagram Login, encrypted per-platform app settings, official OAuth and explicit account selection; own provider approval, private media and durable Queue setup required for real delivery; five-step visual provider onboarding; explicit Instagram carousels of 2–20 immutable JPEG slides with joint approval and durable native publishing; bounded provider-confirmed token lifetimes; separate explicit first-party Meta system-user import with explicit profile and publishing-authorization verification and 60-day renewal; visual week/month/list planner with immutable previews, focused editing and optional setup help; provider-confirmed scheduled delivery for Instagram, Facebook Pages, Threads, LinkedIn, Pinterest, YouTube and Bluesky; TikTok scheduled verified-domain PULL_FROM_URL inbox handoff with read-only reconciliation, final publication in TikTok; Bluesky UTF-8 link facets",
+    "document-studio": "private brand logo, readable colors and PDF layouts with actual mobile canvas previews; editable order, refund, partial refund and inquiry emails with revision guards; own legal/tax profile, no invented bank or tax details",
+    "mcp-agent-access": "private default-off HTTP MCP server with one-time hashed API keys, 1/7/30/90/180/365 day or explicit Endless lifetimes, revocation, scoped versioned text/page drafts, optional Social-Studio drafts, native CMS help and aggregate analytics; external agent supplies its own model; no automatic publication, payment, secrets or OAuth grants",
+    "newsletter": "Owner-only editor, audience groups, public double opt-in signup section, private delivery queue, opt-out, and aggregate reporting. Default off. Configure SMTP and add the consent-aware signup section only for customers who request it. See docs/newsletter.md.",
+    "native-analytics": "private enabled-at-setup consent-only first-party statistics with signed bounded event grants, pseudonymous browser/session identifiers, visible active time, UTC date/device/path/source/campaign/country filters, complete prior-period comparison, interactive dashboard, CSV, goal and outcome breakdowns, and an owner-only five-minute Live view based on existing consented signals; automatic consent renewal and privacy disclosure; 30/90/180/365 day retention and cleanup; excludes private routes and raw IPs, form contents and URL parameters",
+    "project-proposals": "default-off owner workspace for versioned inquiry proposals and single-use decisions with private, expiring links",
+    "creator-media-kit": "editable profile page or section with authentic metrics, optional PDF link and a categorized partnership inquiry",
+    "club-management": "independent opt-in for private club management and member app; email/password invitations, scoped roles, record details, attendance, fixtures, news, club inbox, appearance editor, calendar export and optional coaching assignments",
+    "scroll-3d": "explicit default-off section for a continuous scroll-controlled GLB with optional ambient motion, editable chapters, timing and composition, desktop and mobile playback, and an accessible poster fallback",
+    "restaurant-menu": "Central ordered categories and items, optional price sizes in EUR, featured and visibility controls, and three configurable page-section layouts.",
+    "reservations": "Table capacity, per-weekday bookable windows and seating duration, closures, pending holds, manual acceptance, decline and cancellation, optional SMTP replies, and three guest widget layouts."
+  },
+  "activation": {
+    "core": [
+      "visual-cms",
+      "draft-publish",
+      "publication-review",
+      "site-motion",
+      "revisions",
+      "section-library",
+      "media",
+      "bilingual-cms",
+      "bilingual-website",
+      "consent",
+      "localized-consent-scripts",
+      "native-analytics",
+      "seo",
+      "inquiries",
+      "security-center",
+      "workspace-apps",
+      "workspace-push",
+      "workspace-brand-icons"
+    ],
+    "note": "New sites include accessible, section-level entrance motion. Core analytics collect only after consent. Push only delivers on devices where the user enables it. No shared storage, keys or external providers.",
+    "modules": {
+      "scroll-3d": {
+        "policy": "explicit",
+        "flag": "scroll-3d",
+        "guide": "docs/recipes/3d-scroll-story.md",
+        "use": "The user explicitly requests an interactive 3D scroll section. Enable the section library entry and place it on the requested page."
+      },
+      "club-management": {
+        "policy": "brief",
+        "flag": "club-management",
+        "guide": "docs/club-management.md",
+        "use": "The brief asks for private club accounts, team administration, training, internal news or shared calendars."
+      },
+      "coach-studio": {
+        "policy": "explicit",
+        "flag": "coach-studio",
+        "guide": "docs/coach-studio.md",
+        "use": "The user explicitly asks for tactical animation or Coach Studio. Independent of the club module."
+      },
+      "social-studio": {
+        "policy": "brief",
+        "flag": "social-studio",
+        "guide": "docs/social-studio.md",
+        "use": "Designing posts, carousels or reels in the CMS is part of the brief."
+      },
+      "ai-assistant": {
+        "policy": "explicit",
+        "flag": "ai-assistant",
+        "guide": "docs/ai-assistant.md",
+        "use": "The user asks for generative assistance; production requires its own configured provider."
+      },
+      "social-publishing": {
+        "policy": "explicit",
+        "flag": "social-publishing",
+        "guide": "docs/social-publishing.md",
+        "use": "The brief asks to schedule or publish to external accounts; account/queue activation is a separate operation."
+      },
+      "newsletter": {
+        "policy": "brief",
+        "guide": "docs/newsletter.md",
+        "use": "The brief asks to collect subscribers or send newsletters. Requires a dedicated SMTP setup for live delivery."
+      },
+      "blog": {
+        "policy": "brief",
+        "guide": "docs/features.md",
+        "use": "The brief requests ongoing editorial posts. Editorial profiles start with a blog; its public visibility can be changed independently in the CMS."
+      },
+      "document-studio": {
+        "policy": "brief",
+        "guide": "docs/admin-workspace.md",
+        "use": "The project needs its own branded documents or editable emails. Enable sending and private storage separately according to the workflow."
+      },
+      "commerce": {
+        "policy": "explicit",
+        "guide": "docs/recipes/commerce.md",
+        "use": "Checkout, payments or order handling is explicitly requested."
+      },
+      "invoicing": {
+        "policy": "explicit-recipe",
+        "guide": "docs/recipes/portal-crm.md",
+        "use": "A standalone finance or invoicing workflow is explicitly requested. Commerce receipts are a separate feature."
+      },
+      "creator": {
+        "policy": "explicit",
+        "guide": "docs/creator-modules.md",
+        "use": "The user requests a creator profile/media kit and associated creator-specific tools."
+      },
+      "mcp-agent-access": {
+        "policy": "explicit",
+        "guide": "docs/mcp-agent-access.md",
+        "use": "The user requests an external agent or private HTTP MCP client."
+      },
+      "project-proposals": {
+        "policy": "brief",
+        "guide": "docs/features.md",
+        "use": "Inquiry follow-up needs versioned offers or appointment proposals and approval links."
+      },
+      "booking": {
+        "policy": "recipe",
+        "guide": "docs/recipes/booking.md",
+        "use": "A real booking or calendar workflow is requested."
+      },
+      "portal-crm": {
+        "policy": "recipe",
+        "guide": "docs/recipes/portal-crm.md",
+        "use": "The brief needs a customer CRM or portal beyond the independent club module."
+      },
+      "podcast": {
+        "policy": "recipe",
+        "guide": "docs/recipes/podcast.md",
+        "use": "The brief requires a podcast site or feed."
+      },
+      "reviews": {
+        "policy": "recipe",
+        "guide": "docs/recipes/reviews.md",
+        "use": "The project asks to show authentic reviews from an owned profile or authorized source."
+      },
+      "print-studio": {
+        "policy": "recipe",
+        "guide": "docs/recipes/print-studio.md",
+        "use": "The project asks for a print workflow or editable business cards."
+      },
+      "restaurant-menu": {
+        "policy": "brief",
+        "flag": "restaurant-menu",
+        "guide": "docs/hospitality.md",
+        "use": "The brief asks for a food, drinks or venue menu. Reuse the central data in one or more placed sections."
+      },
+      "reservations": {
+        "policy": "brief",
+        "flag": "reservations",
+        "guide": "docs/hospitality.md",
+        "use": "The brief asks to receive table reservations. Set up and verify actual capacity, windows, closures and the reply workflow before launch."
+      }
+    },
+    "aesthetics": {
+      "liquid-glass": {
+        "policy": "explicit",
+        "flag": "--aesthetic liquid-glass",
+        "config": "theme.aesthetic",
+        "profiles": [
+          "services",
+          "portfolio",
+          "consulting",
+          "editorial"
+        ],
+        "guide": "docs/recipes/liquid-glass.md",
+        "use": "The brief explicitly chooses an iOS-like Liquid Glass direction with visual depth. Existing profiles and default designs stay unchanged. No fixed brand assets, planets, credentials or external services."
+      }
+    }
+  }
+}

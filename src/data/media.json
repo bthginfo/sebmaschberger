@@ -1,0 +1,86 @@
+[
+  {
+    "id": "hero",
+    "url": "/media/project/hero.webp",
+    "name": "Sebastian im Trainingsstudio",
+    "alt": "Sebastian im Trainingsstudio",
+    "type": "image/webp",
+    "size": 100954,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 0%",
+    "width": 1120,
+    "height": 990
+  },
+  {
+    "id": "strength",
+    "url": "/media/project/strength.webp",
+    "name": "Hantel im Trainingsstudio",
+    "alt": "Hantel im Trainingsstudio",
+    "type": "image/webp",
+    "size": 40022,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 50%",
+    "width": 820,
+    "height": 548
+  },
+  {
+    "id": "food",
+    "url": "/media/project/food.webp",
+    "name": "Bowl mit Gemüse, Getreide und Eiweißquelle",
+    "alt": "Bowl mit Gemüse, Getreide und Eiweißquelle",
+    "type": "image/webp",
+    "size": 99084,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 50%",
+    "width": 820,
+    "height": 548
+  },
+  {
+    "id": "routine",
+    "url": "/media/project/routine.webp",
+    "name": "Trainingsnotizen und Kaffee auf einer Bank",
+    "alt": "Trainingsnotizen und Kaffee auf einer Bank",
+    "type": "image/webp",
+    "size": 54570,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 50%",
+    "width": 820,
+    "height": 548
+  },
+  {
+    "id": "sebastian",
+    "url": "/media/project/sebastian.webp",
+    "name": "Sebastian sitzt lächelnd neben einer Hantelbank",
+    "alt": "Sebastian sitzt lächelnd neben einer Hantelbank",
+    "type": "image/webp",
+    "size": 78074,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 0%",
+    "width": 880,
+    "height": 940
+  },
+  {
+    "id": "training",
+    "url": "/media/project/training.webp",
+    "name": "Sebastian bei einer einbeinigen Kraftübung",
+    "alt": "Sebastian bei einer einbeinigen Kraftübung",
+    "type": "image/webp",
+    "size": 68686,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 50%",
+    "width": 810,
+    "height": 580
+  },
+  {
+    "id": "wettkampf",
+    "url": "/media/project/wettkampf.webp",
+    "name": "Sebastian mit anderen Athleten bei der Siegerehrung",
+    "alt": "Sebastian mit anderen Athleten bei der Siegerehrung",
+    "type": "image/webp",
+    "size": 63832,
+    "createdAt": "2026-11-22T00:00:00.000Z",
+    "position": "50% 50%",
+    "width": 1000,
+    "height": 610
+  }
+]

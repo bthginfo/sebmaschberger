@@ -1,0 +1,7 @@
+import type {SiteConfig} from '@/lib/types';
+export type PublishingControl={epoch:number};
+export function publishingModuleEnabled(config:SiteConfig){return config.modules?.socialStudio?.enabled===true&&config.modules?.socialPublishing?.enabled===true;}
+/** Used inside the existing local save transaction. Default-off saves keep the exact record object. */
+export function nextPublishingControl(before:SiteConfig,after:SiteConfig,current:PublishingControl|undefined){return publishingModuleEnabled(before)&&!publishingModuleEnabled(after)?{epoch:(current?.epoch??0)+1}:current;}
+/** Same conditional operation is part of the existing Neon save transaction, not an extra query. */
+export function publishingControlCte(revisionParameter:number,enabledParameter:number){return`current_site AS MATERIALIZED (SELECT COALESCE(draft#>>'{config,modules,socialStudio,enabled}'='true' AND draft#>>'{config,modules,socialPublishing,enabled}'='true',false) AS publishing_enabled FROM ws_site WHERE id='main' AND revision=$${revisionParameter} FOR UPDATE), publishing_epoch AS (INSERT INTO ws_records(collection,id,data) SELECT 'social-publishing-control','main',jsonb_build_object('epoch',1) FROM current_site WHERE publishing_enabled AND NOT $${enabledParameter}::boolean ON CONFLICT(collection,id) DO UPDATE SET data=jsonb_build_object('epoch',COALESCE((ws_records.data->>'epoch')::integer,0)+1) RETURNING data)`;}

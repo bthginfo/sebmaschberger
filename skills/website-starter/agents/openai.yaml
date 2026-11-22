@@ -1,0 +1,6 @@
+interface:
+  display_name: "Website Starter"
+  short_description: "Neue Websites mit dem bewährten eigenen CMS bauen"
+  default_prompt: "Nutze $website-starter, um eine individuelle Website mit unserem Next.js-CMS als Grundlage zu erstellen."
+policy:
+  allow_implicit_invocation: true

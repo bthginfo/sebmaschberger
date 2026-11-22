@@ -1,0 +1,15 @@
+.nl-signup{max-width:37rem;margin-top:16px;min-width:0}
+.nl-signup fieldset{border:0;padding:0;margin:0;display:grid;gap:12px;min-width:0}
+.nl-signup-main{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:9px;min-width:0}
+.nl-signup-main label{display:grid;gap:5px;min-width:0;font-size:.87em;font-weight:700}
+.nl-signup input[type=email]{min-height:46px;width:100%;padding:9px 12px;border:1px solid color-mix(in srgb,currentColor 33%,transparent);border-radius:9px;color:inherit;background:transparent;font:inherit}
+.nl-signup button{min-height:46px;padding:8px 16px;border:1px solid transparent;border-radius:9px;background:#19364a;color:white;font:inherit;font-weight:750;cursor:pointer}
+.nl-signup button:disabled{opacity:.55;cursor:default}.nl-signup button:focus-visible,.nl-signup input:focus-visible{outline:2px solid #cf704f;outline-offset:3px}
+.nl-signup-consent{display:flex;align-items:flex-start;gap:9px;line-height:1.5;font-size:.86em}
+.nl-signup-consent input{width:17px;height:17px;flex:none;accent-color:#19364a;margin:3px 0 0}
+.nl-signup-hp{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.nl-signup [data-signup-status]{display:block;margin-top:8px;font-weight:650;line-height:1.45}
+.nl-signup [data-signup-topic]:empty,.nl-signup [data-signup-status]:empty{display:none}
+.nl-signup [data-signup-status][data-error=true]{color:#a33525}
+.nl-signup a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:500px){.nl-signup-main{grid-template-columns:minmax(0,1fr)}.nl-signup button{justify-self:start}.nl-signup input[type=email]{font-size:16px}}

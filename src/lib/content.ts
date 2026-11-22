@@ -1,0 +1,14 @@
+import 'server-only';
+import { cache } from 'react';
+import { unstable_cache } from 'next/cache';
+import { databaseCacheNamespace,getPublicSnapshot } from './db';
+import {packPublicSnapshot,unpackPublicSnapshot} from './public-projection';
+import {publishedPagePath} from './site-languages';
+type Snapshot=Awaited<ReturnType<typeof getPublicSnapshot>>;
+const indexCache=unstable_cache(async()=>packPublicSnapshot(await getPublicSnapshot()),['ws-public-index-v8',databaseCacheNamespace],{tags:['ws-published'],revalidate:false});
+const pageCache=unstable_cache(async(slug:string)=>packPublicSnapshot(await getPublicSnapshot(slug)),['ws-public-page-v8',databaseCacheNamespace],{tags:['ws-published'],revalidate:false});
+const publicIndex=cache(async()=>unpackPublicSnapshot<Snapshot>(await indexCache()));
+export const publicPageSnapshot=cache(async(slug:string)=>{const snapshot=unpackPublicSnapshot<Snapshot>(await pageCache(slug));return{...snapshot,siteUrl:snapshot.siteUrl.replace(/\/$/,'')};});
+export const publishedContent=cache(async()=>(await publicIndex()).content);
+export const canonicalUrl=cache(async()=>(await publicIndex()).siteUrl.replace(/\/$/,''));
+export const pageUrl=(base:string,slug:string,bilingual=false)=>base+publishedPagePath(slug,bilingual);

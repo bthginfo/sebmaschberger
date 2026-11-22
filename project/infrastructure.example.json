@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "website": null,
+  "github": {
+    "repository": null,
+    "productionBranch": null
+  },
+  "vercel": {
+    "projectId": null,
+    "projectName": null,
+    "teamId": null
+  },
+  "neon": {
+    "projectId": null,
+    "databaseName": null,
+    "requiredPlan": "free",
+    "verifiedPlan": null,
+    "productionBranchId": null,
+    "previewBranchId": null
+  },
+  "blob": {
+    "storeId": null,
+    "access": "public",
+    "region": "fra1"
+  },
+  "verifiedAt": null
+}

@@ -1,0 +1,13 @@
+import type {SiteConfig} from '../types';
+import brandDefault from './brand-default';
+import {z} from 'zod';
+import {documentDesignSchema,defaultDocumentDesign,type DocumentDesign} from './design';
+import type {EmailTemplates} from '../types';
+const short=z.string().trim().max(200),subject=z.string().max(200).refine(v=>!/[\r\n\u0000-\u001f\u007f]/.test(v)),body=z.string().max(10000);
+export const businessSettingsInput=z.object({design:documentDesignSchema,invoiceEnabled:z.boolean(),profile:z.object({name:short,address:z.string().trim().max(600),email:z.union([z.email(),z.literal('')]),phone:z.string().max(100),taxId:z.string().max(100),iban:z.string().max(50),taxMode:z.enum(['vat','small_business'])}).strict(),templates:z.object({orderSubject:subject.optional(),orderBody:body.optional(),refundSubject:subject.optional(),refundBody:body.optional(),partialRefundSubject:subject.optional(),partialRefundBody:body.optional(),contactSubject:subject.optional(),contactBody:body.optional()}).strict()}).strict().superRefine((v,ctx)=>{if(v.invoiceEnabled&&(!v.profile.name||!v.profile.address||!v.profile.email||!v.profile.taxId))ctx.addIssue({code:'custom',message:'Für Shop-Rechnungen bitte vollständigen Anbieter, Anschrift, E-Mail und Steuerangabe ergänzen.',path:['profile']});if(v.profile.iban&&!validIban(v.profile.iban))ctx.addIssue({code:'custom',message:'Bitte eine gültige IBAN eingeben.',path:['profile','iban']});});
+export function storedBusinessSettings(value:BusinessSettings):BusinessSettings{const {revision,...input}=value;if(!Number.isInteger(revision)||revision<0)throw new Error('Ungültige Vorlagenrevision.');return{...businessSettingsInput.parse(input),revision};}
+export type BusinessSettings=z.infer<typeof businessSettingsInput>&{revision:number};
+export interface OrderBusinessSnapshot {designId?:string;design?:DocumentDesign;profile:BusinessSettings['profile'];invoiceEnabled:boolean;templates?:EmailTemplates}
+export function validIban(value:string){const iban=value.replace(/\s/g,'').toUpperCase();if(!/^[A-Z]{2}\d{2}[A-Z0-9]{11,30}$/.test(iban))return false;let n=0;for(const c of (iban.slice(4)+iban.slice(0,4)).replace(/[A-Z]/g,c=>String(c.charCodeAt(0)-55)))n=(n*10+Number(c))%97;return n===1;}
+
+export function initialBusinessSettings(c:SiteConfig,templates:EmailTemplates={}):BusinessSettings{return{revision:0,design:{...defaultDocumentDesign((c.name||'Shop').slice(0,100),c.theme?.primary||'#315f4d'),logoDataUrl:brandDefault},invoiceEnabled:false,profile:{name:c.legalName||'',address:[c.address,[c.postalCode,c.city].filter(Boolean).join(' ')].filter(Boolean).join('\n'),email:c.email||'',phone:c.phone||'',taxId:'',iban:'',taxMode:'vat'},templates:{...templates}};}

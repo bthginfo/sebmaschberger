@@ -1,0 +1,5193 @@
+{
+  "version": 1,
+  "config": {
+    "defaultAdminLanguage": "de",
+    "defaultWebsiteLanguage": "de",
+    "name": "Sebastian Maschberger",
+    "legalName": "Sebastian Maschberger",
+    "tagline": "TRAINING & ERNÄHRUNG",
+    "phone": "",
+    "email": "",
+    "fax": "",
+    "address": "",
+    "city": "",
+    "postalCode": "",
+    "navigation": [
+      {
+        "href": "/coaching",
+        "label": "Coaching"
+      },
+      {
+        "href": "/ernaehrung",
+        "label": "Ernährung"
+      },
+      {
+        "href": "/ueber-sebastian",
+        "label": "Über mich"
+      },
+      {
+        "href": "/journal",
+        "label": "Journal"
+      },
+      {
+        "href": "/shop",
+        "label": "Shop"
+      },
+      {
+        "href": "/kontakt",
+        "label": "Erstgespräch anfragen"
+      }
+    ],
+    "footerText": "Persönliches Krafttraining und Ernährungscoaching für Männer ab 30. Online auf Deutsch und Englisch.",
+    "openingHours": [],
+    "theme": {
+      "primary": "#18241f",
+      "accent": "#c9f471",
+      "background": "#f4f6ee",
+      "radius": 28,
+      "font": "manrope",
+      "presentation": "services",
+      "aesthetic": "liquid-glass",
+      "glass": {
+        "enabled": true,
+        "background": "aurora",
+        "intensity": 14,
+        "speed": 25,
+        "depth": 20,
+        "reveal": true,
+        "feedback": true,
+        "revealDuration": 500
+      },
+      "palettes": {
+        "1": {
+          "primary": "#18241f",
+          "accent": "#c9f471",
+          "background": "#f4f6ee",
+          "text": "#18241f",
+          "surface": "#e9eee2",
+          "border": "#dbe3d2"
+        }
+      }
+    },
+    "designVariant": 1,
+    "consent": {
+      "enabled": true,
+      "title": "Deine Privatsphäre",
+      "text": "Optionale Statistik und eingebettete Medien wählst du selbst.",
+      "english": {
+        "title": "Your privacy",
+        "text": "Choose whether to allow optional analytics and embedded media."
+      }
+    },
+    "analytics": {
+      "googleId": "",
+      "matomoUrl": "",
+      "matomoSiteId": ""
+    },
+    "blog": {
+      "enabled": false,
+      "title": "Wissen und Einblicke.",
+      "description": "Beiträge Ihres Unternehmens.",
+      "slug": "blog",
+      "layout": "cards",
+      "showInNavigation": false,
+      "navLabel": "Wissen"
+    },
+    "footer": {
+      "brandText": "Sebastian Maschberger",
+      "ctaLabel": "Zur Anfrage",
+      "ctaHref": "/kontakt",
+      "addressHeading": "Anschrift",
+      "contactHeading": "Kontakt",
+      "navigationHeading": "Entdecken",
+      "copyright": "© {year} {name}",
+      "showAddress": false,
+      "showContact": false,
+      "showHours": false,
+      "showCookieSettings": true,
+      "showBackToTop": true,
+      "columns": [
+        {
+          "id": "content",
+          "title": "Entdecken",
+          "links": [
+            {
+              "href": "/coaching",
+              "label": "Coaching"
+            },
+            {
+              "href": "/ernaehrung",
+              "label": "Ernährung"
+            },
+            {
+              "href": "/ueber-sebastian",
+              "label": "Über mich"
+            },
+            {
+              "href": "/journal",
+              "label": "Journal"
+            },
+            {
+              "href": "/shop",
+              "label": "Shop"
+            }
+          ]
+        },
+        {
+          "id": "other",
+          "title": "Informationen",
+          "links": [
+            {
+              "href": "/wochenplan",
+              "label": "Wochenplan"
+            },
+            {
+              "href": "/partner",
+              "label": "Partner"
+            },
+            {
+              "href": "/warenkorb",
+              "label": "Warenkorb"
+            },
+            {
+              "href": "/kontakt",
+              "label": "Kontakt"
+            },
+            {
+              "href": "https://www.instagram.com/sebastian_maschberger/",
+              "label": "Instagram"
+            }
+          ]
+        }
+      ],
+      "legalLinks": [
+        {
+          "href": "/impressum",
+          "label": "Impressum"
+        },
+        {
+          "href": "/datenschutz",
+          "label": "Datenschutz"
+        }
+      ]
+    },
+    "locales": {
+      "en": {
+        "tagline": "TRAINING & NUTRITION",
+        "navigation": [
+          {
+            "href": "/en/coaching",
+            "label": "Coaching"
+          },
+          {
+            "href": "/en/nutrition",
+            "label": "Nutrition"
+          },
+          {
+            "href": "/en/about",
+            "label": "About"
+          },
+          {
+            "href": "/en/journal",
+            "label": "Journal"
+          },
+          {
+            "href": "/en/shop",
+            "label": "Shop"
+          },
+          {
+            "href": "/en/contact",
+            "label": "Request an intro call"
+          }
+        ],
+        "footerText": "Personal strength and nutrition coaching for men over 30. Online in German and English.",
+        "openingHours": [],
+        "footer": {
+          "brandText": "Sebastian Maschberger",
+          "ctaLabel": "Get in touch",
+          "ctaHref": "/en/contact",
+          "addressHeading": "Address",
+          "contactHeading": "Contact",
+          "navigationHeading": "Explore",
+          "copyright": "© {year} {name}",
+          "showAddress": false,
+          "showContact": false,
+          "showHours": false,
+          "showCookieSettings": true,
+          "showBackToTop": true,
+          "columns": [
+            {
+              "id": "content",
+              "title": "Explore",
+              "links": [
+                {
+                  "href": "/en/coaching",
+                  "label": "Coaching"
+                },
+                {
+                  "href": "/en/nutrition",
+                  "label": "Nutrition"
+                },
+                {
+                  "href": "/en/about",
+                  "label": "About"
+                },
+                {
+                  "href": "/en/journal",
+                  "label": "Journal"
+                },
+                {
+                  "href": "/en/shop",
+                  "label": "Shop"
+                }
+              ]
+            },
+            {
+              "id": "other",
+              "title": "Information",
+              "links": [
+                {
+                  "href": "/en/weekly-plan",
+                  "label": "Weekly planner"
+                },
+                {
+                  "href": "/en/partners",
+                  "label": "Partners"
+                },
+                {
+                  "href": "/en/cart",
+                  "label": "Cart"
+                },
+                {
+                  "href": "/en/contact",
+                  "label": "Contact"
+                },
+                {
+                  "href": "https://www.instagram.com/sebastian_maschberger/",
+                  "label": "Instagram"
+                }
+              ]
+            }
+          ],
+          "legalLinks": [
+            {
+              "href": "/en/legal-notice",
+              "label": "Legal notice"
+            },
+            {
+              "href": "/en/privacy",
+              "label": "Privacy"
+            }
+          ]
+        }
+      }
+    },
+    "modules": {
+      "commerce": {
+        "enabled": true,
+        "currency": "EUR",
+        "shippingCents": 0,
+        "products": []
+      },
+      "proposals": {
+        "enabled": true
+      }
+    }
+  },
+  "pages": [
+    {
+      "id": "home-de",
+      "slug": "",
+      "title": "Sebastian Maschberger · Coaching für Männer ab 30",
+      "locale": "de-DE",
+      "translationKey": "home",
+      "seo": {
+        "title": "Sebastian Maschberger · Coaching für Männer ab 30",
+        "description": "Online-Coaching für Krafttraining und Ernährung. Sebastian Maschberger, IFBB Elite Pro, hilft dir, eine Routine für deinen Alltag aufzubauen.",
+        "image": "/media/project/hero.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Auftakt",
+          "visible": true,
+          "content": {
+            "heading": "Stark werden.\nDu bleiben.",
+            "text": "Krafttraining und Ernährungscoaching für Männer ab 30. Mit einem Plan, der in dein Leben passt.",
+            "subheading": "PERSÖNLICHES COACHING",
+            "caption": "Sebastian Maschberger · IFBB Elite Pro",
+            "image": {
+              "src": "/media/project/hero.webp",
+              "alt": "Sebastian im Trainingsstudio",
+              "position": "50% 0%"
+            },
+            "primaryLabel": "Erstgespräch anfragen",
+            "primaryHref": "/kontakt",
+            "secondaryLabel": "Coaching entdecken",
+            "secondaryHref": "/coaching"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "evidence",
+          "type": "stats",
+          "name": "Coaching auf einen Blick",
+          "visible": true,
+          "content": {
+            "heading": "Coaching auf einen Blick",
+            "items": [
+              {
+                "id": "pro",
+                "title": "IFBB Elite Pro",
+                "text": "Wettkampferfahrung"
+              },
+              {
+                "id": "target",
+                "title": "30+",
+                "text": "Coaching für Männer"
+              },
+              {
+                "id": "online",
+                "title": "DE / EN",
+                "text": "Online begleitet"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "services",
+          "type": "cards",
+          "name": "Was wir zusammen angehen",
+          "visible": true,
+          "content": {
+            "heading": "Was wir zusammen angehen",
+            "text": "Wir beginnen mit deinem Alltag und entscheiden dann, welche Schritte sich verlässlich umsetzen lassen.",
+            "items": [
+              {
+                "id": "strength",
+                "title": "Training mit System",
+                "text": "Krafttraining, das sich an deinem Ziel, deiner Erfahrung und deinen Zeitfenstern orientiert.",
+                "image": {
+                  "src": "/media/project/strength.webp",
+                  "alt": "Hantel im Trainingsstudio",
+                  "position": "50% 50%"
+                },
+                "meta": "KRAFT",
+                "href": "/coaching",
+                "label": "Coaching ansehen"
+              },
+              {
+                "id": "nutrition",
+                "title": "Essen mit Spielraum",
+                "text": "Einfache Routinen für Arbeitstage, Restaurantbesuche und alles dazwischen.",
+                "image": {
+                  "src": "/media/project/food.webp",
+                  "alt": "Bowl mit Gemüse, Getreide und Eiweißquelle",
+                  "position": "50% 50%"
+                },
+                "meta": "ERNÄHRUNG",
+                "href": "/ernaehrung",
+                "label": "Ernährung ansehen"
+              },
+              {
+                "id": "plan",
+                "title": "Eine Woche, die passt",
+                "text": "Finde einen Einstieg, der selbst in einer vollen Woche Platz hat.",
+                "image": {
+                  "src": "/media/project/routine.webp",
+                  "alt": "Trainingsnotizen und Kaffee auf einer Bank",
+                  "position": "50% 50%"
+                },
+                "meta": "WOCHENPLAN",
+                "href": "/wochenplan",
+                "label": "Woche planen"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "story",
+          "type": "split",
+          "name": "Servus, ich bin Sebastian.",
+          "visible": true,
+          "content": {
+            "heading": "Servus, ich bin Sebastian.",
+            "text": "Bodybuilding hat mir beigebracht, wie viel Struktur verändern kann. Heute helfe ich Männern, Kraft und Ernährung so zu organisieren, dass Beruf, Freunde und Familie Platz behalten.",
+            "image": {
+              "src": "/media/project/sebastian.webp",
+              "alt": "Sebastian sitzt lächelnd neben einer Hantelbank",
+              "position": "50% 0%"
+            },
+            "primaryLabel": "Meine Geschichte",
+            "primaryHref": "/ueber-sebastian"
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "left",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "steps",
+          "type": "steps",
+          "name": "So starten wir",
+          "visible": true,
+          "content": {
+            "heading": "So starten wir",
+            "text": "Du bekommst einen klaren Einstieg und weißt bei jedem Schritt, was als Nächstes passiert.",
+            "items": [
+              {
+                "id": "intro",
+                "title": "Kennenlernen",
+                "text": "In einem kurzen Gespräch klären wir dein Ziel, deine Trainingsmöglichkeiten und was dir bisher im Weg stand.",
+                "icon": "MessageCircle"
+              },
+              {
+                "id": "plan",
+                "title": "Plan bauen",
+                "text": "Wir legen Trainingszeiten, Übungen und eine Ernährungsroutine fest, die mit deinem Alltag zusammengehen.",
+                "icon": "CalendarDays"
+              },
+              {
+                "id": "adjust",
+                "title": "Dranbleiben",
+                "text": "Mit regelmäßigem Feedback sehen wir, was funktioniert und wann eine kleine Anpassung ansteht.",
+                "icon": "TrendingUp"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "journal",
+          "type": "cards",
+          "name": "Aus dem Journal",
+          "visible": true,
+          "content": {
+            "heading": "Aus dem Journal",
+            "text": "Kurze Anleitungen für Training, Essen und Wochen mit wenig Zeit.",
+            "items": [
+              {
+                "id": "strength",
+                "title": "Krafttraining in einer vollen Woche",
+                "text": "Wie du mit zwei festen Terminen, wenigen Übungen und einem klaren Plan beginnst.",
+                "image": {
+                  "src": "/media/project/strength.webp",
+                  "alt": "Hantel im Trainingsstudio",
+                  "position": "50% 50%"
+                },
+                "meta": "PRAXIS",
+                "href": "/journal/krafttraining-im-alltag",
+                "label": "Lesen"
+              },
+              {
+                "id": "food",
+                "title": "Ernährung ohne ständiges Tracken",
+                "text": "Drei Anker für Mahlzeiten, die auch an langen Arbeitstagen funktionieren.",
+                "image": {
+                  "src": "/media/project/food.webp",
+                  "alt": "Bowl mit Gemüse, Getreide und Eiweißquelle",
+                  "position": "50% 50%"
+                },
+                "meta": "PRAXIS",
+                "href": "/journal/ernaehrung-ohne-tracking",
+                "label": "Lesen"
+              },
+              {
+                "id": "routine",
+                "title": "Der kleine Plan für schwere Wochen",
+                "text": "Lege die kürzeste Version deiner Routine fest, bevor du sie brauchst.",
+                "image": {
+                  "src": "/media/project/routine.webp",
+                  "alt": "Trainingsnotizen und Kaffee auf einer Bank",
+                  "position": "50% 50%"
+                },
+                "meta": "PRAXIS",
+                "href": "/journal/der-kleine-plan",
+                "label": "Lesen"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "partner-links",
+          "type": "affiliate-links",
+          "name": "Empfehlungen",
+          "visible": true,
+          "content": {
+            "heading": "Zum Weiterstöbern",
+            "text": "Links und Projekte rund um meine Arbeit.",
+            "items": [
+              {
+                "id": "instagram",
+                "title": "Training auf Instagram",
+                "text": "Trainingsausschnitte, Gym-Alltag und aktuelle Beiträge.",
+                "image": {
+                  "src": "/media/project/sebastian.webp",
+                  "alt": "Sebastian sitzt lächelnd neben einer Hantelbank",
+                  "position": "50% 0%"
+                },
+                "meta": "EIGENER KANAL",
+                "href": "https://www.instagram.com/sebastian_maschberger/",
+                "label": "Profil ansehen"
+              }
+            ],
+            "primaryLabel": "Partner und Empfehlungen",
+            "primaryHref": "/partner"
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 2,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "faq",
+          "type": "faq",
+          "name": "Fragen vor dem Start",
+          "visible": true,
+          "content": {
+            "heading": "Fragen vor dem Start",
+            "items": [
+              {
+                "id": "q1",
+                "title": "Muss ich schon trainieren?",
+                "text": "Du kannst mit ersten Kraftübungen einsteigen oder nach einer Pause zurückkommen. Dein Plan richtet sich nach deinem aktuellen Stand."
+              },
+              {
+                "id": "q2",
+                "title": "Wie viel Zeit brauche ich?",
+                "text": "Wir schauen zuerst auf die Zeit, die du zuverlässig zur Verfügung hast. Zwei regelmäßige Trainingsfenster sind ein möglicher Einstieg."
+              },
+              {
+                "id": "q3",
+                "title": "Kann ich online starten?",
+                "text": "Ja. Kennenlernen, Planung und Feedback sind digital möglich."
+              },
+              {
+                "id": "q4",
+                "title": "Was kostet die Begleitung?",
+                "text": "Das Erstgespräch ist kostenlos. Im Anschluss klären wir den Umfang und du bekommst ein individuelles Angebot."
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 2,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "start",
+          "type": "cta",
+          "name": "Was würde gerade zu dir passen?",
+          "visible": true,
+          "content": {
+            "heading": "Was würde gerade zu dir passen?",
+            "text": "Im Erstgespräch finden wir heraus, wo du stehst und ob ich dir helfen kann.",
+            "primaryLabel": "Erstgespräch anfragen",
+            "primaryHref": "/kontakt"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "coaching-de",
+      "slug": "coaching",
+      "title": "1:1 Online-Coaching",
+      "locale": "de-DE",
+      "translationKey": "coaching",
+      "seo": {
+        "title": "1:1 Online-Coaching | Sebastian Maschberger",
+        "description": "Persönliche Trainingsplanung, flexible Ernährungsberatung und regelmäßiges Feedback für Männer ab 30.",
+        "image": "/media/project/training.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Auftakt",
+          "visible": true,
+          "content": {
+            "heading": "Ein Trainingsplan für dein Leben.",
+            "text": "Ich begleite dich dabei, stärker zu werden, Übungen sicher zu wiederholen und Training in deinen Alltag einzubauen.",
+            "subheading": "1:1 ONLINE",
+            "image": {
+              "src": "/media/project/training.webp",
+              "alt": "Sebastian bei einer einbeinigen Kraftübung",
+              "position": "50% 50%"
+            },
+            "primaryLabel": "Erstgespräch anfragen",
+            "primaryHref": "/kontakt",
+            "secondaryLabel": "Woche planen",
+            "secondaryHref": "/wochenplan"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "umfang",
+          "type": "cards",
+          "name": "Was zur Begleitung gehört",
+          "visible": true,
+          "content": {
+            "heading": "Was zur Begleitung gehört",
+            "items": [
+              {
+                "id": "training",
+                "title": "Trainingsplanung",
+                "text": "Übungen, Umfang und Trainingstage passen zu deiner Erfahrung und zu der Ausstattung, die du nutzen kannst.",
+                "icon": "Dumbbell"
+              },
+              {
+                "id": "food",
+                "title": "Ernährung im Alltag",
+                "text": "Wir wählen Mahlzeiten und Routinen, die bei der Arbeit, zu Hause oder unterwegs funktionieren.",
+                "icon": "Utensils"
+              },
+              {
+                "id": "feedback",
+                "title": "Check-ins",
+                "text": "Wir besprechen Fortschritte und Hürden. Wenn sich deine Woche verändert, passen wir den Plan an.",
+                "icon": "ListChecks"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "ablauf",
+          "type": "workflow-demo",
+          "name": "Vom ersten Gespräch zur Routine",
+          "visible": true,
+          "content": {
+            "heading": "Vom ersten Gespräch zur Routine",
+            "items": [
+              {
+                "id": "intro",
+                "title": "Kennenlernen",
+                "text": "In einem kurzen Gespräch klären wir dein Ziel, deine Trainingsmöglichkeiten und was dir bisher im Weg stand.",
+                "icon": "MessageCircle"
+              },
+              {
+                "id": "plan",
+                "title": "Plan bauen",
+                "text": "Wir legen Trainingszeiten, Übungen und eine Ernährungsroutine fest, die mit deinem Alltag zusammengehen.",
+                "icon": "CalendarDays"
+              },
+              {
+                "id": "adjust",
+                "title": "Dranbleiben",
+                "text": "Mit regelmäßigem Feedback sehen wir, was funktioniert und wann eine kleine Anpassung ansteht.",
+                "icon": "TrendingUp"
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "beispiel",
+          "type": "richtext",
+          "name": "So kann eine Woche aussehen",
+          "visible": true,
+          "content": {
+            "heading": "So kann eine Woche aussehen",
+            "text": "Du hast dienstags und samstags je ein Trainingsfenster? Dann planen wir zwei Einheiten mit wiederkehrenden Übungen. Donnerstag kann als Ausweichtermin dienen. In den ersten Wochen schauen wir gemeinsam, wie du die Übungen und die Belastung verträgst.",
+            "primaryLabel": "Trainingswoche zusammenstellen",
+            "primaryHref": "/wochenplan"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "faq",
+          "type": "faq",
+          "name": "Passt das zu mir?",
+          "visible": true,
+          "content": {
+            "heading": "Passt das zu mir?",
+            "items": [
+              {
+                "id": "q1",
+                "title": "Muss ich schon trainieren?",
+                "text": "Du kannst mit ersten Kraftübungen einsteigen oder nach einer Pause zurückkommen. Dein Plan richtet sich nach deinem aktuellen Stand."
+              },
+              {
+                "id": "q2",
+                "title": "Wie viel Zeit brauche ich?",
+                "text": "Wir schauen zuerst auf die Zeit, die du zuverlässig zur Verfügung hast. Zwei regelmäßige Trainingsfenster sind ein möglicher Einstieg."
+              },
+              {
+                "id": "q3",
+                "title": "Kann ich online starten?",
+                "text": "Ja. Kennenlernen, Planung und Feedback sind digital möglich."
+              },
+              {
+                "id": "q4",
+                "title": "Was kostet die Begleitung?",
+                "text": "Das Erstgespräch ist kostenlos. Im Anschluss klären wir den Umfang und du bekommst ein individuelles Angebot."
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 2,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "contact",
+          "type": "cta",
+          "name": "Lass uns kurz sprechen.",
+          "visible": true,
+          "content": {
+            "heading": "Lass uns kurz sprechen.",
+            "text": "Du erzählst mir, was dich gerade beschäftigt. Ich erkläre dir, wie die Zusammenarbeit aussehen kann.",
+            "primaryLabel": "Erstgespräch anfragen",
+            "primaryHref": "/kontakt"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nutrition-de",
+      "slug": "ernaehrung",
+      "title": "Ernährung im Alltag",
+      "locale": "de-DE",
+      "translationKey": "nutrition",
+      "seo": {
+        "title": "Ernährung im Alltag | Sebastian Maschberger",
+        "description": "Ernährungsberatung mit alltagstauglichen Mahlzeiten und flexibler Planung, auch bei Beruf, Familie und langen Arbeitstagen.",
+        "image": "/media/project/food.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Auftakt",
+          "visible": true,
+          "content": {
+            "heading": "Ernährung darf einfach sein.",
+            "text": "Wir bauen eine Routine, mit der du regelmäßig und gerne isst. Du behältst deinen Spielraum für Einladungen, Reisen und hektische Tage.",
+            "subheading": "ERNÄHRUNGSBERATUNG",
+            "image": {
+              "src": "/media/project/food.webp",
+              "alt": "Bowl mit Gemüse, Getreide und Eiweißquelle",
+              "position": "50% 50%"
+            },
+            "primaryLabel": "Erstgespräch anfragen",
+            "primaryHref": "/kontakt"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "methode",
+          "type": "steps",
+          "name": "Drei Anker für deine Mahlzeiten",
+          "visible": true,
+          "content": {
+            "heading": "Drei Anker für deine Mahlzeiten",
+            "items": [
+              {
+                "id": "rhythm",
+                "title": "Einen Rhythmus finden",
+                "text": "Wir schauen, wann es dir leichtfällt zu essen und welche Mahlzeit öfter ausfällt."
+              },
+              {
+                "id": "base",
+                "title": "Bausteine vorbereiten",
+                "text": "Ein paar verlässliche Zutaten helfen dir, Mahlzeiten schnell zusammenzustellen."
+              },
+              {
+                "id": "room",
+                "title": "Flexibilität lassen",
+                "text": "Für Restaurantbesuche, Schichttage und Reisen überlegen wir uns vorher einfache Optionen."
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "food",
+          "type": "split",
+          "name": "Ein Teller, viele Möglichkeiten",
+          "visible": true,
+          "content": {
+            "heading": "Ein Teller, viele Möglichkeiten",
+            "text": "Protein, Gemüse oder Obst und eine sättigende Beilage sind ein guter Ausgangspunkt. Du entscheidest, was dir schmeckt und was du verfügbar hast.",
+            "image": {
+              "src": "/media/project/food.webp",
+              "alt": "Bowl mit Gemüse, Getreide und Eiweißquelle",
+              "position": "50% 50%"
+            },
+            "primaryLabel": "Im Journal weiterlesen",
+            "primaryHref": "/journal/ernaehrung-ohne-tracking"
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "faq",
+          "type": "faq",
+          "name": "Häufige Ernährungsfragen",
+          "visible": true,
+          "content": {
+            "heading": "Häufige Ernährungsfragen",
+            "items": [
+              {
+                "id": "q1",
+                "title": "Muss ich Kalorien zählen?",
+                "text": "Wir entscheiden gemeinsam, ob vorübergehendes Erfassen hilfreich ist. Viele Routinen beginnen mit Mahlzeitenstruktur und Einkauf."
+              },
+              {
+                "id": "q2",
+                "title": "Was ist mit Schichtarbeit?",
+                "text": "Bring einen typischen Dienstplan mit. Wir planen nach den Essmöglichkeiten und Pausen, die du tatsächlich hast."
+              },
+              {
+                "id": "q3",
+                "title": "Bei welchen Fragen ist ein Arzt sinnvoll?",
+                "text": "Bei Beschwerden, auffälligen Blutwerten oder medizinischen Fragen ist eine ärztliche Abklärung sinnvoll. Das Coaching konzentriert sich auf deine Alltagsroutine."
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 2,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "ende",
+          "type": "cta",
+          "name": "Erzähl mir, wie ein normaler Tag aussieht.",
+          "visible": true,
+          "content": {
+            "heading": "Erzähl mir, wie ein normaler Tag aussieht.",
+            "text": "Daraus können wir sinnvolle erste Schritte ableiten.",
+            "primaryLabel": "Erstgespräch anfragen",
+            "primaryHref": "/kontakt"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "about-de",
+      "slug": "ueber-sebastian",
+      "title": "Über Sebastian",
+      "locale": "de-DE",
+      "translationKey": "about",
+      "seo": {
+        "title": "Über Sebastian | Sebastian Maschberger",
+        "description": "Sebastian Maschberger ist IFBB Elite Pro im Classic Bodybuilding und begleitet Männer online in Training und Ernährung.",
+        "image": "/media/project/sebastian.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Auftakt",
+          "visible": true,
+          "content": {
+            "heading": "Servus, ich bin Sebastian.",
+            "text": "Mit 13 habe ich Kraftsport entdeckt. Aus dem Sport wurde Wettkampf, aus der Erfahrung meine Arbeit als Coach.",
+            "subheading": "SEBASTIAN MASCHBERGER",
+            "image": {
+              "src": "/media/project/sebastian.webp",
+              "alt": "Sebastian sitzt lächelnd neben einer Hantelbank",
+              "position": "50% 0%"
+            },
+            "secondaryLabel": "Instagram",
+            "secondaryHref": "https://www.instagram.com/sebastian_maschberger/"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "stage",
+          "type": "split",
+          "name": "Was die Bühne mich gelehrt hat",
+          "visible": true,
+          "content": {
+            "heading": "Was die Bühne mich gelehrt hat",
+            "text": "Im Bodybuilding helfen klare Abläufe und genaues Beobachten. Im Coaching nutze ich diese Erfahrung, um für dich passende Entscheidungen zu treffen.",
+            "image": {
+              "src": "/media/project/wettkampf.webp",
+              "alt": "Sebastian mit anderen Athleten bei der Siegerehrung",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "left",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "history",
+          "type": "timeline",
+          "name": "Wettkampfstationen",
+          "visible": true,
+          "content": {
+            "heading": "Wettkampfstationen",
+            "items": [
+              {
+                "id": "pro",
+                "title": "IFBB Elite Pro",
+                "text": "Profi-Status im Classic Bodybuilding seit 2018.",
+                "meta": "2018",
+                "href": "https://maschberger.jimdoweb.com/",
+                "label": "Wettkampfstationen"
+              },
+              {
+                "id": "austria",
+                "title": "Österreichische Meisterschaft",
+                "text": "Klassen- und Gesamtsieg laut meiner Wettkampfübersicht.",
+                "meta": "2018",
+                "href": "https://maschberger.jimdoweb.com/",
+                "label": "Wettkampfübersicht"
+              },
+              {
+                "id": "bavaria",
+                "title": "Bayerische Meisterschaft",
+                "text": "Klassensieg im Classic Bodybuilding.",
+                "meta": "2017",
+                "href": "https://dbfv.de/wp-content/uploads/Ergebnisliste_BM2017.pdf",
+                "label": "Ergebnisliste"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "heute",
+          "type": "richtext",
+          "name": "Wie ich heute arbeite",
+          "visible": true,
+          "content": {
+            "heading": "Wie ich heute arbeite",
+            "text": "Im Erstgespräch frage ich nach deinem Alltag, deiner Trainingsgeschichte und nach dem, was dir wichtig ist. Danach arbeiten wir mit einer Routine, die du nachvollziehen und selbst mitgestalten kannst.",
+            "items": [
+              {
+                "id": "old",
+                "title": "Train Like a Pro",
+                "text": "Mein früheres Coaching-Projekt und Ausgangspunkt für die Arbeit mit Online-Kunden.",
+                "href": "https://trainlikeapro.coach/",
+                "label": "Projekt ansehen"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "ende",
+          "type": "cta",
+          "name": "Lerne mich im Gespräch kennen.",
+          "visible": true,
+          "content": {
+            "heading": "Lerne mich im Gespräch kennen.",
+            "primaryLabel": "Erstgespräch anfragen",
+            "primaryHref": "/kontakt"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "journal-de",
+      "slug": "journal",
+      "title": "Journal",
+      "locale": "de-DE",
+      "translationKey": "journal",
+      "seo": {
+        "title": "Journal | Sebastian Maschberger",
+        "description": "Konkrete Tipps zu Krafttraining, Ernährung und Routinen für stressige Wochen.",
+        "image": "/media/project/routine.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Auftakt",
+          "visible": true,
+          "content": {
+            "heading": "Kleine Dinge, die im Alltag helfen.",
+            "text": "Mein Journal für Kraft, Essen und Tage mit wenig Zeit.",
+            "subheading": "JOURNAL",
+            "image": {
+              "src": "/media/project/routine.webp",
+              "alt": "Trainingsnotizen und Kaffee auf einer Bank",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "artikel",
+          "type": "cards",
+          "name": "Zum Nachlesen",
+          "visible": true,
+          "content": {
+            "heading": "Zum Nachlesen",
+            "items": [
+              {
+                "id": "strength",
+                "title": "Krafttraining in einer vollen Woche",
+                "text": "Wie du mit zwei festen Terminen, wenigen Übungen und einem klaren Plan beginnst.",
+                "image": {
+                  "src": "/media/project/strength.webp",
+                  "alt": "Hantel im Trainingsstudio",
+                  "position": "50% 50%"
+                },
+                "meta": "PRAXIS",
+                "href": "/journal/krafttraining-im-alltag",
+                "label": "Lesen"
+              },
+              {
+                "id": "food",
+                "title": "Ernährung ohne ständiges Tracken",
+                "text": "Drei Anker für Mahlzeiten, die auch an langen Arbeitstagen funktionieren.",
+                "image": {
+                  "src": "/media/project/food.webp",
+                  "alt": "Bowl mit Gemüse, Getreide und Eiweißquelle",
+                  "position": "50% 50%"
+                },
+                "meta": "PRAXIS",
+                "href": "/journal/ernaehrung-ohne-tracking",
+                "label": "Lesen"
+              },
+              {
+                "id": "routine",
+                "title": "Der kleine Plan für schwere Wochen",
+                "text": "Lege die kürzeste Version deiner Routine fest, bevor du sie brauchst.",
+                "image": {
+                  "src": "/media/project/routine.webp",
+                  "alt": "Trainingsnotizen und Kaffee auf einer Bank",
+                  "position": "50% 50%"
+                },
+                "meta": "PRAXIS",
+                "href": "/journal/der-kleine-plan",
+                "label": "Lesen"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "plan",
+          "type": "split",
+          "name": "Mach aus einer Idee einen Termin.",
+          "visible": true,
+          "content": {
+            "heading": "Mach aus einer Idee einen Termin.",
+            "text": "Im Wochenplan findest du einen Vorschlag für zwei oder drei Einheiten und kannst passende Ideen auf diesem Gerät merken.",
+            "image": {
+              "src": "/media/project/strength.webp",
+              "alt": "Hantel im Trainingsstudio",
+              "position": "50% 50%"
+            },
+            "primaryLabel": "Wochenplan öffnen",
+            "primaryHref": "/wochenplan"
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "left",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "ask",
+          "type": "cta",
+          "name": "Hast du eine Frage zum Training?",
+          "visible": true,
+          "content": {
+            "heading": "Hast du eine Frage zum Training?",
+            "primaryLabel": "Frage stellen",
+            "primaryHref": "/kontakt"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "plan-de",
+      "slug": "wochenplan",
+      "title": "Trainingswoche planen",
+      "locale": "de-DE",
+      "translationKey": "plan",
+      "seo": {
+        "title": "Trainingswoche planen | Sebastian Maschberger",
+        "description": "Eine Trainingswoche für zwei oder drei Termine erstellen und eine passende Routine merken.",
+        "image": "/media/project/routine.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Auftakt",
+          "visible": true,
+          "content": {
+            "heading": "Deine nächste Trainingswoche.",
+            "text": "Wähle ein realistisches Zeitbudget und den Schwerpunkt, der dir gerade wichtig ist.",
+            "subheading": "INTERAKTIVER WOCHENPLAN",
+            "image": {
+              "src": "/media/project/routine.webp",
+              "alt": "Trainingsnotizen und Kaffee auf einer Bank",
+              "position": "50% 50%"
+            },
+            "primaryLabel": "Routine auswählen",
+            "primaryHref": "#finder"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "finder",
+          "type": "project-finder",
+          "name": "Interaktive Auswahl",
+          "visible": true,
+          "content": {
+            "heading": "Welche Woche passt zu dir?",
+            "text": "Deine Merkliste bleibt in diesem Browser gespeichert.",
+            "items": [
+              {
+                "id": "two-reset",
+                "title": "Zwei Einheiten zum Wiedereinstieg",
+                "text": "Plane zwei Ganzkörpereinheiten. Beginne mit Bewegungen, die du sicher beherrschst, und halte ein drittes Zeitfenster als Ausweichtermin frei.",
+                "image": {
+                  "src": "/media/project/strength.webp",
+                  "alt": "Hantel im Trainingsstudio",
+                  "position": "50% 50%"
+                },
+                "href": "/journal/krafttraining-im-alltag",
+                "label": "Trainingstipps lesen",
+                "tags": [
+                  "2 Termine",
+                  "Wiedereinstieg"
+                ]
+              },
+              {
+                "id": "two-strength",
+                "title": "Kraft mit zwei festen Terminen",
+                "text": "Ordne deine wichtigsten Übungen beiden Terminen zu. Lass im Training genug Luft für saubere Wiederholungen und halte deine Leistung fest.",
+                "image": {
+                  "src": "/media/project/training.webp",
+                  "alt": "Sebastian bei einer einbeinigen Kraftübung",
+                  "position": "50% 50%"
+                },
+                "href": "/coaching",
+                "label": "Coaching entdecken",
+                "tags": [
+                  "2 Termine",
+                  "Stärker werden"
+                ]
+              },
+              {
+                "id": "three-reset",
+                "title": "Drei kurze Zeitfenster",
+                "text": "Nutze zwei Termine für Kraft und den dritten für eine Bewegung, die dir liegt. Wähle kurze Einheiten, die du auch nächste Woche wiederholen kannst.",
+                "image": {
+                  "src": "/media/project/routine.webp",
+                  "alt": "Trainingsnotizen und Kaffee auf einer Bank",
+                  "position": "50% 50%"
+                },
+                "href": "/journal/der-kleine-plan",
+                "label": "Kurze Routinen",
+                "tags": [
+                  "3 Termine",
+                  "Wiedereinstieg"
+                ]
+              },
+              {
+                "id": "three-strength",
+                "title": "Drei klare Schwerpunkte",
+                "text": "Verteile Ziehen, Drücken und Beinübungen über die Woche. Halte fest, welche Übungen du wiederholst, damit Fortschritt sichtbar wird.",
+                "image": {
+                  "src": "/media/project/strength.webp",
+                  "alt": "Hantel im Trainingsstudio",
+                  "position": "50% 50%"
+                },
+                "href": "/coaching",
+                "label": "Zum Coaching",
+                "tags": [
+                  "3 Termine",
+                  "Stärker werden"
+                ]
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "nutzung",
+          "type": "richtext",
+          "name": "So nutzt du deinen Plan",
+          "visible": true,
+          "content": {
+            "heading": "So nutzt du deinen Plan",
+            "items": [
+              {
+                "id": "calendar",
+                "title": "Termine eintragen",
+                "text": "Trage deine Einheiten und einen Ausweichtermin ein. Fang mit den Zeitfenstern an, die du nächste Woche wiederholen kannst."
+              },
+              {
+                "id": "log",
+                "title": "Kurz zurückschauen",
+                "text": "Welche Einheit war leicht einzuplanen? Was hat dich ausgebremst? Deine Antworten helfen dir bei der nächsten Woche."
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "coaching",
+          "type": "cta",
+          "name": "Du willst einen persönlichen Plan?",
+          "visible": true,
+          "content": {
+            "heading": "Du willst einen persönlichen Plan?",
+            "primaryLabel": "Coaching ansehen",
+            "primaryHref": "/coaching"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "strength-de",
+      "slug": "journal/krafttraining-im-alltag",
+      "title": "Krafttraining in einer vollen Woche",
+      "locale": "de-DE",
+      "translationKey": "strength",
+      "seo": {
+        "title": "Krafttraining in einer vollen Woche | Sebastian Maschberger",
+        "description": "Wie du mit zwei festen Terminen, wenigen Übungen und einem klaren Plan beginnst.",
+        "image": "/media/project/strength.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Auftakt",
+          "visible": true,
+          "content": {
+            "heading": "Krafttraining in einer vollen Woche",
+            "text": "Wie du mit zwei festen Terminen, wenigen Übungen und einem klaren Plan beginnst.",
+            "subheading": "JOURNAL VON SEBASTIAN",
+            "image": {
+              "src": "/media/project/strength.webp",
+              "alt": "Hantel im Trainingsstudio",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "part0",
+          "type": "richtext",
+          "name": "Zwei feste Termine",
+          "visible": true,
+          "content": {
+            "heading": "Zwei feste Termine",
+            "text": "Such dir zwei Tage aus, zwischen denen du Zeit zur Erholung hast. Trage sie in den Kalender ein und leg einen Ausweichtermin fest."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "part1",
+          "type": "richtext",
+          "name": "Wenige Bewegungen wiederholen",
+          "visible": true,
+          "content": {
+            "heading": "Wenige Bewegungen wiederholen",
+            "text": "Wähle eine Kniebeuge-Variante, eine Zugübung und eine Drückübung, die sich sauber ausführen lassen. Wiederhole sie einige Wochen, damit du Fortschritt vergleichen kannst."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "part2",
+          "type": "richtext",
+          "name": "Fortschritt festhalten",
+          "visible": true,
+          "content": {
+            "heading": "Fortschritt festhalten",
+            "text": "Notiere nach dem Training Gewicht und Wiederholungen. So siehst du bei identischen Übungen, ob sich etwas verändert."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "plan",
+          "type": "cta",
+          "name": "Setz die Idee in deiner Woche um.",
+          "visible": true,
+          "content": {
+            "heading": "Setz die Idee in deiner Woche um.",
+            "primaryLabel": "Wochenplan öffnen",
+            "primaryHref": "/wochenplan"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "food-de",
+      "slug": "journal/ernaehrung-ohne-tracking",
+      "title": "Ernährung ohne ständiges Tracken",
+      "locale": "de-DE",
+      "translationKey": "food",
+      "seo": {
+        "title": "Ernährung ohne ständiges Tracken | Sebastian Maschberger",
+        "description": "Drei Anker für Mahlzeiten, die auch an langen Arbeitstagen funktionieren.",
+        "image": "/media/project/food.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Auftakt",
+          "visible": true,
+          "content": {
+            "heading": "Ernährung ohne ständiges Tracken",
+            "text": "Drei Anker für Mahlzeiten, die auch an langen Arbeitstagen funktionieren.",
+            "subheading": "JOURNAL VON SEBASTIAN",
+            "image": {
+              "src": "/media/project/food.webp",
+              "alt": "Bowl mit Gemüse, Getreide und Eiweißquelle",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "part0",
+          "type": "richtext",
+          "name": "Eine Mahlzeit verlässlich machen",
+          "visible": true,
+          "content": {
+            "heading": "Eine Mahlzeit verlässlich machen",
+            "text": "Wähle zuerst die Mahlzeit, die am häufigsten ausfällt. Ein vorbereitetes Mittagessen oder ein einfaches Frühstück gibt dem Tag einen Startpunkt."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "part1",
+          "type": "richtext",
+          "name": "Mit Bausteinen planen",
+          "visible": true,
+          "content": {
+            "heading": "Mit Bausteinen planen",
+            "text": "Kombiniere eine Eiweißquelle, Gemüse oder Obst und eine Beilage, die dir schmeckt. Halte ein paar Zutaten bereit, die sich auf mehrere Arten kombinieren lassen."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "part2",
+          "type": "richtext",
+          "name": "Flexibilität einplanen",
+          "visible": true,
+          "content": {
+            "heading": "Flexibilität einplanen",
+            "text": "Wenn du auswärts isst, bestell etwas, worauf du Lust hast und das dich satt macht. Die nächste Mahlzeit folgt wieder deinem normalen Rhythmus."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "plan",
+          "type": "cta",
+          "name": "Setz die Idee in deiner Woche um.",
+          "visible": true,
+          "content": {
+            "heading": "Setz die Idee in deiner Woche um.",
+            "primaryLabel": "Wochenplan öffnen",
+            "primaryHref": "/wochenplan"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "routine-de",
+      "slug": "journal/der-kleine-plan",
+      "title": "Der kleine Plan für schwere Wochen",
+      "locale": "de-DE",
+      "translationKey": "routine",
+      "seo": {
+        "title": "Der kleine Plan für schwere Wochen | Sebastian Maschberger",
+        "description": "Lege die kürzeste Version deiner Routine fest, bevor du sie brauchst.",
+        "image": "/media/project/routine.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Auftakt",
+          "visible": true,
+          "content": {
+            "heading": "Der kleine Plan für schwere Wochen",
+            "text": "Lege die kürzeste Version deiner Routine fest, bevor du sie brauchst.",
+            "subheading": "JOURNAL VON SEBASTIAN",
+            "image": {
+              "src": "/media/project/routine.webp",
+              "alt": "Trainingsnotizen und Kaffee auf einer Bank",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "part0",
+          "type": "richtext",
+          "name": "Eine kurze Version festlegen",
+          "visible": true,
+          "content": {
+            "heading": "Eine kurze Version festlegen",
+            "text": "Wenn deine Zeit knapp ist, entscheide vorher, welche Übungen du aus der längeren Einheit mitnimmst. So kannst du im Studio direkt beginnen."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "part1",
+          "type": "richtext",
+          "name": "Den Ausweichtermin kennen",
+          "visible": true,
+          "content": {
+            "heading": "Den Ausweichtermin kennen",
+            "text": "Ein fester Ausweichtermin erspart dir die tägliche Suche nach einer Lücke. Überlege auch, welche Übungen zu Hause möglich sind."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "part2",
+          "type": "richtext",
+          "name": "Die Woche kurz prüfen",
+          "visible": true,
+          "content": {
+            "heading": "Die Woche kurz prüfen",
+            "text": "Schreib am Wochenende auf, was in deinen Alltag gepasst hat. Nutze diese Beobachtung für die kommende Woche."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "plan",
+          "type": "cta",
+          "name": "Setz die Idee in deiner Woche um.",
+          "visible": true,
+          "content": {
+            "heading": "Setz die Idee in deiner Woche um.",
+            "primaryLabel": "Wochenplan öffnen",
+            "primaryHref": "/wochenplan"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "shop-de",
+      "slug": "shop",
+      "title": "Coaching-Shop",
+      "locale": "de-DE",
+      "translationKey": "shop",
+      "seo": {
+        "title": "Coaching-Shop | Sebastian Maschberger",
+        "description": "Trainingsplanung, Ernährungsberatung und persönliche Begleitung anfragen.",
+        "image": "/media/project/hero.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Auftakt",
+          "visible": true,
+          "content": {
+            "heading": "Pläne und Begleitung.",
+            "text": "Frag das Angebot an, das zu deiner Ausgangslage passt. Den konkreten Umfang und Preis besprechen wir direkt.",
+            "subheading": "SHOP",
+            "image": {
+              "src": "/media/project/strength.webp",
+              "alt": "Hantel im Trainingsstudio",
+              "position": "50% 50%"
+            },
+            "secondaryLabel": "Warenkorb",
+            "secondaryHref": "/warenkorb"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "angebote",
+          "type": "cards",
+          "name": "Was du anfragen kannst",
+          "visible": true,
+          "content": {
+            "heading": "Was du anfragen kannst",
+            "items": [
+              {
+                "id": "training-plan",
+                "title": "Individueller Trainingsplan",
+                "text": "Übungen und Einheiten passend zu deinem Ziel und deiner vorhandenen Ausstattung.",
+                "image": {
+                  "src": "/media/project/strength.webp",
+                  "alt": "Hantel im Trainingsstudio",
+                  "position": "50% 50%"
+                },
+                "meta": "AUF ANFRAGE",
+                "href": "/kontakt?service=Individueller%20Trainingsplan",
+                "label": "Trainingsplan anfragen"
+              },
+              {
+                "id": "nutrition-plan",
+                "title": "Ernährungsberatung",
+                "text": "Struktur für Mahlzeiten, Einkauf und Tage mit wechselnden Zeiten.",
+                "image": {
+                  "src": "/media/project/food.webp",
+                  "alt": "Bowl mit Gemüse, Getreide und Eiweißquelle",
+                  "position": "50% 50%"
+                },
+                "meta": "AUF ANFRAGE",
+                "href": "/kontakt?service=Ern%C3%A4hrungsberatung",
+                "label": "Ernährung anfragen"
+              },
+              {
+                "id": "ongoing",
+                "title": "1:1 Begleitung",
+                "text": "Training und Ernährung mit regelmäßigen Check-ins und persönlichen Anpassungen.",
+                "image": {
+                  "src": "/media/project/sebastian.webp",
+                  "alt": "Sebastian sitzt lächelnd neben einer Hantelbank",
+                  "position": "50% 0%"
+                },
+                "meta": "AUF ANFRAGE",
+                "href": "/kontakt?service=1%3A1%20Coaching",
+                "label": "Coaching anfragen"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "commerce",
+          "type": "creator-shop",
+          "name": "Shopmodul",
+          "visible": true,
+          "content": {
+            "heading": "Aktueller Katalog",
+            "caption": "catalog"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "faq",
+          "type": "faq",
+          "name": "Fragen zu den Angeboten",
+          "visible": true,
+          "content": {
+            "heading": "Fragen zu den Angeboten",
+            "items": [
+              {
+                "id": "q1",
+                "title": "Muss ich schon trainieren?",
+                "text": "Du kannst mit ersten Kraftübungen einsteigen oder nach einer Pause zurückkommen. Dein Plan richtet sich nach deinem aktuellen Stand."
+              },
+              {
+                "id": "q2",
+                "title": "Was kostet die Begleitung?",
+                "text": "Das Erstgespräch ist kostenlos. Im Anschluss klären wir den Umfang und du bekommst ein individuelles Angebot."
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 2,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "contact-de",
+      "slug": "kontakt",
+      "title": "Erstgespräch",
+      "locale": "de-DE",
+      "translationKey": "contact",
+      "seo": {
+        "title": "Erstgespräch | Sebastian Maschberger",
+        "description": "Kostenloses Erstgespräch für Training und Ernährung bei Sebastian Maschberger anfragen.",
+        "image": "/media/project/sebastian.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Auftakt",
+          "visible": true,
+          "content": {
+            "heading": "Erzähl mir, wo du gerade stehst.",
+            "text": "Schreib mir, was du verändern willst und wann du gut erreichbar bist. Im kostenlosen Erstgespräch klären wir, was sinnvoll ist.",
+            "subheading": "KOSTENLOSES KENNENLERNEN",
+            "image": {
+              "src": "/media/project/sebastian.webp",
+              "alt": "Sebastian sitzt lächelnd neben einer Hantelbank",
+              "position": "50% 0%"
+            },
+            "primaryLabel": "Zur Anfrage",
+            "primaryHref": "#anfrage"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "anfrage",
+          "type": "contact",
+          "name": "Schreib mir",
+          "visible": true,
+          "content": {
+            "heading": "Schreib mir",
+            "text": "Sag mir kurz, wobei ich dir helfen kann.",
+            "form": {
+              "nameLabel": "Dein Name",
+              "subjectLabel": "Worum geht’s?",
+              "messageLabel": "Deine Nachricht",
+              "messagePlaceholder": "Was möchtest du verändern? Wann passt ein kurzes Gespräch?",
+              "submitLabel": "Anfrage senden",
+              "successHeading": "Deine Anfrage ist da.",
+              "successText": "Danke für deine Nachricht. Ich melde mich über die angegebene E-Mail-Adresse."
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "next",
+          "type": "steps",
+          "name": "Das passiert nach deiner Anfrage",
+          "visible": true,
+          "content": {
+            "heading": "Das passiert nach deiner Anfrage",
+            "items": [
+              {
+                "id": "intro",
+                "title": "Kennenlernen",
+                "text": "In einem kurzen Gespräch klären wir dein Ziel, deine Trainingsmöglichkeiten und was dir bisher im Weg stand.",
+                "icon": "MessageCircle"
+              },
+              {
+                "id": "plan",
+                "title": "Plan bauen",
+                "text": "Wir legen Trainingszeiten, Übungen und eine Ernährungsroutine fest, die mit deinem Alltag zusammengehen.",
+                "icon": "CalendarDays"
+              },
+              {
+                "id": "adjust",
+                "title": "Dranbleiben",
+                "text": "Mit regelmäßigem Feedback sehen wir, was funktioniert und wann eine kleine Anpassung ansteht.",
+                "icon": "TrendingUp"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "faq",
+          "type": "faq",
+          "name": "Gut zu wissen",
+          "visible": true,
+          "content": {
+            "heading": "Gut zu wissen",
+            "items": [
+              {
+                "id": "q1",
+                "title": "Kann ich online starten?",
+                "text": "Ja. Kennenlernen, Planung und Feedback sind digital möglich."
+              },
+              {
+                "id": "q2",
+                "title": "Was kostet die Begleitung?",
+                "text": "Das Erstgespräch ist kostenlos. Im Anschluss klären wir den Umfang und du bekommst ein individuelles Angebot."
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 2,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cart-de",
+      "slug": "warenkorb",
+      "title": "Warenkorb",
+      "locale": "de-DE",
+      "translationKey": "cart",
+      "seo": {
+        "title": "Warenkorb | Sebastian Maschberger",
+        "description": "Ausgewählte Artikel und Bestellübersicht.",
+        "image": "/media/project/hero.webp"
+      },
+      "sections": [
+        {
+          "id": "commerce",
+          "type": "creator-shop",
+          "name": "Shopmodul",
+          "visible": true,
+          "content": {
+            "heading": "Dein Warenkorb",
+            "caption": "cart"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "back",
+          "type": "cta",
+          "name": "Weiter stöbern",
+          "visible": true,
+          "content": {
+            "heading": "Weiter stöbern",
+            "primaryLabel": "Zum Shop",
+            "primaryHref": "/shop"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "partners-de",
+      "slug": "partner",
+      "title": "Partner & Empfehlungen",
+      "locale": "de-DE",
+      "translationKey": "partners",
+      "seo": {
+        "title": "Partner & Empfehlungen | Sebastian Maschberger",
+        "description": "Empfehlungen, Herstellerlinks und Kontakt für Kooperationen mit Sebastian Maschberger.",
+        "image": "/media/project/hero.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Auftakt",
+          "visible": true,
+          "content": {
+            "heading": "Gute Ideen. Gute Zusammenarbeit.",
+            "text": "Ich freue mich über Projekte, die meiner Community etwas Konkretes bringen. Hier findest du meine Kanäle, Empfehlungen und den Kontakt für Partnerschaften.",
+            "subheading": "PARTNER & EMPFEHLUNGEN",
+            "image": {
+              "src": "/media/project/sebastian.webp",
+              "alt": "Sebastian sitzt lächelnd neben einer Hantelbank",
+              "position": "50% 0%"
+            },
+            "primaryLabel": "Kooperation anfragen",
+            "primaryHref": "/kontakt?service=Kooperation"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "links",
+          "type": "affiliate-links",
+          "name": "Partnerlinks",
+          "visible": true,
+          "content": {
+            "heading": "Kanäle und Empfehlungen",
+            "text": "Affiliate-Links sind als Werbung gekennzeichnet. Wenn du darüber einkaufst, kann ich eine Provision erhalten.",
+            "items": [
+              {
+                "id": "instagram",
+                "title": "Training auf Instagram",
+                "text": "Trainingsausschnitte, Gym-Alltag und aktuelle Beiträge.",
+                "image": {
+                  "src": "/media/project/sebastian.webp",
+                  "alt": "Sebastian sitzt lächelnd neben einer Hantelbank",
+                  "position": "50% 0%"
+                },
+                "meta": "EIGENER KANAL",
+                "href": "https://www.instagram.com/sebastian_maschberger/",
+                "label": "Profil ansehen"
+              },
+              {
+                "id": "trainlike",
+                "title": "Train Like a Pro",
+                "text": "Mein früherer englischsprachiger Coaching-Auftritt.",
+                "image": {
+                  "src": "/media/project/training.webp",
+                  "alt": "Sebastian bei einer einbeinigen Kraftübung",
+                  "position": "50% 50%"
+                },
+                "meta": "EIGENES PROJEKT",
+                "href": "https://trainlikeapro.coach/",
+                "label": "Website öffnen"
+              },
+              {
+                "id": "fragrance",
+                "title": "Scents with Seb",
+                "text": "Mein Projekt für Duftreviews und Empfehlungen für den Alltag.",
+                "meta": "EIGENES PROJEKT",
+                "icon": "Sparkles",
+                "href": "https://scents-with-seb.vercel.app/",
+                "label": "Duftmagazin besuchen"
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "anfrage",
+          "type": "richtext",
+          "name": "Was ich für eine Anfrage wissen muss",
+          "visible": true,
+          "content": {
+            "heading": "Was ich für eine Anfrage wissen muss",
+            "text": "Schick mir eine kurze Vorstellung, die Idee, das gewünschte Format und einen groben Zeitraum. Bei Produktkooperationen hilft ein Link zu dem konkreten Produkt.",
+            "primaryLabel": "Kooperationsanfrage schreiben",
+            "primaryHref": "/kontakt?service=Kooperation"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "contact",
+          "type": "cta",
+          "name": "Eine Idee gemeinsam durchdenken.",
+          "visible": true,
+          "content": {
+            "heading": "Eine Idee gemeinsam durchdenken.",
+            "primaryLabel": "Kontakt aufnehmen",
+            "primaryHref": "/kontakt"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "imprint-de",
+      "slug": "impressum",
+      "title": "Impressum",
+      "locale": "de-DE",
+      "translationKey": "imprint",
+      "seo": {
+        "title": "Impressum | Sebastian Maschberger",
+        "description": "Anbieter und Kontaktangaben.",
+        "image": "/media/project/hero.webp"
+      },
+      "sections": [
+        {
+          "id": "anbieter",
+          "type": "richtext",
+          "name": "Impressum",
+          "visible": true,
+          "content": {
+            "heading": "Impressum",
+            "text": "Sebastian Maschberger",
+            "items": [
+              {
+                "id": "provider",
+                "title": "Anbieterangaben",
+                "text": "Die veröffentlichten Kontakt- und Anbieterangaben findest du im Impressum von Train Like a Pro.",
+                "href": "https://trainlikeapro.coach/imprint/",
+                "label": "Anbieterimpressum öffnen"
+              },
+              {
+                "id": "contact",
+                "title": "Kontakt",
+                "text": " ",
+                "href": "/kontakt",
+                "label": "Zum Kontakt"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "privacy-de",
+      "slug": "datenschutz",
+      "title": "Datenschutz",
+      "locale": "de-DE",
+      "translationKey": "privacy",
+      "seo": {
+        "title": "Datenschutz | Sebastian Maschberger",
+        "description": "Hinweise zu Formularen, lokalem Speicher, externen Medien und Statistik.",
+        "image": "/media/project/hero.webp"
+      },
+      "sections": [
+        {
+          "id": "privacy",
+          "type": "richtext",
+          "name": "Datenschutz",
+          "visible": true,
+          "content": {
+            "heading": "Datenschutz",
+            "text": "Diese Hinweise beschreiben die Funktionen dieser Website. Bei Fragen erreichst du mich über das Kontaktformular.",
+            "items": [
+              {
+                "id": "forms",
+                "title": "Anfragen",
+                "text": "Wenn du das Formular abschickst, speichere ich deinen Namen, deine E-Mail-Adresse und deine Nachricht, um dir antworten zu können. Hebe persönliche Gesundheitsdetails bitte für das direkte Gespräch auf."
+              },
+              {
+                "id": "storage",
+                "title": "Warenkorb und Merkliste",
+                "text": "Die Website speichert deine Auswahl in diesem Browser. Du kannst diese Daten in den Einstellungen deines Browsers entfernen."
+              },
+              {
+                "id": "media",
+                "title": "Externe Videos und Links",
+                "text": "Eingebettete Videos laden nach deiner Einwilligung und übertragen dabei deine IP-Adresse an den Plattformanbieter. Externe Links öffnen das jeweilige Angebot."
+              },
+              {
+                "id": "analytics",
+                "title": "Optionale Statistik",
+                "text": "Erst nach deiner Statistik-Einwilligung misst die Website Aufrufe und Nutzung. Du kannst die Auswahl über die Cookie-Einstellungen im Fußbereich ändern."
+              },
+              {
+                "id": "provider",
+                "title": "Anbieter",
+                "text": "",
+                "href": "/impressum",
+                "label": "Impressum ansehen"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "home-en",
+      "slug": "en",
+      "title": "Sebastian Maschberger · Coaching for men over 30",
+      "locale": "en-GB",
+      "translationKey": "home",
+      "seo": {
+        "title": "Sebastian Maschberger · Coaching for men over 30",
+        "description": "Online strength and nutrition coaching. Build a routine that fits your life with IFBB Elite Pro Sebastian Maschberger.",
+        "image": "/media/project/hero.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Introduction",
+          "visible": true,
+          "content": {
+            "heading": "Get stronger.\nStay yourself.",
+            "text": "Strength and nutrition coaching for men over 30. With a plan that fits your life.",
+            "subheading": "PERSONAL COACHING",
+            "caption": "Sebastian Maschberger · IFBB Elite Pro",
+            "image": {
+              "src": "/media/project/hero.webp",
+              "alt": "Sebastian at the gym",
+              "position": "50% 0%"
+            },
+            "primaryLabel": "Request an intro call",
+            "primaryHref": "/en/contact",
+            "secondaryLabel": "Explore coaching",
+            "secondaryHref": "/en/coaching"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "evidence",
+          "type": "stats",
+          "name": "Coaching at a glance",
+          "visible": true,
+          "content": {
+            "heading": "Coaching at a glance",
+            "items": [
+              {
+                "id": "pro",
+                "title": "IFBB Elite Pro",
+                "text": "Competition experience"
+              },
+              {
+                "id": "target",
+                "title": "30+",
+                "text": "Coaching for men"
+              },
+              {
+                "id": "online",
+                "title": "DE / EN",
+                "text": "Online coaching"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "services",
+          "type": "cards",
+          "name": "What we work on together",
+          "visible": true,
+          "content": {
+            "heading": "What we work on together",
+            "text": "We start with your real week and decide which changes you can make consistently.",
+            "items": [
+              {
+                "id": "strength",
+                "title": "Training with structure",
+                "text": "Strength training built around your goals, experience and available time.",
+                "image": {
+                  "src": "/media/project/strength.webp",
+                  "alt": "Dumbbell in a strength studio",
+                  "position": "50% 50%"
+                },
+                "meta": "STRENGTH",
+                "href": "/en/coaching",
+                "label": "Explore coaching"
+              },
+              {
+                "id": "nutrition",
+                "title": "Nutrition with flexibility",
+                "text": "Simple routines for workdays, meals out and everything in between.",
+                "image": {
+                  "src": "/media/project/food.webp",
+                  "alt": "Bowl with vegetables, grains and a source of protein",
+                  "position": "50% 50%"
+                },
+                "meta": "NUTRITION",
+                "href": "/en/nutrition",
+                "label": "Explore nutrition"
+              },
+              {
+                "id": "plan",
+                "title": "Build a week that fits",
+                "text": "Find a starting point that fits even a busy week.",
+                "image": {
+                  "src": "/media/project/routine.webp",
+                  "alt": "Training notes and coffee on a bench",
+                  "position": "50% 50%"
+                },
+                "meta": "WEEKLY PLAN",
+                "href": "/en/weekly-plan",
+                "label": "Plan my week"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "story",
+          "type": "split",
+          "name": "Hey, I’m Sebastian.",
+          "visible": true,
+          "content": {
+            "heading": "Hey, I’m Sebastian.",
+            "text": "Bodybuilding taught me how much good structure can change. Today I help men organise their training and nutrition while leaving room for work, friends and family.",
+            "image": {
+              "src": "/media/project/sebastian.webp",
+              "alt": "Sebastian smiles beside a gym bench",
+              "position": "50% 0%"
+            },
+            "primaryLabel": "My story",
+            "primaryHref": "/en/about"
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "left",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "steps",
+          "type": "steps",
+          "name": "How we get started",
+          "visible": true,
+          "content": {
+            "heading": "How we get started",
+            "text": "You get a clear starting point and know what happens at each step.",
+            "items": [
+              {
+                "id": "intro",
+                "title": "First conversation",
+                "text": "On a short call, we talk about your goals, how you can train and what has been getting in the way.",
+                "icon": "MessageCircle"
+              },
+              {
+                "id": "plan",
+                "title": "Build your plan",
+                "text": "We choose training slots, exercises and a food routine that work with your schedule.",
+                "icon": "CalendarDays"
+              },
+              {
+                "id": "adjust",
+                "title": "Keep going",
+                "text": "Regular feedback shows us what is working and where a small adjustment helps.",
+                "icon": "TrendingUp"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "journal",
+          "type": "cards",
+          "name": "From the journal",
+          "visible": true,
+          "content": {
+            "heading": "From the journal",
+            "text": "Short guides for training, meals and weeks when time is tight.",
+            "items": [
+              {
+                "id": "strength",
+                "title": "Strength training in a busy week",
+                "text": "How to begin with two regular slots, a few exercises and a clear plan.",
+                "image": {
+                  "src": "/media/project/strength.webp",
+                  "alt": "Dumbbell in a strength studio",
+                  "position": "50% 50%"
+                },
+                "meta": "FIELD NOTES",
+                "href": "/en/journal/strength-in-a-busy-week",
+                "label": "Read"
+              },
+              {
+                "id": "food",
+                "title": "Eating well without constant tracking",
+                "text": "Three meal anchors that still work on a long day.",
+                "image": {
+                  "src": "/media/project/food.webp",
+                  "alt": "Bowl with vegetables, grains and a source of protein",
+                  "position": "50% 50%"
+                },
+                "meta": "FIELD NOTES",
+                "href": "/en/journal/nutrition-without-tracking",
+                "label": "Read"
+              },
+              {
+                "id": "routine",
+                "title": "A smaller plan for demanding weeks",
+                "text": "Decide on the shortest version of your routine before you need it.",
+                "image": {
+                  "src": "/media/project/routine.webp",
+                  "alt": "Training notes and coffee on a bench",
+                  "position": "50% 50%"
+                },
+                "meta": "FIELD NOTES",
+                "href": "/en/journal/a-smaller-plan",
+                "label": "Read"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "partner-links",
+          "type": "affiliate-links",
+          "name": "Recommendations",
+          "visible": true,
+          "content": {
+            "heading": "More to explore",
+            "text": "Links and current projects from my world.",
+            "items": [
+              {
+                "id": "instagram",
+                "title": "Training on Instagram",
+                "text": "Training clips, gym life and recent posts.",
+                "image": {
+                  "src": "/media/project/sebastian.webp",
+                  "alt": "Sebastian smiles beside a gym bench",
+                  "position": "50% 0%"
+                },
+                "meta": "MY CHANNEL",
+                "href": "https://www.instagram.com/sebastian_maschberger/",
+                "label": "View profile"
+              }
+            ],
+            "primaryLabel": "Partners and links",
+            "primaryHref": "/en/partners"
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 2,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "faq",
+          "type": "faq",
+          "name": "Questions before you start",
+          "visible": true,
+          "content": {
+            "heading": "Questions before you start",
+            "items": [
+              {
+                "id": "q1",
+                "title": "Do I need gym experience?",
+                "text": "You can start with your first strength exercises or come back after a break. The plan starts at your current level."
+              },
+              {
+                "id": "q2",
+                "title": "How much time do I need?",
+                "text": "We start with the time you can reliably protect. Two regular training slots can be a good starting point."
+              },
+              {
+                "id": "q3",
+                "title": "Can I start online?",
+                "text": "Yes. The intro, planning and feedback can all happen online."
+              },
+              {
+                "id": "q4",
+                "title": "What does coaching cost?",
+                "text": "The intro call is free. After we agree on the scope, you receive an individual quote."
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 2,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "start",
+          "type": "cta",
+          "name": "What would work for you right now?",
+          "visible": true,
+          "content": {
+            "heading": "What would work for you right now?",
+            "text": "The intro call helps us understand where you are and whether I can help.",
+            "primaryLabel": "Request an intro call",
+            "primaryHref": "/en/contact"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "coaching-en",
+      "slug": "en/coaching",
+      "title": "1:1 online coaching",
+      "locale": "en-GB",
+      "translationKey": "coaching",
+      "seo": {
+        "title": "1:1 online coaching | Sebastian Maschberger",
+        "description": "Personal training plans, flexible nutrition coaching and regular feedback for men over 30.",
+        "image": "/media/project/training.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Introduction",
+          "visible": true,
+          "content": {
+            "heading": "A training plan that fits your life.",
+            "text": "I help you get stronger, practise movements confidently and make regular training fit your life.",
+            "subheading": "1:1 ONLINE",
+            "image": {
+              "src": "/media/project/training.webp",
+              "alt": "Sebastian performing a single-leg strength exercise",
+              "position": "50% 50%"
+            },
+            "primaryLabel": "Request an intro call",
+            "primaryHref": "/en/contact",
+            "secondaryLabel": "Plan a week",
+            "secondaryHref": "/en/weekly-plan"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "umfang",
+          "type": "cards",
+          "name": "What coaching includes",
+          "visible": true,
+          "content": {
+            "heading": "What coaching includes",
+            "items": [
+              {
+                "id": "training",
+                "title": "Training plan",
+                "text": "The exercises, volume and schedule fit your experience and your access to equipment.",
+                "icon": "Dumbbell"
+              },
+              {
+                "id": "food",
+                "title": "Practical nutrition",
+                "text": "We choose meal habits that work at home, at work or on the road.",
+                "icon": "Utensils"
+              },
+              {
+                "id": "feedback",
+                "title": "Check-ins",
+                "text": "We talk through progress and obstacles. When your week changes, the plan adapts.",
+                "icon": "ListChecks"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "ablauf",
+          "type": "workflow-demo",
+          "name": "From the first call to a routine",
+          "visible": true,
+          "content": {
+            "heading": "From the first call to a routine",
+            "items": [
+              {
+                "id": "intro",
+                "title": "First conversation",
+                "text": "On a short call, we talk about your goals, how you can train and what has been getting in the way.",
+                "icon": "MessageCircle"
+              },
+              {
+                "id": "plan",
+                "title": "Build your plan",
+                "text": "We choose training slots, exercises and a food routine that work with your schedule.",
+                "icon": "CalendarDays"
+              },
+              {
+                "id": "adjust",
+                "title": "Keep going",
+                "text": "Regular feedback shows us what is working and where a small adjustment helps.",
+                "icon": "TrendingUp"
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "beispiel",
+          "type": "richtext",
+          "name": "What a week can look like",
+          "visible": true,
+          "content": {
+            "heading": "What a week can look like",
+            "text": "Have a training slot on Tuesday and Saturday? We can plan two sessions with recurring exercises and keep Thursday as a backup. In the first weeks we review how the movements and workload feel.",
+            "primaryLabel": "Build my training week",
+            "primaryHref": "/en/weekly-plan"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "faq",
+          "type": "faq",
+          "name": "Is it a good fit?",
+          "visible": true,
+          "content": {
+            "heading": "Is it a good fit?",
+            "items": [
+              {
+                "id": "q1",
+                "title": "Do I need gym experience?",
+                "text": "You can start with your first strength exercises or come back after a break. The plan starts at your current level."
+              },
+              {
+                "id": "q2",
+                "title": "How much time do I need?",
+                "text": "We start with the time you can reliably protect. Two regular training slots can be a good starting point."
+              },
+              {
+                "id": "q3",
+                "title": "Can I start online?",
+                "text": "Yes. The intro, planning and feedback can all happen online."
+              },
+              {
+                "id": "q4",
+                "title": "What does coaching cost?",
+                "text": "The intro call is free. After we agree on the scope, you receive an individual quote."
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 2,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "contact",
+          "type": "cta",
+          "name": "Let’s have a quick chat.",
+          "visible": true,
+          "content": {
+            "heading": "Let’s have a quick chat.",
+            "text": "Tell me where you’re at. I’ll explain what working together could look like.",
+            "primaryLabel": "Request an intro call",
+            "primaryHref": "/en/contact"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nutrition-en",
+      "slug": "en/nutrition",
+      "title": "Practical nutrition",
+      "locale": "en-GB",
+      "translationKey": "nutrition",
+      "seo": {
+        "title": "Practical nutrition | Sebastian Maschberger",
+        "description": "Nutrition coaching built around practical meals and flexible planning, even with work and family commitments.",
+        "image": "/media/project/food.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Introduction",
+          "visible": true,
+          "content": {
+            "heading": "Eating well can be simple.",
+            "text": "Build a food routine you enjoy and can repeat, with room for meals out, travel and busy days.",
+            "subheading": "NUTRITION COACHING",
+            "image": {
+              "src": "/media/project/food.webp",
+              "alt": "Bowl with vegetables, grains and a source of protein",
+              "position": "50% 50%"
+            },
+            "primaryLabel": "Request an intro call",
+            "primaryHref": "/en/contact"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "methode",
+          "type": "steps",
+          "name": "Three anchors for your meals",
+          "visible": true,
+          "content": {
+            "heading": "Three anchors for your meals",
+            "items": [
+              {
+                "id": "rhythm",
+                "title": "Find a rhythm",
+                "text": "We look at when it is easiest to eat and which meal tends to get skipped."
+              },
+              {
+                "id": "base",
+                "title": "Prepare a few components",
+                "text": "A handful of reliable ingredients makes meals quicker to put together."
+              },
+              {
+                "id": "room",
+                "title": "Leave some room",
+                "text": "We plan a few easy options for meals out, shifts and travel."
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "food",
+          "type": "split",
+          "name": "One plate, plenty of possibilities",
+          "visible": true,
+          "content": {
+            "heading": "One plate, plenty of possibilities",
+            "text": "Protein, fruit or vegetables and a filling side make a useful starting point. Choose what you enjoy and what you can get hold of.",
+            "image": {
+              "src": "/media/project/food.webp",
+              "alt": "Bowl with vegetables, grains and a source of protein",
+              "position": "50% 50%"
+            },
+            "primaryLabel": "Read the journal guide",
+            "primaryHref": "/en/journal/nutrition-without-tracking"
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "faq",
+          "type": "faq",
+          "name": "Common nutrition questions",
+          "visible": true,
+          "content": {
+            "heading": "Common nutrition questions",
+            "items": [
+              {
+                "id": "q1",
+                "title": "Do I need to count calories?",
+                "text": "We decide together whether short-term tracking is useful. Many routines start with meal structure and shopping."
+              },
+              {
+                "id": "q2",
+                "title": "What about shift work?",
+                "text": "Bring a typical shift plan. We work with the breaks and food options you actually have."
+              },
+              {
+                "id": "q3",
+                "title": "When should I speak to a doctor?",
+                "text": "For symptoms, unusual blood results or medical questions, speak to a clinician. Coaching focuses on your everyday routine."
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 2,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "ende",
+          "type": "cta",
+          "name": "Tell me what an ordinary day looks like.",
+          "visible": true,
+          "content": {
+            "heading": "Tell me what an ordinary day looks like.",
+            "text": "That gives us a place to start.",
+            "primaryLabel": "Request an intro call",
+            "primaryHref": "/en/contact"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "about-en",
+      "slug": "en/about",
+      "title": "About Sebastian",
+      "locale": "en-GB",
+      "translationKey": "about",
+      "seo": {
+        "title": "About Sebastian | Sebastian Maschberger",
+        "description": "Sebastian Maschberger is an IFBB Elite Pro in Classic Bodybuilding and coaches men online in training and nutrition.",
+        "image": "/media/project/sebastian.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Introduction",
+          "visible": true,
+          "content": {
+            "heading": "Hey, I’m Sebastian.",
+            "text": "I found strength training at 13. Training became competition, and the experience became my work as a coach.",
+            "subheading": "SEBASTIAN MASCHBERGER",
+            "image": {
+              "src": "/media/project/sebastian.webp",
+              "alt": "Sebastian smiles beside a gym bench",
+              "position": "50% 0%"
+            },
+            "secondaryLabel": "Instagram",
+            "secondaryHref": "https://www.instagram.com/sebastian_maschberger/"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "stage",
+          "type": "split",
+          "name": "What the stage taught me",
+          "visible": true,
+          "content": {
+            "heading": "What the stage taught me",
+            "text": "Bodybuilding rewards clear routines and careful observation. I use those lessons to help you make choices that fit your own life.",
+            "image": {
+              "src": "/media/project/wettkampf.webp",
+              "alt": "Sebastian with fellow athletes on the podium",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "left",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "history",
+          "type": "timeline",
+          "name": "Competition milestones",
+          "visible": true,
+          "content": {
+            "heading": "Competition milestones",
+            "items": [
+              {
+                "id": "pro",
+                "title": "IFBB Elite Pro",
+                "text": "Professional status in Classic Bodybuilding since 2018.",
+                "meta": "2018",
+                "href": "https://maschberger.jimdoweb.com/",
+                "label": "Competition history"
+              },
+              {
+                "id": "austria",
+                "title": "Austrian Championship",
+                "text": "Class and overall winner, as listed in my competition record.",
+                "meta": "2018",
+                "href": "https://maschberger.jimdoweb.com/",
+                "label": "Competition record"
+              },
+              {
+                "id": "bavaria",
+                "title": "Bavarian Championship",
+                "text": "First in the Classic Bodybuilding class.",
+                "meta": "2017",
+                "href": "https://dbfv.de/wp-content/uploads/Ergebnisliste_BM2017.pdf",
+                "label": "Competition results"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "heute",
+          "type": "richtext",
+          "name": "How I coach today",
+          "visible": true,
+          "content": {
+            "heading": "How I coach today",
+            "text": "I ask about your week, your training history and what matters to you. Then we build a routine you understand and can help shape.",
+            "items": [
+              {
+                "id": "old",
+                "title": "Train Like a Pro",
+                "text": "My earlier coaching project and starting point for working with clients online.",
+                "href": "https://trainlikeapro.coach/",
+                "label": "Visit the project"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "ende",
+          "type": "cta",
+          "name": "Let’s get to know each other.",
+          "visible": true,
+          "content": {
+            "heading": "Let’s get to know each other.",
+            "primaryLabel": "Request an intro call",
+            "primaryHref": "/en/contact"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "journal-en",
+      "slug": "en/journal",
+      "title": "Journal",
+      "locale": "en-GB",
+      "translationKey": "journal",
+      "seo": {
+        "title": "Journal | Sebastian Maschberger",
+        "description": "Practical tips for strength training, nutrition and busy weeks.",
+        "image": "/media/project/routine.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Introduction",
+          "visible": true,
+          "content": {
+            "heading": "Small things that work in real life.",
+            "text": "My journal on getting stronger, eating well and dealing with days when time is tight.",
+            "subheading": "JOURNAL",
+            "image": {
+              "src": "/media/project/routine.webp",
+              "alt": "Training notes and coffee on a bench",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "artikel",
+          "type": "cards",
+          "name": "Read the guides",
+          "visible": true,
+          "content": {
+            "heading": "Read the guides",
+            "items": [
+              {
+                "id": "strength",
+                "title": "Strength training in a busy week",
+                "text": "How to begin with two regular slots, a few exercises and a clear plan.",
+                "image": {
+                  "src": "/media/project/strength.webp",
+                  "alt": "Dumbbell in a strength studio",
+                  "position": "50% 50%"
+                },
+                "meta": "FIELD NOTES",
+                "href": "/en/journal/strength-in-a-busy-week",
+                "label": "Read"
+              },
+              {
+                "id": "food",
+                "title": "Eating well without constant tracking",
+                "text": "Three meal anchors that still work on a long day.",
+                "image": {
+                  "src": "/media/project/food.webp",
+                  "alt": "Bowl with vegetables, grains and a source of protein",
+                  "position": "50% 50%"
+                },
+                "meta": "FIELD NOTES",
+                "href": "/en/journal/nutrition-without-tracking",
+                "label": "Read"
+              },
+              {
+                "id": "routine",
+                "title": "A smaller plan for demanding weeks",
+                "text": "Decide on the shortest version of your routine before you need it.",
+                "image": {
+                  "src": "/media/project/routine.webp",
+                  "alt": "Training notes and coffee on a bench",
+                  "position": "50% 50%"
+                },
+                "meta": "FIELD NOTES",
+                "href": "/en/journal/a-smaller-plan",
+                "label": "Read"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "plan",
+          "type": "split",
+          "name": "Turn an idea into a training slot.",
+          "visible": true,
+          "content": {
+            "heading": "Turn an idea into a training slot.",
+            "text": "Use the weekly planner to explore two- or three-session routines and save ideas on this device.",
+            "image": {
+              "src": "/media/project/strength.webp",
+              "alt": "Dumbbell in a strength studio",
+              "position": "50% 50%"
+            },
+            "primaryLabel": "Open weekly planner",
+            "primaryHref": "/en/weekly-plan"
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "left",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "ask",
+          "type": "cta",
+          "name": "Have a training question?",
+          "visible": true,
+          "content": {
+            "heading": "Have a training question?",
+            "primaryLabel": "Ask a question",
+            "primaryHref": "/en/contact"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "plan-en",
+      "slug": "en/weekly-plan",
+      "title": "Plan a training week",
+      "locale": "en-GB",
+      "translationKey": "plan",
+      "seo": {
+        "title": "Plan a training week | Sebastian Maschberger",
+        "description": "Find a routine for two or three training slots and save it for later.",
+        "image": "/media/project/routine.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Introduction",
+          "visible": true,
+          "content": {
+            "heading": "Your next training week.",
+            "text": "Choose a realistic number of sessions and what you want to focus on.",
+            "subheading": "INTERACTIVE WEEKLY PLANNER",
+            "image": {
+              "src": "/media/project/routine.webp",
+              "alt": "Training notes and coffee on a bench",
+              "position": "50% 50%"
+            },
+            "primaryLabel": "Choose a routine",
+            "primaryHref": "#finder"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "finder",
+          "type": "project-finder",
+          "name": "Interactive finder",
+          "visible": true,
+          "content": {
+            "heading": "Which week fits your life?",
+            "text": "Your saved ideas stay in this browser.",
+            "items": [
+              {
+                "id": "two-reset",
+                "title": "Two sessions to get back into it",
+                "text": "Plan two full-body sessions. Start with familiar movements and keep a third slot as a backup.",
+                "image": {
+                  "src": "/media/project/strength.webp",
+                  "alt": "Dumbbell in a strength studio",
+                  "position": "50% 50%"
+                },
+                "href": "/en/journal/strength-in-a-busy-week",
+                "label": "Read training tips",
+                "tags": [
+                  "2 sessions",
+                  "Restart"
+                ]
+              },
+              {
+                "id": "two-strength",
+                "title": "Build strength in two fixed slots",
+                "text": "Give your most important lifts a home in the two sessions. Leave room for good form and record how the work goes.",
+                "image": {
+                  "src": "/media/project/training.webp",
+                  "alt": "Sebastian performing a single-leg strength exercise",
+                  "position": "50% 50%"
+                },
+                "href": "/en/coaching",
+                "label": "Explore coaching",
+                "tags": [
+                  "2 sessions",
+                  "Get stronger"
+                ]
+              },
+              {
+                "id": "three-reset",
+                "title": "Three shorter slots",
+                "text": "Use two slots for strength and one for movement you enjoy. Pick short sessions you can repeat next week.",
+                "image": {
+                  "src": "/media/project/routine.webp",
+                  "alt": "Training notes and coffee on a bench",
+                  "position": "50% 50%"
+                },
+                "href": "/en/journal/a-smaller-plan",
+                "label": "Short routines",
+                "tags": [
+                  "3 sessions",
+                  "Restart"
+                ]
+              },
+              {
+                "id": "three-strength",
+                "title": "Three focused sessions",
+                "text": "Spread pulling, pressing and leg work through the week. Track the exercises you repeat so you can see your progress.",
+                "image": {
+                  "src": "/media/project/strength.webp",
+                  "alt": "Dumbbell in a strength studio",
+                  "position": "50% 50%"
+                },
+                "href": "/en/coaching",
+                "label": "Explore coaching",
+                "tags": [
+                  "3 sessions",
+                  "Get stronger"
+                ]
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "nutzung",
+          "type": "richtext",
+          "name": "Make your plan work",
+          "visible": true,
+          "content": {
+            "heading": "Make your plan work",
+            "items": [
+              {
+                "id": "calendar",
+                "title": "Put the dates in your calendar",
+                "text": "Add your training dates and a backup slot. Start with the times you could repeat next week."
+              },
+              {
+                "id": "log",
+                "title": "Do a short review",
+                "text": "Which session was easy to fit in? What got in the way? Use those answers when you plan the next week."
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "coaching",
+          "type": "cta",
+          "name": "Want a personal training plan?",
+          "visible": true,
+          "content": {
+            "heading": "Want a personal training plan?",
+            "primaryLabel": "Explore coaching",
+            "primaryHref": "/en/coaching"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "strength-en",
+      "slug": "en/journal/strength-in-a-busy-week",
+      "title": "Strength training in a busy week",
+      "locale": "en-GB",
+      "translationKey": "strength",
+      "seo": {
+        "title": "Strength training in a busy week | Sebastian Maschberger",
+        "description": "How to begin with two regular slots, a few exercises and a clear plan.",
+        "image": "/media/project/strength.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Introduction",
+          "visible": true,
+          "content": {
+            "heading": "Strength training in a busy week",
+            "text": "How to begin with two regular slots, a few exercises and a clear plan.",
+            "subheading": "SEBASTIAN’S JOURNAL",
+            "image": {
+              "src": "/media/project/strength.webp",
+              "alt": "Dumbbell in a strength studio",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "part0",
+          "type": "richtext",
+          "name": "Two regular slots",
+          "visible": true,
+          "content": {
+            "heading": "Two regular slots",
+            "text": "Pick two days with room to recover between them. Put them in your calendar and choose a backup slot."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "part1",
+          "type": "richtext",
+          "name": "Repeat a few movements",
+          "visible": true,
+          "content": {
+            "heading": "Repeat a few movements",
+            "text": "Pick a squat, a pull and a press you can perform comfortably. Repeat them for a few weeks so you can compare your progress."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "part2",
+          "type": "richtext",
+          "name": "Track one thing",
+          "visible": true,
+          "content": {
+            "heading": "Track one thing",
+            "text": "After training, record reps and weights. Keeping exercises consistent makes it easier to see what changes."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "plan",
+          "type": "cta",
+          "name": "Put the idea to work this week.",
+          "visible": true,
+          "content": {
+            "heading": "Put the idea to work this week.",
+            "primaryLabel": "Open weekly planner",
+            "primaryHref": "/en/weekly-plan"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "food-en",
+      "slug": "en/journal/nutrition-without-tracking",
+      "title": "Eating well without constant tracking",
+      "locale": "en-GB",
+      "translationKey": "food",
+      "seo": {
+        "title": "Eating well without constant tracking | Sebastian Maschberger",
+        "description": "Three meal anchors that still work on a long day.",
+        "image": "/media/project/food.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Introduction",
+          "visible": true,
+          "content": {
+            "heading": "Eating well without constant tracking",
+            "text": "Three meal anchors that still work on a long day.",
+            "subheading": "SEBASTIAN’S JOURNAL",
+            "image": {
+              "src": "/media/project/food.webp",
+              "alt": "Bowl with vegetables, grains and a source of protein",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "part0",
+          "type": "richtext",
+          "name": "Make one meal reliable",
+          "visible": true,
+          "content": {
+            "heading": "Make one meal reliable",
+            "text": "Start with the meal you most often miss. A packed lunch or simple breakfast gives the day an anchor."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "part1",
+          "type": "richtext",
+          "name": "Plan with ingredients",
+          "visible": true,
+          "content": {
+            "heading": "Plan with ingredients",
+            "text": "Put together a source of protein, fruit or vegetables and a side you enjoy. Keep a few ingredients that combine in different ways."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "part2",
+          "type": "richtext",
+          "name": "Leave room for flexibility",
+          "visible": true,
+          "content": {
+            "heading": "Leave room for flexibility",
+            "text": "When you eat out, order something you enjoy that will satisfy you. Return to your usual rhythm at the next meal."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "plan",
+          "type": "cta",
+          "name": "Put the idea to work this week.",
+          "visible": true,
+          "content": {
+            "heading": "Put the idea to work this week.",
+            "primaryLabel": "Open weekly planner",
+            "primaryHref": "/en/weekly-plan"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "routine-en",
+      "slug": "en/journal/a-smaller-plan",
+      "title": "A smaller plan for demanding weeks",
+      "locale": "en-GB",
+      "translationKey": "routine",
+      "seo": {
+        "title": "A smaller plan for demanding weeks | Sebastian Maschberger",
+        "description": "Decide on the shortest version of your routine before you need it.",
+        "image": "/media/project/routine.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Introduction",
+          "visible": true,
+          "content": {
+            "heading": "A smaller plan for demanding weeks",
+            "text": "Decide on the shortest version of your routine before you need it.",
+            "subheading": "SEBASTIAN’S JOURNAL",
+            "image": {
+              "src": "/media/project/routine.webp",
+              "alt": "Training notes and coffee on a bench",
+              "position": "50% 50%"
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "part0",
+          "type": "richtext",
+          "name": "Decide on a short version",
+          "visible": true,
+          "content": {
+            "heading": "Decide on a short version",
+            "text": "When time is short, decide in advance which exercises from your long session come with you. Then you can get started as soon as you arrive."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "part1",
+          "type": "richtext",
+          "name": "Know your backup slot",
+          "visible": true,
+          "content": {
+            "heading": "Know your backup slot",
+            "text": "A backup slot saves you from looking for a gap every day. Think about what you can do at home too."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "part2",
+          "type": "richtext",
+          "name": "Review the week briefly",
+          "visible": true,
+          "content": {
+            "heading": "Review the week briefly",
+            "text": "At the weekend, note what actually fit into your life. Use that observation when you plan the next week."
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "plan",
+          "type": "cta",
+          "name": "Put the idea to work this week.",
+          "visible": true,
+          "content": {
+            "heading": "Put the idea to work this week.",
+            "primaryLabel": "Open weekly planner",
+            "primaryHref": "/en/weekly-plan"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "shop-en",
+      "slug": "en/shop",
+      "title": "Coaching shop",
+      "locale": "en-GB",
+      "translationKey": "shop",
+      "seo": {
+        "title": "Coaching shop | Sebastian Maschberger",
+        "description": "Enquire about individual training plans, nutrition coaching and ongoing support.",
+        "image": "/media/project/hero.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Introduction",
+          "visible": true,
+          "content": {
+            "heading": "Plans and support.",
+            "text": "Enquire about the offer that fits where you are. We’ll discuss the details and price directly.",
+            "subheading": "SHOP",
+            "image": {
+              "src": "/media/project/strength.webp",
+              "alt": "Dumbbell in a strength studio",
+              "position": "50% 50%"
+            },
+            "secondaryLabel": "Cart",
+            "secondaryHref": "/en/cart"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "angebote",
+          "type": "cards",
+          "name": "What you can enquire about",
+          "visible": true,
+          "content": {
+            "heading": "What you can enquire about",
+            "items": [
+              {
+                "id": "training-plan",
+                "title": "Individual training plan",
+                "text": "Exercises and sessions suited to your goals and equipment.",
+                "image": {
+                  "src": "/media/project/strength.webp",
+                  "alt": "Dumbbell in a strength studio",
+                  "position": "50% 50%"
+                },
+                "meta": "BY ENQUIRY",
+                "href": "/en/contact?service=Individual%20training%20plan",
+                "label": "Enquire about a plan"
+              },
+              {
+                "id": "nutrition-plan",
+                "title": "Nutrition coaching",
+                "text": "Structure for meals, shopping and days with changing schedules.",
+                "image": {
+                  "src": "/media/project/food.webp",
+                  "alt": "Bowl with vegetables, grains and a source of protein",
+                  "position": "50% 50%"
+                },
+                "meta": "BY ENQUIRY",
+                "href": "/en/contact?service=Nutrition%20coaching",
+                "label": "Enquire about nutrition"
+              },
+              {
+                "id": "ongoing",
+                "title": "Ongoing 1:1 coaching",
+                "text": "Training and nutrition with regular check-ins and adjustments.",
+                "image": {
+                  "src": "/media/project/sebastian.webp",
+                  "alt": "Sebastian smiles beside a gym bench",
+                  "position": "50% 0%"
+                },
+                "meta": "BY ENQUIRY",
+                "href": "/en/contact?service=1%3A1%20coaching",
+                "label": "Enquire about coaching"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "commerce",
+          "type": "creator-shop",
+          "name": "Shop module",
+          "visible": true,
+          "content": {
+            "heading": "Current catalogue",
+            "caption": "catalog"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "faq",
+          "type": "faq",
+          "name": "Questions about the offers",
+          "visible": true,
+          "content": {
+            "heading": "Questions about the offers",
+            "items": [
+              {
+                "id": "q1",
+                "title": "Do I need gym experience?",
+                "text": "You can start with your first strength exercises or come back after a break. The plan starts at your current level."
+              },
+              {
+                "id": "q2",
+                "title": "What does coaching cost?",
+                "text": "The intro call is free. After we agree on the scope, you receive an individual quote."
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 2,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "contact-en",
+      "slug": "en/contact",
+      "title": "Intro call",
+      "locale": "en-GB",
+      "translationKey": "contact",
+      "seo": {
+        "title": "Intro call | Sebastian Maschberger",
+        "description": "Request a free intro call for training and nutrition with Sebastian Maschberger.",
+        "image": "/media/project/sebastian.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Introduction",
+          "visible": true,
+          "content": {
+            "heading": "Tell me where you’re at.",
+            "text": "Tell me what you want to change and when you are available. We’ll work out what makes sense on a free intro call.",
+            "subheading": "FREE INTRO CALL",
+            "image": {
+              "src": "/media/project/sebastian.webp",
+              "alt": "Sebastian smiles beside a gym bench",
+              "position": "50% 0%"
+            },
+            "primaryLabel": "Go to enquiry",
+            "primaryHref": "#anfrage"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "anfrage",
+          "type": "contact",
+          "name": "Send me a note",
+          "visible": true,
+          "content": {
+            "heading": "Send me a note",
+            "text": "Tell me a little about what you need.",
+            "form": {
+              "nameLabel": "Your name",
+              "subjectLabel": "What is it about?",
+              "messageLabel": "Your message",
+              "messagePlaceholder": "What would you like to change? When could we have a short call?",
+              "submitLabel": "Send enquiry",
+              "successHeading": "Your enquiry is in.",
+              "successText": "Thanks for writing. I’ll get back to you at the email address you provided."
+            }
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "next",
+          "type": "steps",
+          "name": "What happens after you get in touch",
+          "visible": true,
+          "content": {
+            "heading": "What happens after you get in touch",
+            "items": [
+              {
+                "id": "intro",
+                "title": "First conversation",
+                "text": "On a short call, we talk about your goals, how you can train and what has been getting in the way.",
+                "icon": "MessageCircle"
+              },
+              {
+                "id": "plan",
+                "title": "Build your plan",
+                "text": "We choose training slots, exercises and a food routine that work with your schedule.",
+                "icon": "CalendarDays"
+              },
+              {
+                "id": "adjust",
+                "title": "Keep going",
+                "text": "Regular feedback shows us what is working and where a small adjustment helps.",
+                "icon": "TrendingUp"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "faq",
+          "type": "faq",
+          "name": "Good to know",
+          "visible": true,
+          "content": {
+            "heading": "Good to know",
+            "items": [
+              {
+                "id": "q1",
+                "title": "Can I start online?",
+                "text": "Yes. The intro, planning and feedback can all happen online."
+              },
+              {
+                "id": "q2",
+                "title": "What does coaching cost?",
+                "text": "The intro call is free. After we agree on the scope, you receive an individual quote."
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 2,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cart-en",
+      "slug": "en/cart",
+      "title": "Cart",
+      "locale": "en-GB",
+      "translationKey": "cart",
+      "seo": {
+        "title": "Cart | Sebastian Maschberger",
+        "description": "Selected items and order summary.",
+        "image": "/media/project/hero.webp"
+      },
+      "sections": [
+        {
+          "id": "commerce",
+          "type": "creator-shop",
+          "name": "Shop module",
+          "visible": true,
+          "content": {
+            "heading": "Your cart",
+            "caption": "cart"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "none",
+            "align": "left"
+          }
+        },
+        {
+          "id": "back",
+          "type": "cta",
+          "name": "Keep exploring",
+          "visible": true,
+          "content": {
+            "heading": "Keep exploring",
+            "primaryLabel": "Back to shop",
+            "primaryHref": "/en/shop"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "partners-en",
+      "slug": "en/partners",
+      "title": "Partners & recommendations",
+      "locale": "en-GB",
+      "translationKey": "partners",
+      "seo": {
+        "title": "Partners & recommendations | Sebastian Maschberger",
+        "description": "Recommendations, brand links and collaboration enquiries with Sebastian Maschberger.",
+        "image": "/media/project/hero.webp"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "type": "showcase-hero",
+          "name": "Introduction",
+          "visible": true,
+          "content": {
+            "heading": "Good ideas. Good collaborations.",
+            "text": "I’m interested in projects that bring something useful to my community. Find my channels, recommendations and contact for partnerships here.",
+            "subheading": "PARTNERS & RECOMMENDATIONS",
+            "image": {
+              "src": "/media/project/sebastian.webp",
+              "alt": "Sebastian smiles beside a gym bench",
+              "position": "50% 0%"
+            },
+            "primaryLabel": "Enquire about a collaboration",
+            "primaryHref": "/en/contact?service=Partnership"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "heroLayout": "split"
+          }
+        },
+        {
+          "id": "links",
+          "type": "affiliate-links",
+          "name": "Partner links",
+          "visible": true,
+          "content": {
+            "heading": "Channels and recommendations",
+            "text": "Affiliate links are marked as advertising. I may earn a commission if you purchase through one.",
+            "items": [
+              {
+                "id": "instagram",
+                "title": "Training on Instagram",
+                "text": "Training clips, gym life and recent posts.",
+                "image": {
+                  "src": "/media/project/sebastian.webp",
+                  "alt": "Sebastian smiles beside a gym bench",
+                  "position": "50% 0%"
+                },
+                "meta": "MY CHANNEL",
+                "href": "https://www.instagram.com/sebastian_maschberger/",
+                "label": "View profile"
+              },
+              {
+                "id": "trainlike",
+                "title": "Train Like a Pro",
+                "text": "My earlier English-language coaching site.",
+                "image": {
+                  "src": "/media/project/training.webp",
+                  "alt": "Sebastian performing a single-leg strength exercise",
+                  "position": "50% 50%"
+                },
+                "meta": "MY PROJECT",
+                "href": "https://trainlikeapro.coach/",
+                "label": "Visit site"
+              },
+              {
+                "id": "fragrance",
+                "title": "Scents with Seb",
+                "text": "My project for fragrance reviews and everyday recommendations.",
+                "meta": "MY PROJECT",
+                "icon": "Sparkles",
+                "href": "https://scents-with-seb.vercel.app/",
+                "label": "Visit fragrance journal"
+              }
+            ]
+          },
+          "design": {
+            "theme": "soft",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#e9eee2"
+          }
+        },
+        {
+          "id": "anfrage",
+          "type": "richtext",
+          "name": "What to include in an enquiry",
+          "visible": true,
+          "content": {
+            "heading": "What to include in an enquiry",
+            "text": "Send a short introduction, your idea, the format and a rough timeline. For product collaborations, include a link to the actual product.",
+            "primaryLabel": "Write a collaboration enquiry",
+            "primaryHref": "/en/contact?service=Partnership"
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        },
+        {
+          "id": "contact",
+          "type": "cta",
+          "name": "Talk through an idea together.",
+          "visible": true,
+          "content": {
+            "heading": "Talk through an idea together.",
+            "primaryLabel": "Get in touch",
+            "primaryHref": "/en/contact"
+          },
+          "design": {
+            "theme": "dark",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "compact",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left",
+            "background": "#192720",
+            "textColor": "#fbf7ed",
+            "accentColor": "#c9f471"
+          }
+        }
+      ]
+    },
+    {
+      "id": "imprint-en",
+      "slug": "en/legal-notice",
+      "title": "Legal notice",
+      "locale": "en-GB",
+      "translationKey": "imprint",
+      "seo": {
+        "title": "Legal notice | Sebastian Maschberger",
+        "description": "Provider and contact information.",
+        "image": "/media/project/hero.webp"
+      },
+      "sections": [
+        {
+          "id": "anbieter",
+          "type": "richtext",
+          "name": "Legal notice",
+          "visible": true,
+          "content": {
+            "heading": "Legal notice",
+            "text": "Sebastian Maschberger",
+            "items": [
+              {
+                "id": "provider",
+                "title": "Provider details",
+                "text": "The provider and contact information is available in the Train Like a Pro legal notice.",
+                "href": "https://trainlikeapro.coach/imprint/",
+                "label": "Open the provider’s legal notice"
+              },
+              {
+                "id": "contact",
+                "title": "Contact",
+                "text": " ",
+                "href": "/en/contact",
+                "label": "Get in touch"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "privacy-en",
+      "slug": "en/privacy",
+      "title": "Privacy",
+      "locale": "en-GB",
+      "translationKey": "privacy",
+      "seo": {
+        "title": "Privacy | Sebastian Maschberger",
+        "description": "Notes on forms, local storage, external media and analytics.",
+        "image": "/media/project/hero.webp"
+      },
+      "sections": [
+        {
+          "id": "privacy",
+          "type": "richtext",
+          "name": "Privacy",
+          "visible": true,
+          "content": {
+            "heading": "Privacy",
+            "text": "These notes describe the features of this website. Contact me through the form if you have questions.",
+            "items": [
+              {
+                "id": "forms",
+                "title": "Enquiries",
+                "text": "When you submit the form, I store your name, email and message so I can respond. Save personal health details for a direct conversation."
+              },
+              {
+                "id": "storage",
+                "title": "Cart and saved items",
+                "text": "The website stores your selection in this browser. You can clear it in your browser settings."
+              },
+              {
+                "id": "media",
+                "title": "External videos and links",
+                "text": "Embedded videos load after your permission and share your IP address with the platform. External links take you to the relevant service."
+              },
+              {
+                "id": "analytics",
+                "title": "Optional analytics",
+                "text": "The website measures visits and usage after you allow analytics. You can change your choice in the footer’s cookie settings."
+              },
+              {
+                "id": "provider",
+                "title": "Provider",
+                "text": "",
+                "href": "/en/legal-notice",
+                "label": "Read legal notice"
+              }
+            ]
+          },
+          "design": {
+            "theme": "light",
+            "headingFont": "sans",
+            "fontScale": 1,
+            "radius": 28,
+            "border": 0,
+            "spacing": "normal",
+            "width": "wide",
+            "imageSide": "right",
+            "columns": 3,
+            "animation": "reveal",
+            "align": "left"
+          }
+        }
+      ]
+    }
+  ]
+}

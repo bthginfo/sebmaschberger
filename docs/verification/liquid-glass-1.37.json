@@ -1,0 +1,17 @@
+{
+  "checks": [
+    "Default profile renders without Liquid Glass",
+    "Style selection stays local until saved",
+    "CMS selection and motion settings save and reload without changing published content",
+    "Published glass renderer keeps its atmosphere behind native scrolling",
+    "Atmosphere pause freezes the frame and survives navigation",
+    "Authored section, item, glass panel and button colors override glass defaults",
+    "Mobile layout and menu remain usable",
+    "Reduced motion keeps content visible and disables decorative animation",
+    "Style controls are available in the mobile CMS",
+    "Opting out removes the entire glass layer without altering page content"
+  ],
+  "errors": [],
+  "accessibility": [],
+  "verifiedAt": "2026-11-15T17:35:59.105Z"
+}

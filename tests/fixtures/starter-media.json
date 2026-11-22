@@ -1,0 +1,32 @@
+[
+  {
+    "id": "placeholder-landscape",
+    "url": "/media/placeholder-landscape.svg",
+    "name": "Bildplatzhalter landscape",
+    "alt": "Abstrakter Bildplatzhalter",
+    "type": "image/svg+xml",
+    "size": 427,
+    "createdAt": "2026-10-30T00:00:00Z",
+    "position": "50% 50%"
+  },
+  {
+    "id": "placeholder-portrait",
+    "url": "/media/placeholder-portrait.svg",
+    "name": "Bildplatzhalter portrait",
+    "alt": "Abstrakter Bildplatzhalter",
+    "type": "image/svg+xml",
+    "size": 399,
+    "createdAt": "2026-10-30T00:00:00Z",
+    "position": "50% 50%"
+  },
+  {
+    "id": "placeholder-detail",
+    "url": "/media/placeholder-detail.svg",
+    "name": "Bildplatzhalter detail",
+    "alt": "Abstrakter Bildplatzhalter",
+    "type": "image/svg+xml",
+    "size": 427,
+    "createdAt": "2026-10-30T00:00:00Z",
+    "position": "50% 50%"
+  }
+]

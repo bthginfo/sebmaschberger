@@ -1,0 +1,24 @@
+{
+  "id": "services",
+  "title": "Dienstleistung",
+  "heroHeading": "Ihr Angebot.\nKlar erklärt.",
+  "blog": false,
+  "navigation": [
+    {
+      "label": "Leistungen",
+      "href": "/leistungen"
+    },
+    {
+      "label": "Über uns",
+      "href": "/ueber-uns"
+    },
+    {
+      "label": "Projekte",
+      "href": "/projekte"
+    },
+    {
+      "label": "Kontakt",
+      "href": "/kontakt"
+    }
+  ]
+}

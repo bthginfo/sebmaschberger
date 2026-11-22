@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "projectName": "Beispiel GmbH",
+  "legalName": "",
+  "audience": "FÃ¼r wen wird die Website gebaut?",
+  "offer": "Was bietet der Betrieb an, und was soll die Website erreichen?",
+  "style": "Architekturatelier mit warmen Natursteinfarben, präziser Manrope-Typografie und einer großen Fotografie des Umbaus. Auf dem Smartphone folgt der erste Projektbeleg direkt nach der Hauptaktion.",
+  "hero": {
+    "heading": "Räume für das tägliche Leben.",
+    "text": "Wir planen Umbauten und Innenräume. Mit Ihnen klären wir, was sich erhalten lässt und was der Ort künftig leisten soll."
+  },
+  "email": "hallo@example.invalid",
+  "phone": "",
+  "address": "",
+  "city": "",
+  "postalCode": "",
+  "siteUrl": "",
+  "pages": [
+    "Startseite",
+    "Leistungen",
+    "Projekte",
+    "Ãœber uns",
+    "Kontakt"
+  ],
+  "functions": [
+    "CMS",
+    "Galerie",
+    "Anfrageformular"
+  ],
+  "contentSources": [],
+  "voice": "Aus Sicht des Teams schreiben. Direkte, sachliche Anrede.",
+  "searchAudience": "",
+  "verifiedProof": [],
+  "assets": [],
+  "openQuestions": [],
+  "colors": {
+    "primary": "#142b27",
+    "accent": "#d6f07d",
+    "background": "#f6f4ed"
+  },
+  "modules": {
+    "socialStudio": {
+      "enabled": false
+    },
+    "aiAssistant": {
+      "enabled": false
+    },
+    "socialPublishing": {
+      "enabled": false
+    },
+    "restaurantMenu": {
+      "enabled": false
+    },
+    "reservations": {
+      "enabled": false
+    }
+  }
+}

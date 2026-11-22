@@ -1,0 +1,33 @@
+.page {
+  min-height: 100svh;
+  padding: clamp(24px, 6vw, 80px) clamp(16px, 5vw, 48px);
+  background: color-mix(in srgb, var(--withdrawal-bg, #f7f8f4) 14%, #f7f8f4);
+  color: #182826;
+  font-family: var(--font-body);
+}
+.content { width: min(100%, 42rem); margin-inline: auto; }
+.brand, .privacy { display: inline-block; min-height: 44px; align-content: center; color: inherit; text-underline-offset: .23em; }
+.brand { font-weight: 700; }
+.content h1 { margin: 30px 0 10px; font-family: var(--font-display); font-size: clamp(2.3rem, 6vw, 4.5rem); line-height: 1.03; letter-spacing: -.035em; }
+.content > p { max-width: 64ch; margin: 0 0 24px; line-height: 1.65; }
+.form { display: grid; gap: 16px; padding: clamp(18px, 4vw, 32px); border: 1px solid #d8e0da; border-radius: 16px; background: #fff; overflow-wrap: anywhere; }
+.form h2, .form p, .form dl { margin: 0; }
+.form label { display: grid; gap: 7px; font-weight: 650; }
+.form :is(input,textarea) { width: 100%; min-width: 0; min-height: 44px; padding: 10px 12px; border: 1px solid #87958a; border-radius: 8px; background: #fff; color: inherit; font: inherit; font-weight: 400; }
+.form textarea { resize: vertical; }
+.form small, .review dt { color: #536459; font-size: .85rem; font-weight: 550; }
+.form :focus-visible, .content > a:focus-visible { outline: 2px solid #285c45; outline-offset: 3px; }
+.form .honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.review { display: grid; gap: 12px; }
+.review > div { border-bottom: 1px solid #d8e0da; padding-block-end: 10px; }
+.review dd { margin: 2px 0 0; white-space: pre-wrap; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.primary, .secondary { display: inline-flex; justify-self: start; align-items: center; justify-content: center; min-height: 44px; gap: 10px; border-radius: 8px; padding: 10px 14px; font: inherit; font-weight: 650; }
+.primary { background: #285c45; color: #fff; border: 1px solid #285c45; }
+.secondary { color: #285c45; background: #fff; border: 1px solid #87958a; }
+.form button:disabled { opacity: .65; }
+.error { padding: 10px 12px; background: #f9e9e5; color: #822e21; border-radius: 8px; }
+.privacy { margin-block-start: 10px; }
+@media (max-width: 480px) {
+  .actions, .actions > button, .form > .primary { width: 100%; }
+}

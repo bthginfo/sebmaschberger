@@ -1,0 +1,51 @@
+/* Explicit opt-in; every selector stays inside the selected aesthetic. */
+.ws-site[data-site-aesthetic="liquid-glass"] {
+  position: relative; isolation: isolate; overflow: clip; color-scheme: dark;
+  --lg-surface: color-mix(in srgb, var(--ws-palette-surface, #172239) 70%, transparent);
+  --lg-line: color-mix(in srgb, var(--ws-palette-text, #eff3ff) 15%, transparent);
+  --lg-shadow: 0 24px 70px #0004, inset 0 1px 0 #ffffff0e;
+}
+.ws-site[data-site-aesthetic="liquid-glass"] > :is(main, footer) { position: relative; z-index: 2; }
+.ws-site[data-site-aesthetic="liquid-glass"] > .ws-header { z-index: 30; background: color-mix(in srgb, var(--ws-paper) 75%, transparent); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); border-bottom: 1px solid var(--lg-line); }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-header-inner { border-bottom: 0; }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-brand-subline { opacity: .7; }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-mobile-menu { background: color-mix(in srgb, var(--ws-paper) 94%, transparent); backdrop-filter: blur(24px); }
+.ws-site[data-site-aesthetic="liquid-glass"] :is(.ws-header-contact, .hc-primary, .ws-panorama-appointment, .ws-button) { border-radius: 100px; }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-header-contact { color: var(--ws-ink); background: var(--lg-surface); border: 1px solid var(--lg-line); box-shadow: inset 0 1px 0 #ffffff14; }
+.ws-site[data-site-aesthetic="liquid-glass"] :is(.ws-card, .ws-person, .ws-editorial-card, .ws-blog-card, .ws-panorama-service-sheet, .ws-faq-item, .ws-comparison>article, .ws-content-columns>article) { background: var(--lg-surface); border: 1px solid var(--lg-line); border-radius: var(--ws-radius); box-shadow: var(--lg-shadow); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+.ws-site[data-site-aesthetic="liquid-glass"] .hc-image { border-radius: max(24px, var(--ws-radius)); overflow: hidden; box-shadow: 0 32px 100px #0007, 0 0 55px color-mix(in srgb, var(--ws-accent) 8%, transparent); border: 1px solid var(--lg-line); }
+.ws-site[data-site-aesthetic="liquid-glass"]:not(.ws-site-editable) .hc-image { translate: 0 calc(var(--lg-scroll, 0px) * -.55); }
+.ws-site[data-site-aesthetic="liquid-glass"] :is(.ws-section-heading, .hc-heading) { letter-spacing: -.055em; font-weight: 500; }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-footer { color: var(--ws-palette-text, var(--ws-ink)); background: color-mix(in srgb, var(--ws-paper) 72%, transparent); border-top: 1px solid var(--lg-line); }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-footer-bottom { flex-wrap: wrap; }
+.ws-site[data-site-aesthetic="liquid-glass"] [data-ws-entered] { animation-duration: var(--lg-reveal-duration, 800ms); }
+.ws-site[data-site-aesthetic="liquid-glass"][data-glass-feedback="true"] :is(a, button) { transition: background-color 320ms, color 320ms, border-color 320ms, box-shadow 400ms, transform 350ms cubic-bezier(.16,1,.3,1); }
+.ws-site[data-site-aesthetic="liquid-glass"][data-glass-feedback="true"] :is(a, button):active { transform: scale(.97); transition-duration: 90ms; }
+.ws-site[data-site-aesthetic="liquid-glass"][data-glass-feedback="true"] :is(article[data-item-id], .ws-card, .ws-person) { transform: perspective(1100px) rotateX(var(--lg-tilt-y, 0deg)) rotateY(var(--lg-tilt-x, 0deg)); transition: transform 550ms cubic-bezier(.16,1,.3,1), border-color 350ms, box-shadow 500ms; }
+.ws-site[data-site-aesthetic="liquid-glass"][data-glass-feedback="true"] :is(.ws-card, .ws-person):hover { border-color: color-mix(in srgb, var(--ws-accent) 50%, transparent); box-shadow: 0 30px 80px #0006, inset 0 1px 0 #ffffff18; }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-liquid-background { position: sticky; top: 0; height: 100svh; margin-bottom: -100svh; z-index: 0; pointer-events: none; overflow: hidden; contain: strict; opacity: var(--lg-intensity, .6); }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-liquid-background[data-kind="none"] { display: none; }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-liquid-background canvas { width: 100%; height: 100%; position: absolute; inset: 0; }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-liquid-haze { position: absolute; width: 95vw; height: 90vh; left: 20%; top: 8%; border-radius: 50%; background: radial-gradient(ellipse, color-mix(in srgb, var(--ws-accent) 16%, transparent), transparent 65%); animation: ws-glass-haze var(--lg-ambient-duration, 75s) ease-in-out infinite alternate; }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-liquid-haze-secondary { position: absolute; width: 80vw; height: 85vh; left: -38%; top: 30%; border-radius: 50%; background: radial-gradient(ellipse, color-mix(in srgb, var(--ws-palette-surface) 65%, transparent), transparent 68%); animation: ws-glass-haze calc(var(--lg-ambient-duration, 75s) * 1.2) ease-in-out infinite alternate-reverse; }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-liquid-background[data-paused="true"] * { animation-play-state: paused; }
+.ws-site[data-site-aesthetic="liquid-glass"].ws-site-editable .ws-liquid-background { position: absolute; inset: 0; height: 100%; margin-bottom: 0; }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-liquid-motion-control { border: 1px solid var(--lg-line); border-radius: 30px; background: var(--lg-surface); color: inherit; padding: 10px 16px; min-height: 44px; font-size: 12px; }
+.ws-site[data-site-aesthetic="liquid-glass"][data-glass-motion="off"] *, .ws-site[data-site-aesthetic="liquid-glass"].ws-site-editable * { animation: none !important; }
+@keyframes ws-glass-haze { from { transform: translate3d(-5%,-5%,0) scale(1); } to { transform: translate3d(8%,12%,0) scale(1.14); } }
+@media (max-width:640px) { .ws-site[data-site-aesthetic="liquid-glass"] :is(.ws-card,.ws-person) { backdrop-filter: blur(12px); } .ws-site[data-site-aesthetic="liquid-glass"] .ws-liquid-haze { width: 150vw; left: -15%; } }
+@media (prefers-reduced-motion:reduce) { .ws-site[data-site-aesthetic="liquid-glass"] * { animation: none !important; transition: none !important; } .ws-site[data-site-aesthetic="liquid-glass"] .hc-image { translate: none !important; } .ws-site[data-site-aesthetic="liquid-glass"] :is(article[data-item-id],.ws-card,.ws-person) { transform: none !important; } .ws-site[data-site-aesthetic="liquid-glass"] .ws-liquid-motion-control { display: none; } }
+
+.ws-site[data-site-aesthetic="liquid-glass"] :where([data-theme="dark"]) .ws-button-primary { color: var(--ws-paper) !important; }
+
+.ws-site[data-site-aesthetic="liquid-glass"] :is(.hc-split,.hc-portrait,.hc-bento) .hc-notes { position:relative; padding:22px 24px; margin:0 -24px -12px; background:var(--lg-surface); border:1px solid var(--lg-line); border-top-color:color-mix(in srgb,var(--ws-palette-text) 24%,transparent); border-radius:26px; box-shadow:var(--lg-shadow); backdrop-filter:blur(22px) saturate(120%); -webkit-backdrop-filter:blur(22px) saturate(120%); }
+.ws-site[data-site-aesthetic="liquid-glass"] .hc-image:after { content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit; box-shadow:inset 0 1px 0 #ffffff38,inset 0 0 30px #ffffff06; }
+@media(max-width:640px){.ws-site[data-site-aesthetic="liquid-glass"] :is(.hc-split,.hc-portrait,.hc-bento) .hc-notes { padding:20px; margin:0 -16px; border-radius:22px; }}
+
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-showcase-copy { position:relative;z-index:2; }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-glass-copy-panel { padding:24px; margin:26px -24px 0; border:1px solid var(--lg-line); border-top-color:color-mix(in srgb,var(--ws-palette-text) 24%,transparent); border-radius:26px; background:var(--lg-surface); box-shadow:var(--lg-shadow); backdrop-filter:blur(22px) saturate(120%); -webkit-backdrop-filter:blur(22px) saturate(120%); }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-glass-copy-panel .ws-showcase-lead { margin-top:0; }
+.ws-site[data-site-aesthetic="liquid-glass"] .ws-showcase-image { border:1px solid var(--lg-line); border-radius:max(24px,var(--ws-radius)); box-shadow:0 32px 100px #0007,inset 0 1px 0 #ffffff30; overflow:hidden; }
+.ws-site[data-site-aesthetic="liquid-glass"]:not(.ws-site-editable) .ws-showcase-art { translate:0 calc(var(--lg-scroll,0px) * -.55); }
+@media(max-width:640px){.ws-site[data-site-aesthetic="liquid-glass"] .ws-glass-copy-panel { margin:20px -16px 0; padding:20px; border-radius:22px; }}
+@media(prefers-reduced-motion:reduce){.ws-site[data-site-aesthetic="liquid-glass"] .ws-showcase-art { translate:none!important; }}

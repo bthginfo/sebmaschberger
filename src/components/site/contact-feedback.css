@@ -1,0 +1,49 @@
+.ws-contact-form .ws-contact-send {
+  min-block-size: 46px;
+  gap: .75em;
+}
+
+.ws-contact-send-icon {
+  display: inline-grid;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  place-items: center;
+  overflow: hidden;
+}
+
+.ws-contact-send:disabled { cursor: default; }
+.ws-contact-send[data-state="sending"] { cursor: progress; }
+.ws-contact-form .ws-contact-send .ws-contact-send-icon svg { transform: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ws-contact-send[data-state="sending"] .ws-contact-send-icon svg {
+    animation: ws-contact-flight 1.05s ease-in-out infinite;
+  }
+
+  .ws-contact-success .ws-success-icon svg {
+    stroke-dasharray: 26;
+    animation: ws-contact-check 320ms ease-out both;
+  }
+
+  .ws-contact-send:not(:disabled):active .ws-contact-send-icon {
+    transform: scale(.9);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .ws-contact-send-icon { transition: translate 180ms cubic-bezier(.2,.8,.2,1); }
+    .ws-contact-send:not(:disabled):hover .ws-contact-send-icon { translate: 2px -2px; }
+  }
+}
+
+@keyframes ws-contact-flight {
+  0%, 20%, 100% { translate: 0 0; opacity: 1; }
+  49% { translate: 90% -90%; opacity: 0; }
+  50% { translate: -70% 70%; opacity: 0; }
+  85% { translate: 0 0; opacity: 1; }
+}
+
+@keyframes ws-contact-check {
+  from { stroke-dashoffset: 26; }
+  to { stroke-dashoffset: 0; }
+}

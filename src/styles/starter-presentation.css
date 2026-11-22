@@ -1,0 +1,162 @@
+/* A presentation is stored in new projects. Earlier projects keep their own layout. */
+.ws-site[data-presentation] {
+  --ws-page-gutter: clamp(20px, 5cqi, 80px);
+  --ws-panel-radius: clamp(18px, 2.5cqi, 40px);
+  --ws-panel-line: color-mix(in srgb, currentColor 16%, transparent);
+}
+
+.ws-site[data-presentation] .ws-header-inner {
+  min-height: 76px;
+  margin-inline: auto;
+  width: min(1440px, calc(100% - var(--ws-page-gutter) * 2));
+  padding: 10px 0;
+  gap: clamp(16px, 3cqi, 36px);
+  border: 0;
+}
+.ws-site[data-presentation] .ws-brand { min-width: 0; flex-shrink: 1; }
+.ws-site[data-presentation] .ws-brand-name { font-size: clamp(1.12rem, 2.4cqi, 1.55rem); overflow-wrap: anywhere; }
+.ws-site[data-presentation] .ws-brand-subline { display: none; }
+.ws-site[data-presentation] .ws-desktop-nav { gap: clamp(8px, 1.35cqi, 22px); }
+.ws-site[data-presentation] .ws-header-contact { min-height: 44px; padding: 9px 16px; gap: 10px; }
+.ws-site[data-presentation] .ws-section-inner { width: min(1440px, calc(100% - var(--ws-page-gutter) * 2)); }
+.ws-site[data-presentation] .ws-width-full .ws-section-inner { width: 100%; max-width: none; padding-inline: var(--ws-page-gutter); }
+.ws-site[data-presentation] .ws-actions { gap: 12px 22px; }
+.ws-site[data-presentation] .ws-button { border-radius: 12px; gap: 12px; }
+.ws-site[data-presentation] .ws-text-button { min-height: 44px; }
+.ws-site[data-presentation] .ws-button-primary:hover { background: color-mix(in srgb, var(--ws-ink) 87%, var(--ws-paper)); }
+.ws-site[data-presentation] [data-theme="dark"] .ws-button-primary:hover { background: var(--ws-paper); }
+.ws-site[data-presentation] :focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+.ws-site[data-presentation] .ws-showcase-copy .ws-visual-label { margin-bottom: 18px; }
+.ws-site[data-presentation] .ws-showcase-copy .ws-visual-label::before { display: none; }
+.ws-site[data-presentation] .ws-showcase-title { font-weight: 730; letter-spacing: -.035em; text-wrap: balance; }
+.ws-site[data-presentation] .ws-showcase-lead { max-width: 40ch; margin-top: clamp(14px, 2cqi, 24px); }
+.ws-site[data-presentation] .ws-showcase-art .ws-visual-caption { padding-inline: .25em; }
+.ws-site[data-presentation] :is([data-section-id="services-hero"],[data-section-id="about-hero"]) .ws-showcase-image { aspect-ratio: 1.55; }
+
+.ws-site[data-presentation="services"] .ws-header-contact,
+.ws-site[data-presentation="consulting"] .ws-header-contact { border-radius: 100px; }
+
+.ws-site:is([data-presentation="services"],[data-presentation="consulting"])
+  [data-section-id="home-hero"] {
+  --ws-hero-frame: min(1440px, calc(100% - var(--ws-page-gutter) * 2));
+  width: var(--ws-hero-frame);
+  margin: 4px auto clamp(20px, 3.2cqi, 50px);
+  border-radius: var(--ws-panel-radius);
+}
+.ws-site:is([data-presentation="services"],[data-presentation="consulting"])
+  [data-section-id="home-hero"] .ws-section-inner {
+  width: 100%;
+  padding: clamp(22px, 4cqi, 62px);
+}
+.ws-site[data-presentation="services"] [data-section-id="home-hero"][data-theme="soft"] {
+  --section-bg: color-mix(in srgb, var(--ws-paper) 94%, var(--ws-ink));
+}
+.ws-site[data-presentation="services"] [data-section-id="home-hero"] .ws-showcase-image {
+  aspect-ratio: 1.16;
+}
+.ws-site[data-presentation="services"] [data-section-id="home-hero"] .ws-showcase-title {
+  font-size: calc(clamp(2.5rem, 5.6cqi, 5.95rem) * var(--section-scale));
+}
+.ws-site[data-presentation="services"] [data-section-id="home-hero"] .ws-button-primary,
+.ws-site[data-presentation="consulting"] .ws-button-primary { border-radius: 100px; }
+
+.ws-site[data-presentation="consulting"] [data-section-id="home-hero"][data-theme="soft"] {
+  --section-bg: color-mix(in srgb, var(--ws-paper) 65%, var(--ws-accent));
+}
+.ws-site[data-presentation="consulting"] [data-section-id="home-hero"] .ws-showcase-title {
+  font-size: calc(clamp(2.5rem, 5cqi, 5.45rem) * var(--section-scale));
+}
+
+.ws-site[data-presentation="portfolio"] .ws-header-inner,
+.ws-site[data-presentation="editorial"] .ws-header-inner { border-bottom: 1px solid var(--ws-panel-line); }
+.ws-site[data-presentation="portfolio"] [data-section-id="home-hero"] .ws-section-inner {
+  padding-block: clamp(26px, 4cqi, 58px) clamp(34px, 5cqi, 74px);
+}
+.ws-site[data-presentation="portfolio"] [data-section-id="home-hero"] .ws-showcase-hero {
+  gap: clamp(20px, 3.4cqi, 48px);
+}
+.ws-site[data-presentation="portfolio"] [data-section-id="home-hero"] .ws-showcase-title {
+  font-size: calc(clamp(2.45rem, 6.2cqi, 6.4rem) * var(--section-scale));
+}
+.ws-site[data-presentation="editorial"] [data-section-id="home-hero"] .ws-showcase-title {
+  font-weight: 520;
+  line-height: 1.04;
+}
+.ws-site[data-presentation="editorial"] [data-section-id="home-hero"] .ws-visual-label { letter-spacing: .14em; }
+
+.ws-site[data-presentation="consulting"]:not([data-site-aesthetic]) [data-section-id="home-hero"] {
+  border-radius: 0;
+  margin-block-start: clamp(14px, 2.5cqi, 34px);
+}
+.ws-site[data-presentation="consulting"]:not([data-site-aesthetic]) [data-section-id="home-hero"] .ws-showcase-title {
+  font-weight: 465;
+  line-height: 1.04;
+}
+.ws-site[data-presentation="portfolio"]:not([data-site-aesthetic]) .ws-section-project-stage .ws-project-panel {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+.ws-site[data-presentation="portfolio"]:not([data-site-aesthetic]) .ws-project-choices button {
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  background: transparent;
+}
+.ws-site[data-presentation="portfolio"]:not([data-site-aesthetic]) .ws-project-choices button[aria-pressed="true"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: .44em;
+}
+.ws-site[data-presentation="editorial"]:not([data-site-aesthetic]) [data-section-id="home-hero"] .ws-showcase-title {
+  font-size: calc(clamp(2.85rem, 6.8cqi, 6rem) * var(--section-scale));
+  line-height: .97;
+}
+.ws-site[data-presentation="editorial"]:not([data-site-aesthetic]) [data-section-id="home-hero"] .ws-showcase-art {
+  padding-block-end: 12px;
+  border-block-end: 1px solid var(--ws-panel-line);
+}
+
+@container ws-site (width > 860px) {
+  .ws-site[data-presentation="services"] [data-section-id="home-hero"] .ws-showcase-hero {
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr);
+  }
+  .ws-site[data-presentation="consulting"] [data-section-id="home-hero"] .ws-showcase-hero {
+    grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+  }
+  .ws-site[data-presentation="consulting"]:not([data-site-aesthetic]) [data-section-id="home-hero"] .ws-section-inner {
+    padding: clamp(24px, 3.5cqi, 54px);
+  }
+  .ws-site[data-presentation="consulting"]:not([data-site-aesthetic]) [data-section-id="home-hero"] .ws-showcase-image {
+    aspect-ratio: 1.08;
+  }
+  .ws-site[data-presentation="portfolio"]:not([data-site-aesthetic]) [data-section-id="home-hero"] .ws-showcase-image {
+    aspect-ratio: 2.65;
+  }
+  .ws-site[data-presentation="editorial"]:not([data-site-aesthetic]) [data-section-id="home-hero"] .ws-showcase-hero[data-layout="portrait"]:has(.ws-showcase-art) {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    gap: clamp(38px, 7cqi, 110px);
+  }
+}
+
+@container ws-site (width <= 860px) {
+  .ws-site[data-presentation] [data-section-id="home-hero"] .ws-showcase-title {
+    font-size: calc(clamp(2.15rem, 7.85cqi, 4.15rem) * var(--section-scale));
+  }
+  .ws-site[data-presentation] [data-section-id="home-hero"] .ws-showcase-hero { gap: 22px; }
+}
+
+@container ws-site (width <= 560px) {
+  .ws-site[data-presentation] .ws-header-inner { min-height: 62px; }
+  .ws-site[data-presentation] .ws-showcase-copy .ws-visual-label { margin-bottom: 10px; }
+  .ws-site[data-presentation] [data-section-id="home-hero"] .ws-showcase-art { margin-top: 0; }
+  .ws-site[data-presentation] [data-section-id="home-hero"] .ws-actions { gap: 5px 14px; margin-top: 16px; }
+  .ws-site[data-presentation] .ws-showcase-copy .ws-button { min-height: 46px; padding: 9px 12px; }
+  .ws-site[data-presentation="portfolio"]:not([data-site-aesthetic]) [data-section-id="home-hero"] .ws-showcase-image { aspect-ratio: 1.28; }
+  .ws-site[data-presentation="editorial"]:not([data-site-aesthetic]) [data-section-id="home-hero"] .ws-showcase-image { aspect-ratio: 1.4; }
+}
+
+@media print {
+  .ws-site[data-presentation] [data-section-id="home-hero"] { width: 100%; }
+}
