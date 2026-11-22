@@ -270,6 +270,16 @@ export function WorkflowDemo({ items, editable, motion, language = "de", media, 
     setPaused(true);
   }
 
+  function togglePlayback() {
+    setPaused(running);
+    const widget = root.current;
+    if (running || !widget) return;
+    const bounds = widget.getBoundingClientRect();
+    if (bounds.top < 0 || bounds.bottom > window.innerHeight) {
+      widget.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+  }
+
   return <div className="ws-workflow" ref={root} data-playing={running && visible || undefined}
     style={{ "--workflow-step-time": `${workflowStepDuration}ms` } as CSSProperties} onFocusCapture={event => {
     if ((event.target as HTMLElement).closest(".ws-workflow-panels")) setPaused(true);
@@ -292,7 +302,7 @@ export function WorkflowDemo({ items, editable, motion, language = "de", media, 
     {!editable && items.length > 1 && <div className="ws-workflow-controls">
       <span>{current + 1} / {items.length}</span>
       <div className="ws-workflow-actions">
-        {canPlay && <button type="button" onClick={() => setPaused(running)}>{running ? <Pause size={16} /> : <Play size={16} />}{running ? text.pause : text.play}</button>}
+        {canPlay && <button type="button" onClick={togglePlayback}>{running ? <Pause size={16} /> : <Play size={16} />}{running ? text.pause : text.play}</button>}
         <button type="button" aria-label={text.next} onClick={() => select((current + 1) % items.length)}><ArrowRight size={16} /><span className="ws-workflow-next-label">{text.next}</span><span className="ws-workflow-next-short">{text.compactNext}</span></button>
         <button type="button" className="ws-workflow-reset" aria-label={text.reset} onClick={() => select(0)}><RotateCcw size={16} /></button>
       </div>
