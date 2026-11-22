@@ -8,6 +8,6 @@ node_modules
 tests
 docs
 skills
-project
+/project/
 profiles/*
 !profiles/creator-*.json
