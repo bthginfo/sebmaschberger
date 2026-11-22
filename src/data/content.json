@@ -303,7 +303,7 @@
       "translationKey": "home",
       "seo": {
         "title": "Sebastian Maschberger · Coaching für Männer ab 30",
-        "description": "Online-Coaching für Krafttraining und Ernährung. Sebastian Maschberger, IFBB Elite Pro, hilft dir, eine Routine für deinen Alltag aufzubauen.",
+        "description": "Personal Training für Männer ab 30 mit Sebastian Maschberger, IFBB Elite Pro. Kraft aufbauen, Energie im Alltag gewinnen und Ernährung ohne Dogmen umsetzen.",
         "image": "/media/project/hero.webp"
       },
       "sections": [
@@ -313,9 +313,9 @@
           "name": "Auftakt",
           "visible": true,
           "content": {
-            "heading": "Stark werden.\nDu bleiben.",
-            "text": "Krafttraining und Ernährungscoaching für Männer ab 30. Mit einem Plan, der in dein Leben passt.",
-            "subheading": "PERSÖNLICHES COACHING",
+            "heading": "Stärker werden.\nFit im Alltag.",
+            "text": "Personal Training und Ernährungsberatung für Männer ab 30. Gemeinsam planen wir Training, Mahlzeiten und Erholung so, dass sie zu deiner Woche passen.",
+            "subheading": "PERSONAL TRAINING · MÄNNER 30+",
             "caption": "Sebastian Maschberger · IFBB Elite Pro",
             "image": {
               "src": "/media/project/hero.webp",
@@ -387,26 +387,39 @@
           "name": "Was wir zusammen angehen",
           "visible": true,
           "content": {
-            "heading": "Was wir zusammen angehen",
-            "text": "Wir beginnen mit deinem Alltag und entscheiden dann, welche Schritte sich verlässlich umsetzen lassen.",
+            "heading": "Mein Coaching für deinen Alltag",
+            "text": "Wir setzen dort an, wo du gerade am meisten Unterstützung brauchst.",
             "items": [
               {
                 "id": "strength",
-                "title": "Training mit System",
-                "text": "Krafttraining, das sich an deinem Ziel, deiner Erfahrung und deinen Zeitfenstern orientiert.",
+                "title": "Körper in Bestform",
+                "text": "Wir bauen Kraft auf und richten Übungen und Umfang an deinem Ziel, deiner Zeit und deiner Erfahrung aus.",
                 "image": {
                   "src": "/media/project/strength.webp",
                   "alt": "Hantel im Trainingsstudio",
                   "position": "50% 50%"
                 },
-                "meta": "KRAFT",
-                "href": "/coaching",
-                "label": "Coaching ansehen"
+                "meta": "TRAINING",
+                "href": "/coaching#umfang",
+                "label": "Training im Coaching"
+              },
+              {
+                "id": "energy-focus",
+                "title": "Energie & Fokus",
+                "text": "Wir finden einen Rhythmus für Training, Mahlzeiten und Pausen, der auch an langen Arbeitstagen funktioniert.",
+                "image": {
+                  "src": "/media/project/rhythm.webp",
+                  "alt": "Ein Sportler bereitet sich im Studio auf eine Kraftübung vor",
+                  "position": "50% 50%"
+                },
+                "meta": "ALLTAG",
+                "href": "/coaching#energie-erholung",
+                "label": "Energie im Alltag"
               },
               {
                 "id": "nutrition",
-                "title": "Essen mit Spielraum",
-                "text": "Einfache Routinen für Arbeitstage, Restaurantbesuche und alles dazwischen.",
+                "title": "Ernährung ohne Dogmen",
+                "text": "Wir planen Mahlzeiten mit Spielraum für Schichtarbeit, Reisen oder ein Essen mit Freunden.",
                 "image": {
                   "src": "/media/project/food.webp",
                   "alt": "Bowl mit Gemüse, Getreide und Eiweißquelle",
@@ -414,33 +427,20 @@
                 },
                 "meta": "ERNÄHRUNG",
                 "href": "/ernaehrung",
-                "label": "Ernährung ansehen"
+                "label": "Ernährungsberatung ansehen"
               },
               {
-                "id": "energy-focus",
-                "title": "Energie & Fokus",
-                "text": "Wir schauen, wie Training, Essen und Erholung in deine Woche passen, auch wenn der Kalender voll ist.",
-                "image": {
-                  "src": "/media/project/rhythm.webp",
-                  "alt": "Ein Sportler bereitet sich im Studio auf eine Kraftübung vor",
-                  "position": "50% 50%"
-                },
-                "meta": "ENERGIE & FOKUS",
-                "href": "/coaching#energie-erholung",
-                "label": "Energie im Alltag"
-              },
-              {
-                "id": "plan",
-                "title": "Eine Woche, die passt",
-                "text": "Finde einen Einstieg, der selbst in einer vollen Woche Platz hat.",
+                "id": "health-recovery",
                 "image": {
                   "src": "/media/project/routine.webp",
                   "alt": "Trainingsnotizen und Kaffee auf einer Bank",
                   "position": "50% 50%"
                 },
-                "meta": "WOCHENPLAN",
-                "href": "/wochenplan",
-                "label": "Woche planen"
+                "href": "/coaching#faq",
+                "title": "Gesundheit & Hormone",
+                "text": "Wir schauen auf Schlaf und Erholung. Fragen zu Hormonen oder Blutwerten besprichst du mit deiner Arztpraxis.",
+                "meta": "ERHOLUNG",
+                "label": "Gesundheit im Coaching"
               }
             ]
           },
@@ -465,7 +465,7 @@
           "visible": true,
           "content": {
             "heading": "Servus, ich bin Sebastian.",
-            "text": "Bodybuilding hat mir beigebracht, wie viel Struktur verändern kann. Heute helfe ich Männern, Kraft und Ernährung so zu organisieren, dass Beruf, Freunde und Familie Platz behalten.",
+            "text": "Im Bodybuilding habe ich gelernt, Belastung und Ernährung aufeinander abzustimmen. Heute nutze ich diese Erfahrung, um mit dir eine Routine zu finden, die auch in vollen Wochen funktioniert.",
             "image": {
               "src": "/media/project/flamingo-portrait.webp",
               "alt": "Sebastian Maschberger sitzt im weißen Hemd auf einer Treppe im Grünen",
@@ -582,7 +582,9 @@
                 "href": "/journal/der-kleine-plan",
                 "label": "Lesen"
               }
-            ]
+            ],
+            "primaryLabel": "Trainingswoche planen",
+            "primaryHref": "/wochenplan"
           },
           "design": {
             "theme": "light",
@@ -722,7 +724,7 @@
       "translationKey": "coaching",
       "seo": {
         "title": "1:1 Online-Coaching | Sebastian Maschberger",
-        "description": "Persönliche Trainingsplanung, Ernährung ohne Dogmen und Unterstützung bei Energie und Erholung im Alltag. Online-Coaching für Männer ab 30.",
+        "description": "Persönliches Coaching für Männer ab 30. Sebastian Maschberger begleitet dich bei Krafttraining, Ernährung und Erholung mit einem Plan für deinen Alltag.",
         "image": "/media/project/training.webp"
       },
       "sections": [
@@ -732,8 +734,8 @@
           "name": "Auftakt",
           "visible": true,
           "content": {
-            "heading": "Ein Trainingsplan für dein Leben.",
-            "text": "Ich begleite dich dabei, stärker zu werden, Übungen sicher zu wiederholen und Training in deinen Alltag einzubauen.",
+            "heading": "Personal Training für Männer ab 30",
+            "text": "Dein Plan verbindet Krafttraining, Ernährung und Erholung. In den Check-ins schauen wir, wie er sich im Alltag bewährt und was wir anpassen können.",
             "subheading": "1:1 ONLINE",
             "image": {
               "src": "/media/project/training.webp",
@@ -766,24 +768,24 @@
           "name": "Was zur Begleitung gehört",
           "visible": true,
           "content": {
-            "heading": "Was zur Begleitung gehört",
+            "heading": "So arbeiten wir an deinem Ziel",
             "items": [
               {
                 "id": "training",
                 "title": "Trainingsplanung",
-                "text": "Übungen, Umfang und Trainingstage passen zu deiner Erfahrung und zu der Ausstattung, die du nutzen kannst.",
+                "text": "Wir wählen Übungen, Trainingstage und Umfang passend zu deinem Ziel. Wenn du stärker werden oder nach einer Pause wieder einsteigen willst, weißt du, wo du anfängst.",
                 "icon": "Dumbbell"
               },
               {
                 "id": "food",
                 "title": "Ernährung im Alltag",
-                "text": "Wir wählen Mahlzeiten und Routinen, die bei der Arbeit, zu Hause oder unterwegs funktionieren.",
+                "text": "Wir halten fest, welche Mahlzeiten dir den Tag erleichtern und welche Optionen du an langen Arbeitstagen hast.",
                 "icon": "Utensils"
               },
               {
                 "id": "feedback",
                 "title": "Check-ins",
-                "text": "Wir besprechen Fortschritte und Hürden. Wenn sich deine Woche verändert, passen wir den Plan an.",
+                "text": "Bei den Check-ins schauen wir auf deine Einheiten, deine Energie und die Tage, an denen der Plan schwer umzusetzen ist.",
                 "icon": "ListChecks"
               }
             ]
@@ -872,12 +874,12 @@
         },
         {
           "id": "energie-erholung",
-          "name": "Training, Energie und Erholung im Alltag",
+          "name": "Energie & Fokus in deiner Woche",
           "type": "richtext",
           "visible": true,
           "content": {
-            "heading": "Training, Energie und Erholung im Alltag",
-            "text": "Wenn Arbeit und Training gleichzeitig viel fordern, schauen wir zuerst auf deine Woche. Wann kannst du trainieren, wann kommt das Essen zu kurz und wann hast du Zeit zur Erholung?",
+            "heading": "Energie & Fokus in deiner Woche",
+            "text": "Wenn Arbeit und Training gleichzeitig viel fordern, schauen wir auf die ganze Woche. Wo passt eine kurze Einheit hinein? Welche Mahlzeit fällt öfter aus? Wann hast du Zeit zur Erholung?",
             "items": [
               {
                 "id": "rhythm",
@@ -888,11 +890,6 @@
                 "id": "recovery",
                 "title": "Essen und Erholung mitplanen",
                 "text": "Wir schauen, welche Mahlzeit dich im Alltag trägt und wann du abends zur Ruhe kommst. Beim nächsten Check-in besprechen wir, was sich tatsächlich umsetzen ließ."
-              },
-              {
-                "id": "medical",
-                "title": "Fragen zu Hormonen und Blutwerten",
-                "text": "Wenn du Ergebnisse aus einem Bluttest besprechen möchtest oder Beschwerden hast, ist deine Arztpraxis die richtige Anlaufstelle. Im Coaching arbeiten wir an deinen Routinen für Training, Ernährung und Erholung."
               }
             ]
           },
@@ -919,6 +916,11 @@
           "content": {
             "heading": "Passt das zu mir?",
             "items": [
+              {
+                "id": "health-and-hormones",
+                "title": "Welche Rolle spielen Hormone und Blutwerte?",
+                "text": "Im Coaching arbeiten wir an Training, Ernährung, Schlaf und Erholung. Wenn dich Beschwerden oder Fragen zu Hormonen oder Blutwerten beschäftigen, besprich sie mit deiner Arztpraxis."
+              },
               {
                 "id": "q1",
                 "title": "Muss ich schon trainieren?",
@@ -994,7 +996,7 @@
       "translationKey": "nutrition",
       "seo": {
         "title": "Ernährung im Alltag | Sebastian Maschberger",
-        "description": "Ernährungsberatung mit alltagstauglichen Mahlzeiten und flexibler Planung, auch bei Beruf, Familie und langen Arbeitstagen.",
+        "description": "Ernährungsberatung für Männer ab 30 mit Sebastian Maschberger. Finde Mahlzeiten und Routinen, die zu Training, Beruf und Alltag passen.",
         "image": "/media/project/food.webp"
       },
       "sections": [
@@ -1004,8 +1006,8 @@
           "name": "Auftakt",
           "visible": true,
           "content": {
-            "heading": "Ernährung darf einfach sein.",
-            "text": "Wir bauen eine Routine, mit der du regelmäßig und gerne isst. Du behältst deinen Spielraum für Einladungen, Reisen und hektische Tage.",
+            "heading": "Ernährung ohne Dogmen.",
+            "text": "Wir schauen, welche Mahlzeiten dich satt machen, dir schmecken und auch an vollen Tagen funktionieren. Daraus bauen wir eine Routine mit Platz für Reisen, Schichtarbeit und Restaurantbesuche.",
             "subheading": "ERNÄHRUNGSBERATUNG",
             "image": {
               "src": "/media/project/food.webp",
@@ -2322,7 +2324,7 @@
           "visible": true,
           "content": {
             "heading": "Erzähl mir, wo du gerade stehst.",
-            "text": "Schreib mir, was du verändern willst und wann du gut erreichbar bist. Im kostenlosen Erstgespräch klären wir, was sinnvoll ist.",
+            "text": "Womit möchtest du anfangen? Vielleicht willst du Kraft aufbauen, deine Mahlzeiten besser planen oder in einer vollen Woche Zeit für Training und Erholung finden. Im kostenlosen Erstgespräch klären wir deinen Ausgangspunkt.",
             "subheading": "KOSTENLOSES KENNENLERNEN",
             "image": {
               "src": "/media/project/sebastian.webp",
@@ -2810,7 +2812,7 @@
       "translationKey": "home",
       "seo": {
         "title": "Sebastian Maschberger · Coaching for men over 30",
-        "description": "Online strength and nutrition coaching. Build a routine that fits your life with IFBB Elite Pro Sebastian Maschberger.",
+        "description": "Personal training for men over 30 with IFBB Elite Pro Sebastian Maschberger. Build strength, manage everyday energy and make eating well fit your life.",
         "image": "/media/project/hero.webp"
       },
       "sections": [
@@ -2820,9 +2822,9 @@
           "name": "Introduction",
           "visible": true,
           "content": {
-            "heading": "Get stronger.\nStay yourself.",
-            "text": "Strength and nutrition coaching for men over 30. With a plan that fits your life.",
-            "subheading": "PERSONAL COACHING",
+            "heading": "Get stronger.\nFeel better.",
+            "text": "Personal training and nutrition coaching for men over 30. Together we plan training, meals and recovery around the week you actually have.",
+            "subheading": "PERSONAL TRAINING · MEN OVER 30",
             "caption": "Sebastian Maschberger · IFBB Elite Pro",
             "image": {
               "src": "/media/project/hero.webp",
@@ -2894,26 +2896,39 @@
           "name": "What we work on together",
           "visible": true,
           "content": {
-            "heading": "What we work on together",
-            "text": "We start with your real week and decide which changes you can make consistently.",
+            "heading": "Coaching that fits your life",
+            "text": "We start with the area where you could use the most support.",
             "items": [
               {
                 "id": "strength",
-                "title": "Training with structure",
-                "text": "Strength training built around your goals, experience and available time.",
+                "title": "Strength & fitness",
+                "text": "Build strength with exercises and a workload suited to your goals, your schedule and your experience.",
                 "image": {
                   "src": "/media/project/strength.webp",
                   "alt": "Dumbbell in a strength studio",
                   "position": "50% 50%"
                 },
-                "meta": "STRENGTH",
-                "href": "/en/coaching",
-                "label": "Explore coaching"
+                "meta": "TRAINING",
+                "href": "/en/coaching#umfang",
+                "label": "Explore strength coaching"
+              },
+              {
+                "id": "energy-focus",
+                "title": "Energy & focus",
+                "text": "Find a rhythm for training, meals and breaks that holds up on long workdays.",
+                "image": {
+                  "src": "/media/project/rhythm.webp",
+                  "alt": "An athlete prepares for a strength exercise at the gym",
+                  "position": "50% 50%"
+                },
+                "meta": "EVERYDAY ROUTINES",
+                "href": "/en/coaching#energie-erholung",
+                "label": "Explore energy and recovery"
               },
               {
                 "id": "nutrition",
-                "title": "Nutrition with flexibility",
-                "text": "Simple routines for workdays, meals out and everything in between.",
+                "title": "Nutrition without rigid rules",
+                "text": "Plan meals with room for shift work, trips and dinners with friends.",
                 "image": {
                   "src": "/media/project/food.webp",
                   "alt": "Bowl with vegetables, grains and a source of protein",
@@ -2921,33 +2936,20 @@
                 },
                 "meta": "NUTRITION",
                 "href": "/en/nutrition",
-                "label": "Explore nutrition"
+                "label": "Explore nutrition coaching"
               },
               {
-                "id": "energy-focus",
-                "title": "Energy & focus",
-                "text": "We look at how training, meals and recovery fit into your week, even when your calendar is full.",
-                "image": {
-                  "src": "/media/project/rhythm.webp",
-                  "alt": "An athlete prepares for a strength exercise at the gym",
-                  "position": "50% 50%"
-                },
-                "meta": "ENERGY & FOCUS",
-                "href": "/en/coaching#energie-erholung",
-                "label": "Energy in everyday life"
-              },
-              {
-                "id": "plan",
-                "title": "Build a week that fits",
-                "text": "Find a starting point that fits even a busy week.",
+                "id": "health-recovery",
                 "image": {
                   "src": "/media/project/routine.webp",
                   "alt": "Training notes and coffee on a bench",
                   "position": "50% 50%"
                 },
-                "meta": "WEEKLY PLAN",
-                "href": "/en/weekly-plan",
-                "label": "Plan my week"
+                "href": "/en/coaching#faq",
+                "title": "Health & hormones",
+                "text": "We work on sleep and recovery habits. Speak to your doctor about hormones or blood test results.",
+                "meta": "RECOVERY",
+                "label": "Read about health in coaching"
               }
             ]
           },
@@ -2972,7 +2974,7 @@
           "visible": true,
           "content": {
             "heading": "Hey, I’m Sebastian.",
-            "text": "Bodybuilding taught me how much good structure can change. Today I help men organise their training and nutrition while leaving room for work, friends and family.",
+            "text": "Bodybuilding taught me to plan training load and nutrition together. I put that experience to work helping you build a routine that holds up in busy weeks.",
             "image": {
               "src": "/media/project/flamingo-portrait.webp",
               "alt": "Sebastian Maschberger sits on an outdoor staircase in a white shirt surrounded by greenery",
@@ -3089,7 +3091,9 @@
                 "href": "/en/journal/a-smaller-plan",
                 "label": "Read"
               }
-            ]
+            ],
+            "primaryLabel": "Plan a training week",
+            "primaryHref": "/en/weekly-plan"
           },
           "design": {
             "theme": "light",
@@ -3229,7 +3233,7 @@
       "translationKey": "coaching",
       "seo": {
         "title": "1:1 online coaching | Sebastian Maschberger",
-        "description": "Personal training plans, flexible nutrition and support with everyday energy and recovery. Online coaching for men over 30.",
+        "description": "One-to-one coaching for men over 30. Sebastian Maschberger helps you plan strength training, nutrition and recovery around everyday life.",
         "image": "/media/project/training.webp"
       },
       "sections": [
@@ -3239,8 +3243,8 @@
           "name": "Introduction",
           "visible": true,
           "content": {
-            "heading": "A training plan that fits your life.",
-            "text": "I help you get stronger, practise movements confidently and make regular training fit your life.",
+            "heading": "Personal training for men over 30",
+            "text": "Your plan brings together strength training, nutrition and recovery. At check-ins we see how it fits into your life and what we can adjust.",
             "subheading": "1:1 ONLINE",
             "image": {
               "src": "/media/project/training.webp",
@@ -3273,24 +3277,24 @@
           "name": "What coaching includes",
           "visible": true,
           "content": {
-            "heading": "What coaching includes",
+            "heading": "How we work towards your goal",
             "items": [
               {
                 "id": "training",
                 "title": "Training plan",
-                "text": "The exercises, volume and schedule fit your experience and your access to equipment.",
+                "text": "We pick exercises, training days and workload to suit your goal. Whether you want to get stronger or return after a break, you know where to begin.",
                 "icon": "Dumbbell"
               },
               {
                 "id": "food",
                 "title": "Practical nutrition",
-                "text": "We choose meal habits that work at home, at work or on the road.",
+                "text": "We find meals that make your day easier and options you can use on the longest workdays.",
                 "icon": "Utensils"
               },
               {
                 "id": "feedback",
                 "title": "Check-ins",
-                "text": "We talk through progress and obstacles. When your week changes, the plan adapts.",
+                "text": "At check-ins we look at your sessions, your energy and the days when the plan is hard to follow.",
                 "icon": "ListChecks"
               }
             ]
@@ -3379,12 +3383,12 @@
         },
         {
           "id": "energie-erholung",
-          "name": "Training, energy and recovery in everyday life",
+          "name": "Energy & focus across your week",
           "type": "richtext",
           "visible": true,
           "content": {
-            "heading": "Training, energy and recovery in everyday life",
-            "text": "When work and training both demand a lot, we start with your week. When can you train, which meal is hardest to fit in, and when do you get time to recover?",
+            "heading": "Energy & focus across your week",
+            "text": "When work and training both ask a lot, we look at your whole week. Where could a shorter session fit? What meal gets skipped? When do you have time to recover?",
             "items": [
               {
                 "id": "rhythm",
@@ -3395,11 +3399,6 @@
                 "id": "recovery",
                 "title": "Make room for meals and recovery",
                 "text": "We look at which meal sustains you during the day and when you can unwind in the evening. At the next check-in, we talk about what you were able to put into practice."
-              },
-              {
-                "id": "medical",
-                "title": "Questions about hormones and blood tests",
-                "text": "If you want to discuss blood test results or you have symptoms, talk to your doctor. In coaching, we work on your training, nutrition and recovery routines."
               }
             ]
           },
@@ -3426,6 +3425,11 @@
           "content": {
             "heading": "Is it a good fit?",
             "items": [
+              {
+                "id": "health-and-hormones",
+                "title": "Where do hormones and blood tests fit in?",
+                "text": "In coaching we work on training, nutrition, sleep and recovery. If you have symptoms or questions about hormones or blood test results, speak to your doctor."
+              },
               {
                 "id": "q1",
                 "title": "Do I need gym experience?",
@@ -3501,7 +3505,7 @@
       "translationKey": "nutrition",
       "seo": {
         "title": "Practical nutrition | Sebastian Maschberger",
-        "description": "Nutrition coaching built around practical meals and flexible planning, even with work and family commitments.",
+        "description": "Nutrition coaching for men over 30 with Sebastian Maschberger. Find meals and routines that fit your training, work and everyday life.",
         "image": "/media/project/food.webp"
       },
       "sections": [
@@ -3511,8 +3515,8 @@
           "name": "Introduction",
           "visible": true,
           "content": {
-            "heading": "Eating well can be simple.",
-            "text": "Build a food routine you enjoy and can repeat, with room for meals out, travel and busy days.",
+            "heading": "Nutrition without rigid rules.",
+            "text": "We find meals you enjoy that keep you satisfied and work on busy days. Then we build a routine with room for travel, shift work and eating out.",
             "subheading": "NUTRITION COACHING",
             "image": {
               "src": "/media/project/food.webp",
@@ -4829,7 +4833,7 @@
           "visible": true,
           "content": {
             "heading": "Tell me where you’re at.",
-            "text": "Tell me what you want to change and when you are available. We’ll work out what makes sense on a free intro call.",
+            "text": "Where would you like to start? You might want to build strength, plan meals more easily or find room for training and recovery in a full week. On a free intro call we work out where to begin.",
             "subheading": "FREE INTRO CALL",
             "image": {
               "src": "/media/project/sebastian.webp",
