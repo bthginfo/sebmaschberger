@@ -1,11 +1,16 @@
-.layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:18px; }
+.layout { display:grid; grid-template-columns:minmax(0,1fr); gap:18px; }
+.sections { display:flex; flex-wrap:wrap; gap:4px; padding:3px; margin-block:16px; width:fit-content; border:1px solid var(--cms-border,#d5ded8); border-radius:12px; background:#eef2ef; }
+.sections button { display:flex; align-items:center; gap:6px; min-height:44px; padding:5px 13px; border:0; border-radius:8px; font:inherit; font-weight:580; color:#3a5043; background:transparent; }
+.sections button[aria-pressed="true"] { color:#183f2c; background:white; box-shadow:0 1px 4px #203a2a29; }
+.sections button:focus-visible { outline:2px solid #236947; outline-offset:-2px; }
+.sections button span { font-size:.8em; }
+.panel[hidden] { display:none; }
+@media (forced-colors:active) { .sections button[aria-pressed="true"] { outline:2px solid Highlight; outline-offset:-2px; } }
 .panel { min-width:0; padding:clamp(15px,3vw,26px); border:1px solid var(--cms-border,#dae0d7); border-radius:17px; background:var(--cms-panel,#fff); }
 .title { display:flex; gap:9px; align-items:center; margin-bottom:16px; }
 .title h2 { margin:0; font-size:1.24rem; }
 .form { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); align-items:end; gap:9px; margin-bottom:18px; }
 .form button { grid-column:1/-1; justify-self:start; }
-.sample { grid-column:1/-1; display:flex; align-items:center; gap:8px; min-height:44px; font-size:.86rem; }
-.sample input { width:17px; height:17px; flex:none; }
 .list { margin:12px 0 0; list-style:none; padding:0; display:grid; gap:8px; }
 .list li { display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; justify-content:space-between; border:1px solid var(--cms-border,#dae0d7); border-radius:11px; padding:11px; }
 .list li>div { min-width:0; overflow-wrap:anywhere; }
@@ -13,3 +18,6 @@
 .badge { font-size:.76rem; padding:5px 8px; border-radius:20px; background:#d6edda; color:#243c2b; }
 @media(max-width:870px){.layout { grid-template-columns:minmax(0,1fr); }}
 @media(max-width:420px){.form { grid-template-columns:minmax(0,1fr); }}
+
+.sample { grid-column:1/-1; display:flex; align-items:center; gap:8px; min-height:44px; font-size:.86rem; }
+.sample input { width:17px; height:17px; flex:none; }

@@ -14,22 +14,27 @@ export function AppointmentsManager() {
   const t=(de:string,en:string)=>language==='en'?en:de;
   const [data,setData]=useState<Snapshot>();
   const [busy,setBusy]=useState(false),[error,setError]=useState('');
+  const [section,setSection]=useState<'slots'|'bookings'>('slots');
+  const [refresh,setRefresh]=useState(0);
+  const [feedback,setFeedback]=useState<'add'|'remove'|'seen'>();
   useEffect(()=>{
     const controller=new AbortController();
-    void api<Snapshot>('/api/admin/consultations',{signal:controller.signal}).then(setData).catch(reason=>{if(!controller.signal.aborted)setError(errorMessage(reason));});
+    setError('');
+    void api<Snapshot>('/api/admin/consultations',{signal:controller.signal}).then(snapshot=>{if(!controller.signal.aborted)setData(snapshot);}).catch(reason=>{if(!controller.signal.aborted)setError(errorMessage(reason));});
     return()=>controller.abort();
-  },[]);
-  async function update(values:Record<string,unknown>) {
-    if(busy)return;
-    setBusy(true);setError('');
-    try {setData(await api<Snapshot>('/api/admin/consultations',{method:'POST',body:JSON.stringify(values)}));}
-    catch(reason){setError(errorMessage(reason));}
+  },[refresh]);
+  async function update(values:{action:'add'|'remove'|'seen';slot?:{time:string;minutes:number;sample?:boolean};id?:string}) {
+    if(busy||!data)return false;
+    setBusy(true);setError('');setFeedback(undefined);
+    try {setData(await api<Snapshot>('/api/admin/consultations',{method:'POST',body:JSON.stringify(values)}));setFeedback(values.action);return true;}
+    catch(reason){setError(errorMessage(reason));return false;}
     finally{setBusy(false);}
   }
   async function add(event:FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const fields=new FormData(event.currentTarget);
-    await update({action:'add',slot:{time:String(fields.get('time')),minutes:Number(fields.get('minutes')),sample:fields.has('sample')}});
+    const form=event.currentTarget;
+    const fields=new FormData(form);
+    if(await update({action:'add',slot:{time:String(fields.get('time')),minutes:Number(fields.get('minutes')),sample:fields.has('sample')}}))form.reset();
   }
   const unread=data?.bookings.filter(item=>item.unread).length??0;
   const taken=new Set(data?.bookings.filter(item=>item.status==='confirmed').map(item=>item.slot.id));
@@ -41,8 +46,14 @@ export function AppointmentsManager() {
     <div className="cms-page-heading"><div><h1>{t('Termine','Appointments')}</h1><p>{t('Geben Sie Zeitfenster frei und sehen Sie neue Buchungen, Umbuchungen und Absagen.','Open time slots and review new bookings, changes and cancellations.')}</p></div></div>
     {error&&<Notice tone="error">{error}</Notice>}
     {data&&!data.smtp&&<Notice>{t('E-Mail-Benachrichtigungen können Sie unter Einstellungen → E-Mail-Versand verbinden. Gäste erhalten ihren persönlichen Terminlink auch direkt nach der Buchung.','Connect email notifications under Settings → Email. Guests also receive their appointment link directly after booking.')}</Notice>}
+    {!data && (error ? <Button onClick={()=>setRefresh(value=>value+1)}>{t('Erneut versuchen','Try again')}</Button> : <p role="status">{t('Termine werden geladen …','Loading appointments…')}</p>)}
+    <div className={styles.sections} role="group" aria-label={t('Terminverwaltung','Appointment management')}>
+      <button type="button" aria-pressed={section==='slots'} onClick={()=>setSection('slots')}>{t('Zeitfenster','Availability')}</button>
+      <button type="button" aria-pressed={section==='bookings'} onClick={()=>setSection('bookings')}>{t('Buchungen','Bookings')}{unread>0 && <span>{unread} {t('neu','new')}</span>}</button>
+    </div>
+    {feedback && <Notice tone="success">{feedback==='add'?t('Zeitfenster freigegeben.','Time slot opened.'):feedback==='remove'?t('Zeitfenster entfernt.','Time slot removed.'):t('Buchung als gelesen markiert.','Booking marked as read.')}</Notice>}
     <div className={styles.layout}>
-      <section className={styles.panel}>
+      <section className={styles.panel} hidden={section!=='slots'}>
         <div className={styles.title}><CalendarDays size={21} aria-hidden="true"/><h2>{t('Zeitfenster','Availability')}</h2></div>
         <form className={styles.form} onSubmit={add}>
           <Field label={t('Datum und Uhrzeit in Berlin','Date and time in Berlin')}><Input type="datetime-local" name="time" required/></Field>
@@ -56,7 +67,7 @@ export function AppointmentsManager() {
           {!taken.has(slot.id)&&<Button disabled={busy} onClick={()=>void update({action:'remove',id:slot.id})}><Trash2 size={15} aria-hidden="true"/>{t('Entfernen','Remove')}</Button>}
         </li>)}</ul>
       </section>
-      <section className={styles.panel}>
+      <section className={styles.panel} hidden={section!=='bookings'}>
         <div className={styles.title}><Clock3 size={21} aria-hidden="true"/><h2>{t('Buchungen','Bookings')}</h2>{unread>0&&<span className={styles.badge}>{unread} {t('neu','new')}</span>}</div>
         {data&&!data.bookings.length&&<p>{t('Neue Buchungen erscheinen hier.','New bookings will appear here.')}</p>}
         <ul className={styles.list}>{data?.bookings.map(booking=><li key={booking.id}>

@@ -1,0 +1,9 @@
+.navigation { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-block:12px 24px; padding:6px 0; border-block:1px solid #d9e2dc; }
+.navigation button,.navigation label { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:6px 12px; border-radius:8px; color:#3b5145; font:inherit; font-size:.875rem; }
+.navigation button { background:transparent; border:1px solid transparent; }
+.navigation button[aria-current="page"] { background:#e5efe8; border-color:#bdcfc2; color:#1e5035; font-weight:650; }
+.navigation label { flex-wrap:wrap; margin-inline-start:auto; font-weight:600; }
+.navigation select { min-width:0; min-height:44px; padding:5px 8px; font:inherit; border:1px solid #bac9bf; border-radius:7px; background:#fff; color:#243d2d; }
+.navigation :is(button,select):focus-visible { outline:2px solid #236947; outline-offset:-2px; }
+@media (max-width:640px) { .navigation label { width:100%; margin:0; padding:3px 4px; } .navigation select { flex:1; } }
+@media (forced-colors:active) { .navigation button[aria-current="page"] { outline:2px solid Highlight; outline-offset:-2px; } }

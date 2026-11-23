@@ -14,9 +14,11 @@ import {ApiError,Button,EmptyState,Field,Input,Notice,SearchField,Select,Textare
 import {commercePageRoutes} from '@/lib/commerce/pages';
 import {ImageEditor} from './media-manager';
 import '@/styles/commerce-admin.css';
+import shopStyles from './shop-private-navigation.module.css';
 import { useAdminLanguage } from "@/components/admin/admin-language";
 
 type Props={liveStatus?:boolean;onSetLive?:(value:boolean)=>void;liveBusy?:boolean;isolated?:boolean;ordersOnly?:boolean;content:WebsiteContent;savedContent?:WebsiteContent;media?:MediaAsset[];onUpload?:(file:File)=>Promise<MediaAsset>;onChange:(value:WebsiteContent)=>void;onSave:()=>Promise<void>;onOpenEditor?:()=>void;onOpenTemplates?:()=>void;onOpenSettings?:()=>void;dirty:boolean;busy:boolean};
+const setupAreas=[{id:'setup',label:'Einrichtung'},{id:'groups',label:'Gruppen'},{id:'taxes',label:'Steuern'},{id:'shipping',label:'Versand'}] as const;
 type Tab='products'|'orders'|'setup'|'groups'|'taxes'|'shipping';
 const emptyConfig:NonNullable<SiteModules['commerce']>={enabled:false,currency:'EUR',shippingCents:0,products:[]};
 const money=(cents:number)=>Number.isFinite(cents)?new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(cents/100):'Preis prüfen';
@@ -33,6 +35,7 @@ export function CommerceManager({liveStatus,onSetLive,liveBusy,isolated=false,or
  const english = language === "en";
  const [tab,setTab]=useState<Tab>(ordersOnly?'orders':'products'),[snapshot,setSnapshot]=useState<CommerceAdminSnapshot|null>(null),[loading,setLoading]=useState(!isolated),[loadError,setLoadError]=useState(''),[error,setError]=useState(''),[notice,setNotice]=useState(''),[failedUpload,setFailedUpload]=useState<{productId:string;file:File}|null>(null);
  const [pending,setPending]=useState<Record<string,string>>({}),[numberDrafts,setNumberDrafts]=useState<Record<string,string>>({}),[variantDrafts,setVariantDrafts]=useState<Record<string,string>>({}),[tracking,setTracking]=useState<Record<string,string>>({}),[search,setSearch]=useState(''),[orderFilter,setOrderFilter]=useState('all'),[limit,setLimit]=useState(50);
+ function openArea(next:Tab) { setTab(next); setError(''); setNotice(''); }
  const [selectedProduct,setSelectedProduct]=useState(''),[productSearch,setProductSearch]=useState('');
  const selectedId=config.products.some(p=>p.id===selectedProduct)?selectedProduct:config.products[0]?.id;
  const ruleIssues=catalogRuleIssues(config);
@@ -66,7 +69,20 @@ export function CommerceManager({liveStatus,onSetLive,liveBusy,isolated=false,or
       hint={english ? "Changes take effect immediately." : "Die Änderung ist sofort live."}
       checked={liveStatus === true} disabled={liveBusy} onChange={enabled=>onSetLive?.(enabled)} />
   </div>}
-  {ordersOnly?null:isolated?<Notice>{t("Lokales Shop-Beispiel. Es werden keine Zahlungen ausgelöst, Dateien ausgeliefert oder echten Bestellungen angelegt.")}</Notice>:<nav className="cms-commerce-tabs" aria-label={t("Shop-Bereiche")}>{([{id:'products',label:'Produkte',icon:Package},{id:'groups',label:'Gruppen',icon:Package},{id:'taxes',label:'Steuern',icon:Settings2},{id:'shipping',label:'Versand',icon:Package},{id:'orders',label:'Bestellungen',icon:ShoppingBag},{id:'setup',label:'Einrichtung',icon:Settings2}] as const).map(item=><button type="button" key={item.id} aria-current={tab===item.id?'page':undefined} onClick={()=>{setTab(item.id);setError('');setNotice('');}}><item.icon size={17}/>{t(item.label)}{item.id==='orders'&&snapshot?.orders.length?<span>{snapshot.orders.length}</span>:null}</button>)}</nav>}
+  {ordersOnly?null:isolated?<Notice>{t("Lokales Shop-Beispiel. Es werden keine Zahlungen ausgelöst, Dateien ausgeliefert oder echten Bestellungen angelegt.")}</Notice>:<nav className={shopStyles.navigation} aria-label={t("Shop-Bereiche")}>
+      {([{id:'products',label:'Produkte',icon:Package},{id:'orders',label:'Bestellungen',icon:ShoppingBag}] as const).map(item =>
+        <button type="button" key={item.id} aria-current={tab===item.id?'page':undefined} onClick={() => openArea(item.id)}>
+          <item.icon size={17} aria-hidden="true" />{t(item.label)}{item.id==='orders' && Boolean(snapshot?.orders.length) && <span>{snapshot?.orders.length}</span>}
+        </button>)}
+      <label><Settings2 size={17} aria-hidden="true" /><span>{english ? 'Shop settings' : 'Shop-Einstellungen'}</span>
+        <select value={tab==='products'||tab==='orders'?'':tab} onChange={event => {
+          const item=setupAreas.find(area => area.id===event.target.value); if(item)openArea(item.id);
+        }}>
+          <option value="" disabled>{english ? 'Select area' : 'Bereich wählen'}</option>
+          {setupAreas.map(area => <option key={area.id} value={area.id}>{t(area.label)}</option>)}
+        </select>
+      </label>
+    </nav>}
   {error&&<Notice tone="error">{t(error)}</Notice>}{notice&&<Notice tone="success">{t(notice)}</Notice>}
   {!isolated&&loadError&&<Notice tone="error"><div className="cms-commerce-notice-row"><span>{t("Der aktuelle Shopstatus konnte nicht geladen werden.") + " "}{loadError}</span><Button busy={loading} onClick={()=>void refresh().catch(()=>undefined)}>{t("Erneut laden")}</Button></div></Notice>}
   {(tab==='groups'||tab==='taxes'||tab==='shipping')&&<CommerceRules tab={tab} config={config} onChange={change}/>}

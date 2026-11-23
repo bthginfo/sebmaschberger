@@ -1,7 +1,7 @@
 "use client";
 
-import { Archive, ArrowLeft, CalendarDays, ChevronLeft, ChevronRight, Download, Flag, LayoutGrid, LoaderCircle, Mail, Newspaper, Palette, Plus, RefreshCw, Shield, Target, Trash2, UserPlus, Users, type LucideIcon } from "lucide-react";
-import { useEffect, useId, useRef, useState } from "react";
+import { Archive, ArrowLeft, CalendarDays, Download, Flag, LayoutGrid, LoaderCircle, Mail, Newspaper, Palette, Plus, RefreshCw, Shield, Target, Trash2, UserPlus, Users, type LucideIcon } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { AdminLanguageSwitch, useAdminLanguage } from "@/components/admin/admin-language";
 import { ClubMessages } from "@/components/club/messages/club-messages";
 import type { ClubPerson, ClubRsvp, ClubTraining, ClubWorkspace } from "@/lib/club/model";
@@ -77,10 +77,7 @@ export function ClubAdmin({ initial, initialView, initialPlayId, initialDetail }
   const [notice, setNotice] = useState<Status | null>(null);
   const [problem, setProblem] = useState<Problem | null>(null);
   const [busy, setBusy] = useState(false);
-  const [navOverflow, setNavOverflow] = useState({ before: false, after: false });
   const lock = useRef(false);
-  const navRail = useRef<HTMLUListElement>(null);
-  const navId = useId();
   const owner = initial.actor.owner;
   const rootHref = clubManagementHref(owner);
   const designAllowed = canDesign(workspace);
@@ -92,7 +89,8 @@ export function ClubAdmin({ initial, initialView, initialPlayId, initialDetail }
   const canAssign = canAssignClubPlays(workspace);
   const canCreateAssignment = canAssign && workspace.plays.some(play => play.canAssign);
   const showTeamFilter = teamViews.some(entry => entry === view) && workspace.teams.length > 1;
-  const canScrollNav = navOverflow.before || navOverflow.after;
+  const availableViews = clubViews.filter(entry =>
+    (entry !== "appearance" || designAllowed) && (entry !== "tactics" || tacticsAllowed) && (entry !== "messages" || messagesAllowed));
   const exportFixtures = !initialDetail && view === "fixtures" && isClubWide(workspace.actor);
   const fixturesExportHref = "/api/club/fixtures-export?" + (owner ? "scope=cms&" : "") + "lang=" + language;
 
@@ -112,42 +110,6 @@ export function ClubAdmin({ initial, initialView, initialPlayId, initialDetail }
     window.addEventListener("popstate", applyLocation);
     return () => window.removeEventListener("popstate", applyLocation);
   }, [initial, initialDetail]);
-
-  useEffect(() => {
-    const rail = navRail.current;
-    if (!rail) return;
-    function update() {
-      if (!rail) return;
-      const before = rail.scrollLeft > 2;
-      const after = rail.scrollWidth - rail.clientWidth - rail.scrollLeft > 2;
-      setNavOverflow(previous => previous.before === before && previous.after === after ? previous : { before, after });
-    }
-    const observer = new ResizeObserver(update);
-    observer.observe(rail);
-    rail.addEventListener("scroll", update, { passive: true });
-    update();
-    return () => {
-      observer.disconnect();
-      rail.removeEventListener("scroll", update);
-    };
-  }, [designAllowed, language, messagesAllowed, tacticsAllowed]);
-
-  useEffect(() => {
-    const rail = navRail.current;
-    const current = rail?.querySelector('[aria-current="page"]');
-    if (!rail || !current || rail.scrollWidth <= rail.clientWidth) return;
-    const bounds = rail.getBoundingClientRect();
-    const item = current.getBoundingClientRect();
-    if (item.left < bounds.left) rail.scrollLeft += item.left - bounds.left - 4;
-    else if (item.right > bounds.right) rail.scrollLeft += item.right - bounds.right + 4;
-  }, [canScrollNav, language, view]);
-
-  function browseNavigation() {
-    const rail = navRail.current;
-    if (!rail) return;
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    rail.scrollTo({ left: navOverflow.after ? rail.scrollWidth : 0, behavior: reducedMotion ? "instant" : "smooth" });
-  }
 
   function navigate(next: ClubView, team = "") {
     if (lock.current) return;
@@ -345,8 +307,15 @@ export function ClubAdmin({ initial, initialView, initialPlayId, initialDetail }
 
     <div className={styles.layout}>
       <nav className={styles.navigation} aria-label={t("Vereinsbereiche", "Club workspace sections")}>
-        <ul id={navId} ref={navRail}>
-          {clubViews.filter(entry => (entry !== "appearance" || designAllowed) && (entry !== "tactics" || tacticsAllowed) && (entry !== "messages" || messagesAllowed)).map(entry => {
+        <label className={styles.mobileSection}>
+          <span>{t("Vereinsbereich", "Club section")}</span>
+          <select value={view} onChange={event => {
+            const next = availableViews.find(entry => entry === event.target.value);
+            if (next) navigate(next);
+          }}>{availableViews.map(entry => <option key={entry} value={entry}>{t(...viewLabels[entry])}</option>)}</select>
+        </label>
+        <ul>
+          {availableViews.map(entry => {
             const Icon = sections[entry].icon;
             const href = rootHref + (entry === "overview" ? "" : "?view=" + entry);
             return <li key={entry}><a href={href} aria-current={view === entry ? "page" : undefined}
@@ -357,9 +326,6 @@ export function ClubAdmin({ initial, initialView, initialPlayId, initialDetail }
             </a></li>;
           })}
         </ul>
-        {canScrollNav && <IconAction className={styles.navOverflow} icon={navOverflow.after ? ChevronRight : ChevronLeft}
-          aria-controls={navId} label={navOverflow.after ? t("Weitere Vereinsbereiche anzeigen", "Show more club sections") : t("Vorherige Vereinsbereiche anzeigen", "Show previous club sections")}
-          onClick={browseNavigation} />}
       </nav>
 
       <main className={styles.main} aria-busy={busy || undefined}>

@@ -410,3 +410,12 @@
   .workspace :where(button, input) { transition: none; }
   .sheet[open], .button[aria-busy="true"] > svg, .spin > svg { animation: none; }
 }
+
+.mobileSection { display: none; }
+@media (max-width: 800px) {
+  .navigation .mobileSection { display: flex; width: 100%; gap: 12px; align-items: center; }
+  .mobileSection > span { color: var(--muted); font-size: .825rem; font-weight: 650; }
+  .mobileSection select { flex: 1; min-width: 0; min-height: 44px; padding: 6px 9px; border: 1px solid var(--line); border-radius: 8px; background: white; color: var(--ink); font-weight: 650; }
+  .navigation { display: block; }
+  .navigation ul { display: none; }
+}

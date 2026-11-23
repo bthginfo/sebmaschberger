@@ -253,6 +253,7 @@ export function mountWorkspaceAssistant(root: HTMLElement, initialCopy: Workspac
         } else feedback(message, true);
       }
     } finally {
+      const focusWasOnStop = document.activeElement === stop;
       if (questionRequest) {
         activeQuestion = null;
         stop.hidden = true;
@@ -262,7 +263,7 @@ export function mountWorkspaceAssistant(root: HTMLElement, initialCopy: Workspac
       if (alive) {
         setBusy(false);
         discardDetachedLabels();
-        if (questionRequest?.signal.aborted) question.focus({ preventScroll: true });
+        if (questionRequest && focusWasOnStop) question.focus({ preventScroll: true });
       }
     }
   }
@@ -424,7 +425,13 @@ export function mountWorkspaceAssistant(root: HTMLElement, initialCopy: Workspac
       output.replaceChildren(title, answer, ...reply.sources.map(facts => factsCard(facts, reply.mode === 'guided')));
       renderHistory();
       updateReview(reply.approval);
-      if (!reply.approval) output.scrollIntoView({ block: 'nearest' });
+      if (!reply.approval) {
+        if (document.activeElement === stop) {
+          title.tabIndex = -1;
+          title.focus({ preventScroll: true });
+        }
+        output.scrollIntoView({ block: 'nearest' });
+      }
       if (question.value === value) question.value = '';
     });
   }
@@ -445,10 +452,10 @@ export function mountWorkspaceAssistant(root: HTMLElement, initialCopy: Workspac
     void readFacts({ area: scope.value, search: search.value.trim(), limit: 8 });
   });
   recent.hidden = true;
-  setBusy(true);
-  feedback('Arbeitsbereiche werden geladen …');
 
   async function start() {
+    setBusy(true);
+    feedback('Arbeitsbereiche werden geladen …');
     try {
       const data = await request<WorkspaceCatalog>(endpoint, { signal: abort.signal });
       if (!alive) return;
@@ -473,12 +480,14 @@ export function mountWorkspaceAssistant(root: HTMLElement, initialCopy: Workspac
       if (window.matchMedia('(pointer: fine)').matches) question.focus({ preventScroll: true });
     } catch (error) {
       if (!alive) return;
+      setBusy(false);
       feedback(error instanceof Error ? error.message : 'Der Arbeitsbereich konnte nicht geladen werden.', true);
       const retry = button('Erneut laden', () => {
         retry.remove();
         void start();
       });
       output.replaceChildren(retry);
+      if (root.contains(document.activeElement) || document.activeElement === document.body) retry.focus({ preventScroll: true });
     }
   }
   void start();

@@ -937,3 +937,13 @@
   .playButton svg { animation: coach-transport-icon 170ms ease-out; }
   @keyframes coach-transport-icon { from { opacity: .55; transform: scale(.85); } to { opacity: 1; transform: scale(1); } }
 }
+
+.libraryTools { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-block: 0 20px; }
+.libraryTools .filters { margin: 0; }
+.libraryTools .search { min-height: 44px; }
+.libraryTools .filters button { min-height: 44px; }
+.libraryCollection .collectionTitle [role="status"] { font-size: .9rem; color: var(--secondary-ink); font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) {
+  .libraryTools .search { width: 100%; }
+  .libraryTools .filters { gap: 4px; }
+}

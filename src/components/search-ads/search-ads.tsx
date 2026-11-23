@@ -36,16 +36,18 @@ export function SearchAds(){
   const [saved,setSaved]=useState<CampaignRecord|null>(null),[draft,setDraft]=useState<Campaign|null>(null);
   const [groupId,setGroupId]=useState(''),[tab,setTab]=useState<Tab>('keywords'),[feedback,setFeedback]=useState([] as [string,boolean]|[]);
   const [busy,setBusy]=useState(false),[approval,setApproval]=useState(false);
+  const [attempt,setAttempt]=useState(0);
   const [planText,setPlanText]=useState<Record<string,string>>({}),[negativeText,setNegativeText]=useState<string|null>(null);
   useEffect(()=>{
     const abort=new AbortController();
     void fetch(endpoint,{cache:'no-store',signal:abort.signal}).then(async response=>{
       const value=await response.json();
       if(!response.ok)throw Error(value.error);
-      setSaved(value);setDraft(value.campaign);setGroupId(value.campaign.groups[0].id);
+      if(abort.signal.aborted)return;
+      setSaved(value);setDraft(value.campaign);setGroupId(value.campaign.groups[0]?.id??'');
     }).catch(error=>{if(!abort.signal.aborted)setFeedback([error.message,true]);});
     return()=>abort.abort();
-  },[]);
+  },[attempt]);
   const group=draft?.groups.find(value=>value.id===groupId);
   const count=draft?.groups.reduce((sum,g)=>sum+g.keywords.length,0)??0;
   const exact=group?.keywords.filter(keyword=>keyword.match==='Exact').length??0;
@@ -93,12 +95,13 @@ export function SearchAds(){
         <Button primary onClick={()=>setApproval(true)} disabled={busy||(!dirty&&saved?.status==='approved')}><Check size={17}/> Zur Freigabe</Button>
       </div>}</header>
       {feedback.length>0&&<Status text={(feedback[0]??'')} bad={feedback[1]}/>}
-      {draft&&<><div className={styles.statGrid}>
+      {!draft&&feedback[1]&&<Button onClick={()=>{setFeedback([]);setAttempt(value=>value+1);}}>Laden erneut versuchen</Button>}
+      {draft&&<><details className={ads.overview}><summary>Kampagnenübersicht</summary><div className={styles.statGrid}>
         <div className={styles.stat}><Search size={17}/><b>{count}</b><span>Such-Keywords</span></div>
         <div className={styles.stat}><Target size={17}/><b>{draft.groups.length}</b><span>Anzeigengruppen</span></div>
         <div className={styles.stat}><ListFilter size={17}/><b>{draft.negative.length}</b><span>Ausschlüsse</span></div>
       </div>
-      <div className={styles.editorTabs}>{sections.map(([key,label])=><Button quiet key={key} aria-pressed={key===tab} onClick={()=>setTab(key)}>{label}</Button>)}</div>
+      </details><div className={styles.editorTabs} role="group" aria-label="Kampagnenbereich">{sections.map(([key,label])=><Button quiet key={key} aria-pressed={key===tab} onClick={()=>setTab(key)}>{label}</Button>)}</div>
       {(tab==='keywords'||tab==='ads')&&group&&<div className={ads.editor}>
         <Panel><h2>Anzeigengruppen</h2><div className={ads.groupList}>{draft.groups.map(value=><button key={value.id} type="button" className={styles.actionRow} aria-pressed={group.id===value.id} onClick={()=>setGroupId(value.id)}>
           <span className={styles.rowIcon}><Target size={16}/></span><span><strong>{value.name}</strong><small>{value.keywords.length} Keywords</small></span></button>)}</div></Panel>

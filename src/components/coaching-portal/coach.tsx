@@ -94,7 +94,9 @@ export function CoachWorkspace({ snapshot,language,tab,open,selection,reload }: 
   };
   const current=client??null;
   const status=(item:Access)=>stateLabel(item.status,language);
-  const filtered=snapshot.directory.filter(item=>(item.name+' '+item.email).toLowerCase().includes(search.trim().toLowerCase()));
+  const words = (value:string) => value.normalize('NFKD').replace(/\p{Mark}/gu,'').toLocaleLowerCase(language).replaceAll('ß','ss');
+  const terms = words(search.trim()).split(/\s+/u).filter(Boolean);
+  const filtered=snapshot.directory.filter(item=>terms.every(term=>words(item.name+' '+item.email).includes(term)));
   return <div className={styles.stack}>
     {issue&&<Status bad text={issue}/>} {done&&<Status text={done}/>}
     {current&&!['people','help','devices','library'].includes(tab)&&<Field label={t('Kundenansicht','Client view')}>
@@ -112,10 +114,12 @@ export function CoachWorkspace({ snapshot,language,tab,open,selection,reload }: 
         <div className={styles.stat}><ClipboardList size={17}/><b>{current?.logs.filter(log=>log.kind==='checkin'&&log.done).length??0}</b><span>{t('Check-ins im gewählten Profil','Check-ins for selected client')}</span></div>
       </div>
       <div className={styles.grid}><Section title={t('Kunden auswählen','Choose clients')}>
-        <div className={styles.stack}><Field label={t('Name oder E-Mail suchen','Search by name or email')}><Input value={search} onChange={event=>setSearch(event.target.value)} placeholder={t('Suchen …','Search…')}/></Field>
+        <div className={styles.stack}><Field label={t('Name oder E-Mail suchen','Search by name or email')}><Input type="search" name="client-search" value={search} onChange={event=>setSearch(event.target.value)} placeholder={t('Suchen …','Search…')}/></Field>
           {filtered.map(item=><button key={item.id} type="button" className={styles.actionRow} aria-pressed={item.id===current?.person.id} onClick={()=>showClient(item.id)}>
             <span className={styles.rowIcon}><UserRound size={18}/></span><span><strong>{item.name}</strong><small>{item.email}</small></span><span className={styles.badge}>{status(item)}</span></button>)}
-          {!filtered.length&&<Empty title={t('Keine Kunden in dieser Ansicht','No clients in this view')} text={t('Beginne mit einer persönlichen Einladung.','Start with a personal invitation.')}/>}
+          {!filtered.length&&<Empty title={search.trim()?t('Keine passenden Kunden','No matching clients'):t('Keine Kunden in dieser Ansicht','No clients in this view')}
+            text={search.trim()?undefined:t('Beginne mit einer persönlichen Einladung.','Start with a personal invitation.')}
+            action={search.trim()?<Button quiet onClick={()=>setSearch('')}>{t('Suche zurücksetzen','Reset search')}</Button>:undefined}/>}
         </div></Section>
         {current&&<Section title={current.person.name} action={<span className={styles.badge}>{status(current.person)}</span>}><div className={styles.stack}>
           <p className={styles.copy}>{current.person.email} · {current.person.language.toUpperCase()}</p>

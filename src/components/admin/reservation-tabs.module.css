@@ -1,0 +1,8 @@
+.tabs:global(.cms-tabs) button { min-height: 44px; border-bottom: 3px solid transparent; border-radius: 0; }
+.tabs:global(.cms-tabs) button[aria-pressed="true"] {
+  color: #244f3c; border-bottom-color: currentColor; font-weight: 700;
+}
+.tabs:global(.cms-tabs) button:focus-visible { outline: 2px solid #236947; outline-offset: -3px; }
+@media (forced-colors:active) {
+  .tabs:global(.cms-tabs) button[aria-pressed="true"] { border-bottom-color: Highlight; }
+}

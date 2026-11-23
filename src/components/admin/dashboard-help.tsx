@@ -1,5 +1,7 @@
 "use client";
 
+import styles from "./dashboard-clarity.module.css";
+
 import {HelpCards} from "./help-cards";
 import { useAdminLanguage } from "./admin-language";
 import { useContext, useMemo, useRef, useState } from "react";
@@ -30,32 +32,280 @@ export function Dashboard({ data, content, dirty, onNavigate, onCompleteOnboardi
  const differsFromPublished=JSON.stringify(data.state.draft)!==JSON.stringify(data.state.published);
  const studioEnabled=content.config.modules?.socialStudio?.enabled===true;
  const plannerEnabled=studioEnabled&&content.config.modules?.socialPublishing?.enabled===true;
- return <div className="cms-page cms-dashboard">
-  <div className="cms-page-heading"><div><h1>{adminText("Übersicht")}</h1><p>{adminText("Ihre Website und die nächsten Schritte im Blick.")}</p></div><a href="/" target="_blank" rel="noopener noreferrer" className="cms-button">{adminText("Website ansehen")}<ExternalLink size={15}/></a></div>
-  <div className="cms-quick-tasks">
-   <button type="button" className="cms-quick-task" onClick={()=>onNavigate("editor")}><span className="cms-task-icon"><FileText size={23}/></span><h2>{adminText("Website bearbeiten")}</h2><p>{adminText("Eine Seite öffnen, Inhalte ändern und die Vorschau prüfen.")}</p><span className="cms-task-link">{adminText("Zum Seiteneditor")}<ArrowRight size={15}/></span></button>
-   {studioEnabled&&<button type="button" className="cms-quick-task" onClick={()=>onNavigate(plannerEnabled?"planner":"social")}><span className="cms-task-icon"><CalendarDays size={23}/></span><h2>{plannerEnabled?adminText("Social planen"):adminText("Social gestalten")}</h2><p>{plannerEnabled?adminText("Beiträge, Termine und verbundene Kanäle an einem Ort."):adminText("Ein neues Design gestalten oder einen Entwurf weiterführen.")}</p><span className="cms-task-link">{plannerEnabled?adminText("Zum Kalender"):adminText("Zum Social-Studio")}<ArrowRight size={15}/></span></button>}
-   <button type="button" className="cms-quick-task" onClick={()=>onNavigate("inquiries")}><span className="cms-task-icon"><Mail size={23}/></span><h2>{adminText("Anfragen")}</h2><p>{newInquiries?adminText(newInquiries === 1 ? "{count} neue Anfrage wartet auf Sie." : "{count} neue Anfragen warten auf Sie.", { count: newInquiries }):adminText("Kontakte, Nachrichten und interne Notizen verwalten.")}</p><span className="cms-task-link">{adminText("Posteingang öffnen")}<ArrowRight size={15}/></span></button>
-  </div>
-  <div className="cms-dashboard-main">
-   <section className="cms-dashboard-publication"><h2>{adminText("Website-Stand")}</h2><div className="cms-publication-status"><span className={"cms-publication-dot"+(dirty||differsFromPublished?" cms-publication-dot--draft":"")}/><strong>{dirty?adminText("Ungespeicherte Änderungen"):differsFromPublished?adminText("Ein Entwurf wartet auf Veröffentlichung"):data.state.publishedAt?adminText("Website ist veröffentlicht"):adminText("Erste Veröffentlichung vorbereiten")}</strong></div><dl><div><dt>{adminText("Zuletzt bearbeitet")}</dt><dd>{formatDate(data.state.updatedAt, true, language)}</dd></div><div><dt>{adminText("Zuletzt veröffentlicht")}</dt><dd>{formatDate(data.state.publishedAt, true, language)}</dd></div><div><dt>{adminText("Umfang")}</dt><dd>{content.pages.length} {adminText(content.pages.length === 1 ? "Seite" : "Seiten")} · {data.media.length} {adminText(data.media.length === 1 ? "Datei" : "Dateien")}</dd></div></dl><div className="cms-row"><Button onClick={()=>onNavigate("editor")}>{adminText("Seiten bearbeiten")}<ArrowRight size={15}/></Button><Button variant="quiet" onClick={openLaunchCheck}>{adminText("Startcheck öffnen")}</Button></div></section>
-   <section className="cms-dashboard-inquiries"><div className="cms-inline-heading"><h2>{adminText("Neue Anfragen")}</h2><span className="cms-count">{newInquiries}</span></div>{newInquiries?<div className="cms-recent-inquiries">{data.inquiries.filter(inquiry=>inquiry.status==="new").slice(0,3).map(inquiry=><button key={inquiry.id} type="button" onClick={()=>onNavigate("inquiries")}><Mail size={17}/><span><strong>{inquiry.name}</strong><small>{inquiry.subject||adminText("Allgemeine Anfrage")}</small></span><ArrowRight size={15}/></button>)}</div>:<div className="cms-dashboard-inbox-empty"><Mail size={28} strokeWidth={1.3}/><p>{adminText("Zurzeit gibt es keine neuen Anfragen.")}</p></div>}<Button onClick={()=>onNavigate("inquiries")}>{adminText("Anfragen öffnen")}<ArrowRight size={15}/></Button></section>
-  </div>
-  <details className="cms-onboarding cms-onboarding--optional"><summary><CircleHelp size={17}/><span>{adminText("Eine Änderung in drei Schritten")}</span></summary><ol><li><span>1</span><div><strong>{adminText("Seite bearbeiten")}</strong><p>{adminText("Text direkt in der Vorschau anklicken. Bilder und Gestaltung daneben ändern.")}</p></div></li><li><span>2</span><div><strong>{adminText("Entwurf speichern")}</strong><p>{adminText("Ihre Arbeit sichern. Die öffentliche Website bleibt bis zur Freigabe auf dem bisherigen Stand.")}</p></div></li><li><span>3</span><div><strong>{adminText("Veröffentlichen")}</strong><p>{adminText("Desktop- und Smartphone-Vorschau prüfen und den gespeicherten Entwurf freigeben.")}</p></div></li></ol><div className="cms-tour-launch-actions">{onStartTour&&<Button onClick={onStartTour}>{adminText("Geführte Tour starten")}<ArrowRight size={16}/></Button>}{!data.settings.onboardingComplete&&<Button disabled={completing} onClick={()=>{setCompleting(true);void onCompleteOnboarding().finally(()=>setCompleting(false));}}>{completing?adminText("Wird gespeichert …"):adminText("Einführung abschließen")}<Check size={14}/></Button>}</div></details>
-  <section className="cms-dashboard-shortcuts"><button type="button" onClick={()=>onNavigate("media")}><Image size={21}/><div><strong>{adminText("Medien")}</strong><span>{adminText("Bilder hochladen und organisieren.")}</span></div><ArrowRight size={17}/></button><button type="button" onClick={()=>onNavigate("settings")}><ShieldCheck size={21}/><div><strong>{adminText("Einstellungen")}</strong><span>{adminText("Kontakt, Versand und Datenschutz.")}</span></div><ArrowRight size={17}/></button><button type="button" onClick={()=>onNavigate("help")}><CircleHelp size={21}/><div><strong>{adminText("Hilfe")}</strong><span>{adminText("Anleitungen bei Bedarf öffnen.")}</span></div><ArrowRight size={17}/></button></section>
-  <OperationsCheck onAction={onOperation}/>
-  <details ref={launch} className="cms-system cms-system--optional"><summary>{adminText("Startcheck & Verbindungen")}</summary>
-    <section className="cms-launch-check">
-      <h3>{adminText("Veröffentlichte Inhalte")}</h3>
-      {launchIssues.length ? <ul>{launchIssues.map(issue=><li key={issue}>{issue}</li>)}</ul> : <p>{adminText("Die formalen Inhalts- und Domaineinstellungen sind ausgefüllt.")}</p>}
-      <details className="cms-details"><summary>{adminText("Suchergebnis-Titel und Beschreibungen")} · {searchIssues.length}</summary>
-        {searchIssues.length ? <ul>{searchIssues.map(issue=><li key={issue}>{issue}</li>)}</ul> : <p>{adminText("Die veröffentlichten Seiten und Beiträge haben eigene Titel und Beschreibungen.")}</p>}
-        <Button onClick={()=>onNavigate("editor")}>{adminText("Zum Seiteneditor")}<ArrowRight size={15}/></Button>
+  return (
+    <div className={"cms-page cms-dashboard " + styles.overview}>
+      <header className={styles.heading}>
+        <h1>{adminText("Übersicht")}</h1>
+        <a href="/" target="_blank" rel="noopener noreferrer" className="cms-button">
+          {adminText("Website ansehen")}
+          <ExternalLink size={15} />
+        </a>
+      </header>
+      <div className={styles.work}>
+        <section className={styles.publication}>
+          <h2>{adminText("Website-Stand")}</h2>
+          <div className="cms-publication-status">
+            <span
+              className={
+                "cms-publication-dot" + (dirty || differsFromPublished ? " cms-publication-dot--draft" : "")
+              }
+            />
+            <strong>
+              {dirty
+                ? adminText("Ungespeicherte Änderungen")
+                : differsFromPublished
+                  ? adminText("Ein Entwurf wartet auf Veröffentlichung")
+                  : data.state.publishedAt
+                    ? adminText("Website ist veröffentlicht")
+                    : adminText("Erste Veröffentlichung vorbereiten")}
+            </strong>
+          </div>
+          <Button variant="primary" onClick={() => onNavigate("editor")}>
+            {adminText("Seiten bearbeiten")}
+            <ArrowRight size={15} />
+          </Button>
+          <details className={styles.metadata}>
+            <summary>{language === "en" ? "Website details" : "Details zur Website"}</summary>
+            <dl>
+              <div>
+                <dt>{adminText("Zuletzt bearbeitet")}</dt>
+                <dd>{formatDate(data.state.updatedAt, true, language)}</dd>
+              </div>
+              <div>
+                <dt>{adminText("Zuletzt veröffentlicht")}</dt>
+                <dd>{formatDate(data.state.publishedAt, true, language)}</dd>
+              </div>
+              <div>
+                <dt>{adminText("Umfang")}</dt>
+                <dd>
+                  {content.pages.length} {adminText(content.pages.length === 1 ? "Seite" : "Seiten")} ·{" "}
+                  {data.media.length} {adminText(data.media.length === 1 ? "Datei" : "Dateien")}
+                </dd>
+              </div>
+            </dl>
+            <Button variant="quiet" onClick={openLaunchCheck}>
+              {adminText("Startcheck öffnen")}
+            </Button>
+          </details>
+        </section>
+        <section className="cms-dashboard-inquiries">
+          <div className="cms-inline-heading">
+            <h2>{adminText("Neue Anfragen")}</h2>
+            <span className="cms-count">{newInquiries}</span>
+          </div>
+          {newInquiries ? (
+            <div className="cms-recent-inquiries">
+              {data.inquiries
+                .filter((inquiry) => inquiry.status === "new")
+                .slice(0, 3)
+                .map((inquiry) => (
+                  <button key={inquiry.id} type="button" onClick={() => onNavigate("inquiries")}>
+                    <Mail size={17} />
+                    <span>
+                      <strong>{inquiry.name}</strong>
+                      <small>{inquiry.subject || adminText("Allgemeine Anfrage")}</small>
+                    </span>
+                    <ArrowRight size={15} />
+                  </button>
+                ))}
+            </div>
+          ) : (
+            <div className="cms-dashboard-inbox-empty">
+              <Mail size={28} strokeWidth={1.3} />
+              <p>{adminText("Zurzeit gibt es keine neuen Anfragen.")}</p>
+            </div>
+          )}
+          <Button onClick={() => onNavigate("inquiries")}>
+            {adminText("Anfragen öffnen")}
+            <ArrowRight size={15} />
+          </Button>
+        </section>
+      </div>
+      <div className={styles.shortcuts}>
+        {Boolean(content.config.modules?.commerce) && <button type="button" onClick={() => onNavigate("commerce")}>
+          <ArrowRight size={18} aria-hidden="true" /><span>{language === "de" ? "Shop verwalten" : "Manage shop"}</span>
+        </button>}
+        {content.config.modules?.consultations?.enabled && <button type="button" onClick={() => onNavigate("appointments")}>
+          <ArrowRight size={18} aria-hidden="true" /><span>{language === "de" ? "Termine verwalten" : "Manage appointments"}</span>
+        </button>}
+        {true && <button type="button" onClick={() => onNavigate("client-portal")}>
+          <ArrowRight size={18} aria-hidden="true" /><span>{language === "de" ? "Coaching-Kunden" : "Coaching clients"}</span>
+        </button>}
+        {studioEnabled && (
+          <button type="button" onClick={() => onNavigate(plannerEnabled ? "planner" : "social")}>
+            <CalendarDays size={18} aria-hidden="true" />
+            <span>{plannerEnabled ? adminText("Social planen") : adminText("Social gestalten")}</span>
+            <ArrowRight size={16} aria-hidden="true" />
+          </button>
+        )}
+      </div>
+      <details className={styles.disclosure}>
+        <summary>
+          <CircleHelp size={17} />
+          <span>{adminText("Eine Änderung in drei Schritten")}</span>
+        </summary>
+        <div className={styles.guide}>
+          <ol>
+            <li>
+              <span>1</span>
+              <div>
+                <strong>{adminText("Seite bearbeiten")}</strong>
+                <p>
+                  {adminText("Text direkt in der Vorschau anklicken. Bilder und Gestaltung daneben ändern.")}
+                </p>
+              </div>
+            </li>
+            <li>
+              <span>2</span>
+              <div>
+                <strong>{adminText("Entwurf speichern")}</strong>
+                <p>
+                  {adminText(
+                    "Ihre Arbeit sichern. Die öffentliche Website bleibt bis zur Freigabe auf dem bisherigen Stand.",
+                  )}
+                </p>
+              </div>
+            </li>
+            <li>
+              <span>3</span>
+              <div>
+                <strong>{adminText("Veröffentlichen")}</strong>
+                <p>
+                  {adminText(
+                    "Desktop- und Smartphone-Vorschau prüfen und den gespeicherten Entwurf freigeben.",
+                  )}
+                </p>
+              </div>
+            </li>
+          </ol>
+          <div className="cms-tour-launch-actions">
+            {onStartTour && (
+              <Button onClick={onStartTour}>
+                {adminText("Geführte Tour starten")}
+                <ArrowRight size={16} />
+              </Button>
+            )}
+            {!data.settings.onboardingComplete && (
+              <Button
+                disabled={completing}
+                onClick={() => {
+                  setCompleting(true);
+                  void onCompleteOnboarding().finally(() => setCompleting(false));
+                }}
+              >
+                {completing ? adminText("Wird gespeichert …") : adminText("Einführung abschließen")}
+                <Check size={14} />
+              </Button>
+            )}
+          </div>
+        </div>
       </details>
-      <p>{adminText("Prüfen Sie Uploads und Testmails mit den Zugängen dieses Projekts.")}</p>
-      <Button onClick={()=>onNavigate("settings")}>{adminText("Einstellungen öffnen")}<ArrowRight size={15}/></Button>
-    </section><div>{[{label:"Datenbank",ready:data.system.database,detail:data.system.database?data.settings.databaseRegion:"Noch nicht verbunden"},{label:"Medienspeicher",ready:data.system.blob,detail:data.system.blob?"Zugang hinterlegt":"Noch nicht verbunden"},{label:"E-Mail-Versand",ready:data.system.smtp,detail:data.system.smtp?"SMTP gespeichert · Testmail prüfen":"In Einstellungen einrichten"}].map(item=><div key={item.label}><span className={"cms-system-dot"+(item.ready?" cms-system-dot--ready":"")}/><span><strong>{adminText(item.label)}</strong><small>{item.detail ? adminText(item.detail) : adminText("Verbunden")}</small></span></div>)}</div>{(!data.system.database||!data.system.blob)&&<Notice>{adminText("Mindestens eine Verbindung fehlt. Prüfen Sie vor der produktiven Nutzung Datenbank und Medienspeicher.")}</Notice>}</details>
- </div>;
+      <details className={styles.disclosure}>
+        <summary>{language === "en" ? "More tools" : "Weitere Werkzeuge"}</summary>
+        <section className="cms-dashboard-shortcuts">
+          <button type="button" onClick={() => onNavigate("media")}>
+            <Image size={21} />
+            <div>
+              <strong>{adminText("Medien")}</strong>
+              <span>{adminText("Bilder hochladen und organisieren.")}</span>
+            </div>
+            <ArrowRight size={17} />
+          </button>
+          <button type="button" onClick={() => onNavigate("settings")}>
+            <ShieldCheck size={21} />
+            <div>
+              <strong>{adminText("Einstellungen")}</strong>
+              <span>{adminText("Kontakt, Versand und Datenschutz.")}</span>
+            </div>
+            <ArrowRight size={17} />
+          </button>
+          <button type="button" onClick={() => onNavigate("help")}>
+            <CircleHelp size={21} />
+            <div>
+              <strong>{adminText("Hilfe")}</strong>
+              <span>{adminText("Anleitungen bei Bedarf öffnen.")}</span>
+            </div>
+            <ArrowRight size={17} />
+          </button>
+        </section>
+      </details>
+      <OperationsCheck onAction={onOperation} />
+      <details ref={launch} className="cms-system cms-system--optional">
+        <summary>{adminText("Startcheck & Verbindungen")}</summary>
+        <section className="cms-launch-check">
+          <h3>{adminText("Veröffentlichte Inhalte")}</h3>
+          {launchIssues.length ? (
+            <ul>
+              {launchIssues.map((issue) => (
+                <li key={issue}>{issue}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>{adminText("Die formalen Inhalts- und Domaineinstellungen sind ausgefüllt.")}</p>
+          )}
+          <details className="cms-details">
+            <summary>
+              {adminText("Suchergebnis-Titel und Beschreibungen")} · {searchIssues.length}
+            </summary>
+            {searchIssues.length ? (
+              <ul>
+                {searchIssues.map((issue) => (
+                  <li key={issue}>{issue}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>
+                {adminText("Die veröffentlichten Seiten und Beiträge haben eigene Titel und Beschreibungen.")}
+              </p>
+            )}
+            <Button onClick={() => onNavigate("editor")}>
+              {adminText("Zum Seiteneditor")}
+              <ArrowRight size={15} />
+            </Button>
+          </details>
+          <p>{adminText("Prüfen Sie Uploads und Testmails mit den Zugängen dieses Projekts.")}</p>
+          <Button onClick={() => onNavigate("settings")}>
+            {adminText("Einstellungen öffnen")}
+            <ArrowRight size={15} />
+          </Button>
+        </section>
+        <div>
+          {[
+            {
+              label: "Datenbank",
+              ready: data.system.database,
+              detail: data.system.database ? data.settings.databaseRegion : "Noch nicht verbunden",
+            },
+            {
+              label: "Medienspeicher",
+              ready: data.system.blob,
+              detail: data.system.blob ? "Zugang hinterlegt" : "Noch nicht verbunden",
+            },
+            {
+              label: "E-Mail-Versand",
+              ready: data.system.smtp,
+              detail: data.system.smtp ? "SMTP gespeichert · Testmail prüfen" : "In Einstellungen einrichten",
+            },
+          ].map((item) => (
+            <div key={item.label}>
+              <span className={"cms-system-dot" + (item.ready ? " cms-system-dot--ready" : "")} />
+              <span>
+                <strong>{adminText(item.label)}</strong>
+                <small>{item.detail ? adminText(item.detail) : adminText("Verbunden")}</small>
+              </span>
+            </div>
+          ))}
+        </div>
+        {(!data.system.database || !data.system.blob) && (
+          <Notice>
+            {adminText(
+              "Mindestens eine Verbindung fehlt. Prüfen Sie vor der produktiven Nutzung Datenbank und Medienspeicher.",
+            )}
+          </Notice>
+        )}
+      </details>
+    </div>
+  );
 }
 
 const guides = [

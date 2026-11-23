@@ -103,24 +103,27 @@ export function CoachLibrary({ initial, assistantAvailable = false, club = false
         </div>
         <Action variant="primary" icon={Plus} onClick={() => { setDialogError(""); setCreateOpen(true); }}>{t("Neue Taktik", "New play")}</Action>
       </div>
-      {featured && <div className={styles.featureWrap}>
-        <FeaturedPlay key={featured.id} record={featured} language={language} href={recordPath(featured.id)} />
-        <PlayActions play={featured.play} working={working} language={language}
-          onDuplicate={() => duplicate(featured.play)} onRemove={() => { setDialogError(""); setRemove(featured); }} />
-      </div>}
-      <section className={styles.libraryCollection} aria-labelledby="coach-library-title">
-        <div className={styles.collectionTitle}>
-          <h2 id="coach-library-title">{featured ? t("Weitere Taktiken", "More plays") : t("Taktiken", "Plays")}</h2>
+      {records.length > 0 && <div className={styles.libraryTools}>
           <label className={styles.search}>
             <Search size={17} aria-hidden="true" />
             <input type="search" placeholder={t("Taktik suchen", "Find a play")} value={query}
               onChange={(event) => setQuery(event.target.value)} aria-label={t("Taktik suchen", "Find a play")} />
             {query && <button type="button" aria-label={t("Suche leeren", "Clear search")} onClick={() => setQuery("")}><X size={15} aria-hidden="true" /></button>}
           </label>
-        </div>
         <div className={styles.filters} role="group" aria-label={t("Kategorie filtern", "Filter by category")}>
           <button type="button" aria-pressed={category === "all"} onClick={() => setCategory("all")}>{t("Alle", "All")}</button>
           {COACH_CATEGORIES.map((entry) => <button type="button" key={entry} aria-pressed={category === entry} onClick={() => setCategory(entry)}>{categoryLabels[entry][language]}</button>)}
+        </div>
+      </div>}
+      {featured && <div className={styles.featureWrap}>
+        <FeaturedPlay key={featured.id} record={featured} language={language} href={recordPath(featured.id)} />
+        <PlayActions play={featured.play} working={working} language={language}
+          onDuplicate={() => duplicate(featured.play)} onRemove={() => { setDialogError(""); setRemove(featured); }} />
+      </div>}
+      {(!featured || filtered.length > 0 || error) && <section className={styles.libraryCollection} aria-labelledby="coach-library-title">
+        <div className={styles.collectionTitle}>
+          <h2 id="coach-library-title">{featured ? t("Weitere Taktiken", "More plays") : t("Taktiken", "Plays")}</h2>
+          <span role="status">{filtered.length}</span>
         </div>
         {error && <p className={styles.error} role="alert">{error}</p>}
         {filtered.length ? <ul className={styles.playList}>
@@ -131,7 +134,7 @@ export function CoachLibrary({ initial, assistantAvailable = false, club = false
           {!records.length && <Action icon={Plus} onClick={() => setCreateOpen(true)}>{t("Erste Taktik anlegen", "Create your first play")}</Action>}
           {records.length > 0 && !featured && <Action onClick={() => { setCategory("all"); setQuery(""); }}>{t("Filter zurücksetzen", "Reset filters")}</Action>}
         </CoachEmpty>}
-      </section>
+      </section>}
     </main>
     {guideOpen && <CoachGuide locale={language} close={() => setGuideOpen(false)} />}
     {createOpen && <CreatePlayDialog language={language} busy={working} error={dialogError} close={() => { if (!working) setCreateOpen(false); }} onCreate={(play) => create(play, "dialog")} />}

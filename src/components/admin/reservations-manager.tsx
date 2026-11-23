@@ -6,6 +6,7 @@ import { decisionMessage, emptyReservationSettings, isPendingExpired, type Booki
 import { useAdminLanguage } from './admin-language';
 import { Button, EmptyState, Field, Input, Notice, Select, Toggle, api, errorMessage } from './admin-ui';
 import { HospitalityDraftActions, type DraftActions } from './hospitality-draft-actions';
+import tabStyles from "./reservation-tabs.module.css";
 import { ReservationSettingsForm } from './reservation-settings';
 
 type BookingAction = 'confirm' | 'decline' | 'cancel' | 'retry-email';
@@ -27,6 +28,7 @@ export function ReservationsManager({ module, onChange, actions, brand, onOpenMa
   const [date, setDate] = useState('');
   const [filter, setFilter] = useState('all');
   const [data, setData] = useState<BookingsResponse>();
+  const [decisionFeedback, setDecisionFeedback] = useState<{ name: string; status: ReservationStatus; action: BookingAction; delivery?: string }>();
   const [refresh, setRefresh] = useState(0);
   const [saving, setSaving] = useState<string>();
   const [error, setError] = useState('');
@@ -37,6 +39,8 @@ export function ReservationsManager({ module, onChange, actions, brand, onOpenMa
     if (tab !== 'requests') return;
     const controller = new AbortController();
     setLoading(true);
+    setData(undefined);
+    setDecisionFeedback(undefined);
     setError('');
     api<BookingsResponse>('/api/admin/reservations' + (date ? '?date=' + encodeURIComponent(date) : ''), { signal: controller.signal })
       .then(value => { if (!controller.signal.aborted) setData(value); })
@@ -46,13 +50,16 @@ export function ReservationsManager({ module, onChange, actions, brand, onOpenMa
   }, [date, refresh, tab]);
 
   async function decide(booking: Booking, action: BookingAction) {
+    if (saving) return;
     setSaving(booking.id);
+    setDecisionFeedback(undefined);
     setError('');
     setActionTarget(undefined);
     try {
       const { booking: changed } = await api<{ booking: Booking }>('/api/admin/reservations', {
         method: 'POST', body: JSON.stringify({ date: booking.date, id: booking.id, version: booking.version, action }),
       });
+      setDecisionFeedback({ name: changed.name, status: changed.status, action, delivery: changed.delivery?.status });
       setData(current => current && { ...current, bookings: current.bookings.map(entry => entry.id === changed.id ? changed : entry) });
     } catch (error) { setError(errorMessage(error)); }
     finally { setSaving(undefined); }
@@ -70,7 +77,7 @@ export function ReservationsManager({ module, onChange, actions, brand, onOpenMa
       <div><h1>{t('Reservierungen')}</h1><p>{t('Anfragen prüfen und verfügbare Tische verwalten.')}</p></div>
       {tab === 'settings' && <HospitalityDraftActions {...actions} />}
     </header>
-    <div className="cms-tabs cms-hospitality-tabs" role="group" aria-label={t('Reservierungen')}>
+    <div className={`cms-tabs cms-hospitality-tabs ${tabStyles.tabs}`} role="group" aria-label={t('Reservierungen')}>
       <button type="button" aria-pressed={tab === 'requests'} onClick={() => setTab('requests')}>{t('Anfragen')}{upcoming ? ` · ${upcoming}` : ''}</button>
       <button type="button" aria-pressed={tab === 'settings'} onClick={() => setTab('settings')}>{t('Tische & Buchungszeiten')}</button>
     </div>
@@ -85,6 +92,10 @@ export function ReservationsManager({ module, onChange, actions, brand, onOpenMa
         <Button busy={loading} onClick={() => setRefresh(value => value + 1)}><RefreshCw size={16} />{t('Aktualisieren')}</Button>
       </div>
       <div className="cms-hospitality-list-tools">
+        <Button variant={filter === 'pending' ? 'primary' : undefined} aria-pressed={filter === 'pending'}
+          disabled={loading || !data} onClick={() => setFilter(value => value === 'pending' ? 'all' : 'pending')}>
+          {t('Offen')} · {upcoming}
+        </Button>
         <Field label={t('Datum')}><Input type="date" value={date} onChange={event => setDate(event.target.value)} /></Field>
         <Field label={t('Status')}><Select value={filter} onChange={event => setFilter(event.target.value)}>
           <option value="all">{t('Alle Anfragen')}</option>
@@ -100,9 +111,15 @@ export function ReservationsManager({ module, onChange, actions, brand, onOpenMa
           {onOpenMailSettings && <Button onClick={onOpenMailSettings}>{t('E-Mail-Einstellungen öffnen')}</Button>}
         </div>
       </Notice>}
+      {decisionFeedback && <Notice tone="success">
+        {decisionFeedback.name} · {decisionFeedback.action === 'retry-email'
+          ? t(decisionFeedback.delivery === 'sent' ? 'E-Mail gesendet' : decisionFeedback.delivery === 'failed' ? 'E-Mail-Versand fehlgeschlagen' : 'E-Mail wird gesendet')
+          : t(statusCopy[decisionFeedback.status])}
+      </Notice>}
       {error && <Notice tone="error">{t(error)}</Notice>}
       {loading ? <p className="cms-hint" role="status">{t('Reservierungen werden geladen …')}</p> :
-        entries.length === 0 ? <EmptyState icon={CalendarDays} title={t('Keine Reservierungen gefunden')}>{t('Ändern Sie bei Bedarf Datum oder Status.')}</EmptyState> :
+        error && !data ? null : entries.length === 0 ? <EmptyState icon={CalendarDays} title={t('Keine Reservierungen gefunden')} action={(date || filter !== 'all') &&
+          <Button onClick={() => { setDate(''); setFilter('all'); }}>{language === 'de' ? 'Filter zurücksetzen' : 'Reset filters'}</Button>}>{t('Ändern Sie bei Bedarf Datum oder Status.')}</EmptyState> :
         <div className="cms-hospitality-entries">
           {entries.map(booking => {
             const message = decisionMessage(booking, brand);
