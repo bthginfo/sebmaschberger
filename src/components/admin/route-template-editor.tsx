@@ -6,7 +6,7 @@ import { templateEditorPages } from "@/lib/route-templates";
 import type { RouteTemplateKey } from "@/lib/route-template-keys";
 import { PageEditor, type EditorProps } from "./page-editor";
 
-type Props = Pick<EditorProps, "content" | "cmsState" | "onChange" | "media" | "onUpload" | "dirty" | "busy" | "onSave" | "onPublish" | "onRestore" | "undo" | "redo" | "canUndo" | "canRedo" | "initialPageId">;
+type Props = Pick<EditorProps, "privateCanvasTools" | "content" | "cmsState" | "onChange" | "media" | "onUpload" | "dirty" | "busy" | "onSave" | "onPublish" | "onRestore" | "undo" | "redo" | "canUndo" | "canRedo" | "initialPageId">;
 
 export function RouteTemplateEditor({ content, onChange, ...props }: Props) {
   const { t } = useAdminLanguage();

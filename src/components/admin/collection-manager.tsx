@@ -9,6 +9,7 @@ type Props = {
   title: string;
   entries: readonly CollectionEntry[];
   selected?: string;
+  focusRequest?: { itemId?: string };
   max?: number;
   min?: number;
   quickAdd?: boolean;
@@ -24,7 +25,7 @@ type Props = {
 const literal = (text: string) => text;
 
 export function CollectionManager({
-  title, entries, selected, min = 0, max = 150, singular = "Eintrag", quickAdd = true,
+  title, entries, selected, focusRequest, min = 0, max = 150, singular = "Eintrag", quickAdd = true,
   onAdd, onMove, onDuplicate, onRemove, children, translate: t = literal,
 }: Props) {
   const uid = useId(), root = useRef<HTMLElement>(null), drag = useRef<string | null>(null);
@@ -42,6 +43,12 @@ export function CollectionManager({
   const validBatch = draft.length > 0 && draft.length <= remaining && draft.every(line => line.length <= 300);
 
   useEffect(() => { if (selected) setOpen(selected); }, [selected]);
+  useEffect(() => {
+    if (!focusRequest?.itemId) return;
+    setQuery("");
+    setOpen(focusRequest.itemId);
+    focus.current = { id: focusRequest.itemId, edit: true };
+  }, [focusRequest]);
   useEffect(() => {
     const job = focus.current;
     if (!job || !root.current) return;

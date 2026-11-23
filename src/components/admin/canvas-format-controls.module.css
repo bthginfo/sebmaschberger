@@ -1,0 +1,85 @@
+.controls {
+  --format-ink: #1b2939;
+  --format-muted: #526374;
+  --format-line: #c4ced7;
+  --format-well: #eef2f6;
+  --format-accent: #18529a;
+  --format-tint: #e6effb;
+  display: grid;
+  container-type: inline-size;
+  gap: 10px;
+  min-width: 0;
+  color: var(--format-ink);
+  font: 500 .8125rem/1.35 -apple-system, BlinkMacSystemFont, "DM Sans Variable", sans-serif;
+}
+.controls *, .controls *::before { box-sizing: border-box; }
+.controls label, .field, .colors, .layout { display: grid; gap: 5px; min-width: 0; }
+.controls span { overflow-wrap: anywhere; }
+.controls button, .controls select, .controls input { font: inherit; color: inherit; }
+.controls button, .controls select { cursor: pointer; }
+.controls select, .hex {
+  width: 100%; min-width: 0; min-height: 38px; padding: 5px 8px;
+  background: white; border: 1px solid var(--format-line); border-radius: 7px; box-shadow: none;
+}
+.controls button:focus-visible, .controls select:focus-visible, .controls input:focus-visible, .swatch:focus-within {
+  outline: 2px solid var(--format-accent); outline-offset: 2px;
+}
+.controls button:disabled { opacity: .48; cursor: default; }
+.segment, .stepper {
+  display: flex; min-width: 0; align-items: stretch; padding: 2px; gap: 2px;
+  background: var(--format-well); border: 1px solid var(--format-line); border-radius: 9px;
+}
+.segment button, .stepper button, .reset {
+  display: inline-flex; min-height: 34px; align-items: center; justify-content: center; gap: 5px;
+  border: 1px solid transparent; border-radius: 6px; background: transparent; box-shadow: none;
+}
+.segment button { flex: 1; min-width: 0; padding: 3px 5px; line-height: 1.2; }
+.segment button[aria-pressed=true] {
+  color: var(--format-accent); background: white; border-color: var(--format-line); box-shadow: 0 1px 2px #27364a13; font-weight: 650;
+}
+.controls svg { flex: none; }
+.stepper { align-items: center; padding: 0; background: white; }
+.stepper button, .reset { width: 36px; flex: none; padding: 0; }
+.stepper output { min-width: 4ch; text-align: center; font-variant-numeric: tabular-nums; }
+.reset { color: var(--format-muted); }
+.row, .labelRow { display: flex; align-items: center; gap: 6px; }
+.row > span, .labelRow > span { flex: 1; }
+.colors { padding-block: 9px 0; border-top: 1px solid var(--format-line); }
+.colorControl { display: grid; grid-template-columns: 40px minmax(0,1fr) 36px; align-items: center; gap: 5px; }
+.controls .swatch {
+  position: relative; display: block; height: 38px; overflow: hidden; border: 1px solid var(--format-line); border-radius: 7px;
+  background: repeating-linear-gradient(-45deg, #fff 0 6px, #d8e1ea 6px 8px);
+}
+.swatch input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.hex { font-variant-numeric: tabular-nums; }
+.hex::placeholder { color: var(--format-muted); }
+.error { margin: 0; color: #9c2a21; }
+.layout { gap: 6px; }
+.controls .inlineSelect, .layoutLine { display: grid; grid-template-columns: minmax(57px, .43fr) minmax(0, 1fr); align-items: center; gap: 7px; }
+.layoutLine { grid-template-columns: minmax(58px, .43fr) minmax(0, 1fr) auto; }
+.layoutLine .segment button { padding-inline: 3px; }
+.layoutLine svg { width: 13px; }
+@container (max-width: 265px) {
+  .layoutLine .segment svg { display:none; }
+}
+
+.labelRow { min-height: 30px; }
+@media (hover:hover) {
+  .controls button:hover:not(:disabled) { color: var(--format-accent); background: var(--format-tint); }
+}
+@media (prefers-reduced-motion:no-preference) {
+  .controls button { transition: color .12s, background-color .12s, border-color .12s; }
+}
+@media (max-width:700px), (pointer:coarse) {
+  .segment button, .stepper button, .reset, .controls select, .hex, .controls .swatch { min-height: 44px; }
+  .stepper button, .reset { width: 44px; }
+  .colorControl { grid-template-columns: 44px minmax(0,1fr) 44px; }
+  .controls select, .hex { font-size: 16px; }
+}
+@media (forced-colors:active) {
+  .segment button[aria-pressed=true] { border: 2px solid Highlight; color: Highlight; }
+  .controls button:focus-visible, .swatch:focus-within { outline-color: Highlight; }
+  .controls .swatch { forced-color-adjust:none; border:2px solid ButtonText; }
+}
+
+.specialist { margin: 0; color: #405367; font-size: .875rem; line-height: 1.5; }

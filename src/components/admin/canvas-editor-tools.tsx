@@ -18,6 +18,7 @@ export interface CanvasEditorToolsProps {
   onItemSelect?: (sectionId: string, itemId: string) => void;
   /** Generated post headings can be selected and followed by a block, but never reordered or removed. */
   lockedSectionIds?: string[];
+  onCanvasSelect?: (selection: { sectionId: string; itemId?: string; field?: string; textRole?: "heading" | "body" }) => void;
   children: ReactNode;
 }
 type ItemTarget = { sectionId: string; itemId: string };
@@ -44,7 +45,7 @@ export function focusSectionText(root: ParentNode | null, sectionId: string, ite
 
 function scrollFrame(element: HTMLElement) { let parent = element.parentElement; while (parent && parent !== document.body) { const overflow = getComputedStyle(parent).overflowY; if (/(auto|scroll)/.test(overflow)) return parent; parent = parent.parentElement; } return null; }
 
-export function CanvasEditorTools({ page, onChange, selectedSectionId, onSectionSelect, onItemSelect, lockedSectionIds = [], children }: CanvasEditorToolsProps) {
+export function CanvasEditorTools({ page, onChange, selectedSectionId, onSectionSelect, onItemSelect, lockedSectionIds = [], onCanvasSelect, children }: CanvasEditorToolsProps) {
   const { t: adminText } = useAdminLanguage();
   const [link, setLink] = useState<LinkTarget | null>(null);
   const linkedSection = page.sections.find(section => section.id === link?.sectionId);
@@ -72,7 +73,20 @@ export function CanvasEditorTools({ page, onChange, selectedSectionId, onSection
   function duplicateItem() { if (!itemSection || !item || heroTypes.has(itemSection.type)) return; const copy = { ...clone(item), id: newId() }; const entries = [...(itemSection.content.items || [])]; entries.splice(itemIndex + 1, 0, copy); changeSection({ ...itemSection, content: { ...itemSection.content, items: entries } }); select(itemSection.id, copy.id); reveal(itemSection.id, copy.id); announce("Eintrag dupliziert."); }
   function confirmRemove() { if (!remove) return; const section = page.sections.find(value => value.id === remove.sectionId); if (!section || lockedSectionIds.includes(section.id)) { setRemove(null); return; } if (remove.itemId) { changeSection({ ...section, content: { ...section.content, items: section.content.items?.filter(item => item.id !== remove.itemId) } }); setActiveItem(null); announce("Eintrag entfernt. Die Änderung lässt sich rückgängig machen."); } else { const index = page.sections.findIndex(value => value.id === section.id); const sections = page.sections.filter(value => value.id !== section.id); onChange({ ...page, sections }); setHoverSection(sections[Math.max(0, index - 1)]?.id || null); onSectionSelect?.(sections[Math.max(0, index - 1)]?.id || ""); setActiveItem(null); announce("Abschnitt entfernt. Die Änderung lässt sich rückgängig machen."); } setRemove(null); }
   function track(target: EventTarget | null) { if (!(target instanceof Element) || target.closest("[data-canvas-tools]")) return; const section = target.closest<HTMLElement>("[data-section-id]"); if (!section) return; const sectionId = section.dataset.sectionId; if (!sectionId) return; setHoverSection(sectionId); const entry = target.closest<HTMLElement>("[data-item-id]"); if (entry?.dataset.itemId && !feeds.has(page.sections.find(value => value.id === sectionId)?.type || "")) { hoveredItemElement.current = entry; setActiveItem({ sectionId, itemId: entry.dataset.itemId }); } else { hoveredItemElement.current = null; setActiveItem(null); } }
-  return <div ref={root} className="cms-canvas-editor" onPointerOver={event => track(event.target)} onFocusCapture={event => track(event.target)} onPointerLeave={() => setHoverSection(null)} onClickCapture={event => {
+  function captureSelection(target: EventTarget | null) {
+    if (!onCanvasSelect || !(target instanceof Element) || target.closest("dialog, [data-canvas-tools]")) return;
+    const sectionId = target.closest<HTMLElement>("[data-section-id]")?.dataset.sectionId;
+    const authored = page.sections.find(value => value.id === sectionId);
+    if (!authored) return;
+    const itemId = target.closest<HTMLElement>("[data-item-id]")?.dataset.itemId || target.closest<HTMLElement>("[data-canvas-link-item]")?.dataset.canvasLinkItem;
+    const item = authored.content.items?.find(value => value.id === itemId);
+    const field = target.closest<HTMLElement>("[data-canvas-field]")?.dataset.canvasField || target.closest<HTMLElement>("[data-canvas-link]")?.dataset.canvasLink;
+    const editable = target.closest('[contenteditable="true"]');
+    const textRole = editable?.matches('h1,h2,h3,h4,[data-cms-role="heading"]') ? "heading" : editable?.matches('p,figcaption,blockquote,[data-cms-role="body"]') ? "body" : undefined;
+    onCanvasSelect({ sectionId: authored.id, itemId: item?.id, field, textRole });
+  }
+  return <div ref={root} className="cms-canvas-editor" onPointerOver={event => track(event.target)} onFocusCapture={event => { track(event.target); captureSelection(event.target); }} onPointerLeave={() => setHoverSection(null)} onClickCapture={event => {
+    captureSelection(event.target);
     const element = event.target as Element;
     const button = element.closest<HTMLElement>("[data-canvas-link]");
     if (button) {
